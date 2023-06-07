@@ -5,6 +5,7 @@ import LoginScreen from './screens/LoginScreen';
 import SplashScreen from './screens/SplashScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import BookingScreen from './screens/BookingScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -22,6 +23,7 @@ export default function App() {
 				options={{title: 'Welcome'}}
 			/>
 			<Stack.Screen name="Dashboard" component={DashboardScreen} />
+			<Stack.Screen name="Booking" component={BookingScreen} />
 		</Stack.Navigator>
 	</NavigationContainer>
   );

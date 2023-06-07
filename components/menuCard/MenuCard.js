@@ -1,14 +1,14 @@
-import { StyleSheet, View , Text} from 'react-native';
+import { StyleSheet, View , Text, TouchableOpacity} from 'react-native';
 
-const MenuCard = ({icon: Icon,title}) => {
+const MenuCard = ({icon: Icon,title, ...props}) => {
 
 	return (
-		<View style={styles.container}>
-			<View style={styles.iconContainer}>
-				<Icon width={40} height={40} style={styles.icon}/>
-			</View>
-			<Text style={styles.title}>{title}</Text>
-		</View>
+			<TouchableOpacity style={styles.container} onPress={props.onClick}>
+				<View style={styles.iconContainer}>
+					<Icon width={40} height={40} style={styles.icon}/>
+				</View>
+				<Text style={styles.title}>{title}</Text>
+			</TouchableOpacity>
 	)
 }
 

@@ -20,11 +20,16 @@ const wp = (percentage) => {
 	return Math.round(value);
   }
 
-const DashboardScreen = (props) => {
+const DashboardScreen = ({navigation, ...props}) => {
 	const sliderItemHorizontalMargin = wp(2);
 	const slideWidth = wp(28);
 	const sliderWidth = viewportWidth;
 	const sliderItemWidth = slideWidth + sliderItemHorizontalMargin * 2;
+
+
+	const menuCardClickHandler = () => {
+		navigation.navigate('Booking');
+	}
 
 	return (
 	<View>
@@ -43,7 +48,7 @@ const DashboardScreen = (props) => {
 				<View style={styles.mainMenu}>
 					{
 						menuItems.map((item, id) => {
-							return <MenuCard key={id} title={item.name} icon={item.icon.default}/>
+							return <MenuCard key={id} id={id} title={item.name} icon={item.icon.default} onClick={menuCardClickHandler}/>
 						})
 					}
 				</View>

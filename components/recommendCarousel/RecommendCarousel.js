@@ -1,4 +1,4 @@
-import { Dimensions, Animated, FlatList, StyleSheet, Text, View} from 'react-native';
+import { Dimensions, Animated, FlatList, StyleSheet, View} from 'react-native';
 import React, { useRef } from 'react';
 
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');

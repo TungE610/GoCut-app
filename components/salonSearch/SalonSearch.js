@@ -30,7 +30,7 @@ const SalonSearch = () => {
 					padding: 0,
 					backgroundColor: '#fff'
 				}}
-				placeholderTextColor="#1D3565"
+				placeholderTextColor="#5E5F62"
 				searchIcon={{ size: 28 }}
 				cancelButtonProps={{
 					color: '#fff'

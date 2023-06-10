@@ -1,16 +1,20 @@
 import { useState } from 'react';
-import { StyleSheet, Dimensions, View, Text, ScrollView } from 'react-native';
-import BackButton from '../components/backBuutton/BackButton';
+import { StyleSheet, Dimensions, View, Text, ScrollView, TouchableOpacity } from 'react-native';
+import ReturnHomeButton from '../components/returnHomeButton/ReturnHomeButton';
 import StepIndicator from 'react-native-step-indicator';
 import Swiper from 'react-native-swiper'
-import SalonSearch from '../components/salonSearch/SalonSearch';
-import SearchTag from '../components/searchTag/SearchTag';
+import SearchInput from '../components/searchInput/SearchInput';
 import location from '../data/location';
 import LocationIcon from '../assets/location.svg';
 import HomeIcon from '../assets/home.svg';
 import MarkIcon from '../assets/mark.svg';
 import PolygonIcon from '../assets/polygon.svg';
-
+import SearchTag from '../components/searchTag/SearchTag';
+import ServiceTypeCard from '../components/serviceTypeCard/ServiceTypeCard';
+import ServiceCard from '../components/serviceCard/ServiceCard';
+import CutIcon from '../assets/cut.svg';
+import FacialIcon from '../assets/facial.svg';
+import NailIcon from '../assets/nail.svg';
 
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
 const searchTagContent = [
@@ -61,7 +65,8 @@ const LocationTag = (props) => {
 const BookingScreen = ({navigation}) => {
 	
 	const [currentPage, setCurrentPage] = useState(0);
-	const [selectedSalon, setSelectedSalon] = useState({});
+	const [selectedSalon, setSelectedSalon] = useState('Vai o slon');
+	const [selectedServices, setSelectedServices] = useState([]);
 
 	const backButtonClickHandler = () => {
 		navigation.navigate('Dashboard', {name: 'Tung'});
@@ -71,11 +76,16 @@ const BookingScreen = ({navigation}) => {
 		setCurrentPosition(position);
 	}
 
+	const navigateSavedAddressHandler = () => {
+		console.log("Tung");
+		navigation.navigate('SavedAddress', {name: 'Tung'});
+	}
+
 	return (
 		<View>
 			<ScrollView style={styles.container}>
 				<View style={styles.backButton}>
-					<BackButton onClick={backButtonClickHandler}/>
+					<ReturnHomeButton onClick={backButtonClickHandler}/>
 				</View>
 				<View style={styles.screenTitleContainer}>
 					<Text style={styles.screenTitle}>Booking</Text>
@@ -97,13 +107,14 @@ const BookingScreen = ({navigation}) => {
 							setCurrentPage(page);
 						}}
 					>
+
 						<View key="page 1" style={styles.selectSalonContainer}>
 							<Text style={styles.slideTitle}>Select Salon</Text>
 							{/* <View style={styles.firstPageGuide}>
 								<View></View>
 								<Text style={styles.firstPageGuideText}>First, Please select the best salon</Text>
 							</View> */}
-							<SalonSearch />
+							<SearchInput placeholder="search for salon with name or location"/>
 							<View style={styles.searchTagStack}>
 								{
 									searchTagContent.map((tag, index) => {
@@ -113,20 +124,22 @@ const BookingScreen = ({navigation}) => {
 									})
 								}
 							</View>
-							<View style={styles.savedAddressBox}>
-								<View style={{flexDirection: 'row'}}>
-									<MarkIcon width={30} height={30} />
-									<View>
-										<Text>
-											Saved Addresses
-										</Text>
-										<Text>
-											Get to your favourite place faster
-										</Text>
+							<TouchableOpacity onPress={navigateSavedAddressHandler}>
+								<View style={styles.savedAddressBox} >
+									<View style={{flexDirection: 'row'}}>
+										<MarkIcon width={30} height={30} />
+										<View>
+											<Text>
+												Saved Addresses
+											</Text>
+											<Text>
+												Get to your favourite place faster
+											</Text>
+										</View>
 									</View>
+									<PolygonIcon />
 								</View>
-								<PolygonIcon />
-							</View>
+							</TouchableOpacity>
 							<View style={styles.locationSelectBox}>
 								{location.map((area, index) => {
 									return (
@@ -144,9 +157,25 @@ const BookingScreen = ({navigation}) => {
 								})}
 							</View>
 						</View>
+
 						<View key="page 2" style={styles.selectServicesContainer}>
-							<Text style={styles.slideTitle}>Beautiful</Text>
+							<Text style={styles.slideTitle}>Select services</Text>
+							<Text style={styles.selectedSalon}>selected salon: {selectedSalon} </Text>
+							<SearchInput placeholder="search for services"/>
+							<View style={styles.serviceTypeTagsStack}>
+								<ServiceTypeCard icon={<CutIcon width={18} height={18} />} service="Hair cut" />
+								<ServiceTypeCard icon={<FacialIcon width={18} height={18} />} service="Hair cut" />
+								<ServiceTypeCard icon={<NailIcon width={18} height={18} />} service="Hair cut" />
+							</View>
+							<View style={styles.serviceTagsStack}>
+								<Text style={styles.selectedNum}>Selected number: {selectedServices.length}</Text>
+								<ServiceCard serviceName="Women medium blunt cut" serviceTime="2 hours service" serviceFee="200" salePercent={20}/>
+								<ServiceCard serviceName="Women medium blunt cut" serviceTime="2 hours service" serviceFee="200" salePercent={20}/>
+								<ServiceCard serviceName="Women medium blunt cut" serviceTime="2 hours service" serviceFee="200" salePercent={20}/>
+
+							</View>
 						</View>
+
 						<View key="page 3" style={styles.selectStylistAndTimeContainer}>
 							<Text style={styles.slideTitle}>And simple</Text>
 						</View>
@@ -175,7 +204,7 @@ const styles = StyleSheet.create({
 		width: viewportWidth,
 		backgroundColor: '#3d5c98',
 		flexDirection: 'column',
-		shink: 1,
+		grow: 1,
 	},
 	backButton: {
 		position: 'absolute',
@@ -215,23 +244,6 @@ const styles = StyleSheet.create({
 
 	// FIRST PAGE
 	selectSalonContainer: {
-		justifyContent: 'center',
-		alignItems: 'center',
-	},
-	// firstPageGuide: {
-	// 	height: viewportHeight/20,
-	// 	width: viewportWidth*9/10,
-	// 	backgroundColor: '#0D2044',
-	// 	marginTop: 10,
-	// 	borderRadius: 10,
-	// 	justifyContent: 'center',
-	// },
-	// firstPageGuideText: {
-	// 	color: '#fff',
-	// 	fontSize: 16,
-	// 	fontWeight: 800
-	// },
-	selectServicesContainer: {
 		justifyContent: 'center',
 		alignItems: 'center',
 	},
@@ -283,6 +295,36 @@ const styles = StyleSheet.create({
 		gap: 4,
 		flexWrap: 'wrap',
 		paddingVertical: 10,
+	},
+	selectedSalon: {
+		color: 'yellow',
+	},
+	/// Page 2
+	selectServicesContainer: {
+		justifyContent: 'center',
+		alignItems: 'center',
+	},
+	serviceTypeTagsStack: {
+		alignSelf: 'flex-start',
+		flexDirection: 'row',
+		gap: 6,
+		paddingLeft: 10,
+	},
+	serviceTagsStack: {
+		marginTop: 20,
+		backgroundColor: '#fff',
+		width: '100%',
+		alignSelf: 'stretch',
+		flexGrow: 1,
+		minHeight: 700,
+		borderRadius: 10,
+		paddingHorizontal: 10,
+		paddingTop: 20,
+	},
+	selectedNum: {
+		fontSize: 15,
+		fontWeight: 500,
+		color: '#3c5d98'
 	}
 })
 

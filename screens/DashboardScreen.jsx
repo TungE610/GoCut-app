@@ -2,7 +2,7 @@ import {StyleSheet, Dimensions, View, Text, ScrollView } from 'react-native';
 import NotificationBox from '../components/notificationBox/NotificationBox';
 import ShopBox from '../components/shopBox/ShopBox';
 import AvatarBox from '../components/avatarBox/AvatarBox';
-import SalonSearch from '../components/salonSearch/SalonSearch';
+import SearchInput from '../components/searchInput/SearchInput';
 import MenuCard from '../components/menuCard/MenuCard';
 import RecommendedCarousel from '../components/recommendCarousel/RecommendCarousel';
 import menuItems from '../data/menuItems';
@@ -26,7 +26,6 @@ const DashboardScreen = ({navigation, ...props}) => {
 	const sliderWidth = viewportWidth;
 	const sliderItemWidth = slideWidth + sliderItemHorizontalMargin * 2;
 
-
 	const menuCardClickHandler = () => {
 		navigation.navigate('Booking');
 	}
@@ -44,7 +43,7 @@ const DashboardScreen = ({navigation, ...props}) => {
 						<ShopBox />
 						<NotificationBox />
 				</View>
-				<SalonSearch />
+				<SearchInput placeholder='Search salon with name or location'/>
 				<View style={styles.mainMenu}>
 					{
 						menuItems.map((item, id) => {
@@ -129,7 +128,7 @@ const styles = StyleSheet.create({
 		flexGrow: 1,
 		borderRadius: 10,
 		paddingTop: 10,
-		paddingHorizontal: 20,
+		paddingHorizontal: 10,
 	},
 	
 	recommendText: {

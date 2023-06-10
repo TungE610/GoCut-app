@@ -2,7 +2,7 @@ import {StyleSheet, SafeAreaView, TextInput} from 'react-native';
 import {useState, useRef, useCallback} from 'react';
 import { SearchBar } from 'react-native-elements';
 
-const SalonSearch = () => {
+const SalonSearch = (props) => {
 
 	const [searchValue , setSearchValue] = useState('');
 
@@ -14,7 +14,7 @@ const SalonSearch = () => {
 		<SafeAreaView style={styles.container}>
 			<SearchBar
 				platform="ios"
-				placeholder="Search for location or name"
+				placeholder={props.placeholder}
 				value={searchValue}
 				onChangeText={updateSearch}
 				style={styles.input}

@@ -1,6 +1,10 @@
 import { StyleSheet, View , Text, TouchableOpacity} from 'react-native';
 
-const MenuCard = ({icon: Icon,title, ...props}) => {
+const MenuCard = ({
+    icon: Icon,
+    title,
+    ...props
+}) => {
 
 	return (
 			<TouchableOpacity style={styles.container} onPress={props.onClick}>

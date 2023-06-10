@@ -3,7 +3,11 @@ import React from 'react';
 
 const {width} = Dimensions.get('screen');
 
-const CarouselPagination = ({data, scrollX, index}) => {
+const CarouselPagination = ({
+  data,
+  scrollX,
+  index
+}) => {
   return (
     <View style={styles.container}>
       {data.map((_, idx) => {

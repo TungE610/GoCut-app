@@ -1,4 +1,5 @@
 import { StyleSheet, Dimensions, View, TouchableOpacity } from 'react-native';
+// @ts-expect-error TS(2307): Cannot find module '../../assets/home.svg' or its ... Remove this comment to see the full error message
 import HomeIcon from '../../assets/home.svg';
 
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');

@@ -2,7 +2,10 @@ import {StyleSheet, Dimensions, View} from 'react-native';
 
 const {width, height} = Dimensions.get('screen');
 
-const NavbarItem = ({icon: Icon, choosen}) => {
+const NavbarItem = ({
+    icon: Icon,
+    choosen
+}) => {
 
 	const styles = StyleSheet.create({
 		container: {

@@ -1,6 +1,7 @@
 import { View, Dimensions, StyleSheet } from 'react-native';
 const {width: viewportWidth} = Dimensions.get('screen');
 
+// @ts-expect-error TS(7031): Binding element 'Icon' implicitly has an 'any' typ... Remove this comment to see the full error message
 const BookingNavbarItem = ({icon: Icon}) => {
 
 	return (

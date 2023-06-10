@@ -77,7 +77,6 @@ const BookingScreen = ({navigation}) => {
 	}
 
 	const navigateSavedAddressHandler = () => {
-		console.log("Tung");
 		navigation.navigate('SavedAddress', {name: 'Tung'});
 	}
 
@@ -85,7 +84,7 @@ const BookingScreen = ({navigation}) => {
 		<View>
 			<ScrollView style={styles.container}>
 				<View style={styles.backButton}>
-					<ReturnHomeButton onClick={backButtonClickHandler}/>
+					<ReturnHomeButton onClick={backButtonClickHandler} page="booking" />
 				</View>
 				<View style={styles.screenTitleContainer}>
 					<Text style={styles.screenTitle}>Booking</Text>
@@ -126,13 +125,13 @@ const BookingScreen = ({navigation}) => {
 							</View>
 							<TouchableOpacity onPress={navigateSavedAddressHandler}>
 								<View style={styles.savedAddressBox} >
-									<View style={{flexDirection: 'row'}}>
+									<View style={{flexDirection: 'row', gap: 8, alignItems: 'center'}}>
 										<MarkIcon width={30} height={30} />
-										<View>
-											<Text>
+										<View style={{gap: 3}}>
+											<Text style={styles.savedAddressesText}>
 												Saved Addresses
 											</Text>
-											<Text>
+											<Text style={styles.savedAddressesSlogan}>
 												Get to your favourite place faster
 											</Text>
 										</View>
@@ -192,11 +191,13 @@ const styles = StyleSheet.create({
 		backgroundColor: '#667EAE',
 		padding: 4,
 		borderRadius: 5,
-		paddingHorizontal: 8,
+		paddingHorizontal: 10,
+		paddingVertical: 8,
 	},
 	locationName: {
 		color: '#fff',
 		fontSize: 16,
+		fontWeight: 600,
 	},
 	//------------------------
 	container: {
@@ -269,7 +270,16 @@ const styles = StyleSheet.create({
 		marginTop: 10,
 		flexDirection: 'row',
 		alignItems: 'center',
-		justifyContent: 'space-between'
+		justifyContent: 'space-between',
+		paddingHorizontal: 6,
+	},
+	savedAddressesText: {
+		fontSize: 17,
+		fontWeight: 600,
+		color: '#3d5c98'
+	},
+	savedAddressesSlogan: {
+		color: '#999'
 	},
 	locationSelectBox: {
 		marginTop: 15,
@@ -277,7 +287,7 @@ const styles = StyleSheet.create({
 		alignSelf:'stretch',
 		borderRadius: 5,
 		paddingHorizontal: 10,
-		paddingTop: 20,
+		paddingTop: 10,
 	},
 	areaName: {
 		fontSize: 21,

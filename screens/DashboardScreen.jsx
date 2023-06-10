@@ -26,8 +26,13 @@ const DashboardScreen = ({navigation, ...props}) => {
 	const sliderWidth = viewportWidth;
 	const sliderItemWidth = slideWidth + sliderItemHorizontalMargin * 2;
 
-	const menuCardClickHandler = () => {
-		navigation.navigate('Booking');
+	const menuCardClickHandler = (index) => {
+		if (index === 0) {
+			navigation.navigate('Booking');
+		} else if (index === 2) {
+			navigation.navigate('UsageHistory');
+		}
+		
 	}
 
 	return (
@@ -47,7 +52,7 @@ const DashboardScreen = ({navigation, ...props}) => {
 				<View style={styles.mainMenu}>
 					{
 						menuItems.map((item, id) => {
-							return <MenuCard key={id} id={id} title={item.name} icon={item.icon.default} onClick={menuCardClickHandler}/>
+							return <MenuCard key={id} id={id} title={item.name} icon={item.icon.default} onClick={() => {menuCardClickHandler(id)}}/>
 						})
 					}
 				</View>

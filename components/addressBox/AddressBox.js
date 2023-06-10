@@ -1,7 +1,15 @@
-import { StyleSheet, View , Text } from 'react-native';
+import { useState } from 'react';
+import { StyleSheet, View , Text, TouchableOpacity} from 'react-native';
 import WriteIcon from '../../assets/write.svg';
+import SaveIcon from '../../assets/save.svg';
+import { Input } from 'react-native-elements';
 
 const AddressBox = (props) => {
+	const [isRewriting, setIsRewriting] = useState(false);
+
+	const rewriteAddresHandler = () => {
+		setIsRewriting(prev => !prev);
+	}
 
 	return (
 		<View style={styles.container}>
@@ -11,12 +19,19 @@ const AddressBox = (props) => {
 					<Text style={styles.addressType}>
 						{props.addressType}
 					</Text>
-					<Text>
+					{!isRewriting ? 
+					<Text style={styles.address}>
 						{props.address}
-					</Text>
+					</Text> :
+					<Input
+  						value={props.address}
+					/>}
 				</View>
 			</View>
-			<WriteIcon width={30} height={30} />
+			<TouchableOpacity onPress={rewriteAddresHandler}>
+				{!isRewriting ? <WriteIcon width={30} height={30} /> :
+				<SaveIcon width={28} height={28} />}
+			</TouchableOpacity>
 		</View>
 	)
 }
@@ -39,10 +54,12 @@ const styles = StyleSheet.create({
 	},
 	addressType: {
 		fontSize: 20,
-		fontWeight: 600,
+		fontWeight: 700,
+		color: '#3d5c98'
 	},
 	address: {
-		fontSize: 28,
+		fontSize: 14,
+		color: '#555',
 	}
 })
 

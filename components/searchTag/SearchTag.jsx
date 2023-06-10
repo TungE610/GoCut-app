@@ -14,7 +14,7 @@ const SearchTag = (props) => {
 const styles = StyleSheet.create({
 	container: {
 		alignSelf: 'flex-start',
-		backgroundColor: '#ddd',
+		backgroundColor: '#EEE70E',
 		color: '#000',
 		borderRadius: 5,
 		shadowColor: "#000",
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
 		elevation: 4,
 		marginLeft: 10,
 		flexDirection: 'row',
-		borderColor: 'yellow',
+		borderColor: '#E38228',
 		borderWidth: 1,
 		padding: 5,
 		gap: 5,
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
 	text: {
 		fontSize:19,
 		color: '#3d5c98',
-		fontWeight: 500,
+		fontWeight: 600,
 		textAlign: 'center',
 	}
 })

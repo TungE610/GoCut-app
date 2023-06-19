@@ -8,6 +8,7 @@ import location from '../data/location';
 import LocationIcon from '../assets/location.svg';
 import HomeIcon from '../assets/home.svg';
 import MarkIcon from '../assets/mark.svg';
+import OfficeIcon from '../assets/office.svg';
 import PolygonIcon from '../assets/polygon.svg';
 import SearchTag from '../components/searchTag/SearchTag';
 import ServiceTypeCard from '../components/serviceTypeCard/ServiceTypeCard';
@@ -17,6 +18,7 @@ import FacialIcon from '../assets/facial.svg';
 import NailIcon from '../assets/nail.svg';
 
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
+
 const searchTagContent = [
 	{
 		icon: <LocationIcon />,
@@ -25,6 +27,10 @@ const searchTagContent = [
 	{
 		icon: <HomeIcon />,
 		text: 'Near my home',
+	},
+	{
+		icon: <OfficeIcon />,
+		text: 'Near my office',
 	}
 ];
 
@@ -80,6 +86,10 @@ const BookingScreen = ({navigation}) => {
 		navigation.navigate('SavedAddress', {name: 'Tung'});
 	}
 
+	const seeServiceDetailHandler = () => {
+		navigation.navigate('ServiceDetail');
+	}
+
 	return (
 		<View>
 			<ScrollView style={styles.container}>
@@ -109,10 +119,6 @@ const BookingScreen = ({navigation}) => {
 
 						<View key="page 1" style={styles.selectSalonContainer}>
 							<Text style={styles.slideTitle}>Select Salon</Text>
-							{/* <View style={styles.firstPageGuide}>
-								<View></View>
-								<Text style={styles.firstPageGuideText}>First, Please select the best salon</Text>
-							</View> */}
 							<SearchInput placeholder="search for salon with name or location"/>
 							<View style={styles.searchTagStack}>
 								{
@@ -126,7 +132,7 @@ const BookingScreen = ({navigation}) => {
 							<TouchableOpacity onPress={navigateSavedAddressHandler}>
 								<View style={styles.savedAddressBox} >
 									<View style={{flexDirection: 'row', gap: 8, alignItems: 'center'}}>
-										<MarkIcon width={30} height={30} />
+										<MarkIcon width={20} height={20} />
 										<View style={{gap: 3}}>
 											<Text style={styles.savedAddressesText}>
 												Saved Addresses
@@ -142,7 +148,7 @@ const BookingScreen = ({navigation}) => {
 							<View style={styles.locationSelectBox}>
 								{location.map((area, index) => {
 									return (
-										<View style={styles.areaBox}>
+										<View style={styles.areaBox} key={index}>
 											<Text style={styles.areaName}>{area.area}</Text>
 											<View style={styles.locationTagStack}>
 												{area.location.map((location, index) => {
@@ -168,10 +174,11 @@ const BookingScreen = ({navigation}) => {
 							</View>
 							<View style={styles.serviceTagsStack}>
 								<Text style={styles.selectedNum}>Selected number: {selectedServices.length}</Text>
+								<TouchableOpacity onPress={seeServiceDetailHandler}>
+									<ServiceCard serviceName="Women medium blunt cut" serviceTime="2 hours service" serviceFee="200" salePercent={20} onClick={seeServiceDetailHandler}/>
+								</TouchableOpacity>
 								<ServiceCard serviceName="Women medium blunt cut" serviceTime="2 hours service" serviceFee="200" salePercent={20}/>
 								<ServiceCard serviceName="Women medium blunt cut" serviceTime="2 hours service" serviceFee="200" salePercent={20}/>
-								<ServiceCard serviceName="Women medium blunt cut" serviceTime="2 hours service" serviceFee="200" salePercent={20}/>
-
 							</View>
 						</View>
 
@@ -245,6 +252,7 @@ const styles = StyleSheet.create({
 
 	// FIRST PAGE
 	selectSalonContainer: {
+		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
 	},
@@ -264,7 +272,7 @@ const styles = StyleSheet.create({
 	},
 	savedAddressBox: {
 		backgroundColor: '#fff',
-		height: viewportHeight/15,
+		height: viewportHeight/16,
 		width: viewportWidth - 20,
 		borderRadius: 5,
 		marginTop: 10,
@@ -282,6 +290,7 @@ const styles = StyleSheet.create({
 		color: '#999'
 	},
 	locationSelectBox: {
+		flex: 1,
 		marginTop: 15,
 		backgroundColor: '#fff',
 		alignSelf:'stretch',

@@ -47,7 +47,7 @@ const UsageHistory = ({navigation}) => {
 					/>
     			</Tab>
 
-				<TabView value={index} onChange={setIndex} animationType="spring">
+				<TabView value={index} onChange={(e) => setIndex(e)} animationType="spring">
 					<TabView.Item style={{ backgroundColor: 'red', width: '100%', height: '100%' }}>
 						<Text>Tung dep trai</Text>
 					</TabView.Item>

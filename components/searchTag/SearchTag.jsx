@@ -1,26 +1,29 @@
-import {StyleSheet, View, Dimensions, Text} from 'react-native';
+import {StyleSheet, View, Dimensions, Text, TouchableOpacity} from 'react-native';
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
 
 const SearchTag = (props) => {
 
+	const searchWithTagHandler = () => {
+
+	}
+	
 	return (
-		<View style={styles.container}>
+		<TouchableOpacity style={styles.container} onPress={searchWithTagHandler}>
 			{props.icon}
 			<Text style={styles.text}>{props.text}</Text>
-		</View>
+		</TouchableOpacity>
 	)
 }
 
 const styles = StyleSheet.create({
 	container: {
 		alignSelf: 'flex-start',
-		backgroundColor: '#EEE70E',
-		color: '#000',
+		backgroundColor: '#fff',
 		borderRadius: 5,
 		shadowColor: "#000",
 		shadowOffset: {
-		width: 0,
-		height: 3,
+			width: 0,
+			height: 3,
 		},
 		alignItems:'center',
 		justifyContent: 'space-around',
@@ -30,14 +33,14 @@ const styles = StyleSheet.create({
 		marginLeft: 10,
 		flexDirection: 'row',
 		borderColor: '#E38228',
-		borderWidth: 1,
+		borderWidth: 0.5,
 		padding: 5,
 		gap: 5,
 	},
 	text: {
-		fontSize:19,
+		fontSize: 15,
 		color: '#3d5c98',
-		fontWeight: 600,
+		fontWeight: 400,
 		textAlign: 'center',
 	}
 })

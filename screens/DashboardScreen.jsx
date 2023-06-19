@@ -29,6 +29,8 @@ const DashboardScreen = ({navigation, ...props}) => {
 	const menuCardClickHandler = (index) => {
 		if (index === 0) {
 			navigation.navigate('Booking');
+		} else if (index === 1) {
+			navigation.navigate('PriceList');
 		} else if (index === 2) {
 			navigation.navigate('UsageHistory');
 		}

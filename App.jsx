@@ -8,6 +8,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import BookingScreen from './screens/BookingScreen';
 import SavedAddress from './screens/SavedAddress';
 import UsageHistory from './screens/usageHistory/UsageHistory';
+import PriceList from './screens/priceList/PriceList';
+import ServiceDetail from './screens/serviceDetail/ServiceDetail';
 
 const Stack = createNativeStackNavigator();
 
@@ -27,7 +29,9 @@ export default function App() {
 			<Stack.Screen name="Dashboard" component={DashboardScreen} />
 			<Stack.Screen name="Booking" component={BookingScreen} />
 			<Stack.Screen name="SavedAddress" component={SavedAddress} />
+			<Stack.Screen name="PriceList" component={PriceList} />
 			<Stack.Screen name="UsageHistory" component={UsageHistory} />
+			<Stack.Screen name="ServiceDetail" component={ServiceDetail} />
 		</Stack.Navigator>
 	</NavigationContainer>
   );

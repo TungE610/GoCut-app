@@ -8,14 +8,14 @@ const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window'
 
 const SavedAddress = ({navigation}) => {
 
-	const backButtonClickHandler = () => {
+	const backButtonClickedHandler = () => {
 		navigation.navigate('Booking', {name: 'Tung'});
 	}
 	
 	return (
 		<View style={styles.container}>
 			<View style={styles.backButton}>
-					<BackButton onClick={backButtonClickHandler}/>
+					<BackButton onClick={backButtonClickedHandler}/>
 			</View>
 			<View style={styles.screenTitleContainer}>
 				<Text style={styles.screenTitle}>Saved Address</Text>
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
 		fontSize: 25,
 		fontWeight: 700,
 		color: '#fff',
-		letterSpacing: '1',
+		letterSpacing: 1,
 		textAlign: 'center',
 		marginTop: viewportHeight/14,
 	},

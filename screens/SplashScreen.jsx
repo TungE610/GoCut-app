@@ -247,7 +247,6 @@ const styles = StyleSheet.create({
 	lottieView: {
 		width: viewportWidth/10, 
 		height: viewportHeight/3,
-		resizeMode:'contain',
 		paddingLeft: 10,
 	},
 	loginButton: {

@@ -5,6 +5,7 @@ import SearchInput from '../../components/searchInput/SearchInput';
 import { Switch } from '@rneui/themed';
 import RemoveIcon from '../../assets/remove.svg';
 import SaleIcon from '../../assets/sale.svg';
+import AddServicesButton from '../../components/addServicesButton/AddServicesButton';
 
 const service1 = require('../../assets/service1.jpg');
 
@@ -14,21 +15,23 @@ const ServiceCard = (props) => {
 
 	return (
 		<View style={styles.serviceCard}>
-			<Image source={props.image} style={styles.serviceImage}/>
 			<View style={styles.serviceCardContent}>
-				<Text style={styles.serviceName}>{props.serviceName}</Text>
-				<View style={{flexDirection: 'row', justifyContent: 'flex-start', gap: 20}}>
-					<Text style={styles.serviceFee}>${props.serviceFee}</Text>
-					<Text style={styles.serviceTime}>{props.serviceTime} hours</Text>
+				<Image source={props.image} style={styles.serviceImage}/>
+				<View style={styles.serviceDetail}>
+					<Text style={styles.serviceName}>{props.serviceName}</Text>
+					<View style={{flexDirection: 'row', justifyContent: 'flex-start', gap: 20}}>
+						<Text style={styles.serviceFee}>${props.serviceFee}</Text>
+						<Text style={styles.serviceTime}>{props.serviceTime} hours</Text>
+					</View>
+					<Text style={styles.serviceDescription}>{props.serviceDescription}</Text>
 				</View>
-				<Text style={styles.serviceDescription}>{props.serviceDescription}</Text>
 			</View>
 			<View style={styles.saleAndAdd}>
+				<RemoveIcon width={35} height={35}/>
 				<View style={styles.saleCard}>
-					<SaleIcon width={20} height={20} />
-					<Text style={styles.salePercent}>-{props.salePercent}%</Text>
+					<SaleIcon width={30} height={30} />
+					<Text style={styles.salePercent}>-{props.salePercent || 20}%</Text>
 				</View>
-				<RemoveIcon />
 			</View>
 		</View>
 	)
@@ -68,6 +71,9 @@ const PriceList = ({navigation}) => {
 				<ServiceCard image={service1} serviceName="Women medium blunt cut" serviceFee={20} serviceTime={2} serviceDescription="A blunt cut bob is a shorter hairstyle that" />
 				<ServiceCard image={service1} serviceName="Women medium blunt cut" serviceFee={20} serviceTime={2} serviceDescription="A blunt cut bob is a shorter hairstyle that" />
 			</ScrollView>
+			<View style={styles.addServicesButton}>
+				<AddServicesButton backgroundColor="#fff" color='#3d5c98'/>
+			</View>
 		</View>
 	)
 }
@@ -122,9 +128,10 @@ const styles = StyleSheet.create({
 		alignItems: 'center'
 	},
 	serviceCard: {
+		flex: 1,
 		flexDirection: 'row',
-		gap: 10,
 		marginTop: 15,
+		justifyContent: 'space-between',
 		width: viewportWidth - 20,
 		height: viewportHeight/8,
 		backgroundColor: '#fff',
@@ -137,22 +144,26 @@ const styles = StyleSheet.create({
 		},
 		shadowOpacity: 0.27,
 		shadowRadius: 4.65,
-
 		elevation: 6,
 	},
 	serviceCardContent: {
+		flexDirection: 'row',
+		gap: 10,
+		flex: 3,
+	},
+	serviceDetail: {
 		justifyContent: 'space-around',
-		flexShrink: 1,
 		paddingVertical: 8,
+		flex: 0.95,
 	},
 	serviceImage: {
-		width: '30%',
+		width: '32%',
 		height: '100%',
 		borderTopLeftRadius: 10,
 		borderBottomLeftRadius: 10,
 	},
 	serviceName: {
-		fontSize: 18,
+		fontSize: 16,
 		fontWeight: 600,
 		color: '#3d5c98'
 	},
@@ -165,10 +176,26 @@ const styles = StyleSheet.create({
 
 	},
 	serviceDescription: {
-
+		fontSize: 14,
 	},
 	saleAndAdd: {
-
+		flex: 0.7,
+		justifyContent: 'space-around',
+		alignItems: 'center'
+	},
+	saleCard: {
+		flexDirection: 'row',
+		alignItems: 'center',
+	},
+	salePercent: {
+		color: '#EF7301'
+	},
+	addServicesButton: {
+		position: 'absolute',
+		bottom: 20,
+		left: 0,
+		right: 0,
+		paddingHorizontal: 10,
 	}
 })
 

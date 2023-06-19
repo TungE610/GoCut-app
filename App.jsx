@@ -10,6 +10,9 @@ import SavedAddress from './screens/SavedAddress';
 import UsageHistory from './screens/usageHistory/UsageHistory';
 import PriceList from './screens/priceList/PriceList';
 import ServiceDetail from './screens/serviceDetail/ServiceDetail';
+import SalonDetail from './screens/salonDetail/Salondetail';
+import Profile from './screens/profile/Profile';
+import NavigationBar from './components/navigationBar/NavigationBar';
 
 const Stack = createNativeStackNavigator();
 
@@ -19,7 +22,7 @@ export default function App() {
 	<NavigationContainer>
 		<Stack.Navigator   
 			screenOptions={{
-    			headerShown: false
+    			headerShown: false,
   			}}>
 			<Stack.Screen
 				name="Splash"
@@ -32,6 +35,8 @@ export default function App() {
 			<Stack.Screen name="PriceList" component={PriceList} />
 			<Stack.Screen name="UsageHistory" component={UsageHistory} />
 			<Stack.Screen name="ServiceDetail" component={ServiceDetail} />
+			<Stack.Screen name="SalonDetail" component={SalonDetail} />
+			<Stack.Screen name="Profile" component={Profile} />
 		</Stack.Navigator>
 	</NavigationContainer>
   );

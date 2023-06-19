@@ -22,7 +22,7 @@ const SalonSearch = (props) => {
 				containerStyle={{
 					borderWidth: 'none',
 					padding: 0,
-					backgroundColor: '#3D5C98',
+					backgroundColor: props.backgroundColor ? props.backgroundColor : '#3D5C98',
 				}}
 				inputContainerStyle={{
 					borderWidth: 1,
@@ -38,7 +38,7 @@ const SalonSearch = (props) => {
 				placeholderTextColor="#5E5F62"
 				searchIcon={{ size: 28 }}
 				cancelButtonProps={{
-					color: '#fff'
+					color: props.cancelButtonColor ? props.cancelButtonColor : '#fff'
 				}}
 			/>
 	  	</SafeAreaView>

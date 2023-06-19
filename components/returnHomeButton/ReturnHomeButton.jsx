@@ -11,18 +11,15 @@ const ReturnHomeButton  = (props) => {
 			height: viewportWidth/10,
 			backgroundColor: props.page === 'booking' ? '#fff' : '#0E295B',
 			borderRadius: 10,
-			opacity: 0.4,
+			opacity: 0.8,
 			justifyContent: 'center',
 			alignItems: 'center',
 		},
-		icon: {
-	
-		}
 	})
 
 	return (
 		<TouchableOpacity style={styles.container} onPress={props.onClick}>
-			<HomeIcon height={30} width={30} style={styles.icon} color={props.page === 'booking' ? '#647CAA' : '#fff'}/>
+			<HomeIcon height={30} width={30} color={props.page === 'booking' ? '#647CAA' : '#fff'}/>
 		</TouchableOpacity>
 	)
 }

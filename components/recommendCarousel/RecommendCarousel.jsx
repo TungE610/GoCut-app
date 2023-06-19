@@ -23,10 +23,6 @@ const RecommendCarousel = ({data, item: Item}) => {
     )(event);
   };
 
-  const handleOnViewableItemsChanged = useRef(({viewableItems}) => {
-    setIndex(viewableItems[0].index);
-  }).current;
-
   const viewabilityConfig = useRef({
     itemVisiblePercentThreshold: 100,
   }).current;
@@ -44,7 +40,6 @@ const RecommendCarousel = ({data, item: Item}) => {
 			viewabilityConfig={viewabilityConfig}
 			styles={styles.carousel}
       	/>
-		{/* <CarouselPagination /> */}
     </View>
   );
 };
@@ -73,5 +68,6 @@ const styles = StyleSheet.create({
 	},
 	carousel: {
 		borderRadius: 10,
+		width: '90%'
 	}
 });

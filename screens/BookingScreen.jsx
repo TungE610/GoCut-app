@@ -183,7 +183,7 @@ const BookingScreen = ({navigation}) => {
 						</View>
 
 						<View key="page 3" style={styles.selectStylistAndTimeContainer}>
-							<Text style={styles.slideTitle}>And simple</Text>
+							<Text style={styles.slideTitle}>Select stylist and time</Text>
 						</View>
 					</Swiper>
 				</View>

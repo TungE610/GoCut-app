@@ -1,19 +1,20 @@
 import { Dimensions, StyleSheet, View, Image, Text} from 'react-native';
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
-
-import Star from '../../assets/star.svg';
+import StarICon from '../../assets/star.svg';
 
 const StylistCard = (props) => {
+
+	const stylist = props.item.item;
 	
 	return (
 		<View style={styles.container}>
 			<Image 
 				style={styles.image}
-				source={props.item.item.image}
+				source={stylist.image}
 			/>
 			<View style={styles.rateContainer}>
-				<Star width={18} height={18} />
-				<Text style={styles.rate}>{props.item.item.rate}</Text>
+				<StarICon width={18} height={18} color="#fff"/>
+				<Text style={styles.rate}>{stylist.rate}</Text>
 			</View>
 		</View>
 	)

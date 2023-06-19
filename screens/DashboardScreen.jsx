@@ -33,6 +33,8 @@ const DashboardScreen = ({navigation, ...props}) => {
 			navigation.navigate('PriceList');
 		} else if (index === 2) {
 			navigation.navigate('UsageHistory');
+		}	else if (index === 3) {
+			navigation.navigate('Profile');
 		}
 		
 	}
@@ -60,7 +62,13 @@ const DashboardScreen = ({navigation, ...props}) => {
 				</View>
 				<View style={styles.recommendTab}>
 					<Text style={styles.recommendText}>Recommended for You</Text>
-					<RecommendedCarousel data={sampleSalon} item={SalonCard} />
+					<RecommendedCarousel 
+						data={sampleSalon} 
+						item={(props) => <SalonCard {...props} 
+						onClick={() => {
+							navigation.navigate('SalonDetail');
+						}}/>} 
+					/>
 					<Text style={styles.hairStylistText}>Hair Stylist</Text>
 					<Carousel 
 						data={sampleStylist}

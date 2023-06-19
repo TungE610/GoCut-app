@@ -1,15 +1,12 @@
-import {StyleSheet, Dimensions, View} from 'react-native';
+import {StyleSheet, Dimensions, View, TouchableOpacity} from 'react-native';
 
 const {width, height} = Dimensions.get('screen');
 
-const NavbarItem = ({
-    icon: Icon,
-    choosen
-}) => {
-
+const NavbarItem = (props) => {
+	const Icon = props.icon;
 	const styles = StyleSheet.create({
 		container: {
-			backgroundColor: `${choosen ? '#FE7A01' : '#fff'}`,
+			backgroundColor: `${props.choosen ? '#FE7A01' : '#fff'}`,
 			width: width/7.5,
 			height: width/7.5,
 			padding: 13,
@@ -27,9 +24,9 @@ const NavbarItem = ({
 	})
 
 	return (
-		<View style={styles.container}>
+		<TouchableOpacity style={styles.container} onPress={props.onClick}>
 			<Icon width={30} height={30} />
-		</View>
+		</TouchableOpacity>
 	)
 }
 

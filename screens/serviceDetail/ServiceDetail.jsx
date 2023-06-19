@@ -11,6 +11,7 @@ const ServiceDetail = () => {
 	return (
 		<View>
 			<ScrollView style={styles.container}>
+				<View></View>
 				<Image style={styles.serviceImage} source={ServiceImage} />
 				<View style={styles.serviceInfo}>
 					<Text style={styles.serviceName}>Women medium blunt cut</Text>

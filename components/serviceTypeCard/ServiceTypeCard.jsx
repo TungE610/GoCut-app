@@ -12,6 +12,8 @@ const ServiceTypeCard = (props) => {
 
 const styles = StyleSheet.create({
 	container: {
+		flexWrap: 'wrap',
+		alignSelf: 'flex-start',
 		flexDirection: 'row',
 		gap: 4,
 		alignItems: 'center',

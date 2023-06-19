@@ -1,9 +1,8 @@
-import {StyleSheet, View, Text, Animated, Dimensions, Easing} from 'react-native';
+import {StyleSheet, View, Text, Animated, Dimensions, Easing, TouchableWithoutFeedback} from 'react-native';
 import Location from '../../assets/location.svg';
 
-const {width, height} = Dimensions.get('screen');
-
-const SalonCard = ({item}) => {
+const SalonCard = ({item, ...props}) => {
+	
 	const translateYImage = new Animated.Value(40);
 	
 	Animated.timing(translateYImage, {
@@ -14,7 +13,11 @@ const SalonCard = ({item}) => {
 	}).start();
 
 	return (
-		<View style={styles.container}>
+		<TouchableWithoutFeedback 
+			style={styles.container}
+			onPress={props.onClick}
+		>
+			<View>
 			<Animated.Image
 				source={item.item.img}
 				resizeMode="cover"
@@ -26,7 +29,7 @@ const SalonCard = ({item}) => {
 						translateY: translateYImage,
 					},
 					],
-					width: Dimensions.get('window').width - 56, height:150					
+					width: Dimensions.get('window').width - 33, height:150,
 				},
 				]}
 			/>
@@ -35,7 +38,8 @@ const SalonCard = ({item}) => {
 				<Location width={17} height={17} />
 				<Text style={styles.location}>{item.item.location}</Text>
 			</View>
-		</View>
+			</View>
+		</TouchableWithoutFeedback>
 	)
 }
 
@@ -49,7 +53,7 @@ const styles = StyleSheet.create({
 		borderColor: '#fff'
 	},
 	image: {
-		width: '100%',
+		width: '95%',
 		borderRadius: 10,
 		marginBottom: 10,
 	},

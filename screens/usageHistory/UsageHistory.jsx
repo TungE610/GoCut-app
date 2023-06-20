@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
 		fontSize: 28,
 		fontWeight: 700,
 		color: '#3D5C98',
-		letterSpacing: '1',
+		letterSpacing: 1,
 		textAlign: 'center',
 		marginTop: viewportHeight/14,
 	},

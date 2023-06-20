@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
 	},
 	salonName: {
 		fontWeight: 800,
-		fontSize: '18px',
+		fontSize: 18,
 		paddingLeft: 5,
 		color: '#2A4780'
 	},

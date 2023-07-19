@@ -1,29 +1,65 @@
-import React from 'react';
-import {StyleSheet, View, Text} from 'react-native';
-import ReturnHomeButton from '../../components/returnHomeButton/ReturnHomeButton';
+import React, {useState} from 'react';
+import {StyleSheet, View, Text, TextInput, TouchableOpacity} from 'react-native';
 import AvatarBox from '../../components/avatarBox/AvatarBox';
 import NotificationBox from '../../components/notificationBox/NotificationBox';
 import ShopBox from '../../components/shopBox/ShopBox';
 import NavigationBar from '../../components/navigationBar/NavigationBar';
 import { ListItem, Avatar } from '@rneui/themed';
 import WriteIcon from '../../assets/write.svg';
+import SaveIcon from '../../assets/save.svg';
 
 const Profile = ({navigation, ...props}) => {
-	const [expanded, setExpanded] = React.useState(false);
+
+	const [profileExpanded, setProfileExpanded] = useState(false);
+	const [userName, setUserName] = useState(props.userName || "Christopher campbell");
+	const [savedUserName, setSavedUserName] = useState(props.userName|| "Christopher campbell")
+	const [isEdittingUserName, setIsEdittingUserName] = useState(false);
+	const [dateOfBirth, setDateOfBirth] = useState(props.userName || "20/08/2002");
+	const [isEdittingDoB, setIsEdittingDob] = useState(false);
+	const [telephone, setTelephone] = useState(props.telephone || "0393859464");
+	const [isEdittingTelephone, setIsEdittingTelephone] = useState(false);
+	const [email, setEmail] = useState(props.email || "tung2082002@gmail.com");
+	const [isEdittingEmail, setIsEdittingEmail] = useState(false);
+
+
+	const returnHomeHandler = () => {
+		navigation.navigate("Dashboard");
+	}
+
+	const seeUserProfileHandler = () => {
+		navigation.navigate("Profile");
+	}
+
+	const seeShopHandler = () => {
+		navigation.navigate("Shop");
+	}
+
+	const modifyUserNameHandler = () => {
+
+	}
+
+	const userNameChangeHandler = (userName) => {
+		setUserName(userName);
+	}
+
+	const dobChangeHandler = (dob) => {
+		setDateOfBirth(dob);
+	}
+
+	const telephoneChangeHandler = (telephone) => {
+		setTelephone(telephone);
+	}
 
 	return (
 		<View style={styles.container}>
-			<ReturnHomeButton onClick={() => {
-				navigation.navigate('Dashboard')
-			}}/>
 			<View style={{flex: 1}}>
 				<View style={styles.header}>
 						<AvatarBox />
 						<View style={styles.userName}>
-							<Text style={styles.name}>{props.userName || 'Christopher campbell'}</Text>
+							<Text style={styles.name}>{savedUserName}</Text>
 							<Text style={styles.followingNum}>following: {props.followingNum || 2}</Text>
 						</View>
-							<ShopBox />
+							<ShopBox onClick={() => {navigation.navigate("Cart")}}/>
 							<NotificationBox />
 				</View>
 				<>
@@ -34,43 +70,99 @@ const Profile = ({navigation, ...props}) => {
 							<ListItem.Subtitle>Tap to see more</ListItem.Subtitle>
 						</ListItem.Content>
 						}
-						isExpanded={expanded}
+						isExpanded={profileExpanded}
 						onPress={() => {
-						setExpanded(!expanded);
+							setProfileExpanded(!profileExpanded);
 						}}
 					>
 						<ListItem>
 						<ListItem.Content style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', gap: 20}}>
 							<View style={{flexDirection: 'row', alignItems: 'center', gap: 20}}>
 								<ListItem.Title style={{fontSize: 16, fontWeight: 700, color: '#3d5c98'}}>Full Name: </ListItem.Title>
-								<ListItem.Subtitle>Christopher campbell</ListItem.Subtitle>
+								{!isEdittingUserName ? <ListItem.Subtitle>{userName}</ListItem.Subtitle> : 
+									<TextInput
+										style={styles.modifyInput}
+										onChangeText={userNameChangeHandler}
+										value={userName}
+								    />
+								}
 							</View>
-							<WriteIcon width={23} height={23} />
+							<TouchableOpacity onPress={() => {
+									setIsEdittingUserName(prev => !prev);
+									setSavedUserName(userName)
+								}}>
+								{!isEdittingUserName ? 
+									<WriteIcon 
+										width={23} 
+										height={23} 
+									/> : 
+									<SaveIcon
+										width={21} 
+										height={21} 
+									/>
+								}
+							</TouchableOpacity>
 						</ListItem.Content>
 						</ListItem>
 						<ListItem>
 						<ListItem.Content style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', gap: 20}}>
 							<View style={{flexDirection: 'row', alignItems: 'center', gap: 20}}>
 								<ListItem.Title style={{fontSize: 16, fontWeight: 700, color: '#3d5c98'}}>Date of Birth: </ListItem.Title>
-								<ListItem.Subtitle>20/08/2002</ListItem.Subtitle>
+								{!isEdittingDoB ? 
+									<ListItem.Subtitle>{dateOfBirth}</ListItem.Subtitle> : 
+									<TextInput
+										style={styles.modifyInput}
+										onChangeText={dobChangeHandler}
+										value={dateOfBirth}
+								    />}
 							</View>
-							<WriteIcon width={23} height={23} />
+							<TouchableOpacity onPress={() => {setIsEdittingDob(prev => !prev)}}>
+								{!isEdittingDoB ? 
+									<WriteIcon 
+										width={23} 
+										height={23} 
+									/> : 
+									<SaveIcon
+										width={21} 
+										height={21} 
+									/>
+								}
+							</TouchableOpacity>
 						</ListItem.Content>
 						</ListItem>
 						<ListItem>
 						<ListItem.Content style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', gap: 20}}>
 							<View style={{flexDirection: 'row', alignItems: 'center', gap: 20}}>
 								<ListItem.Title style={{fontSize: 16, fontWeight: 700, color: '#3d5c98'}}>Phone: </ListItem.Title>
-								<ListItem.Subtitle>01234566632</ListItem.Subtitle>
+								{!isEdittingTelephone ? 
+									<ListItem.Subtitle>{telephone}</ListItem.Subtitle>
+									:
+									<TextInput
+										style={styles.modifyInput}
+										onChangeText={telephoneChangeHandler}
+										value={telephone}
+								    />
+								}
 							</View>
-							<WriteIcon width={23} height={23} />
+							<TouchableOpacity onPress={() => {setIsEdittingTelephone(prev => !prev)}}>
+								{!isEdittingTelephone ? 
+									<WriteIcon 
+										width={23} 
+										height={23} 
+									/> : 
+									<SaveIcon
+										width={21} 
+										height={21} 
+									/>
+								}
+							</TouchableOpacity>
 						</ListItem.Content>
 						</ListItem>
 						<ListItem>
 						<ListItem.Content style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', gap: 20}}>
 							<View style={{flexDirection: 'row', alignItems: 'center', gap: 20}}>
 								<ListItem.Title style={{fontSize: 16, fontWeight: 700, color: '#3d5c98'}}>Email: </ListItem.Title>
-								<ListItem.Subtitle>tung2082002@gmail.com</ListItem.Subtitle>
+								<ListItem.Subtitle>{email}</ListItem.Subtitle>
 							</View>
 							<WriteIcon width={23} height={23} />
 						</ListItem.Content>
@@ -78,15 +170,16 @@ const Profile = ({navigation, ...props}) => {
 					</ListItem.Accordion>
 					<ListItem.Accordion
 						content={
-						<ListItem.Content>
+						<ListItem.Content
+							onPress={() => {
+								navigation.navigate("SavedAddress");
+							}}
+						>
 							<ListItem.Title style={{fontSize: 21, fontWeight: 700, color: '#3d5c98'}}>Address</ListItem.Title>
 							<ListItem.Subtitle></ListItem.Subtitle>
 						</ListItem.Content>
 						}
-						isExpanded={expanded}
-						onPress={() => {
-						setExpanded(!expanded);
-						}}
+						// isExpanded={expanded}
 					></ListItem.Accordion>
 					<ListItem.Accordion
 						content={
@@ -95,7 +188,7 @@ const Profile = ({navigation, ...props}) => {
 							<ListItem.Subtitle></ListItem.Subtitle>
 						</ListItem.Content>
 						}
-						isExpanded={expanded}
+						// isExpanded={expanded}
 						onPress={() => {
 						setExpanded(!expanded);
 						}}
@@ -107,7 +200,7 @@ const Profile = ({navigation, ...props}) => {
 							<ListItem.Subtitle></ListItem.Subtitle>
 						</ListItem.Content>
 						}
-						isExpanded={expanded}
+						// isExpanded={expanded}
 						onPress={() => {
 						setExpanded(!expanded);
 						}}
@@ -119,21 +212,28 @@ const Profile = ({navigation, ...props}) => {
 							<ListItem.Subtitle></ListItem.Subtitle>
 						</ListItem.Content>
 						}
-						isExpanded={expanded}
+						// isExpanded={expanded}
 						onPress={() => {
 						setExpanded(!expanded);
 						}}
 					></ListItem.Accordion>
     			</>
 			</View>
-			<NavigationBar backgroundColor="#3d5c98" />
+			<NavigationBar 
+				backgroundColor="#3d5c98" 
+				itemBackgroundColor="#fff" 
+				itemIconColor="#3d5c98"
+				returnHome={returnHomeHandler}
+				seeUserProfile={seeUserProfileHandler}
+				seeShop={seeShopHandler}
+			/>
 		</View>
 	)
 }
 
 const styles = StyleSheet.create({
 	container: {
-		paddingTop: 40,
+		paddingTop: 70,
 		flex: 1,
 	},
 	header: { 
@@ -159,6 +259,11 @@ const styles = StyleSheet.create({
 		color: '#2A4780',
 		fontSize: 14,
 		fontWeight: 400,
+	},
+	modifyInput: {
+		height: 27,
+		borderWidth: 1,
+		paddingHorizontal: 15,
 	},
 
 })

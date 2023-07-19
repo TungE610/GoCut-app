@@ -10,20 +10,20 @@ const HistoryBox = (props) => {
 		<View style={styles.container}>
 			<View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
 				<Text style={styles.time}>
-					{props.time || "Mar 13th, 2023"}
+					{props.time}
 				</Text>
 				<FiveStar />
 			</View>
 			<View style={styles.salonInfo}>
-				<Image style={styles.salonImage} source= {salonImage} />
+				<Image style={styles.salonImage} source= {props.salonImage} />
 				<View style={{flex: 1, gap: 5}}>
 					<View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-						<Text style={styles.salonName}>{props.salonName || 'Pretty Salon'}</Text>
-						<Text style={styles.fee}>${props.fee || '20'}</Text>
+						<Text style={styles.salonName}>{props.salonName}</Text>
+						<Text style={styles.fee}>${props.totalFee}</Text>
 					</View>
-					<Text style={styles.salonAddress}>{props.salonAddress || '151 Nguyễn Đức Cảnh,Tương Mai, Hoàng Mai'}</Text>
+					<Text style={styles.salonAddress}>{props.salonAddress}</Text>
 					<View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-						<Text style={styles.service}>{props.service || ' cutting sidepart and dying'}</Text>
+						<Text style={styles.service}>{props.services}</Text>
 					</View>
 				</View>
 			</View>

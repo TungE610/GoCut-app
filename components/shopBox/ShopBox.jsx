@@ -1,12 +1,12 @@
-import {StyleSheet, View, Text } from "react-native";
+import {StyleSheet, View, TouchableOpacity } from "react-native";
 import Cart from '../../assets/cart.svg';
 
-const ShopBox = () => {
+const ShopBox = (props) => {
 
 	return (
-		<View style={styles.container}>
+		<TouchableOpacity style={styles.container} onPress={props.onClick}>
 			<Cart width={26} height={26} style={styles.icon}/>
-		</View>
+		</TouchableOpacity>
 	);
 }
 

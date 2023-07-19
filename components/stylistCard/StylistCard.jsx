@@ -1,4 +1,4 @@
-import { Dimensions, StyleSheet, View, Image, Text} from 'react-native';
+import { Dimensions, StyleSheet, View, Image, Text, TouchableOpacity} from 'react-native';
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
 import StarICon from '../../assets/star.svg';
 
@@ -6,8 +6,16 @@ const StylistCard = (props) => {
 
 	const stylist = props.item.item;
 	
+	const selectSalon = () => {
+		
+		props.onClick({
+			name: stylist.name,
+			ratting: stylist.rate
+		})
+	}
+
 	return (
-		<View style={styles.container}>
+		<TouchableOpacity style={styles.container} onPress={selectSalon}>
 			<Image 
 				style={styles.image}
 				source={stylist.image}
@@ -16,7 +24,7 @@ const StylistCard = (props) => {
 				<StarICon width={18} height={18} color="#fff"/>
 				<Text style={styles.rate}>{stylist.rate}</Text>
 			</View>
-		</View>
+		</TouchableOpacity>
 	)
 }
 const styles = StyleSheet.create({

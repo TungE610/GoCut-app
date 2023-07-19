@@ -7,19 +7,19 @@ export default [
 	}, 
 	{
 		id: 1,
-		name: 'Christopher',
+		name: 'Johny depth',
 		image: require('../assets/stylist1.jpg'),
 		rate: 9.1
 	},
 	{
 		id: 2,
-		name: 'Christopher',
+		name: 'Amber Heart',
 		image: require('../assets/stylist2.jpg'),
 		rate: 8.8
 	},
 	{
 		id: 3,
-		name: 'Christopher',
+		name: 'Bestly',
 		image: require('../assets/stylist3.jpg'),
 		rate: 9.0
 	},

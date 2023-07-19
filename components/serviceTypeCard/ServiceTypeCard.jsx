@@ -1,12 +1,12 @@
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 
 const ServiceTypeCard = (props) => {
 
 	return (
-		<View style={styles.container}>
+		<TouchableOpacity style={{backgroundColor: props.backgroundColor, ...styles.container}} onPress={props.onClick}>
 			{props.icon}
-			<Text style={styles.service}>{props.service}</Text>
-		</View>
+			<Text style={{color: props.color, ...styles.service}}>{props.service}</Text>
+		</TouchableOpacity>
 	)
 }
 
@@ -15,16 +15,16 @@ const styles = StyleSheet.create({
 		flexWrap: 'wrap',
 		alignSelf: 'flex-start',
 		flexDirection: 'row',
-		gap: 4,
+		gap: 6,
 		alignItems: 'center',
-		backgroundColor: '#fff',
 		padding: 10,
 		borderRadius: 50,
+		// backgroundColor: '#fff'
+		
 	},
 	service: {
 		fontSize: 16,
 		fontWeight: 500,
-		color: '#3d5c98'
 	}
 })
 

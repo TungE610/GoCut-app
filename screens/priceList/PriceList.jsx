@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { StyleSheet, Dimensions, View, ScrollView, Text, Image } from "react-native";
+import { StyleSheet, Dimensions, View, ScrollView, Text, Image, TouchableOpacity } from "react-native";
 import BackButton from '../../components/backButton/BackButton';
 import SearchInput from '../../components/searchInput/SearchInput';
 import { Switch } from '@rneui/themed';
 import RemoveIcon from '../../assets/remove.svg';
+import AddIcon from '../../assets/add.svg';
 import SaleIcon from '../../assets/sale.svg';
 import AddServicesButton from '../../components/addServicesButton/AddServicesButton';
 
@@ -12,6 +13,19 @@ const service1 = require('../../assets/service1.jpg');
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
 
 const ServiceCard = (props) => {
+	const [selected, setSelected] = useState(false);
+
+	const toggleSelect = () => {
+		setSelected(prev => !prev);
+
+		props.setSelectedServices(prevSelectedServices => {
+			if (selected) {
+			  return prevSelectedServices.filter(service => service.serviceName !== props.serviceName);
+			} else {
+			  return [...prevSelectedServices, { ...props }];
+			}
+		});
+	}
 
 	return (
 		<View style={styles.serviceCard}>
@@ -27,23 +41,53 @@ const ServiceCard = (props) => {
 				</View>
 			</View>
 			<View style={styles.saleAndAdd}>
-				<RemoveIcon width={35} height={35}/>
 				<View style={styles.saleCard}>
 					<SaleIcon width={30} height={30} />
-					<Text style={styles.salePercent}>-{props.salePercent || 20}%</Text>
+					<Text style={styles.salePercent}>-{props.salePercent}%</Text>
 				</View>
+				<TouchableOpacity onPress={toggleSelect}>
+				    {selected ? 
+						<RemoveIcon width={40} height={40} /> : 
+						<AddIcon width={40} height={40} />}
+				</TouchableOpacity>
 			</View>
 		</View>
 	)
 }
 
+const sampleServices = [
+	{
+		id: 0,
+		image: require('../../assets/service1.jpg'),
+		serviceName: "Women medium blunt cut",
+		serviceFee: 20,
+		serviceTime: 2,
+		serviceDescription: "A blunt cut bob is a shorter hairstyle that",
+		salePercent: 30,
+	},
+	{
+		id: 1,
+		image: require('../../assets/service1.jpg'),
+		serviceName: "Women medium blunt cut",
+		serviceFee: 20,
+		serviceTime: 2,
+		serviceDescription: "A blunt cut bob is a shorter hairstyle that",
+		salePercent: 20,
+	},
+]
+
 const PriceList = ({navigation}) => {
 
-	const [ selectedServices, setSelectedServices ] = useState([]);
+	const [selectedServices, setSelectedServices ] = useState([]);
 	const [checked, setChecked] = useState(false);
 
 	const backButtonClickHandler = () => {
+
 		navigation.navigate('Dashboard');
+	}
+
+	const salonSearchHandler = (value) => {
+		
 	}
 
 	return (
@@ -55,7 +99,7 @@ const PriceList = ({navigation}) => {
 				<View style={styles.screenTitleContainer}>
 					<Text style={styles.screenTitle}>Price List</Text>
 				</View>
-				<SearchInput placeholder="search for salon"/>
+				<SearchInput placeholder="search for salon" onChange={salonSearchHandler} />
 				<View style={styles.selectUtil}>
 					<Text style={styles.selectedNumber}>Selected: {selectedServices.length}</Text>
 					<View style={styles.priceFilter}>
@@ -66,13 +110,25 @@ const PriceList = ({navigation}) => {
 						/>
 					</View>
 				</View>
-				<ServiceCard image={service1} serviceName="Women medium blunt cut" serviceFee={20} serviceTime={2} serviceDescription="A blunt cut bob is a shorter hairstyle that" />
-				<ServiceCard image={service1} serviceName="Women medium blunt cut" serviceFee={20} serviceTime={2} serviceDescription="A blunt cut bob is a shorter hairstyle that" />
-				<ServiceCard image={service1} serviceName="Women medium blunt cut" serviceFee={20} serviceTime={2} serviceDescription="A blunt cut bob is a shorter hairstyle that" />
-				<ServiceCard image={service1} serviceName="Women medium blunt cut" serviceFee={20} serviceTime={2} serviceDescription="A blunt cut bob is a shorter hairstyle that" />
+				{
+					sampleServices.map((service, index) => {
+						return (
+							<ServiceCard 
+								key={service.id}
+								image={service.image} 
+								serviceName={service.serviceName} 
+								serviceFee={service.serviceFee} 
+								serviceTime={service.serviceTime} 
+								serviceDescription={service.serviceDescription} 
+								setSelectedServices={setSelectedServices}
+								salePercent={service.salePercent}
+							/>
+						)
+					})
+				}
 			</ScrollView>
 			<View style={styles.addServicesButton}>
-				<AddServicesButton backgroundColor="#fff" color='#3d5c98'/>
+				<AddServicesButton backgroundColor="#FFF" color='#3d5c98' selectedCount={selectedServices.length} />
 			</View>
 		</View>
 	)

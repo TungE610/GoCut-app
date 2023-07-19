@@ -17,12 +17,19 @@ const AddServicesButton = (props) => {
 			alignSelf: 'center',
 			lineHeight: viewportHeight/15,
 			color: props.color || '#fff'
+		},
+		selectedCount: {
+			color: "#e88a0e",
 		}
 	})
 
 	return (
-		<TouchableOpacity style={styles.container}>
-			<Text style={styles.addText}>Select this salon and add {props.addedNumber || 2} services</Text>
+		<TouchableOpacity style={styles.container} onPress={props.nextStepHandler}>
+			<Text style={styles.addText}>Select this salon and add 
+				<Text style={styles.selectedCount}>
+					{" " + props.selectedCount + " "} {props.selectedCount > 1 ? "services" : "service"}
+				</Text> 
+			</Text>
 		</TouchableOpacity>
 	)
 }

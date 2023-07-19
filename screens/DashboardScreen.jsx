@@ -39,6 +39,18 @@ const DashboardScreen = ({navigation, ...props}) => {
 		
 	}
 
+	const returnHomeHandler = () => {
+		navigation.navigate("Dashboard");
+	}
+
+	const seeUserProfileHandler = () => {
+		navigation.navigate("Profile");
+	}
+
+	const seeShopHandler = () => {
+		navigation.navigate("Shop");
+	}
+
 	return (
 	<View>
 		<ScrollView style={styles.container}>
@@ -83,7 +95,12 @@ const DashboardScreen = ({navigation, ...props}) => {
 				</View>
 			</View>
 		</ScrollView>
-		<NavigationBar current={0}/>
+		<NavigationBar 
+			current={0}
+			returnHome={returnHomeHandler}
+			seeUserProfile={seeUserProfileHandler}
+			seeShop={seeShopHandler}
+		/>
 	</View>
 	);
 }

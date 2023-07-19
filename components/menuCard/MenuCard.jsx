@@ -8,8 +8,8 @@ const MenuCard = ({
 
 	return (
 			<TouchableOpacity style={styles.container} onPress={props.onClick}>
-				<View style={styles.iconContainer}>
-					<Icon width={40} height={40} style={styles.icon}/>
+				<View style={{backgroundColor: props.backgroundColor, ...styles.iconContainer}}>
+					<Icon width={40} height={40} style={styles.icon} color={props.iconColor}/>
 				</View>
 				<Text style={styles.title}>{title}</Text>
 			</TouchableOpacity>

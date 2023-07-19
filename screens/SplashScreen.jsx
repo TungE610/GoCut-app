@@ -3,6 +3,7 @@ import { StyleSheet, View, Animated, Image, Dimensions, Text, TouchableHighlight
 import { ClipPath, Ellipse } from 'react-native-svg';
 import LottieView from 'lottie-react-native';
 import { Svg } from 'react-native-svg';
+import axios from 'axios';
 
 const splash1 = require ('../assets/splash1.jpeg');
 
@@ -10,7 +11,9 @@ const {width: viewportWidth, height: viewportHeight} = Dimensions.get('screen');
 
 const SplashScreen = ({navigation}) => {
 	const [isLoading, setIsLoading] = useState(true);
-	const phoneNumberRef = useRef('');
+	const [inputPhoneNumber, setInputPhoneNumber] = useState('');
+
+	const phoneNumberRef = useRef("")
 
 	const animationRef = useRef();
     const animatedImageScale = new Animated.Value(0);
@@ -52,6 +55,40 @@ const SplashScreen = ({navigation}) => {
         }).start();
 	}
 
+	const signUpBtnPressedHandler = () => {
+		Animated.spring(animatedButtonFade, {
+            toValue: 0,
+			duration: 2000,
+            useNativeDriver: true,
+        }).start();
+
+		Animated.spring(animatedImageScale, {
+            toValue: -viewportHeight/2,
+			duration: 2000,
+            useNativeDriver: true,
+        }).start();
+
+		Animated.spring(animatedFormShow, {
+            toValue: 1,
+			duration: 2000,
+            useNativeDriver: true,
+        }).start();
+
+		Animated.spring(animatedFormShow, {
+            toValue: 1,
+			duration: 2000,
+            useNativeDriver: true,
+        }).start();
+
+		Animated.spring(animatedFormTransition, {
+            toValue: -viewportHeight,
+			duration: 2000,
+            useNativeDriver: true,
+        }).start();
+
+
+	}
+
 	const closeButtonClickedHandler = () => {
 		Animated.spring(animatedImageScale, {
             toValue: 0,
@@ -84,7 +121,20 @@ const SplashScreen = ({navigation}) => {
         }).start();
 	}
 
-	const sendOTPBtnClickHandler = () => {
+	const sendOTPBtnClickHandler = async () => {
+
+		// setInputPhoneNumber(phoneNumberRef.current.text);
+		// const phoneNumber = phoneNumberRef.current.value.substring(1);
+		// console.log(phoneNumber)
+
+		// await axios.get(`http://localhost:3000/signup/${phoneNumber}`)
+		// 	.then(response => {
+		// 		console.log(response.data);
+		// 	})
+		// 	.catch(error => {
+		// 		console.error(error);
+		// 	});
+
 		Animated.spring(animatedOTPShow, {
             toValue: 1,
 			duration: 2000,
@@ -138,6 +188,9 @@ const SplashScreen = ({navigation}) => {
 		animationRef.current?.play();
 	  }, []);
 
+	  const handlePhoneNumberChange = (value) => {
+		setInputPhoneNumber(value);
+	  };
 	return (
 		<View style={styles.container}>
 			{isLoading ? <LottieView 
@@ -172,13 +225,21 @@ const SplashScreen = ({navigation}) => {
 					<TouchableHighlight 
 						style={styles.signUpButton}  
 						onPress={() =>
-        					navigation.navigate('Dashboard')
+        					signUpBtnPressedHandler()
       					}>
 						<Text style={styles.btnText}>Sign Up</Text>
 					</TouchableHighlight>
 				</Animated.View>
 				<Animated.View style={[styles.loginContainer, animatedShowStyle]}>
-					<TextInput style={styles.phoneNumberInput} placeholder="Phone number" placeholderTextColor="#3d5c98"  ref={phoneNumberRef}/>
+					<TextInput 
+						style={styles.phoneNumberInput} 
+						placeholder="Phone number" 
+						placeholderTextColor="#3d5c98"  
+						onChangeText={(e) => {
+							phoneNumberRef.current.value = e
+						}}
+						ref={phoneNumberRef}
+					/>
 					<TouchableHighlight style={styles.formButton} onPress={sendOTPBtnClickHandler}>
 						<Text style={styles.formBtnText}>Send OTP</Text>
 					</TouchableHighlight>

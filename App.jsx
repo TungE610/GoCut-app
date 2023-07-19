@@ -12,7 +12,8 @@ import PriceList from './screens/priceList/PriceList';
 import ServiceDetail from './screens/serviceDetail/ServiceDetail';
 import SalonDetail from './screens/salonDetail/Salondetail';
 import Profile from './screens/profile/Profile';
-import NavigationBar from './components/navigationBar/NavigationBar';
+import ShopScreen from './screens/shop/ShopScreen';
+import CartScreen from './screens/card/CardScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -37,6 +38,8 @@ export default function App() {
 			<Stack.Screen name="ServiceDetail" component={ServiceDetail} />
 			<Stack.Screen name="SalonDetail" component={SalonDetail} />
 			<Stack.Screen name="Profile" component={Profile} />
+			<Stack.Screen name="Shop" component={ShopScreen} />
+			<Stack.Screen name="Cart" component={CartScreen} />
 		</Stack.Navigator>
 	</NavigationContainer>
   );

@@ -1,18 +1,20 @@
-import {StyleSheet, Dimensions, SafeAreaView, TextInput} from 'react-native';
+import {StyleSheet, Dimensions, View} from 'react-native';
 import {useState, useRef, useCallback} from 'react';
 import { SearchBar } from 'react-native-elements';
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
 
-const SalonSearch = (props) => {
+const SearchInput = (props) => {
 
 	const [searchValue , setSearchValue] = useState('');
 
-	const updateSearch = (searchValue) => {
-		setSearchValue(searchValue);
+	const updateSearch = (value) => {
+
+		props.onChange(value);
+		setSearchValue(value);
 	}
 
 	return (
-		<SafeAreaView style={styles.container}>
+		<View style={styles.container}>
 			<SearchBar
 				platform="ios"
 				placeholder={props.placeholder}
@@ -23,6 +25,8 @@ const SalonSearch = (props) => {
 					borderWidth: 'none',
 					padding: 0,
 					backgroundColor: props.backgroundColor ? props.backgroundColor : '#3D5C98',
+					width: props.width,
+					height : props.height,
 				}}
 				inputContainerStyle={{
 					borderWidth: 1,
@@ -41,7 +45,7 @@ const SalonSearch = (props) => {
 					color: props.cancelButtonColor ? props.cancelButtonColor : '#fff'
 				}}
 			/>
-	  	</SafeAreaView>
+	  	</View>
 	)
 }
 
@@ -49,8 +53,7 @@ const styles = StyleSheet.create({
 	container: {
 		justifyContent: 'flex-start',
 		height: 70,
-		width: '100%',
-		marginTop: 20,
+		marginTop: 10,
 		paddingHorizontal: 5,
 	},
 	input: {
@@ -66,4 +69,4 @@ const styles = StyleSheet.create({
 	}
 })
 
-export default SalonSearch;
+export default SearchInput;

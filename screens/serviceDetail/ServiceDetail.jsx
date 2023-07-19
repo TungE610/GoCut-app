@@ -1,18 +1,22 @@
-import { StyleSheet, Dimensions, View, Text, ScrollView, Image } from "react-native";
+import { StyleSheet, Dimensions, View, Text, ScrollView, Image, ImageBackground } from "react-native";
 import ClockIcon from '../../assets/clock.svg';
 import SaleIcon from '../../assets/sale.svg';
+import TurnBackButton from "../../components/turnBackButton/TurnBackButton";
 
 const ServiceImage = require('../../assets/service1.jpg');
 
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
 
-const ServiceDetail = () => {
+const ServiceDetail = ({navigation}) => {
 
 	return (
 		<View>
 			<ScrollView style={styles.container}>
 				<View></View>
-				<Image style={styles.serviceImage} source={ServiceImage} />
+				<ImageBackground style={styles.serviceImage} source={ServiceImage}>
+					<View></View>
+					<TurnBackButton onClick={() => {navigation.navigate("SalonDetail")}}/>
+				</ImageBackground>
 				<View style={styles.serviceInfo}>
 					<Text style={styles.serviceName}>Women medium blunt cut</Text>
 					<View style={{flexDirection: 'row', gap: 5, alignItems: 'center'}}>
@@ -48,6 +52,7 @@ const styles = StyleSheet.create({
 		height: viewportHeight * 2/5,
 		borderTopLeftRadius: 20,
 		borderTopRightRadius: 20,
+		bottom: -10
 	},
 	serviceInfo: {
 		paddingTop: 20,

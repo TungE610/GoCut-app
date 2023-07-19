@@ -9,7 +9,48 @@ import HistoryBox from '../../components/historyBox/HistoryBox';
 import FacialIcon from '../../assets/facial.svg';
 import SearchInput from '../../components/searchInput/SearchInput';
 
-const NoUsedHistory = () => {
+const calculateTotalFee = (services) => {
+
+	let totalFee = 0;
+	for (const service of services) {
+	  totalFee += service.fee;
+	}
+	return totalFee;
+}
+
+const concatenateServiceNames = (services) => {
+	const serviceNames = services.map(service => service.name);
+	const concatenatedNames = serviceNames.join(", ");
+
+	 if (concatenatedNames.length > 50) {
+    	return concatenatedNames.substring(0, 47) + "...";
+  	}
+  
+  	return concatenatedNames;
+  };
+
+
+const sampleHistory = [
+	{
+		id: 0,
+		time: "Mar 13th, 2023",
+		salonImage: require('../../assets/salon1.jpg'),
+		salon: {
+			name: "Pretty Salon",
+			address: "151 Nguyễn Đức Cảnh, Tương Mai, Hoàng Mai",
+			services: [
+				{
+					id: 0, 
+					name: "Cutting sidepart and dying",
+					fee: 20,
+				}
+			]
+		},
+		ratting: 0,
+	},
+]
+
+const NoUsedHistory = (props) => {
 	
 	return (
 		<View style={{marginTop: 30, paddingHorizontal: 30}}>
@@ -19,7 +60,42 @@ const NoUsedHistory = () => {
 				<SadIcon />
 			</View>
 			<Text style={{fontSize: 15,fontWeight: 500, textAlign: 'center',color: '#555', marginTop: 10,}}>Book an appointment now to experience the best service</Text>
-			<BookingButton />
+			<BookingButton onClick={
+				() => {props.comeToBookingScreen()}}
+			/>
+		</View>
+	)
+}
+
+const UsedHistory = (props) => {
+
+	const historySearchHandler = (value) => {
+
+	}
+
+	return (
+		<View>
+			<SearchInput
+				placeholder='Search salon with name or location' 
+				backgroundColor="#eee" 
+				cancelButtonColor="#3d5c98"
+				onChange={historySearchHandler}
+			/>
+			{
+				sampleHistory.map(history => {
+					return (
+						<HistoryBox 
+							key={history.id}
+							time={history.time}
+							salonName={history.salon.name}
+							salonAddress={history.salon.address}
+							totalFee={calculateTotalFee(history.salon.services)}
+							salonImage={history.salonImage}
+							services={concatenateServiceNames(history.salon.services)}
+						/>
+					)
+				})
+			}
 		</View>
 	)
 }
@@ -28,9 +104,13 @@ const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window'
 
 const UsageHistory = ({navigation}) => {
 	const [index, setIndex] = useState(0);
-	console.log(index);
+	
 	const backButtonClickHandler = () => {
 		navigation.navigate('Dashboard', {name: 'Tung'})
+	}
+
+	const comeToBookingScreen = () => {
+		navigation.navigate('Booking');
 	}
 
 	return (
@@ -68,13 +148,10 @@ const UsageHistory = ({navigation}) => {
 
 				<TabView value={index} onChange={setIndex} animationType="spring" style={{height: 100}}>
 					<TabView.Item>
-						<NoUsedHistory />
+						<NoUsedHistory comeToBookingScreen={comeToBookingScreen}/>
 					</TabView.Item>
+						<UsedHistory />
 					<TabView.Item>
-						<View>
-							<SearchInput placeholder='Search salon with name or location' backgroundColor="#eee" cancelButtonColor="#3d5c98" />
-							<HistoryBox />
-						</View>
 					</TabView.Item>
 				</TabView>
 			</View>

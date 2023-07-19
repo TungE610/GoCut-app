@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { StyleSheet, View , Text, TouchableOpacity} from 'react-native';
+import { StyleSheet, View , Text, TouchableOpacity, TextInput} from 'react-native';
 import WriteIcon from '../../assets/write.svg';
 import SaveIcon from '../../assets/save.svg';
 import { Input } from 'react-native-elements';
@@ -11,7 +11,6 @@ const AddressBox = (props) => {
 
 	const rewriteAddresHandler = () => {
 		setIsRewriting(prev => !prev);
-		
 	}
 
 	const modifyAddressHandler = (address) => {
@@ -20,7 +19,7 @@ const AddressBox = (props) => {
 
 	return (
 		<View style={styles.container}>
-			<View style={{flexDirection: 'row', flex: 1, gap: 10, alignItems: 'center'}}>
+			<View style={{flexDirection: 'row', flex: 1,gap: 10,  alignItems: 'center'}}>
 				{props.icon}
 				<View style={styles.addressBoxContent}>
 					<Text style={styles.addressType}>
@@ -31,18 +30,18 @@ const AddressBox = (props) => {
 						<Text style={styles.address}>
 							{address}
 						</Text> :
-						<Input
-							style={styles.addressInput}
-							value={address}
+						<TextInput
+							style={styles.input}
 							onChangeText={modifyAddressHandler}
+							value={address}
 						/>}
 					</View>
 				</View>
 			</View>
 			<TouchableOpacity onPress={rewriteAddresHandler}>
 				{!isRewriting ? 
-					<WriteIcon width={30} height={30} /> :
-					<SaveIcon width={28} height={28} />
+					<WriteIcon width={26} height={26} /> :
+					<SaveIcon width={24} height={24} />
 				}
 			</TouchableOpacity>
 		</View>
@@ -64,7 +63,7 @@ const styles = StyleSheet.create({
 	},
 	addressBoxContent: {
 		gap: 6,
-		flex: 1,
+		flex: 10,
 	},
 	addressType: {
 		fontSize: 20,
@@ -72,15 +71,23 @@ const styles = StyleSheet.create({
 		color: '#3d5c98'
 	},
 	inputContainer: {
-		height: 25,
+		height: 30,
 	},
 	address: {
-		fontSize: 14,
 		color: '#555',
+		fontSize: 16,
 	},
 	addressInput: {
-		height: 20,
-	}
+		fontSize: 16,
+		marginBottom: 0,
+	},
+	input: {
+		height: 30,
+		borderWidth: 1,
+		paddingHorizontal: 10,
+		borderRadius: 5,
+		borderColor: '#3d5c98'
+	},
 })
 
 export default AddressBox;

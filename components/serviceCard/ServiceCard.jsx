@@ -1,28 +1,53 @@
-import { StyleSheet, Dimensions, View, Text, Image} from "react-native";
+import { StyleSheet, Dimensions, View, Text, Image, TouchableOpacity} from "react-native";
 import AddIcon from '../../assets/add.svg';
+import RemoveIcon from '../../assets/remove.svg';
 import SaleIcon from '../../assets/sale.svg';
+import ClockIcon from '../../assets/clock.svg';
+import { useState } from "react";
 
 const {width: viewportWidth, height: viewportHeight} = Dimensions.get('screen');
 
-const ServiceImage = require('../../assets/service1.jpg');
 const ServiceCard = (props) => {
+
+	const [selected, setSelected] = useState(false);
+
+	const toggleSelect = () => {
+
+		setSelected(prev => !prev);
+		
+		props.selectService({
+			id: props.id,
+			name: props.serviceName,
+		})
+	}
 
 	return (
 		<View style={styles.container}>
 			<View style={{flexDirection: 'row', gap: 15}}>
-				<Image style={styles.image} source={ServiceImage} />
+				<Image style={styles.image} source={props.image} />
 				<View style={styles.serviceContent}>
 					<Text style={styles.serviceName}>{props.serviceName}</Text>
-					<Text style={styles.serviceTime}>{props.serviceTime}</Text>
+					<View style={styles.serviceTime}>
+						<ClockIcon width={20} height={20} color="#3d5c98" />
+						<Text style={styles.serviceTimeText}>
+							{props.serviceTime} hours service
+						</Text>
+					</View>
 					<Text style={styles.serviceFee}>${props.serviceFee}</Text>
 				</View>
 			</View>
 			<View style={styles.operations}>
-				<AddIcon width={40} height={40} />
 				<View style={styles.saleCard}>
 					<SaleIcon width={20} height={20} />
-					<Text style={styles.salePercent}>-{props.salePercent}%</Text>
+					<Text style={styles.salePercent}>-{props.salePercent || 20}%</Text>
 				</View>
+				<TouchableOpacity onPress={toggleSelect}>
+				{
+					!selected ? 
+					<AddIcon width={40} height={40} /> :
+					<RemoveIcon width={40} height={40} />
+				}
+				</TouchableOpacity>
 			</View>
 		</View>
 	)
@@ -30,31 +55,35 @@ const ServiceCard = (props) => {
 
 const styles = StyleSheet.create({
 	container: {
+		width: viewportWidth-20,
 		flexDirection: 'row',
 		paddingVertical: 20,
 		borderBottomWidth: 1,
 		borderBottomColor: '#ccc',
-		gap: 12,
+		gap: 7,
 		justifyContent: 'space-between',
-		shadowColor: '#000000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.2,
-        shadowRadius: 4,
+		
 	},
 	image: {
-		width: 80,
-		height: 80,
+		width: 90,
+		height: 90,
 		borderRadius: 5,
 	},
 	serviceContent: {
-		justifyContent: 'space-around'
+		justifyContent: 'space-around',
 	},
 	serviceName: {
-		fontSize: 18,
+		fontSize: 17,
 		fontWeight: 600,
 		color: '#3c5d98'
 	},
 	serviceTime: {
+		flexDirection: 'row',
+		gap: 3,
+		alignItems: 'center',
+
+	},
+	serviceTimeText: {
 		fontSize: 15,
 		fontWeight: 400,
 	},

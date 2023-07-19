@@ -1,3 +1,4 @@
+import {useState} from 'react';
 import {StyleSheet, Dimensions, ScrollView, View, ImageBackground, Text} from 'react-native';
 import ReturnHomeButton from '../../components/returnHomeButton/ReturnHomeButton';
 import MarkButton from '../../components/markButton/MarkButton';
@@ -8,14 +9,71 @@ import CircleIcon from '../../assets/circle.svg';
 import ServiceTypeCard from '../../components/serviceTypeCard/ServiceTypeCard';
 import ServiceCard from '../../components/serviceCard/ServiceCard';
 import AddServicesButton from '../../components/addServicesButton/AddServicesButton';
+import CutIcon from '../../assets/cut.svg';
+import FacialIcon from '../../assets/facial.svg';
+import NailIcon from '../../assets/nail.svg';
 
 const {width: viewportWidth, height: viewportHeight} = Dimensions.get('screen');
 
+const sampleServices = [
+	{
+		id: 0,
+		name: 'Women medium blunt cut',
+		type: "haircut",
+		serviceTime: 2,
+		serviceFee : 500,
+		salePercent: 20,
+		image: require('../../assets/service1.jpg')
+	},
+	{
+		id: 1,
+		name: 'Women medium blunt cut',
+		type: "haircut",
+		serviceTime: 2,
+		serviceFee : 500,
+		salePercent: 20,
+		image: require('../../assets/service2.jpg')
+	},
+	{
+		id: 2,
+		name: 'Women medium blunt cut',
+		type: "facial",
+		serviceTime: 2,
+		serviceFee : 500,
+		salePercent: 30,
+		image: require('../../assets/service3.jpg')
+	}
+]
+
 const SalonDetail = ({navigation, ...props}) => {
+
+	const initialServices =  sampleServices.filter(service => service.type === 'haircut');
+
+	const [selectedServiceType, setSelectedServiceType] = useState("haircut");
+	const [selectedServices, setSelectedServices] = useState([]);
+	const [filtedServices, setFilteredServices] = useState(initialServices);
 
 	const returnHomeHandler = () => {
 		navigation.navigate('Dashboard');
 	}
+
+	const selectServiceTypeHandler = (value) => {
+		setSelectedServiceType(value);
+	}
+
+	const toggleServiceSelection = (service) => {
+
+		const isSelected = selectedServices.some((selectedService) => selectedService.id === service.id);
+		if (isSelected) {
+		  // Remove the service from the selectedServices array
+		  setSelectedServices((prevSelectedServices) => prevSelectedServices.filter((selectedService) => selectedService.id !== service.id));
+		} else {
+		  // Add the service to the selectedServices array
+		  setSelectedServices((prevSelectedServices) => [...prevSelectedServices, service]);
+		}
+	};
+
+	console.log(selectedServices);
 	
 	return (
 		<View style={styles.container}>
@@ -86,20 +144,70 @@ const SalonDetail = ({navigation, ...props}) => {
 							Our services:
 						</Text>
 						<View style={styles.serviceTypesStack}>
-							<ServiceTypeCard service="Haircut"/>
-							<ServiceTypeCard service="Facial"/>
-							<ServiceTypeCard service="Nail"/>
+							<ServiceTypeCard 
+								icon={<CutIcon width={18} height={18} color={selectedServiceType === 'haircut' ? '#fff' : '#3d5c98'}/>} 
+								service="Haircut"
+								backgroundColor= {selectedServiceType === 'haircut' ? '#3d5c98' : '#fff'}
+								color={selectedServiceType === 'haircut' ? '#fff' : '#3d5c98'}
+								onClick={() => {
+									setSelectedServiceType("haircut");
+									setFilteredServices(sampleServices.filter(service => service.type === 'haircut'))
+									selectedServices.length = 0;
+								}}
+							/>
+							<ServiceTypeCard 
+								icon={<FacialIcon width={22} height={22} color={selectedServiceType === 'facial' ? '#fff' : '#3d5c98'}/>} 
+								service="Facial"
+								backgroundColor= {selectedServiceType === 'facial' ? '#3d5c98' : '#fff'}
+								color={selectedServiceType === 'facial' ? '#fff' : '#3d5c98'}
+								onClick={() => {
+									setSelectedServiceType("facial");
+									setFilteredServices(sampleServices.filter(service => service.type === 'facial'));
+									selectedServices.length = 0;
+								}}
+							/>
+							<ServiceTypeCard 
+								icon={<NailIcon width={22} height={22} color={selectedServiceType === 'nail' ? '#fff' : '#3d5c98'}/>} 
+								service="Nail"
+								backgroundColor= {selectedServiceType === 'nail' ? '#3d5c98' : '#fff'}
+								color={selectedServiceType === 'nail' ? '#fff' : '#3d5c98'}
+								onClick={() => {
+									setSelectedServiceType("nail");
+									setFilteredServices(sampleServices.filter(service => service.type === 'nail'));
+									selectedServices.length = 0;
+								}}
+							/>
 						</View>
 						<View style={styles.servicesStack}>
-							<ServiceCard serviceName="Women medium blunt cut" serviceTime="2 hours" serviceFee="20"/>
-							<ServiceCard serviceName="Women medium blunt cut" serviceTime="2 hours" serviceFee="20"/>
-							<ServiceCard serviceName="Women medium blunt cut" serviceTime="2 hours" serviceFee="20"/>
+							{
+								filtedServices.map(service => {
+
+									return (
+										<ServiceCard 
+										    key = {service.id}
+											id = {service.id}
+											serviceName = {service.name}
+											serviceTime = {service.serviceTime}
+											serviceFee = {service.serviceFee}
+											image ={service.image}
+											selectService={toggleServiceSelection}
+										/>
+									)
+								})
+							}
+							{
+								filtedServices.length === 0 ? <Text style={{textAlign: 'center', marginTop: 10, fontSize: 16, fontWeight: 600, color: '#3d5c98'}}>Not found any services</Text> : ""
+							}
 						</View>
 					</View>
 				</View>
 			</ScrollView>
 			<View style={styles.addServicesButton}>
-				<AddServicesButton />
+				{
+					selectedServices.length > 0 ?
+					<AddServicesButton selectedCount={selectedServices.length}/>
+					: ""
+				}
 			</View>
 		</View>
 	)
@@ -123,7 +231,7 @@ const styles = StyleSheet.create({
 		height: viewportHeight/3.5,
 	},
 	salonDetail: {
-		paddingHorizontal: 20,
+		paddingHorizontal: 10,
 	},
 	salonName: {
 		fontSize: 22,
@@ -213,7 +321,8 @@ const styles = StyleSheet.create({
 		color: '#2A4780'
 	},
 	serviceTypesStack: {
-		flexDirection: 'row'
+		flexDirection: 'row',
+		gap: 5,
 	},
 	servicesStack: {
 

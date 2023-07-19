@@ -1,15 +1,15 @@
-import {StyleSheet, Dimensions, View, Text} from 'react-native';
+import {StyleSheet, Dimensions, View, Text, TouchableOpacity} from 'react-native';
 
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
 
-const BookingButton = () => {
+const BookingButton = (props) => {
 
 	return (
-		<View style={styles.container}>
+		<TouchableOpacity style={styles.container} onPress={props.onClick}>
 			<View style={styles.buttonContainer}>
 				<Text style={styles.bookingText}>Booking now</Text>
 			</View>
-		</View>
+		</TouchableOpacity>
 	)
 }
 

@@ -15,7 +15,7 @@ const NavigationBar = (props) => {
 		} else if (id === 2) {
 
 		} else if (id === 3) {
-
+			props.openCamera();
 		} else {
 			props.seeUserProfile();
 		}

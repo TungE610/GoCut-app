@@ -34,7 +34,7 @@ const sampleHistory = [
 	{
 		id: 0,
 		time: "Mar 13th, 2023",
-		salonImage: require('../../assets/salon1.jpg'),
+		salonImage: require('../../assets/salon2.jpg'),
 		salon: {
 			name: "Pretty Salon",
 			address: "151 Nguyễn Đức Cảnh, Tương Mai, Hoàng Mai",
@@ -76,7 +76,7 @@ const UsedHistory = (props) => {
 	return (
 		<View>
 			<SearchInput
-				placeholder='Search salon with name or location' 
+				placeholder='Search salon with name' 
 				backgroundColor="#eee" 
 				cancelButtonColor="#3d5c98"
 				onChange={historySearchHandler}

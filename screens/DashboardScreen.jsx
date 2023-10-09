@@ -51,6 +51,10 @@ const DashboardScreen = ({navigation, ...props}) => {
 		navigation.navigate("Shop");
 	}
 
+	const openCamera = () => {
+		
+	}
+
 	return (
 	<View>
 		<ScrollView style={styles.container}>
@@ -100,6 +104,7 @@ const DashboardScreen = ({navigation, ...props}) => {
 			returnHome={returnHomeHandler}
 			seeUserProfile={seeUserProfileHandler}
 			seeShop={seeShopHandler}
+			openCamera={openCamera}
 		/>
 	</View>
 	);

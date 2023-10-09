@@ -436,7 +436,7 @@ const BookingScreen = ({navigation}) => {
 								{
 									sampleServices.map(service => {
 										return (
-											<TouchableOpacity onPress={seeServiceDetailHandler}>
+											<TouchableOpacity onPress={seeServiceDetailHandler} key={service.id}>
 												<ServiceCard 
 													id={service.id}
 													serviceName={service.name} 

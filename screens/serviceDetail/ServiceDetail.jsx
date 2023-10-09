@@ -7,7 +7,10 @@ const ServiceImage = require('../../assets/service1.jpg');
 
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
 
-const ServiceDetail = ({navigation}) => {
+const ServiceDetail = ({navigation, ...props}) => {
+
+	const initialDescription = "a timeless and versatile hairstyle that offers a chic and polished look for women of all ages. This classic cut is characterized by its straight, even length across the bottom, creating a sleek and sophisticated appearance.\n"
+	 + "The medium length of the cut falls just below the shoulders, providing a perfect balance between short and long hair. This makes it an ideal choice for those seeking a manageable and stylish option that still offers enough length for various styling possibilities."
 
 	return (
 		<View>
@@ -18,20 +21,23 @@ const ServiceDetail = ({navigation}) => {
 					<TurnBackButton onClick={() => {navigation.navigate("SalonDetail")}}/>
 				</ImageBackground>
 				<View style={styles.serviceInfo}>
-					<Text style={styles.serviceName}>Women medium blunt cut</Text>
+					<Text style={styles.serviceName}>{props.serviceName || "Women medium blunt cut"}</Text>
 					<View style={{flexDirection: 'row', gap: 5, alignItems: 'center'}}>
 						<ClockIcon width={22} height={22} />
-						<Text style={styles.serviceTime}>2 hours service</Text>
+						<Text style={styles.serviceTime}>{props.serviceTime || 2} hours service</Text>
 					</View>
 					<View style={styles.serviceFee}>
 						<Text>$20</Text>
 						<View style={styles.saleCard}>
 							<SaleIcon width={20} height={20} />
-							<Text style={styles.salePercent}>-20%</Text>
+							<Text style={styles.salePercent}>-{props.salePercent || 20}%</Text>
 						</View>
 					</View>
 					<View style={styles.serviceDescription}>
 						<Text style={styles.aboutTitle}>About service</Text>
+						<Text style={styles.aboutContent}>
+							{props.descriotion || initialDescription}
+						</Text>
 					</View>
 				</View>
 			</ScrollView>

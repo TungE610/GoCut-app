@@ -23,7 +23,7 @@ const SavedAddress = ({navigation}) => {
 			<View style={styles.savedAddressStack}>
 				<AddressBox icon={<HomeIcon width={30} height={30} color={'#3d5c98'}/>} addressType="Home address" address="151 Nguyễn Đức Cảnh, Tương Mai, Hoàng Mai"/>
 				<AddressBox icon={<OfficeIcon width={30} height={30} color={'#3d5c98'} />} addressType="Office address" address="Số 7 Thiền Quang"/>
-				<AddressBox icon={<HomeIcon width={30} height={30} color={'#3d5c98'} />} addressType="Home address" address="151 Nguyễn Đức Cảnh, Tương Mai, Hoàng Mai"/>
+				<AddressBox icon={<HomeIcon width={30} height={30} color={'#3d5c98'} />} addressType="Regular address" address="151 Nguyễn Đức Cảnh, Tương Mai, Hoàng Mai"/>
 			</View>
 		</View>
 	)

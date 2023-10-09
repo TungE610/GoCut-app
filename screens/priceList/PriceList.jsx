@@ -20,7 +20,7 @@ const ServiceCard = (props) => {
 
 		props.setSelectedServices(prevSelectedServices => {
 			if (selected) {
-			  return prevSelectedServices.filter(service => service.serviceName !== props.serviceName);
+			  return prevSelectedServices.filter(service => service.id !== props.id);
 			} else {
 			  return [...prevSelectedServices, { ...props }];
 			}
@@ -28,7 +28,7 @@ const ServiceCard = (props) => {
 	}
 
 	return (
-		<View style={styles.serviceCard}>
+		<TouchableOpacity style={styles.serviceCard} onPress={props.onClick}>
 			<View style={styles.serviceCardContent}>
 				<Image source={props.image} style={styles.serviceImage}/>
 				<View style={styles.serviceDetail}>
@@ -51,7 +51,7 @@ const ServiceCard = (props) => {
 						<AddIcon width={40} height={40} />}
 				</TouchableOpacity>
 			</View>
-		</View>
+		</TouchableOpacity>
 	)
 }
 
@@ -115,6 +115,7 @@ const PriceList = ({navigation}) => {
 						return (
 							<ServiceCard 
 								key={service.id}
+								id = {service.id}
 								image={service.image} 
 								serviceName={service.serviceName} 
 								serviceFee={service.serviceFee} 
@@ -122,13 +123,16 @@ const PriceList = ({navigation}) => {
 								serviceDescription={service.serviceDescription} 
 								setSelectedServices={setSelectedServices}
 								salePercent={service.salePercent}
+								// onClick={}
 							/>
 						)
 					})
 				}
 			</ScrollView>
 			<View style={styles.addServicesButton}>
-				<AddServicesButton backgroundColor="#FFF" color='#3d5c98' selectedCount={selectedServices.length} />
+				{ selectedServices.length > 0 ? 
+					<AddServicesButton backgroundColor="#FFF" color='#3d5c98' selectedCount={selectedServices.length} /> : ""
+				}
 			</View>
 		</View>
 	)

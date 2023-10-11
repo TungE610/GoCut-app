@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
 		height: viewportHeight/5.5,
 	},
 	salonName: {
-		fontWeight: 800,
+		fontWeight: "800",
 		fontSize: 18,
 		paddingLeft: 5,
 		color: '#2A4780'

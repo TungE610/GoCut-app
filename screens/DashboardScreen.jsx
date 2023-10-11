@@ -8,10 +8,13 @@ import RecommendedCarousel from '../components/recommendCarousel/RecommendCarous
 import menuItems from '../data/menuItems';
 import NavigationBar from '../components/navigationBar/NavigationBar';
 import SalonCard from '../components/salonCard/SalonCard';
+// import Camera from '../components/camera/Camera';
 import sampleSalon from '../data/sampleSalon';
 import Carousel from 'react-native-snap-carousel';
 import sampleStylist from '../data/sampleStylist';
 import StylistCard from '../components/stylistCard/StylistCard';
+import {useCameraPermission, Camera, useCameraDevices} from 'react-native-vision-camera';
+import { useState, useEffect, useRef } from 'react';
 
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
 
@@ -25,6 +28,31 @@ const DashboardScreen = ({navigation, ...props}) => {
 	const slideWidth = wp(28);
 	const sliderWidth = viewportWidth;
 	const sliderItemWidth = slideWidth + sliderItemHorizontalMargin * 2;
+	// const { hasPermission, requestPermission } = useCameraPermission()
+	const camera = useRef(null);
+    const devices = useCameraDevices()
+	const device = devices.back;
+	const [showCamera, setShowCamera] = useState(false);
+	const [imageSource, setImageSource] = useState('');
+
+	useEffect(() => {
+		async function getPermisstion() {
+			const permission = await Camera.requestCameraPermission();
+			console.log("Camera permission status: ", permission);
+			if (permission === 'denied') await Linking.openSettings();
+		}
+		getPermisstion();
+	}, [])
+
+	const capturePhoto = async () => {
+		if (camera.current !== null){
+			const photo = await camera.current.takeProto({});
+			setImageSource(photo.path);
+			setShowCamera(false);
+			console.log(photo.path);
+		}
+	}
+
 
 	const menuCardClickHandler = (index) => {
 		if (index === 0) {
@@ -48,15 +76,30 @@ const DashboardScreen = ({navigation, ...props}) => {
 	}
 
 	const seeShopHandler = () => {
-		navigation.navigate("Shop");
+		// requestPermission();
+		// navigation.navigate("Shop");
 	}
 
 	const openCamera = () => {
-		
+		setShowCamera(true);
 	}
 
 	return (
 	<View>
+		{
+			showCamera ? (
+				<>
+					<Camera
+						ref={camera}
+						device={device}
+						style={StyleSheet.absoluteFill}
+						isActive={showCamera}
+						photo={true}
+					/>
+
+				</>
+			) : ""
+		}
 		<ScrollView style={styles.container}>
 			<View style={styles.contentContainer}>
 				<View style={styles.header}>
@@ -139,13 +182,13 @@ const styles = StyleSheet.create({
 	},
 	name: {
 		fontSize: 20,
-		fontWeight: 700,
+		fontWeight: "700",
 		color: '#fff',
 	},
 	slogan: {
 		color: '#fff',
 		fontSize: 14,
-		fontWeight: 400,
+		fontWeight: "400",
 	},
 
 	mainMenu: {
@@ -170,13 +213,13 @@ const styles = StyleSheet.create({
 	
 	recommendText: {
 		color: '#1E284D',
-		fontWeight: 700,
+		fontWeight: "700",
 		fontSize: 20,
 		paddingBottom: 10,
 	},
 	hairStylistText: {
 		color: '#1E284D',
-		fontWeight: 700,
+		fontWeight: "700",
 		fontSize: 20,
 		marginTop: 20,
 		marginBottom: 15,

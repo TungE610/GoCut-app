@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
 		marginBottom: 10,
 	},
 	salonName: {
-		fontWeight: 800,
+		fontWeight: "800",
 		fontSize: 18,
 		paddingLeft: 5,
 		color: '#2A4780'

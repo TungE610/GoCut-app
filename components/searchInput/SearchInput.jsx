@@ -22,7 +22,7 @@ const SearchInput = (props) => {
 				onChangeText={updateSearch}
 				style={styles.input}
 				containerStyle={{
-					borderWidth: 'none',
+					borderWidth: 0,
 					padding: 0,
 					backgroundColor: props.backgroundColor ? props.backgroundColor : '#3D5C98',
 					width: props.width,

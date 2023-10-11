@@ -14,14 +14,14 @@ const LoginScreen = () => {
 const styles = StyleSheet.create({
 	container: {
 		backgroundColor: '#3d5c98',
-		width: viewportWidth,
-		height: viewportHeight,
+		width: viewportWidth.toString(),
+		height: viewportHeight.toString(),
 		alignItems: 'center'
 	},
 	loginText: {
 		marginTop: 150,
 		fontSize: 32,
-		fontWeight: 700,
+		fontWeight: "700",
 		color: '#fff',
 	}
 })

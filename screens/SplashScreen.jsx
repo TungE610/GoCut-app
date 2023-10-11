@@ -352,7 +352,7 @@ const styles = StyleSheet.create({
 		color: '#fff',
 		textAlign: 'center',
 		fontSize: 24,
-		fontWeight: 800,
+		fontWeight: "800",
 		position: 'absolute',
 		bottom: viewportHeight/4,
 		alignSelf: 'center',
@@ -368,7 +368,7 @@ const styles = StyleSheet.create({
 	loginText: {
 		color: '#3d5c98',
 		fontSize: 30,
-		fontWeight: 800,
+		fontWeight: "800",
 		marginBottom: 20,
 	},
 	phoneNumberInput: {
@@ -415,7 +415,7 @@ const styles = StyleSheet.create({
 	formBtnText: {
 		color: '#fff',
 		fontSize: 24,
-		fontWeight: 800,
+		fontWeight: "800",
 		textAlign: 'center'
 	},
 })

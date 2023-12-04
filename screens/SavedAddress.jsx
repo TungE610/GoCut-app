@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
 	screenTitle: {
 		width: '100%',
 		fontSize: 25,
-		fontWeight: 700,
+		fontWeight: "700",
 		color: '#fff',
 		letterSpacing: 1,
 		textAlign: 'center',

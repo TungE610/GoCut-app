@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
 	bookingText: {
 		alignSelf: 'center',
 		lineHeight: 35,
-		fontWeight: 700,
+		fontWeight: "700",
 		fontSize: 16,
 	}
 })

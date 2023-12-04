@@ -66,7 +66,7 @@ const Profile = ({navigation, ...props}) => {
 					<ListItem.Accordion
 						content={
 						<ListItem.Content>
-							<ListItem.Title style={{fontSize: 21, fontWeight: 700, color: '#3d5c98'}}>Profile</ListItem.Title>
+							<ListItem.Title style={{fontSize: 21, fontWeight: "700", color: '#3d5c98'}}>Profile</ListItem.Title>
 							<ListItem.Subtitle>Tap to see more</ListItem.Subtitle>
 						</ListItem.Content>
 						}
@@ -78,7 +78,7 @@ const Profile = ({navigation, ...props}) => {
 						<ListItem>
 						<ListItem.Content style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', gap: 20}}>
 							<View style={{flexDirection: 'row', alignItems: 'center', gap: 20}}>
-								<ListItem.Title style={{fontSize: 16, fontWeight: 700, color: '#3d5c98'}}>Full Name: </ListItem.Title>
+								<ListItem.Title style={{fontSize: 16, fontWeight: "700", color: '#3d5c98'}}>Full Name: </ListItem.Title>
 								{!isEdittingUserName ? <ListItem.Subtitle>{userName}</ListItem.Subtitle> : 
 									<TextInput
 										style={styles.modifyInput}
@@ -107,7 +107,7 @@ const Profile = ({navigation, ...props}) => {
 						<ListItem>
 						<ListItem.Content style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', gap: 20}}>
 							<View style={{flexDirection: 'row', alignItems: 'center', gap: 20}}>
-								<ListItem.Title style={{fontSize: 16, fontWeight: 700, color: '#3d5c98'}}>Date of Birth: </ListItem.Title>
+								<ListItem.Title style={{fontSize: 16, fontWeight: "700", color: '#3d5c98'}}>Date of Birth: </ListItem.Title>
 								{!isEdittingDoB ? 
 									<ListItem.Subtitle>{dateOfBirth}</ListItem.Subtitle> : 
 									<TextInput
@@ -133,7 +133,7 @@ const Profile = ({navigation, ...props}) => {
 						<ListItem>
 						<ListItem.Content style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', gap: 20}}>
 							<View style={{flexDirection: 'row', alignItems: 'center', gap: 20}}>
-								<ListItem.Title style={{fontSize: 16, fontWeight: 700, color: '#3d5c98'}}>Phone: </ListItem.Title>
+								<ListItem.Title style={{fontSize: 16, fontWeight: "700", color: '#3d5c98'}}>Phone: </ListItem.Title>
 								{!isEdittingTelephone ? 
 									<ListItem.Subtitle>{telephone}</ListItem.Subtitle>
 									:
@@ -161,7 +161,7 @@ const Profile = ({navigation, ...props}) => {
 						<ListItem>
 						<ListItem.Content style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', gap: 20}}>
 							<View style={{flexDirection: 'row', alignItems: 'center', gap: 20}}>
-								<ListItem.Title style={{fontSize: 16, fontWeight: 700, color: '#3d5c98'}}>Email: </ListItem.Title>
+								<ListItem.Title style={{fontSize: 16, fontWeight: "700", color: '#3d5c98'}}>Email: </ListItem.Title>
 								<ListItem.Subtitle>{email}</ListItem.Subtitle>
 							</View>
 							<WriteIcon width={23} height={23} />
@@ -175,7 +175,7 @@ const Profile = ({navigation, ...props}) => {
 								navigation.navigate("SavedAddress");
 							}}
 						>
-							<ListItem.Title style={{fontSize: 21, fontWeight: 700, color: '#3d5c98'}}>Address</ListItem.Title>
+							<ListItem.Title style={{fontSize: 21, fontWeight: "700", color: '#3d5c98'}}>Address</ListItem.Title>
 							<ListItem.Subtitle></ListItem.Subtitle>
 						</ListItem.Content>
 						}
@@ -184,19 +184,7 @@ const Profile = ({navigation, ...props}) => {
 					<ListItem.Accordion
 						content={
 						<ListItem.Content>
-							<ListItem.Title style={{fontSize: 21, fontWeight: 700, color: '#3d5c98'}}>Usage History</ListItem.Title>
-							<ListItem.Subtitle></ListItem.Subtitle>
-						</ListItem.Content>
-						}
-						// isExpanded={expanded}
-						onPress={() => {
-						setExpanded(!expanded);
-						}}
-					></ListItem.Accordion>
-					<ListItem.Accordion
-						content={
-						<ListItem.Content>
-							<ListItem.Title style={{fontSize: 21, fontWeight: 700, color: '#3d5c98'}}>Coupon</ListItem.Title>
+							<ListItem.Title style={{fontSize: 21, fontWeight: "700", color: '#3d5c98'}}>Usage History</ListItem.Title>
 							<ListItem.Subtitle></ListItem.Subtitle>
 						</ListItem.Content>
 						}
@@ -208,7 +196,19 @@ const Profile = ({navigation, ...props}) => {
 					<ListItem.Accordion
 						content={
 						<ListItem.Content>
-							<ListItem.Title style={{fontSize: 21, fontWeight: 700, color: '#3d5c98'}}>Order</ListItem.Title>
+							<ListItem.Title style={{fontSize: 21, fontWeight: "700", color: '#3d5c98'}}>Coupon</ListItem.Title>
+							<ListItem.Subtitle></ListItem.Subtitle>
+						</ListItem.Content>
+						}
+						// isExpanded={expanded}
+						onPress={() => {
+						setExpanded(!expanded);
+						}}
+					></ListItem.Accordion>
+					<ListItem.Accordion
+						content={
+						<ListItem.Content>
+							<ListItem.Title style={{fontSize: 21, fontWeight: "700", color: '#3d5c98'}}>Order</ListItem.Title>
 							<ListItem.Subtitle></ListItem.Subtitle>
 						</ListItem.Content>
 						}
@@ -252,7 +252,7 @@ const styles = StyleSheet.create({
 	},
 	name: {
 		fontSize: 18,
-		fontWeight: 700,
+		fontWeight: "700",
 		color: '#2A4780',
 	},
 	followingNum: {

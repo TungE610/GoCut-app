@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
 	},
 	time: {
 		fontSize: 17,
-		fontWeight: 700,
+		fontWeight: "700",
 		color: '#3D5C98'
 	},
 	salonInfo: {
@@ -69,22 +69,22 @@ const styles = StyleSheet.create({
 	},
 	salonName: {
 		fontSize: 21,
-		fontWeight: 700,
+		fontWeight: "700",
 		color: '#3D5C98'
 	},
 	salonAddress: {
 		fontSize: 15,
-		fontWeight: 600,
+		fontWeight: "600",
 		color: '#555'
 	},
 	fee: {
 		fontSize: 17,
-		fontWeight: 700,
+		fontWeight: "700",
 		color: '#3D5C98'
 	},
 	service: {
 		fontSize: 17,
-		fontWeight: 700,
+		fontWeight: "700",
 		color: '#3D5C98'
 	}
 })

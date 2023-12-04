@@ -13,7 +13,7 @@ const NavigationBar = (props) => {
 		} else if (id === 1) {
 			props.seeShop();
 		} else if (id === 2) {
-
+			props.openGallery();
 		} else if (id === 3) {
 			props.openCamera();
 		} else {

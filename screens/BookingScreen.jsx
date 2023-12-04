@@ -369,7 +369,7 @@ const BookingScreen = ({navigation}) => {
 								</View> : 
 								<TouchableOpacity style={styles.newSavedAddressBox} onPress={reselectLocationHandler}>
 									<ReselectIcon width={24} height={24} color={"#000"} />
-									<Text style={{fontSize: 20, fontWeight: 700, color: "#000"}}>Reselect city</Text>
+									<Text style={{fontSize: 20, fontWeight: "700", color: "#000"}}>Reselect city</Text>
 								</TouchableOpacity>
 								}
 							</View>
@@ -576,7 +576,7 @@ const styles = StyleSheet.create({
 	screenTitle: {
 		width: '100%',
 		fontSize: 28,
-		fontWeight: 700,
+		fontWeight: "700",
 		color: '#fff',
 		letterSpacing: 1,
 		textAlign: 'center',
@@ -691,7 +691,7 @@ const styles = StyleSheet.create({
 		backgroundColor: '#fff',
 		width: '100%',
 		alignSelf: 'stretch',
-		minHeight: 700,
+		minHeight: "700",
 		borderRadius: 10,
 		paddingHorizontal: 10,
 		paddingTop: 20,

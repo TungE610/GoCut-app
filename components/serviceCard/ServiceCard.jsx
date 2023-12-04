@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
 	serviceFee: {
 		fontSize: 17,
 		color: '#2A4780',
-		fontWeight: 700,
+		fontWeight: "700",
 	},
 	saleCard: {
 		flexDirection: 'row',

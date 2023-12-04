@@ -235,7 +235,7 @@ const styles = StyleSheet.create({
 	},
 	salonName: {
 		fontSize: 22,
-		fontWeight: 700,
+		fontWeight: "700",
 		letterSpacing: 0.4,
 		color: '#2A4780',
 		marginTop: 20,

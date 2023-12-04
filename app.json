@@ -1,6 +1,7 @@
 {
   "expo": {
     "name": "react-native-project",
+    "displayName": "Gocut hair salon app",
     "slug": "react-native-project",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -21,7 +22,7 @@
         "NSCameraUsageDescription": "$(PRODUCT_NAME) needs access to your Camera.",
         "NSMicrophoneUsageDescription": "$(PRODUCT_NAME) needs access to your Microphone."
       },
-      "bundleIdentifier": "com.android"
+      "bundleIdentifier": "com.goCutHairSalonApp"
     },
     "android": {
       "adaptiveIcon": {

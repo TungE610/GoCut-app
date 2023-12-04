@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
 	},
 	serviceName: {
 		fontSize: 19,
-		fontWeight: 700,
+		fontWeight: "700",
 		color: '#3d5c98'
 	},
 	serviceTime: {

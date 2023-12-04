@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
 		height: viewportHeight/4,
 		width: '100%',
 		borderRadius: 10,
-		borderWidth: '1px',
+		borderWidth: 1,
 		borderColor: '#ccc',
 		backgroundColor: '#fff',
 		shadowColor: "#000",

@@ -55,7 +55,7 @@ const NoUsedHistory = (props) => {
 	return (
 		<View style={{marginTop: 30, paddingHorizontal: 30}}>
 			<View style={{flexDirection: 'row', alignItems: 'center', gap: 10, alignSelf: 'center'}}>
-				<Text style={{fontSize: 19,fontWeight: 700, textAlign: 'center'}}>You have never used our app 
+				<Text style={{fontSize: 19,fontWeight: "700", textAlign: 'center'}}>You have never used our app 
 				</Text>
 				<SadIcon />
 			</View>
@@ -189,7 +189,7 @@ const styles = StyleSheet.create({
 	screenTitle: {
 		width: '100%',
 		fontSize: 28,
-		fontWeight: 700,
+		fontWeight: "700",
 		color: '#3D5C98',
 		letterSpacing: 1,
 		textAlign: 'center',

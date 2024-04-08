@@ -72,7 +72,7 @@ const DashboardScreen = ({navigation, ...props}) => {
 						<ShopBox />
 						<NotificationBox />
 				</View>
-				<SearchInput placeholder='Search salon with name or location'/>
+				<SearchInput placeholder='Search salon with name or location' onChange={() => {}}/>
 				<View style={styles.mainMenu}>
 					{
 						menuItems.map((item, id) => {

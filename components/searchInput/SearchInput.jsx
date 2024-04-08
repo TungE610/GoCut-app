@@ -1,14 +1,12 @@
-import {StyleSheet, Dimensions, View} from 'react-native';
-import {useState, useRef, useCallback} from 'react';
+import {StyleSheet, View} from 'react-native';
+import {useState} from 'react';
 import { SearchBar } from 'react-native-elements';
-const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
 
 const SearchInput = (props) => {
 
 	const [searchValue , setSearchValue] = useState('');
 
 	const updateSearch = (value) => {
-
 		props.onChange(value);
 		setSearchValue(value);
 	}
@@ -58,15 +56,11 @@ const styles = StyleSheet.create({
 	},
 	input: {
 		borderRadius: 7,
-		color: '#3D5C98',
 		shadowColor: '#171717',
 		shadowOffset: {width: -2, height: 4},
 		shadowOpacity: 0.2,
 		shadowRadius: 3,
 	},
-	searchIcon: {
-		color: '#fff',
-	}
 })
 
 export default SearchInput;

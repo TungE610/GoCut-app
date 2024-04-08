@@ -1,11 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
-import {Camera, useCameraDevice} from 'react-native-vision-camera';
+import {Camera, useCameraDevice, useCameraFormat} from 'react-native-vision-camera';
 import {StyleSheet, View, TouchableOpacity, Dimensions, Image, Text} from 'react-native'; 
 import ShutterBtn from '../assets/shutter.svg';
 import FlipCameraBtn from '../assets/flipCamera.svg';
 import CloseBtn from '../assets/close.svg';
-import { height } from 'deprecated-react-native-prop-types/DeprecatedImagePropType';
-import RNFS from 'react-native-fs';
+import ImagePicker from 'react-native-image-crop-picker';
 
 const CameraScreen = () => {
     const [camView, setCamView] = useState('back'); 
@@ -14,6 +13,7 @@ const CameraScreen = () => {
     const device = useCameraDevice(camView, {
         physicalDevices: ['wide-angle-camera']
      });
+      
      const [imageSource, setImageSource] = useState(null);
      const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
 
@@ -37,7 +37,7 @@ const CameraScreen = () => {
                 const photo = await camera.current.takePhoto()
                 setShowCamera(false);
                 setImageSource(photo);
-                
+
             } catch(error) {
                 return error;
             }
@@ -52,29 +52,42 @@ const CameraScreen = () => {
         setShowCamera(true);
     }
 
-    const getImageFile = async (imagePath) => {
-        try {
-          const imageFile = await RNFS.readFile(imagePath, 'base64');
-          return imageFile;
-        } catch (error) {
-          console.error('Error reading image file:', error);
-        }
-      };
-
     const startTransfrom = async () => {
         const formData = new FormData();
-        console.log(imageSource)
-        formData.append('file_upload', getImageFile(imageSource.path));
-
+        formData.append("file_upload", {uri: imageSource.path, name: 'EDF7A611-B475-446C-86EE-34E9907BFF48.jpeg', type: 'image/jpeg'});
         try {
-            const endPoint = 'https://c827-114-34-116-46.ngrok-free.app/uploadfile';
-            const response = await fetch(endPoint, {
+            const endPoint = 'https://7c60-70-24-203-73.ngrok-free.app/uploadfile';
+            let response = await fetch(endPoint, {
                 method: 'POST',
                 body: formData,
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },            
             }).then(response => response.json())
+            .then(response => {
+                console.log('response', response)
+            })
+            
+            hairTransfer();
+
+            if (response.ok) {
+                console.log("File uploaded successfully")
+            } else {
+                console.log(response)
+            }
+
+        } catch (error) {
+            return error
+        }
+
+    }
+
+    const hairTransfer = async () => {
+        console.log("transfer")
+
+        try {
+            const endPoint = 'https://7c60-70-24-203-73.ngrok-free.app/hair-transfer';
+            let response = await fetch(endPoint).then(response => response.json())
             .then(response => {
               console.log('response', response)
             })
@@ -131,7 +144,7 @@ const CameraScreen = () => {
         transformText: {
             color: '#fff',
             height: 45
-        }
+        },
     })
 
     return (

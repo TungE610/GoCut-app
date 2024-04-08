@@ -417,6 +417,17 @@ PODS:
     - React-jsi (= 0.71.13)
     - React-logger (= 0.71.13)
     - React-perflogger (= 0.71.13)
+  - RNFS (2.20.0):
+    - React-Core
+  - RNImageCropPicker (0.40.2):
+    - React-Core
+    - React-RCTImage
+    - RNImageCropPicker/QBImagePickerController (= 0.40.2)
+    - TOCropViewController
+  - RNImageCropPicker/QBImagePickerController (0.40.2):
+    - React-Core
+    - React-RCTImage
+    - TOCropViewController
   - RNReanimated (2.17.0):
     - DoubleConversion
     - FBLazyVector
@@ -449,6 +460,7 @@ PODS:
     - React-RCTImage
   - RNSVG (13.14.0):
     - React-Core
+  - TOCropViewController (2.6.1)
   - VisionCamera (3.3.1):
     - React
     - React-callinvoker
@@ -508,6 +520,8 @@ DEPENDENCIES:
   - React-RCTVibration (from `../node_modules/react-native/Libraries/Vibration`)
   - React-runtimeexecutor (from `../node_modules/react-native/ReactCommon/runtimeexecutor`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
+  - RNFS (from `../node_modules/react-native-fs`)
+  - RNImageCropPicker (from `../node_modules/react-native-image-crop-picker`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNSVG (from `../node_modules/react-native-svg`)
@@ -517,6 +531,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - fmt
+    - TOCropViewController
 
 EXTERNAL SOURCES:
   boost:
@@ -621,6 +636,10 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/runtimeexecutor"
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
+  RNFS:
+    :path: "../node_modules/react-native-fs"
+  RNImageCropPicker:
+    :path: "../node_modules/react-native-image-crop-picker"
   RNReanimated:
     :path: "../node_modules/react-native-reanimated"
   RNScreens:
@@ -685,9 +704,12 @@ SPEC CHECKSUMS:
   React-RCTVibration: 2271362cdf9ff2dae6a2156f5101e5c30b02694d
   React-runtimeexecutor: 35cec6420c9d4144b0d06f9fdb093cf8f02bd52c
   ReactCommon: 56296d2632e8eb53e94a2b7c0d05db694e164ca7
+  RNFS: 4ac0f0ea233904cb798630b3c077808c06931688
+  RNImageCropPicker: d9616a0cb9b72e8551ff94a7a5021fbd29050aa5
   RNReanimated: f186e85d9f28c9383d05ca39e11dd194f59093ec
   RNScreens: 85d3880b52d34db7b8eeebe2f1a0e807c05e69fa
   RNSVG: d00c8f91c3cbf6d476451313a18f04d220d4f396
+  TOCropViewController: edfd4f25713d56905ad1e0b9f5be3fbe0f59c863
   VisionCamera: ed0b360805f140c0108d9039fd8a58abbde2ff51
   Yoga: 135109c9b8c5d1a8af3a58d21cd4c7aa7f3bf555
 

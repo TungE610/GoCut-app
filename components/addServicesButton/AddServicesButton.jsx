@@ -13,19 +13,16 @@ const AddServicesButton = (props) => {
 		},
 		addText: {
 			fontSize: 19,
-			fontWeight: 700,
+			fontWeight: "700",
 			alignSelf: 'center',
 			lineHeight: viewportHeight/15,
 			color: props.color || '#fff'
 		},
-		selectedCount: {
-			color: "#e88a0e",
-		}
 	})
 
 	return (
 		<TouchableOpacity style={styles.container} onPress={props.nextStepHandler}>
-			<Text style={styles.addText}>Select this salon and add 
+			<Text style={styles.addText}>{props.content === 'only-add' ? "Select " : "Select this salon and add"} 
 				<Text style={styles.selectedCount}>
 					{" " + props.selectedCount + " "} {props.selectedCount > 1 ? "services" : "service"}
 				</Text> 

@@ -17,10 +17,9 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		gap: 6,
 		alignItems: 'center',
-		padding: 10,
-		borderRadius: 50,
-		// backgroundColor: '#fff'
-		
+		paddingHorizontal: 10,
+		paddingVertical: 5,
+		borderRadius: 5,
 	},
 	service: {
 		fontSize: 16,

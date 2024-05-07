@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import {StyleSheet, Dimensions, ScrollView, View, ImageBackground, Text} from 'react-native';
+import {StyleSheet, Dimensions, ScrollView, View, Text} from 'react-native';
 import ReturnHomeButton from '../../components/returnHomeButton/ReturnHomeButton';
 import MarkButton from '../../components/markButton/MarkButton';
 import ClockIcon from '../../assets/clock.svg';
@@ -12,46 +12,19 @@ import AddServicesButton from '../../components/addServicesButton/AddServicesBut
 import CutIcon from '../../assets/cut.svg';
 import FacialIcon from '../../assets/facial.svg';
 import NailIcon from '../../assets/nail.svg';
+import FastImage from 'react-native-fast-image'
 
 const {width: viewportWidth, height: viewportHeight} = Dimensions.get('screen');
 
-const sampleServices = [
-	{
-		id: 0,
-		name: 'Women medium blunt cut',
-		type: "haircut",
-		serviceTime: 2,
-		serviceFee : 500,
-		salePercent: 20,
-		image: require('../../assets/service1.jpg')
-	},
-	{
-		id: 1,
-		name: 'Women medium blunt cut',
-		type: "haircut",
-		serviceTime: 2,
-		serviceFee : 500,
-		salePercent: 20,
-		image: require('../../assets/service2.jpg')
-	},
-	{
-		id: 2,
-		name: 'Women medium blunt cut',
-		type: "facial",
-		serviceTime: 2,
-		serviceFee : 500,
-		salePercent: 30,
-		image: require('../../assets/service3.jpg')
-	}
-]
 
-const SalonDetail = ({navigation, ...props}) => {
+const SalonDetail = ({route, navigation, ...props}) => {
 
-	const initialServices =  sampleServices.filter(service => service.type === 'haircut');
+	const initialServices =  [].filter(service => service.type === 'haircut');
 
 	const [selectedServiceType, setSelectedServiceType] = useState("haircut");
 	const [selectedServices, setSelectedServices] = useState([]);
 	const [filtedServices, setFilteredServices] = useState(initialServices);
+	const {salon} = route.params;
 
 	const returnHomeHandler = () => {
 		navigation.navigate('Dashboard');
@@ -72,21 +45,19 @@ const SalonDetail = ({navigation, ...props}) => {
 		  setSelectedServices((prevSelectedServices) => [...prevSelectedServices, service]);
 		}
 	};
-
-	console.log(selectedServices);
 	
 	return (
 		<View style={styles.container}>
 			<ScrollView style={styles.content}>
-				<ImageBackground
-					source={require('../../assets/salon1.jpg')}
+				<FastImage
+					source={{uri: '../../assets/salon1.jpg'}}
 					style={styles.salonImage}
 				>
 					<View style={styles.buttonsContainer}>
 						<ReturnHomeButton onClick={returnHomeHandler}/>
 						<MarkButton />
 					</View>
-				</ImageBackground>
+				</FastImage>
 				<View style={styles.salonDetail}>
 					<Text style={styles.salonName}>
 						{props.salonName || 'Plush beauty Salon'}
@@ -151,7 +122,7 @@ const SalonDetail = ({navigation, ...props}) => {
 								color={selectedServiceType === 'haircut' ? '#fff' : '#3d5c98'}
 								onClick={() => {
 									setSelectedServiceType("haircut");
-									setFilteredServices(sampleServices.filter(service => service.type === 'haircut'))
+									setFilteredServices([].filter(service => service.type === 'haircut'))
 									selectedServices.length = 0;
 								}}
 							/>
@@ -196,7 +167,7 @@ const SalonDetail = ({navigation, ...props}) => {
 								})
 							}
 							{
-								filtedServices.length === 0 ? <Text style={{textAlign: 'center', marginTop: 10, fontSize: 16, fontWeight: 600, color: '#3d5c98'}}>Not found any services</Text> : ""
+								filtedServices.length === 0 ? <Text style={{textAlign: 'center', marginTop: 10, fontSize: 16, fontWeight: "600", color: '#3d5c98'}}>Not found any services</Text> : ""
 							}
 						</View>
 					</View>
@@ -268,12 +239,12 @@ const styles = StyleSheet.create({
 	},
 	rattingPoint: {
 		fontSize: 19,
-		fontWeight: 600,
+		fontWeight: "600",
 		color: '#FE7A01',
 	},
 	rattingNum: {
 		fontSize: 19,
-		fontWeight: 600,
+		fontWeight: "600",
 		color: '#555',
 	},
 	view: {
@@ -283,7 +254,7 @@ const styles = StyleSheet.create({
 	},
 	viewNum: {
 		fontSize: 19,
-		fontWeight: 600,
+		fontWeight: "600",
 		color: '#555',
 	},
 	about: {
@@ -292,7 +263,7 @@ const styles = StyleSheet.create({
 	},
 	aboutTitle: {
 		fontSize: 20,
-		fontWeight: 600,
+		fontWeight: "600",
 		color: '#2A4780'
 	},
 	aboutDetail: {
@@ -317,7 +288,7 @@ const styles = StyleSheet.create({
 	},
 	amOpeningHours: {
 		fontSize: 14,
-		fontWeight: 700,
+		fontWeight: "700",
 		color: '#2A4780'
 	},
 	serviceTypesStack: {

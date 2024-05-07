@@ -7,7 +7,7 @@ const BackButton  = (props) => {
 
 	return (
 		<TouchableOpacity style={styles.container} onPress={props.onClick}>
-			<BackIcon height={30} width={30} style={styles.icon}/>
+			<BackIcon height={30} width={30} style={styles.icon} color={props.color}/>
 		</TouchableOpacity>
 	)
 }
@@ -16,14 +16,14 @@ const styles = StyleSheet.create({
 	container: {
 		width: viewportWidth/10,
 		height: viewportWidth/10,
-		backgroundColor: '#fff',
+		backgroundColor: '#3c5c98',
 		borderRadius: 10,
-		opacity: 0.4,
+		opacity: 0.8,
 		justifyContent: 'center',
 		alignItems: 'center',
 	},
 	icon: {
-
+		color: '#fff'
 	}
 })
 

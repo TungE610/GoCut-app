@@ -4,15 +4,25 @@ import {StyleSheet, View, TouchableOpacity, Dimensions, Image, Text} from 'react
 import ShutterBtn from '../assets/shutter.svg';
 import FlipCameraBtn from '../assets/flipCamera.svg';
 import CloseBtn from '../assets/close.svg';
-import ImagePicker from 'react-native-image-crop-picker';
+import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 
 const CameraScreen = () => {
-    const [camView, setCamView] = useState('back'); 
+    const [camView, setCamView] = useState('front'); 
     const [showCamera, setShowCamera] = useState(true);   
     const camera = useRef(null);
     const device = useCameraDevice(camView, {
-        physicalDevices: ['wide-angle-camera']
+        physicalDevices: ['ultra-wide-angle-camera']
      });
+
+    const format = useCameraFormat(device, [
+        {
+            photoAspectRatio: 4 / 3,
+        },
+        { photoResolution: 'max' },
+        { videoAspectRatio: 4 / 3 },
+        { videoResolution: 'max' },
+        // {iso: 'max'}
+    ])
       
      const [imageSource, setImageSource] = useState(null);
      const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
@@ -34,7 +44,10 @@ const CameraScreen = () => {
      const capturePhoto = async () => {
          if (camera.current !== null){
             try {
-                const photo = await camera.current.takePhoto()
+                const photo = await camera.current.takePhoto({
+                    qualityPrioritization: 'quality',
+                    enableAutoStabilization: true,
+                })
                 setShowCamera(false);
                 setImageSource(photo);
 
@@ -153,10 +166,16 @@ const CameraScreen = () => {
             <Camera
             ref={camera}
             device={device}
+            format={format}
             style={StyleSheet.absoluteFill}
             isActive={showCamera}
-            photo={true}
+            enableHighQualityPhotos
+            enableAutoStabilization
+            photo
+            hdr
+            zoom={device.neutralZoom}
             />
+
         ) : (
             imageSource !== '' && (
             <>

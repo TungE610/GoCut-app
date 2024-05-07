@@ -1,5 +1,7 @@
 import {StyleSheet, View, Text, Animated, Dimensions, Easing, TouchableWithoutFeedback} from 'react-native';
+
 import Location from '../../assets/location.svg';
+import FastImage from 'react-native-fast-image'
 
 const SalonCard = ({item, ...props}) => {
 	
@@ -7,7 +9,7 @@ const SalonCard = ({item, ...props}) => {
 	
 	Animated.timing(translateYImage, {
 		toValue: 0,
-		duration: 1000,
+		duration: 600,
 		useNativeDriver: true,
 		easing: Easing.bounce,
 	}).start();
@@ -17,28 +19,23 @@ const SalonCard = ({item, ...props}) => {
 			style={styles.container}
 			onPress={props.onClick}
 		>
-			<View>
-			<Animated.Image
-				source={item.item.img}
+			<Animated.View>
+			<FastImage
+				source={{uri: item.item.images.length > 0 ? item.item.images[0].image_url : ""}}
 				resizeMode="cover"
 				style={[
-				styles.image,
-				{
-					transform: [
+					styles.image,
 					{
-						translateY: translateYImage,
+						width: Dimensions.get('window').width - 33, height:150,
 					},
-					],
-					width: Dimensions.get('window').width - 33, height:150,
-				},
 				]}
 			/>
-			<Text style={styles.salonName}>{item.item.salonName}</Text>
+			<Text style={styles.salonName}>{item.item.name}</Text>
 			<View style={styles.addressContainer}>
 				<Location width={17} height={17} />
-				<Text style={styles.location}>{item.item.location}</Text>
+				<Text style={styles.location}>{item.item.address}</Text>
 			</View>
-			</View>
+			</Animated.View>
 		</TouchableWithoutFeedback>
 	)
 }
@@ -46,15 +43,14 @@ const SalonCard = ({item, ...props}) => {
 const styles = StyleSheet.create({
 	container: {
 		backgroundColor: '#fff',
-		borderRadius: 10,
+		borderRadius: 5,
 		height: '100%',
-		padding: 0,
 		borderWidth: '2px',
 		borderColor: '#fff'
 	},
 	image: {
 		width: '95%',
-		borderRadius: 10,
+		borderRadius: 5,
 		marginBottom: 10,
 	},
 	salonName: {
@@ -67,10 +63,10 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		gap: 4,
 		marginTop: 5,
-		paddingLeft: 5,
+		// paddingLeft: 5,
 	},
 	location: {
-		color: '#A5A1A1',
+		color: '#333',
 	}
 })
 

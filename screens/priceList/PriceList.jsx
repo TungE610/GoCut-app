@@ -172,7 +172,7 @@ const styles = StyleSheet.create({
 	},
 	selectedNumber: {
 		fontSize: 16,
-		fontWeight: 600,
+		fontWeight: "600",
 		color: '#fff'
 	},
 	selectUtil: {
@@ -224,12 +224,12 @@ const styles = StyleSheet.create({
 	},
 	serviceName: {
 		fontSize: 16,
-		fontWeight: 600,
+		fontWeight: "600",
 		color: '#3d5c98'
 	},
 	serviceFee: {
 		fontSize: 15,
-		fontWeight: 600,
+		fontWeight: "600",
 		color: '#333'
 	},
 	serviceTime: {

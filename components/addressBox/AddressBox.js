@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { StyleSheet, View , Text, TouchableOpacity, TextInput} from 'react-native';
+import { StyleSheet, View , Text, TouchableOpacity, TextInput, Dimensions} from 'react-native';
 import WriteIcon from '../../assets/write.svg';
 import SaveIcon from '../../assets/save.svg';
-import { Input } from 'react-native-elements';
+
+const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
 
 const AddressBox = (props) => {
 
@@ -55,27 +56,27 @@ const styles = StyleSheet.create({
 		alignSelf: 'flex-start',
 		borderTopColor: '#3d5c98',
 		borderTopWidth: 1,
-		gap: 20,
-		paddingVertical: 12,
+		paddingTop: 10,
 		paddingHorizontal: 10,
 		alignItems: 'center',
 		justifyContent: 'space-between'
 	},
 	addressBoxContent: {
-		gap: 6,
+		gap: 10,
 		flex: 10,
 	},
 	addressType: {
 		fontSize: 20,
-		fontWeight: 700,
+		fontWeight: "700",
 		color: '#3d5c98'
 	},
 	inputContainer: {
 		height: 30,
 	},
 	address: {
-		color: '#555',
+		color: '#333',
 		fontSize: 16,
+		width: viewportWidth * 3/4
 	},
 	addressInput: {
 		fontSize: 16,
@@ -86,7 +87,8 @@ const styles = StyleSheet.create({
 		borderWidth: 1,
 		paddingHorizontal: 10,
 		borderRadius: 5,
-		borderColor: '#3d5c98'
+		borderColor: '#3d5c98',
+		width: viewportWidth * 3/4
 	},
 })
 

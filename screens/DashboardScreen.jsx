@@ -1,3 +1,4 @@
+import {useState, useEffect} from 'react';
 import {StyleSheet, Dimensions, View, Text, ScrollView } from 'react-native'; 
 import NotificationBox from '../components/notificationBox/NotificationBox';
 import ShopBox from '../components/shopBox/ShopBox';
@@ -12,6 +13,7 @@ import sampleSalon from '../data/sampleSalon';
 import Carousel from 'react-native-snap-carousel';
 import sampleStylist from '../data/sampleStylist';
 import StylistCard from '../components/stylistCard/StylistCard';
+import axios from 'axios';
 
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
 
@@ -25,6 +27,18 @@ const DashboardScreen = ({navigation, ...props}) => {
 	const slideWidth = wp(28);
 	const sliderWidth = viewportWidth;
 	const sliderItemWidth = slideWidth + sliderItemHorizontalMargin * 2;
+	const [recommendedSalons, setRecommendedSalons] = useState([]);
+
+	useEffect(async () => {
+
+		await axios({
+			method: 'get',
+			url: 'http://192.168.1.10:8000/api/salons',
+			})
+			.then(function (response) {
+				setRecommendedSalons(response.data.slice(0, 5));
+  		});
+	}, []);
 
 	const menuCardClickHandler = (index) => {
 		if (index === 0) {
@@ -55,6 +69,11 @@ const DashboardScreen = ({navigation, ...props}) => {
 		navigation.navigate("Camera");
 	}
 
+	const openMap = () => {
+		navigation.navigate("Map");
+	}
+
+
 	const openGallery = () => {
 		navigation.navigate("Gallery");
 	}
@@ -83,12 +102,12 @@ const DashboardScreen = ({navigation, ...props}) => {
 				<View style={styles.recommendTab}>
 					<Text style={styles.recommendText}>Recommended for You</Text>
 					<RecommendedCarousel 
-						data={sampleSalon} 
+						data={recommendedSalons} 
 						item={(props) => <SalonCard {...props} 
-						onClick={() => {
-							navigation.navigate('SalonDetail');
-						}}/>} 
-					/>
+							onClick={(props) => {
+								navigation.navigate('SalonDetail', {salon: props.item});
+							}}/>} 
+						/>
 					<Text style={styles.hairStylistText}>Hair Stylist</Text>
 					<Carousel 
 						data={sampleStylist}
@@ -108,7 +127,7 @@ const DashboardScreen = ({navigation, ...props}) => {
 			returnHome={returnHomeHandler}
 			seeUserProfile={seeUserProfileHandler}
 			seeShop={seeShopHandler}
-			openCamera={openCamera}
+			openMap={openMap}
 			openGallery={openGallery}
 		/>
 	</View>
@@ -160,7 +179,7 @@ const styles = StyleSheet.create({
 		width: '100%',
 		backgroundColor: '#3d5c98',
 		justifyContent: 'space-between',
-		paddingHorizontal: 20,
+		paddingHorizontal: 15,
 	},
 	recommendTab: {
 		height: viewportHeight/1.5,
@@ -168,7 +187,7 @@ const styles = StyleSheet.create({
 		backgroundColor:'#D9D9D9',
 		marginTop: 50,
 		flexGrow: 1,
-		borderRadius: 10,
+		borderRadius: 5,
 		paddingTop: 10,
 		paddingHorizontal: 10,
 	},

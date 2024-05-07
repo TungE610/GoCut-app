@@ -3,19 +3,20 @@ import BackButton from '../components/backButton/BackButton';
 import AddressBox from '../components/addressBox/AddressBox';
 import HomeIcon from '../assets/homeAddress.svg';
 import OfficeIcon from '../assets/office.svg';
+import FootIcon from '../assets/foot.svg';
 
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
 
 const SavedAddress = ({navigation}) => {
 
 	const backButtonClickedHandler = () => {
-		navigation.navigate('Booking', {name: 'Tung'});
+		navigation.navigate('Profile');
 	}
 	
 	return (
 		<View style={styles.container}>
 			<View style={styles.backButton}>
-					<BackButton onClick={backButtonClickedHandler}/>
+					<BackButton onClick={backButtonClickedHandler} color="#fff"/>
 			</View>
 			<View style={styles.screenTitleContainer}>
 				<Text style={styles.screenTitle}>Saved Address</Text>
@@ -23,7 +24,7 @@ const SavedAddress = ({navigation}) => {
 			<View style={styles.savedAddressStack}>
 				<AddressBox icon={<HomeIcon width={30} height={30} color={'#3d5c98'}/>} addressType="Home address" address="151 Nguyễn Đức Cảnh, Tương Mai, Hoàng Mai"/>
 				<AddressBox icon={<OfficeIcon width={30} height={30} color={'#3d5c98'} />} addressType="Office address" address="Số 7 Thiền Quang"/>
-				<AddressBox icon={<HomeIcon width={30} height={30} color={'#3d5c98'} />} addressType="Regular address" address="151 Nguyễn Đức Cảnh, Tương Mai, Hoàng Mai"/>
+				<AddressBox icon={<FootIcon width={30} height={30} color={'#3d5c98'} />} addressType="Regular address" address="151 Nguyễn Đức Cảnh, Tương Mai, Hoàng Mai"/>
 			</View>
 		</View>
 	)
@@ -32,7 +33,7 @@ const SavedAddress = ({navigation}) => {
 const styles = StyleSheet.create({
 	container: {
 		height: viewportHeight,
-		backgroundColor: '#3d5c98'
+		backgroundColor: '#3d5c98',
 	}, 
 	backButton: {
 		position: 'absolute',
@@ -63,8 +64,9 @@ const styles = StyleSheet.create({
 		marginTop: 30,
 		alignSelf: 'flex-start',
 		width: viewportWidth,
-		backgroundColor: '#D9D9D9',
-		gap: 10,
+		backgroundColor: '#eee',
+		gap: 20,
+		borderRadius: 5,
 	}
 })
 

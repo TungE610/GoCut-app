@@ -1,5 +1,3 @@
-import { useState } from 'react';
-import { View, StyleSheet } from 'react-native';
 import DashboardScreen from './screens/DashboardScreen';
 import LoginScreen from './screens/LoginScreen';
 import SplashScreen from './screens/SplashScreen';
@@ -16,6 +14,8 @@ import ShopScreen from './screens/shop/ShopScreen';
 import CartScreen from './screens/card/CardScreen';
 import CameraScreen from './screens/CameraScreen';
 import Gallery from './screens/gallery/Gallery';
+import Map from './screens/map/Map';
+import FlashMessage from "react-native-flash-message";
 
 const Stack = createNativeStackNavigator();
 
@@ -23,9 +23,11 @@ export default function App() {
 
   return (
 	<NavigationContainer>
+		<FlashMessage position="top" />
 		<Stack.Navigator   
 			screenOptions={{
     			headerShown: false,
+				gestureEnabled: false,
   			}}>
 			<Stack.Screen
 				name="Splash"
@@ -33,7 +35,7 @@ export default function App() {
 				options={{title: 'Welcome'}}
 			/>
 			<Stack.Screen name="Dashboard" component={DashboardScreen} />
-			<Stack.Screen name="Booking" component={BookingScreen} />
+			<Stack.Screen name="Booking" component={BookingScreen}/>
 			<Stack.Screen name="SavedAddress" component={SavedAddress} />
 			<Stack.Screen name="PriceList" component={PriceList} />
 			<Stack.Screen name="UsageHistory" component={UsageHistory} />
@@ -44,6 +46,7 @@ export default function App() {
 			<Stack.Screen name="Cart" component={CartScreen} />
 			<Stack.Screen name="Camera" component={CameraScreen} />
 			<Stack.Screen name="Gallery" component={Gallery} />
+			<Stack.Screen name="Map" component={Map} />
 		</Stack.Navigator>
 	</NavigationContainer>
   );

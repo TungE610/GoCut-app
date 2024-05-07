@@ -37,7 +37,7 @@ const SearchInput = (props) => {
 					shadowOpacity: 0.2,
 					shadowRadius: 3,
 				}}
-				placeholderTextColor="#5E5F62"
+				placeholderTextColor="#999"
 				searchIcon={{ size: 28 }}
 				cancelButtonProps={{
 					color: props.cancelButtonColor ? props.cancelButtonColor : '#fff'
@@ -51,8 +51,6 @@ const styles = StyleSheet.create({
 	container: {
 		justifyContent: 'flex-start',
 		height: 70,
-		marginTop: 10,
-		paddingHorizontal: 5,
 	},
 	input: {
 		borderRadius: 7,
@@ -60,6 +58,7 @@ const styles = StyleSheet.create({
 		shadowOffset: {width: -2, height: 4},
 		shadowOpacity: 0.2,
 		shadowRadius: 3,
+		padding: 5,
 	},
 })
 

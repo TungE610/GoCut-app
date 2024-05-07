@@ -1,0 +1,3200 @@
+[
+    {
+        "label": "Th\u00e0nh ph\u1ed1 H\u00e0 N\u1ed9i",
+        "value": "Th\u00e0nh ph\u1ed1 H\u00e0 N\u1ed9i",
+        "districts": [
+            {
+                "label": "Qu\u1eadn Ba \u0110\u00ecnh",
+                "value": "Qu\u1eadn Ba \u0110\u00ecnh"
+            },
+            {
+                "label": "Qu\u1eadn Ho\u00e0n Ki\u1ebfm",
+                "value": "Qu\u1eadn Ho\u00e0n Ki\u1ebfm"
+            },
+            {
+                "label": "Qu\u1eadn T\u00e2y H\u1ed3",
+                "value": "Qu\u1eadn T\u00e2y H\u1ed3"
+            },
+            {
+                "label": "Qu\u1eadn Long Bi\u00ean",
+                "value": "Qu\u1eadn Long Bi\u00ean"
+            },
+            {
+                "label": "Qu\u1eadn C\u1ea7u Gi\u1ea5y",
+                "value": "Qu\u1eadn C\u1ea7u Gi\u1ea5y"
+            },
+            {
+                "label": "Qu\u1eadn \u0110\u1ed1ng \u0110a",
+                "value": "Qu\u1eadn \u0110\u1ed1ng \u0110a"
+            },
+            {
+                "label": "Qu\u1eadn Hai B\u00e0 Tr\u01b0ng",
+                "value": "Qu\u1eadn Hai B\u00e0 Tr\u01b0ng"
+            },
+            {
+                "label": "Qu\u1eadn Ho\u00e0ng Mai",
+                "value": "Qu\u1eadn Ho\u00e0ng Mai"
+            },
+            {
+                "label": "Qu\u1eadn Thanh Xu\u00e2n",
+                "value": "Qu\u1eadn Thanh Xu\u00e2n"
+            },
+            {
+                "label": "Huy\u1ec7n S\u00f3c S\u01a1n",
+                "value": "Huy\u1ec7n S\u00f3c S\u01a1n"
+            },
+            {
+                "label": "Huy\u1ec7n \u0110\u00f4ng Anh",
+                "value": "Huy\u1ec7n \u0110\u00f4ng Anh"
+            },
+            {
+                "label": "Huy\u1ec7n Gia L\u00e2m",
+                "value": "Huy\u1ec7n Gia L\u00e2m"
+            },
+            {
+                "label": "Qu\u1eadn Nam T\u1eeb Li\u00eam",
+                "value": "Qu\u1eadn Nam T\u1eeb Li\u00eam"
+            },
+            {
+                "label": "Huy\u1ec7n Thanh Tr\u00ec",
+                "value": "Huy\u1ec7n Thanh Tr\u00ec"
+            },
+            {
+                "label": "Qu\u1eadn B\u1eafc T\u1eeb Li\u00eam",
+                "value": "Qu\u1eadn B\u1eafc T\u1eeb Li\u00eam"
+            },
+            {
+                "label": "Huy\u1ec7n M\u00ea Linh",
+                "value": "Huy\u1ec7n M\u00ea Linh"
+            },
+            {
+                "label": "Qu\u1eadn H\u00e0 \u0110\u00f4ng",
+                "value": "Qu\u1eadn H\u00e0 \u0110\u00f4ng"
+            },
+            {
+                "label": "Th\u1ecb x\u00e3 S\u01a1n T\u00e2y",
+                "value": "Th\u1ecb x\u00e3 S\u01a1n T\u00e2y"
+            },
+            {
+                "label": "Huy\u1ec7n Ba V\u00ec",
+                "value": "Huy\u1ec7n Ba V\u00ec"
+            },
+            {
+                "label": "Huy\u1ec7n Ph\u00fac Th\u1ecd",
+                "value": "Huy\u1ec7n Ph\u00fac Th\u1ecd"
+            },
+            {
+                "label": "Huy\u1ec7n \u0110an Ph\u01b0\u1ee3ng",
+                "value": "Huy\u1ec7n \u0110an Ph\u01b0\u1ee3ng"
+            },
+            {
+                "label": "Huy\u1ec7n Ho\u00e0i \u0110\u1ee9c",
+                "value": "Huy\u1ec7n Ho\u00e0i \u0110\u1ee9c"
+            },
+            {
+                "label": "Huy\u1ec7n Qu\u1ed1c Oai",
+                "value": "Huy\u1ec7n Qu\u1ed1c Oai"
+            },
+            {
+                "label": "Huy\u1ec7n Th\u1ea1ch Th\u1ea5t",
+                "value": "Huy\u1ec7n Th\u1ea1ch Th\u1ea5t"
+            },
+            {
+                "label": "Huy\u1ec7n Ch\u01b0\u01a1ng M\u1ef9",
+                "value": "Huy\u1ec7n Ch\u01b0\u01a1ng M\u1ef9"
+            },
+            {
+                "label": "Huy\u1ec7n Thanh Oai",
+                "value": "Huy\u1ec7n Thanh Oai"
+            },
+            {
+                "label": "Huy\u1ec7n Th\u01b0\u1eddng T\u00edn",
+                "value": "Huy\u1ec7n Th\u01b0\u1eddng T\u00edn"
+            },
+            {
+                "label": "Huy\u1ec7n Ph\u00fa Xuy\u00ean",
+                "value": "Huy\u1ec7n Ph\u00fa Xuy\u00ean"
+            },
+            {
+                "label": "Huy\u1ec7n \u1ee8ng H\u00f2a",
+                "value": "Huy\u1ec7n \u1ee8ng H\u00f2a"
+            },
+            {
+                "label": "Huy\u1ec7n M\u1ef9 \u0110\u1ee9c",
+                "value": "Huy\u1ec7n M\u1ef9 \u0110\u1ee9c"
+            }
+        ]
+    },
+    {
+        "label": "T\u1ec9nh H\u00e0 Giang",
+        "value": "T\u1ec9nh H\u00e0 Giang",
+        "districts": [
+            {
+                "label": "Th\u00e0nh ph\u1ed1 H\u00e0 Giang",
+                "value": "Th\u00e0nh ph\u1ed1 H\u00e0 Giang"
+            },
+            {
+                "label": "Huy\u1ec7n \u0110\u1ed3ng V\u0103n",
+                "value": "Huy\u1ec7n \u0110\u1ed3ng V\u0103n"
+            },
+            {
+                "label": "Huy\u1ec7n M\u00e8o V\u1ea1c",
+                "value": "Huy\u1ec7n M\u00e8o V\u1ea1c"
+            },
+            {
+                "label": "Huy\u1ec7n Y\u00ean Minh",
+                "value": "Huy\u1ec7n Y\u00ean Minh"
+            },
+            {
+                "label": "Huy\u1ec7n Qu\u1ea3n B\u1ea1",
+                "value": "Huy\u1ec7n Qu\u1ea3n B\u1ea1"
+            },
+            {
+                "label": "Huy\u1ec7n V\u1ecb Xuy\u00ean",
+                "value": "Huy\u1ec7n V\u1ecb Xuy\u00ean"
+            },
+            {
+                "label": "Huy\u1ec7n B\u1eafc M\u00ea",
+                "value": "Huy\u1ec7n B\u1eafc M\u00ea"
+            },
+            {
+                "label": "Huy\u1ec7n Ho\u00e0ng Su Ph\u00ec",
+                "value": "Huy\u1ec7n Ho\u00e0ng Su Ph\u00ec"
+            },
+            {
+                "label": "Huy\u1ec7n X\u00edn M\u1ea7n",
+                "value": "Huy\u1ec7n X\u00edn M\u1ea7n"
+            },
+            {
+                "label": "Huy\u1ec7n B\u1eafc Quang",
+                "value": "Huy\u1ec7n B\u1eafc Quang"
+            },
+            {
+                "label": "Huy\u1ec7n Quang B\u00ecnh",
+                "value": "Huy\u1ec7n Quang B\u00ecnh"
+            }
+        ]
+    },
+    {
+        "label": "T\u1ec9nh Cao B\u1eb1ng",
+        "value": "T\u1ec9nh Cao B\u1eb1ng",
+        "districts": [
+            {
+                "label": "Th\u00e0nh ph\u1ed1 Cao B\u1eb1ng",
+                "value": "Th\u00e0nh ph\u1ed1 Cao B\u1eb1ng"
+            },
+            {
+                "label": "Huy\u1ec7n B\u1ea3o L\u00e2m",
+                "value": "Huy\u1ec7n B\u1ea3o L\u00e2m"
+            },
+            {
+                "label": "Huy\u1ec7n B\u1ea3o L\u1ea1c",
+                "value": "Huy\u1ec7n B\u1ea3o L\u1ea1c"
+            },
+            {
+                "label": "Huy\u1ec7n H\u00e0 Qu\u1ea3ng",
+                "value": "Huy\u1ec7n H\u00e0 Qu\u1ea3ng"
+            },
+            {
+                "label": "Huy\u1ec7n Tr\u00f9ng Kh\u00e1nh",
+                "value": "Huy\u1ec7n Tr\u00f9ng Kh\u00e1nh"
+            },
+            {
+                "label": "Huy\u1ec7n H\u1ea1 Lang",
+                "value": "Huy\u1ec7n H\u1ea1 Lang"
+            },
+            {
+                "label": "Huy\u1ec7n Qu\u1ea3ng H\u00f2a",
+                "value": "Huy\u1ec7n Qu\u1ea3ng H\u00f2a"
+            },
+            {
+                "label": "Huy\u1ec7n Ho\u00e0 An",
+                "value": "Huy\u1ec7n Ho\u00e0 An"
+            },
+            {
+                "label": "Huy\u1ec7n Nguy\u00ean B\u00ecnh",
+                "value": "Huy\u1ec7n Nguy\u00ean B\u00ecnh"
+            },
+            {
+                "label": "Huy\u1ec7n Th\u1ea1ch An",
+                "value": "Huy\u1ec7n Th\u1ea1ch An"
+            }
+        ]
+    },
+    {
+        "label": "T\u1ec9nh B\u1eafc K\u1ea1n",
+        "value": "T\u1ec9nh B\u1eafc K\u1ea1n",
+        "districts": [
+            {
+                "label": "Th\u00e0nh Ph\u1ed1 B\u1eafc K\u1ea1n",
+                "value": "Th\u00e0nh Ph\u1ed1 B\u1eafc K\u1ea1n"
+            },
+            {
+                "label": "Huy\u1ec7n P\u00e1c N\u1eb7m",
+                "value": "Huy\u1ec7n P\u00e1c N\u1eb7m"
+            },
+            {
+                "label": "Huy\u1ec7n Ba B\u1ec3",
+                "value": "Huy\u1ec7n Ba B\u1ec3"
+            },
+            {
+                "label": "Huy\u1ec7n Ng\u00e2n S\u01a1n",
+                "value": "Huy\u1ec7n Ng\u00e2n S\u01a1n"
+            },
+            {
+                "label": "Huy\u1ec7n B\u1ea1ch Th\u00f4ng",
+                "value": "Huy\u1ec7n B\u1ea1ch Th\u00f4ng"
+            },
+            {
+                "label": "Huy\u1ec7n Ch\u1ee3 \u0110\u1ed3n",
+                "value": "Huy\u1ec7n Ch\u1ee3 \u0110\u1ed3n"
+            },
+            {
+                "label": "Huy\u1ec7n Ch\u1ee3 M\u1edbi",
+                "value": "Huy\u1ec7n Ch\u1ee3 M\u1edbi"
+            },
+            {
+                "label": "Huy\u1ec7n Na R\u00ec",
+                "value": "Huy\u1ec7n Na R\u00ec"
+            }
+        ]
+    },
+    {
+        "label": "T\u1ec9nh Tuy\u00ean Quang",
+        "value": "T\u1ec9nh Tuy\u00ean Quang",
+        "districts": [
+            {
+                "label": "Th\u00e0nh ph\u1ed1 Tuy\u00ean Quang",
+                "value": "Th\u00e0nh ph\u1ed1 Tuy\u00ean Quang"
+            },
+            {
+                "label": "Huy\u1ec7n L\u00e2m B\u00ecnh",
+                "value": "Huy\u1ec7n L\u00e2m B\u00ecnh"
+            },
+            {
+                "label": "Huy\u1ec7n Na Hang",
+                "value": "Huy\u1ec7n Na Hang"
+            },
+            {
+                "label": "Huy\u1ec7n Chi\u00eam H\u00f3a",
+                "value": "Huy\u1ec7n Chi\u00eam H\u00f3a"
+            },
+            {
+                "label": "Huy\u1ec7n H\u00e0m Y\u00ean",
+                "value": "Huy\u1ec7n H\u00e0m Y\u00ean"
+            },
+            {
+                "label": "Huy\u1ec7n Y\u00ean S\u01a1n",
+                "value": "Huy\u1ec7n Y\u00ean S\u01a1n"
+            },
+            {
+                "label": "Huy\u1ec7n S\u01a1n D\u01b0\u01a1ng",
+                "value": "Huy\u1ec7n S\u01a1n D\u01b0\u01a1ng"
+            }
+        ]
+    },
+    {
+        "label": "T\u1ec9nh L\u00e0o Cai",
+        "value": "T\u1ec9nh L\u00e0o Cai",
+        "districts": [
+            {
+                "label": "Th\u00e0nh ph\u1ed1 L\u00e0o Cai",
+                "value": "Th\u00e0nh ph\u1ed1 L\u00e0o Cai"
+            },
+            {
+                "label": "Huy\u1ec7n B\u00e1t X\u00e1t",
+                "value": "Huy\u1ec7n B\u00e1t X\u00e1t"
+            },
+            {
+                "label": "Huy\u1ec7n M\u01b0\u1eddng Kh\u01b0\u01a1ng",
+                "value": "Huy\u1ec7n M\u01b0\u1eddng Kh\u01b0\u01a1ng"
+            },
+            {
+                "label": "Huy\u1ec7n Si Ma Cai",
+                "value": "Huy\u1ec7n Si Ma Cai"
+            },
+            {
+                "label": "Huy\u1ec7n B\u1eafc H\u00e0",
+                "value": "Huy\u1ec7n B\u1eafc H\u00e0"
+            },
+            {
+                "label": "Huy\u1ec7n B\u1ea3o Th\u1eafng",
+                "value": "Huy\u1ec7n B\u1ea3o Th\u1eafng"
+            },
+            {
+                "label": "Huy\u1ec7n B\u1ea3o Y\u00ean",
+                "value": "Huy\u1ec7n B\u1ea3o Y\u00ean"
+            },
+            {
+                "label": "Th\u1ecb x\u00e3 Sa Pa",
+                "value": "Th\u1ecb x\u00e3 Sa Pa"
+            },
+            {
+                "label": "Huy\u1ec7n V\u0103n B\u00e0n",
+                "value": "Huy\u1ec7n V\u0103n B\u00e0n"
+            }
+        ]
+    },
+    {
+        "label": "T\u1ec9nh \u0110i\u1ec7n Bi\u00ean",
+        "value": "T\u1ec9nh \u0110i\u1ec7n Bi\u00ean",
+        "districts": [
+            {
+                "label": "Th\u00e0nh ph\u1ed1 \u0110i\u1ec7n Bi\u00ean Ph\u1ee7",
+                "value": "Th\u00e0nh ph\u1ed1 \u0110i\u1ec7n Bi\u00ean Ph\u1ee7"
+            },
+            {
+                "label": "Th\u1ecb x\u00e3 M\u01b0\u1eddng Lay",
+                "value": "Th\u1ecb x\u00e3 M\u01b0\u1eddng Lay"
+            },
+            {
+                "label": "Huy\u1ec7n M\u01b0\u1eddng Nh\u00e9",
+                "value": "Huy\u1ec7n M\u01b0\u1eddng Nh\u00e9"
+            },
+            {
+                "label": "Huy\u1ec7n M\u01b0\u1eddng Ch\u00e0",
+                "value": "Huy\u1ec7n M\u01b0\u1eddng Ch\u00e0"
+            },
+            {
+                "label": "Huy\u1ec7n T\u1ee7a Ch\u00f9a",
+                "value": "Huy\u1ec7n T\u1ee7a Ch\u00f9a"
+            },
+            {
+                "label": "Huy\u1ec7n Tu\u1ea7n Gi\u00e1o",
+                "value": "Huy\u1ec7n Tu\u1ea7n Gi\u00e1o"
+            },
+            {
+                "label": "Huy\u1ec7n \u0110i\u1ec7n Bi\u00ean",
+                "value": "Huy\u1ec7n \u0110i\u1ec7n Bi\u00ean"
+            },
+            {
+                "label": "Huy\u1ec7n \u0110i\u1ec7n Bi\u00ean \u0110\u00f4ng",
+                "value": "Huy\u1ec7n \u0110i\u1ec7n Bi\u00ean \u0110\u00f4ng"
+            },
+            {
+                "label": "Huy\u1ec7n M\u01b0\u1eddng \u1ea2ng",
+                "value": "Huy\u1ec7n M\u01b0\u1eddng \u1ea2ng"
+            },
+            {
+                "label": "Huy\u1ec7n N\u1eadm P\u1ed3",
+                "value": "Huy\u1ec7n N\u1eadm P\u1ed3"
+            }
+        ]
+    },
+    {
+        "label": "T\u1ec9nh Lai Ch\u00e2u",
+        "value": "T\u1ec9nh Lai Ch\u00e2u",
+        "districts": [
+            {
+                "label": "Th\u00e0nh ph\u1ed1 Lai Ch\u00e2u",
+                "value": "Th\u00e0nh ph\u1ed1 Lai Ch\u00e2u"
+            },
+            {
+                "label": "Huy\u1ec7n Tam \u0110\u01b0\u1eddng",
+                "value": "Huy\u1ec7n Tam \u0110\u01b0\u1eddng"
+            },
+            {
+                "label": "Huy\u1ec7n M\u01b0\u1eddng T\u00e8",
+                "value": "Huy\u1ec7n M\u01b0\u1eddng T\u00e8"
+            },
+            {
+                "label": "Huy\u1ec7n S\u00ecn H\u1ed3",
+                "value": "Huy\u1ec7n S\u00ecn H\u1ed3"
+            },
+            {
+                "label": "Huy\u1ec7n Phong Th\u1ed5",
+                "value": "Huy\u1ec7n Phong Th\u1ed5"
+            },
+            {
+                "label": "Huy\u1ec7n Than Uy\u00ean",
+                "value": "Huy\u1ec7n Than Uy\u00ean"
+            },
+            {
+                "label": "Huy\u1ec7n T\u00e2n Uy\u00ean",
+                "value": "Huy\u1ec7n T\u00e2n Uy\u00ean"
+            },
+            {
+                "label": "Huy\u1ec7n N\u1eadm Nh\u00f9n",
+                "value": "Huy\u1ec7n N\u1eadm Nh\u00f9n"
+            }
+        ]
+    },
+    {
+        "label": "T\u1ec9nh S\u01a1n La",
+        "value": "T\u1ec9nh S\u01a1n La",
+        "districts": [
+            {
+                "label": "Th\u00e0nh ph\u1ed1 S\u01a1n La",
+                "value": "Th\u00e0nh ph\u1ed1 S\u01a1n La"
+            },
+            {
+                "label": "Huy\u1ec7n Qu\u1ef3nh Nhai",
+                "value": "Huy\u1ec7n Qu\u1ef3nh Nhai"
+            },
+            {
+                "label": "Huy\u1ec7n Thu\u1eadn Ch\u00e2u",
+                "value": "Huy\u1ec7n Thu\u1eadn Ch\u00e2u"
+            },
+            {
+                "label": "Huy\u1ec7n M\u01b0\u1eddng La",
+                "value": "Huy\u1ec7n M\u01b0\u1eddng La"
+            },
+            {
+                "label": "Huy\u1ec7n B\u1eafc Y\u00ean",
+                "value": "Huy\u1ec7n B\u1eafc Y\u00ean"
+            },
+            {
+                "label": "Huy\u1ec7n Ph\u00f9 Y\u00ean",
+                "value": "Huy\u1ec7n Ph\u00f9 Y\u00ean"
+            },
+            {
+                "label": "Huy\u1ec7n M\u1ed9c Ch\u00e2u",
+                "value": "Huy\u1ec7n M\u1ed9c Ch\u00e2u"
+            },
+            {
+                "label": "Huy\u1ec7n Y\u00ean Ch\u00e2u",
+                "value": "Huy\u1ec7n Y\u00ean Ch\u00e2u"
+            },
+            {
+                "label": "Huy\u1ec7n Mai S\u01a1n",
+                "value": "Huy\u1ec7n Mai S\u01a1n"
+            },
+            {
+                "label": "Huy\u1ec7n S\u00f4ng M\u00e3",
+                "value": "Huy\u1ec7n S\u00f4ng M\u00e3"
+            },
+            {
+                "label": "Huy\u1ec7n S\u1ed1p C\u1ed9p",
+                "value": "Huy\u1ec7n S\u1ed1p C\u1ed9p"
+            },
+            {
+                "label": "Huy\u1ec7n V\u00e2n H\u1ed3",
+                "value": "Huy\u1ec7n V\u00e2n H\u1ed3"
+            }
+        ]
+    },
+    {
+        "label": "T\u1ec9nh Y\u00ean B\u00e1i",
+        "value": "T\u1ec9nh Y\u00ean B\u00e1i",
+        "districts": [
+            {
+                "label": "Th\u00e0nh ph\u1ed1 Y\u00ean B\u00e1i",
+                "value": "Th\u00e0nh ph\u1ed1 Y\u00ean B\u00e1i"
+            },
+            {
+                "label": "Th\u1ecb x\u00e3 Ngh\u0129a L\u1ed9",
+                "value": "Th\u1ecb x\u00e3 Ngh\u0129a L\u1ed9"
+            },
+            {
+                "label": "Huy\u1ec7n L\u1ee5c Y\u00ean",
+                "value": "Huy\u1ec7n L\u1ee5c Y\u00ean"
+            },
+            {
+                "label": "Huy\u1ec7n V\u0103n Y\u00ean",
+                "value": "Huy\u1ec7n V\u0103n Y\u00ean"
+            },
+            {
+                "label": "Huy\u1ec7n M\u00f9 C\u0103ng Ch\u1ea3i",
+                "value": "Huy\u1ec7n M\u00f9 C\u0103ng Ch\u1ea3i"
+            },
+            {
+                "label": "Huy\u1ec7n Tr\u1ea5n Y\u00ean",
+                "value": "Huy\u1ec7n Tr\u1ea5n Y\u00ean"
+            },
+            {
+                "label": "Huy\u1ec7n Tr\u1ea1m T\u1ea5u",
+                "value": "Huy\u1ec7n Tr\u1ea1m T\u1ea5u"
+            },
+            {
+                "label": "Huy\u1ec7n V\u0103n Ch\u1ea5n",
+                "value": "Huy\u1ec7n V\u0103n Ch\u1ea5n"
+            },
+            {
+                "label": "Huy\u1ec7n Y\u00ean B\u00ecnh",
+                "value": "Huy\u1ec7n Y\u00ean B\u00ecnh"
+            }
+        ]
+    },
+    {
+        "label": "T\u1ec9nh Ho\u00e0 B\u00ecnh",
+        "value": "T\u1ec9nh Ho\u00e0 B\u00ecnh",
+        "districts": [
+            {
+                "label": "Th\u00e0nh ph\u1ed1 H\u00f2a B\u00ecnh",
+                "value": "Th\u00e0nh ph\u1ed1 H\u00f2a B\u00ecnh"
+            },
+            {
+                "label": "Huy\u1ec7n \u0110\u00e0 B\u1eafc",
+                "value": "Huy\u1ec7n \u0110\u00e0 B\u1eafc"
+            },
+            {
+                "label": "Huy\u1ec7n L\u01b0\u01a1ng S\u01a1n",
+                "value": "Huy\u1ec7n L\u01b0\u01a1ng S\u01a1n"
+            },
+            {
+                "label": "Huy\u1ec7n Kim B\u00f4i",
+                "value": "Huy\u1ec7n Kim B\u00f4i"
+            },
+            {
+                "label": "Huy\u1ec7n Cao Phong",
+                "value": "Huy\u1ec7n Cao Phong"
+            },
+            {
+                "label": "Huy\u1ec7n T\u00e2n L\u1ea1c",
+                "value": "Huy\u1ec7n T\u00e2n L\u1ea1c"
+            },
+            {
+                "label": "Huy\u1ec7n Mai Ch\u00e2u",
+                "value": "Huy\u1ec7n Mai Ch\u00e2u"
+            },
+            {
+                "label": "Huy\u1ec7n L\u1ea1c S\u01a1n",
+                "value": "Huy\u1ec7n L\u1ea1c S\u01a1n"
+            },
+            {
+                "label": "Huy\u1ec7n Y\u00ean Th\u1ee7y",
+                "value": "Huy\u1ec7n Y\u00ean Th\u1ee7y"
+            },
+            {
+                "label": "Huy\u1ec7n L\u1ea1c Th\u1ee7y",
+                "value": "Huy\u1ec7n L\u1ea1c Th\u1ee7y"
+            }
+        ]
+    },
+    {
+        "label": "T\u1ec9nh Th\u00e1i Nguy\u00ean",
+        "value": "T\u1ec9nh Th\u00e1i Nguy\u00ean",
+        "districts": [
+            {
+                "label": "Th\u00e0nh ph\u1ed1 Th\u00e1i Nguy\u00ean",
+                "value": "Th\u00e0nh ph\u1ed1 Th\u00e1i Nguy\u00ean"
+            },
+            {
+                "label": "Th\u00e0nh ph\u1ed1 S\u00f4ng C\u00f4ng",
+                "value": "Th\u00e0nh ph\u1ed1 S\u00f4ng C\u00f4ng"
+            },
+            {
+                "label": "Huy\u1ec7n \u0110\u1ecbnh H\u00f3a",
+                "value": "Huy\u1ec7n \u0110\u1ecbnh H\u00f3a"
+            },
+            {
+                "label": "Huy\u1ec7n Ph\u00fa L\u01b0\u01a1ng",
+                "value": "Huy\u1ec7n Ph\u00fa L\u01b0\u01a1ng"
+            },
+            {
+                "label": "Huy\u1ec7n \u0110\u1ed3ng H\u1ef7",
+                "value": "Huy\u1ec7n \u0110\u1ed3ng H\u1ef7"
+            },
+            {
+                "label": "Huy\u1ec7n V\u00f5 Nhai",
+                "value": "Huy\u1ec7n V\u00f5 Nhai"
+            },
+            {
+                "label": "Huy\u1ec7n \u0110\u1ea1i T\u1eeb",
+                "value": "Huy\u1ec7n \u0110\u1ea1i T\u1eeb"
+            },
+            {
+                "label": "Th\u00e0nh ph\u1ed1 Ph\u1ed5 Y\u00ean",
+                "value": "Th\u00e0nh ph\u1ed1 Ph\u1ed5 Y\u00ean"
+            },
+            {
+                "label": "Huy\u1ec7n Ph\u00fa B\u00ecnh",
+                "value": "Huy\u1ec7n Ph\u00fa B\u00ecnh"
+            }
+        ]
+    },
+    {
+        "label": "T\u1ec9nh L\u1ea1ng S\u01a1n",
+        "value": "T\u1ec9nh L\u1ea1ng S\u01a1n",
+        "districts": [
+            {
+                "label": "Th\u00e0nh ph\u1ed1 L\u1ea1ng S\u01a1n",
+                "value": "Th\u00e0nh ph\u1ed1 L\u1ea1ng S\u01a1n"
+            },
+            {
+                "label": "Huy\u1ec7n Tr\u00e0ng \u0110\u1ecbnh",
+                "value": "Huy\u1ec7n Tr\u00e0ng \u0110\u1ecbnh"
+            },
+            {
+                "label": "Huy\u1ec7n B\u00ecnh Gia",
+                "value": "Huy\u1ec7n B\u00ecnh Gia"
+            },
+            {
+                "label": "Huy\u1ec7n V\u0103n L\u00e3ng",
+                "value": "Huy\u1ec7n V\u0103n L\u00e3ng"
+            },
+            {
+                "label": "Huy\u1ec7n Cao L\u1ed9c",
+                "value": "Huy\u1ec7n Cao L\u1ed9c"
+            },
+            {
+                "label": "Huy\u1ec7n V\u0103n Quan",
+                "value": "Huy\u1ec7n V\u0103n Quan"
+            },
+            {
+                "label": "Huy\u1ec7n B\u1eafc S\u01a1n",
+                "value": "Huy\u1ec7n B\u1eafc S\u01a1n"
+            },
+            {
+                "label": "Huy\u1ec7n H\u1eefu L\u0169ng",
+                "value": "Huy\u1ec7n H\u1eefu L\u0169ng"
+            },
+            {
+                "label": "Huy\u1ec7n Chi L\u0103ng",
+                "value": "Huy\u1ec7n Chi L\u0103ng"
+            },
+            {
+                "label": "Huy\u1ec7n L\u1ed9c B\u00ecnh",
+                "value": "Huy\u1ec7n L\u1ed9c B\u00ecnh"
+            },
+            {
+                "label": "Huy\u1ec7n \u0110\u00ecnh L\u1eadp",
+                "value": "Huy\u1ec7n \u0110\u00ecnh L\u1eadp"
+            }
+        ]
+    },
+    {
+        "label": "T\u1ec9nh Qu\u1ea3ng Ninh",
+        "value": "T\u1ec9nh Qu\u1ea3ng Ninh",
+        "districts": [
+            {
+                "label": "Th\u00e0nh ph\u1ed1 H\u1ea1 Long",
+                "value": "Th\u00e0nh ph\u1ed1 H\u1ea1 Long"
+            },
+            {
+                "label": "Th\u00e0nh ph\u1ed1 M\u00f3ng C\u00e1i",
+                "value": "Th\u00e0nh ph\u1ed1 M\u00f3ng C\u00e1i"
+            },
+            {
+                "label": "Th\u00e0nh ph\u1ed1 C\u1ea9m Ph\u1ea3",
+                "value": "Th\u00e0nh ph\u1ed1 C\u1ea9m Ph\u1ea3"
+            },
+            {
+                "label": "Th\u00e0nh ph\u1ed1 U\u00f4ng B\u00ed",
+                "value": "Th\u00e0nh ph\u1ed1 U\u00f4ng B\u00ed"
+            },
+            {
+                "label": "Huy\u1ec7n B\u00ecnh Li\u00eau",
+                "value": "Huy\u1ec7n B\u00ecnh Li\u00eau"
+            },
+            {
+                "label": "Huy\u1ec7n Ti\u00ean Y\u00ean",
+                "value": "Huy\u1ec7n Ti\u00ean Y\u00ean"
+            },
+            {
+                "label": "Huy\u1ec7n \u0110\u1ea7m H\u00e0",
+                "value": "Huy\u1ec7n \u0110\u1ea7m H\u00e0"
+            },
+            {
+                "label": "Huy\u1ec7n H\u1ea3i H\u00e0",
+                "value": "Huy\u1ec7n H\u1ea3i H\u00e0"
+            },
+            {
+                "label": "Huy\u1ec7n Ba Ch\u1ebd",
+                "value": "Huy\u1ec7n Ba Ch\u1ebd"
+            },
+            {
+                "label": "Huy\u1ec7n V\u00e2n \u0110\u1ed3n",
+                "value": "Huy\u1ec7n V\u00e2n \u0110\u1ed3n"
+            },
+            {
+                "label": "Th\u1ecb x\u00e3 \u0110\u00f4ng Tri\u1ec1u",
+                "value": "Th\u1ecb x\u00e3 \u0110\u00f4ng Tri\u1ec1u"
+            },
+            {
+                "label": "Th\u1ecb x\u00e3 Qu\u1ea3ng Y\u00ean",
+                "value": "Th\u1ecb x\u00e3 Qu\u1ea3ng Y\u00ean"
+            },
+            {
+                "label": "Huy\u1ec7n C\u00f4 T\u00f4",
+                "value": "Huy\u1ec7n C\u00f4 T\u00f4"
+            }
+        ]
+    },
+    {
+        "label": "T\u1ec9nh B\u1eafc Giang",
+        "value": "T\u1ec9nh B\u1eafc Giang",
+        "districts": [
+            {
+                "label": "Th\u00e0nh ph\u1ed1 B\u1eafc Giang",
+                "value": "Th\u00e0nh ph\u1ed1 B\u1eafc Giang"
+            },
+            {
+                "label": "Huy\u1ec7n Y\u00ean Th\u1ebf",
+                "value": "Huy\u1ec7n Y\u00ean Th\u1ebf"
+            },
+            {
+                "label": "Huy\u1ec7n T\u00e2n Y\u00ean",
+                "value": "Huy\u1ec7n T\u00e2n Y\u00ean"
+            },
+            {
+                "label": "Huy\u1ec7n L\u1ea1ng Giang",
+                "value": "Huy\u1ec7n L\u1ea1ng Giang"
+            },
+            {
+                "label": "Huy\u1ec7n L\u1ee5c Nam",
+                "value": "Huy\u1ec7n L\u1ee5c Nam"
+            },
+            {
+                "label": "Huy\u1ec7n L\u1ee5c Ng\u1ea1n",
+                "value": "Huy\u1ec7n L\u1ee5c Ng\u1ea1n"
+            },
+            {
+                "label": "Huy\u1ec7n S\u01a1n \u0110\u1ed9ng",
+                "value": "Huy\u1ec7n S\u01a1n \u0110\u1ed9ng"
+            },
+            {
+                "label": "Huy\u1ec7n Y\u00ean D\u0169ng",
+                "value": "Huy\u1ec7n Y\u00ean D\u0169ng"
+            },
+            {
+                "label": "Huy\u1ec7n Vi\u1ec7t Y\u00ean",
+                "value": "Huy\u1ec7n Vi\u1ec7t Y\u00ean"
+            },
+            {
+                "label": "Huy\u1ec7n Hi\u1ec7p H\u00f2a",
+                "value": "Huy\u1ec7n Hi\u1ec7p H\u00f2a"
+            }
+        ]
+    },
+    {
+        "label": "T\u1ec9nh Ph\u00fa Th\u1ecd",
+        "value": "T\u1ec9nh Ph\u00fa Th\u1ecd",
+        "districts": [
+            {
+                "label": "Th\u00e0nh ph\u1ed1 Vi\u1ec7t Tr\u00ec",
+                "value": "Th\u00e0nh ph\u1ed1 Vi\u1ec7t Tr\u00ec"
+            },
+            {
+                "label": "Th\u1ecb x\u00e3 Ph\u00fa Th\u1ecd",
+                "value": "Th\u1ecb x\u00e3 Ph\u00fa Th\u1ecd"
+            },
+            {
+                "label": "Huy\u1ec7n \u0110oan H\u00f9ng",
+                "value": "Huy\u1ec7n \u0110oan H\u00f9ng"
+            },
+            {
+                "label": "Huy\u1ec7n H\u1ea1 Ho\u00e0",
+                "value": "Huy\u1ec7n H\u1ea1 Ho\u00e0"
+            },
+            {
+                "label": "Huy\u1ec7n Thanh Ba",
+                "value": "Huy\u1ec7n Thanh Ba"
+            },
+            {
+                "label": "Huy\u1ec7n Ph\u00f9 Ninh",
+                "value": "Huy\u1ec7n Ph\u00f9 Ninh"
+            },
+            {
+                "label": "Huy\u1ec7n Y\u00ean L\u1eadp",
+                "value": "Huy\u1ec7n Y\u00ean L\u1eadp"
+            },
+            {
+                "label": "Huy\u1ec7n C\u1ea9m Kh\u00ea",
+                "value": "Huy\u1ec7n C\u1ea9m Kh\u00ea"
+            },
+            {
+                "label": "Huy\u1ec7n Tam N\u00f4ng",
+                "value": "Huy\u1ec7n Tam N\u00f4ng"
+            },
+            {
+                "label": "Huy\u1ec7n L\u00e2m Thao",
+                "value": "Huy\u1ec7n L\u00e2m Thao"
+            },
+            {
+                "label": "Huy\u1ec7n Thanh S\u01a1n",
+                "value": "Huy\u1ec7n Thanh S\u01a1n"
+            },
+            {
+                "label": "Huy\u1ec7n Thanh Thu\u1ef7",
+                "value": "Huy\u1ec7n Thanh Thu\u1ef7"
+            },
+            {
+                "label": "Huy\u1ec7n T\u00e2n S\u01a1n",
+                "value": "Huy\u1ec7n T\u00e2n S\u01a1n"
+            }
+        ]
+    },
+    {
+        "label": "T\u1ec9nh V\u0129nh Ph\u00fac",
+        "value": "T\u1ec9nh V\u0129nh Ph\u00fac",
+        "districts": [
+            {
+                "label": "Th\u00e0nh ph\u1ed1 V\u0129nh Y\u00ean",
+                "value": "Th\u00e0nh ph\u1ed1 V\u0129nh Y\u00ean"
+            },
+            {
+                "label": "Th\u00e0nh ph\u1ed1 Ph\u00fac Y\u00ean",
+                "value": "Th\u00e0nh ph\u1ed1 Ph\u00fac Y\u00ean"
+            },
+            {
+                "label": "Huy\u1ec7n L\u1eadp Th\u1ea1ch",
+                "value": "Huy\u1ec7n L\u1eadp Th\u1ea1ch"
+            },
+            {
+                "label": "Huy\u1ec7n Tam D\u01b0\u01a1ng",
+                "value": "Huy\u1ec7n Tam D\u01b0\u01a1ng"
+            },
+            {
+                "label": "Huy\u1ec7n Tam \u0110\u1ea3o",
+                "value": "Huy\u1ec7n Tam \u0110\u1ea3o"
+            },
+            {
+                "label": "Huy\u1ec7n B\u00ecnh Xuy\u00ean",
+                "value": "Huy\u1ec7n B\u00ecnh Xuy\u00ean"
+            },
+            {
+                "label": "Huy\u1ec7n Y\u00ean L\u1ea1c",
+                "value": "Huy\u1ec7n Y\u00ean L\u1ea1c"
+            },
+            {
+                "label": "Huy\u1ec7n V\u0129nh T\u01b0\u1eddng",
+                "value": "Huy\u1ec7n V\u0129nh T\u01b0\u1eddng"
+            },
+            {
+                "label": "Huy\u1ec7n S\u00f4ng L\u00f4",
+                "value": "Huy\u1ec7n S\u00f4ng L\u00f4"
+            }
+        ]
+    },
+    {
+        "label": "T\u1ec9nh B\u1eafc Ninh",
+        "value": "T\u1ec9nh B\u1eafc Ninh",
+        "districts": [
+            {
+                "label": "Th\u00e0nh ph\u1ed1 B\u1eafc Ninh",
+                "value": "Th\u00e0nh ph\u1ed1 B\u1eafc Ninh"
+            },
+            {
+                "label": "Huy\u1ec7n Y\u00ean Phong",
+                "value": "Huy\u1ec7n Y\u00ean Phong"
+            },
+            {
+                "label": "Th\u1ecb x\u00e3 Qu\u1ebf V\u00f5",
+                "value": "Th\u1ecb x\u00e3 Qu\u1ebf V\u00f5"
+            },
+            {
+                "label": "Huy\u1ec7n Ti\u00ean Du",
+                "value": "Huy\u1ec7n Ti\u00ean Du"
+            },
+            {
+                "label": "Th\u00e0nh ph\u1ed1 T\u1eeb S\u01a1n",
+                "value": "Th\u00e0nh ph\u1ed1 T\u1eeb S\u01a1n"
+            },
+            {
+                "label": "Th\u1ecb x\u00e3 Thu\u1eadn Th\u00e0nh",
+                "value": "Th\u1ecb x\u00e3 Thu\u1eadn Th\u00e0nh"
+            },
+            {
+                "label": "Huy\u1ec7n Gia B\u00ecnh",
+                "value": "Huy\u1ec7n Gia B\u00ecnh"
+            },
+            {
+                "label": "Huy\u1ec7n L\u01b0\u01a1ng T\u00e0i",
+                "value": "Huy\u1ec7n L\u01b0\u01a1ng T\u00e0i"
+            }
+        ]
+    },
+    {
+        "label": "T\u1ec9nh H\u1ea3i D\u01b0\u01a1ng",
+        "value": "T\u1ec9nh H\u1ea3i D\u01b0\u01a1ng",
+        "districts": [
+            {
+                "label": "Th\u00e0nh ph\u1ed1 H\u1ea3i D\u01b0\u01a1ng",
+                "value": "Th\u00e0nh ph\u1ed1 H\u1ea3i D\u01b0\u01a1ng"
+            },
+            {
+                "label": "Th\u00e0nh ph\u1ed1 Ch\u00ed Linh",
+                "value": "Th\u00e0nh ph\u1ed1 Ch\u00ed Linh"
+            },
+            {
+                "label": "Huy\u1ec7n Nam S\u00e1ch",
+                "value": "Huy\u1ec7n Nam S\u00e1ch"
+            },
+            {
+                "label": "Th\u1ecb x\u00e3 Kinh M\u00f4n",
+                "value": "Th\u1ecb x\u00e3 Kinh M\u00f4n"
+            },
+            {
+                "label": "Huy\u1ec7n Kim Th\u00e0nh",
+                "value": "Huy\u1ec7n Kim Th\u00e0nh"
+            },
+            {
+                "label": "Huy\u1ec7n Thanh H\u00e0",
+                "value": "Huy\u1ec7n Thanh H\u00e0"
+            },
+            {
+                "label": "Huy\u1ec7n C\u1ea9m Gi\u00e0ng",
+                "value": "Huy\u1ec7n C\u1ea9m Gi\u00e0ng"
+            },
+            {
+                "label": "Huy\u1ec7n B\u00ecnh Giang",
+                "value": "Huy\u1ec7n B\u00ecnh Giang"
+            },
+            {
+                "label": "Huy\u1ec7n Gia L\u1ed9c",
+                "value": "Huy\u1ec7n Gia L\u1ed9c"
+            },
+            {
+                "label": "Huy\u1ec7n T\u1ee9 K\u1ef3",
+                "value": "Huy\u1ec7n T\u1ee9 K\u1ef3"
+            },
+            {
+                "label": "Huy\u1ec7n Ninh Giang",
+                "value": "Huy\u1ec7n Ninh Giang"
+            },
+            {
+                "label": "Huy\u1ec7n Thanh Mi\u1ec7n",
+                "value": "Huy\u1ec7n Thanh Mi\u1ec7n"
+            }
+        ]
+    },
+    {
+        "label": "Th\u00e0nh ph\u1ed1 H\u1ea3i Ph\u00f2ng",
+        "value": "Th\u00e0nh ph\u1ed1 H\u1ea3i Ph\u00f2ng",
+        "districts": [
+            {
+                "label": "Qu\u1eadn H\u1ed3ng B\u00e0ng",
+                "value": "Qu\u1eadn H\u1ed3ng B\u00e0ng"
+            },
+            {
+                "label": "Qu\u1eadn Ng\u00f4 Quy\u1ec1n",
+                "value": "Qu\u1eadn Ng\u00f4 Quy\u1ec1n"
+            },
+            {
+                "label": "Qu\u1eadn L\u00ea Ch\u00e2n",
+                "value": "Qu\u1eadn L\u00ea Ch\u00e2n"
+            },
+            {
+                "label": "Qu\u1eadn H\u1ea3i An",
+                "value": "Qu\u1eadn H\u1ea3i An"
+            },
+            {
+                "label": "Qu\u1eadn Ki\u1ebfn An",
+                "value": "Qu\u1eadn Ki\u1ebfn An"
+            },
+            {
+                "label": "Qu\u1eadn \u0110\u1ed3 S\u01a1n",
+                "value": "Qu\u1eadn \u0110\u1ed3 S\u01a1n"
+            },
+            {
+                "label": "Qu\u1eadn D\u01b0\u01a1ng Kinh",
+                "value": "Qu\u1eadn D\u01b0\u01a1ng Kinh"
+            },
+            {
+                "label": "Huy\u1ec7n Thu\u1ef7 Nguy\u00ean",
+                "value": "Huy\u1ec7n Thu\u1ef7 Nguy\u00ean"
+            },
+            {
+                "label": "Huy\u1ec7n An D\u01b0\u01a1ng",
+                "value": "Huy\u1ec7n An D\u01b0\u01a1ng"
+            },
+            {
+                "label": "Huy\u1ec7n An L\u00e3o",
+                "value": "Huy\u1ec7n An L\u00e3o"
+            },
+            {
+                "label": "Huy\u1ec7n Ki\u1ebfn Thu\u1ef5",
+                "value": "Huy\u1ec7n Ki\u1ebfn Thu\u1ef5"
+            },
+            {
+                "label": "Huy\u1ec7n Ti\u00ean L\u00e3ng",
+                "value": "Huy\u1ec7n Ti\u00ean L\u00e3ng"
+            },
+            {
+                "label": "Huy\u1ec7n V\u0129nh B\u1ea3o",
+                "value": "Huy\u1ec7n V\u0129nh B\u1ea3o"
+            },
+            {
+                "label": "Huy\u1ec7n C\u00e1t H\u1ea3i",
+                "value": "Huy\u1ec7n C\u00e1t H\u1ea3i"
+            },
+            {
+                "label": "Huy\u1ec7n B\u1ea1ch Long V\u0129",
+                "value": "Huy\u1ec7n B\u1ea1ch Long V\u0129"
+            }
+        ]
+    },
+    {
+        "label": "T\u1ec9nh H\u01b0ng Y\u00ean",
+        "value": "T\u1ec9nh H\u01b0ng Y\u00ean",
+        "districts": [
+            {
+                "label": "Th\u00e0nh ph\u1ed1 H\u01b0ng Y\u00ean",
+                "value": "Th\u00e0nh ph\u1ed1 H\u01b0ng Y\u00ean"
+            },
+            {
+                "label": "Huy\u1ec7n V\u0103n L\u00e2m",
+                "value": "Huy\u1ec7n V\u0103n L\u00e2m"
+            },
+            {
+                "label": "Huy\u1ec7n V\u0103n Giang",
+                "value": "Huy\u1ec7n V\u0103n Giang"
+            },
+            {
+                "label": "Huy\u1ec7n Y\u00ean M\u1ef9",
+                "value": "Huy\u1ec7n Y\u00ean M\u1ef9"
+            },
+            {
+                "label": "Th\u1ecb x\u00e3 M\u1ef9 H\u00e0o",
+                "value": "Th\u1ecb x\u00e3 M\u1ef9 H\u00e0o"
+            },
+            {
+                "label": "Huy\u1ec7n \u00c2n Thi",
+                "value": "Huy\u1ec7n \u00c2n Thi"
+            },
+            {
+                "label": "Huy\u1ec7n Kho\u00e1i Ch\u00e2u",
+                "value": "Huy\u1ec7n Kho\u00e1i Ch\u00e2u"
+            },
+            {
+                "label": "Huy\u1ec7n Kim \u0110\u1ed9ng",
+                "value": "Huy\u1ec7n Kim \u0110\u1ed9ng"
+            },
+            {
+                "label": "Huy\u1ec7n Ti\u00ean L\u1eef",
+                "value": "Huy\u1ec7n Ti\u00ean L\u1eef"
+            },
+            {
+                "label": "Huy\u1ec7n Ph\u00f9 C\u1eeb",
+                "value": "Huy\u1ec7n Ph\u00f9 C\u1eeb"
+            }
+        ]
+    },
+    {
+        "label": "T\u1ec9nh Th\u00e1i B\u00ecnh",
+        "value": "T\u1ec9nh Th\u00e1i B\u00ecnh",
+        "districts": [
+            {
+                "label": "Th\u00e0nh ph\u1ed1 Th\u00e1i B\u00ecnh",
+                "value": "Th\u00e0nh ph\u1ed1 Th\u00e1i B\u00ecnh"
+            },
+            {
+                "label": "Huy\u1ec7n Qu\u1ef3nh Ph\u1ee5",
+                "value": "Huy\u1ec7n Qu\u1ef3nh Ph\u1ee5"
+            },
+            {
+                "label": "Huy\u1ec7n H\u01b0ng H\u00e0",
+                "value": "Huy\u1ec7n H\u01b0ng H\u00e0"
+            },
+            {
+                "label": "Huy\u1ec7n \u0110\u00f4ng H\u01b0ng",
+                "value": "Huy\u1ec7n \u0110\u00f4ng H\u01b0ng"
+            },
+            {
+                "label": "Huy\u1ec7n Th\u00e1i Th\u1ee5y",
+                "value": "Huy\u1ec7n Th\u00e1i Th\u1ee5y"
+            },
+            {
+                "label": "Huy\u1ec7n Ti\u1ec1n H\u1ea3i",
+                "value": "Huy\u1ec7n Ti\u1ec1n H\u1ea3i"
+            },
+            {
+                "label": "Huy\u1ec7n Ki\u1ebfn X\u01b0\u01a1ng",
+                "value": "Huy\u1ec7n Ki\u1ebfn X\u01b0\u01a1ng"
+            },
+            {
+                "label": "Huy\u1ec7n V\u0169 Th\u01b0",
+                "value": "Huy\u1ec7n V\u0169 Th\u01b0"
+            }
+        ]
+    },
+    {
+        "label": "T\u1ec9nh H\u00e0 Nam",
+        "value": "T\u1ec9nh H\u00e0 Nam",
+        "districts": [
+            {
+                "label": "Th\u00e0nh ph\u1ed1 Ph\u1ee7 L\u00fd",
+                "value": "Th\u00e0nh ph\u1ed1 Ph\u1ee7 L\u00fd"
+            },
+            {
+                "label": "Th\u1ecb x\u00e3 Duy Ti\u00ean",
+                "value": "Th\u1ecb x\u00e3 Duy Ti\u00ean"
+            },
+            {
+                "label": "Huy\u1ec7n Kim B\u1ea3ng",
+                "value": "Huy\u1ec7n Kim B\u1ea3ng"
+            },
+            {
+                "label": "Huy\u1ec7n Thanh Li\u00eam",
+                "value": "Huy\u1ec7n Thanh Li\u00eam"
+            },
+            {
+                "label": "Huy\u1ec7n B\u00ecnh L\u1ee5c",
+                "value": "Huy\u1ec7n B\u00ecnh L\u1ee5c"
+            },
+            {
+                "label": "Huy\u1ec7n L\u00fd Nh\u00e2n",
+                "value": "Huy\u1ec7n L\u00fd Nh\u00e2n"
+            }
+        ]
+    },
+    {
+        "label": "T\u1ec9nh Nam \u0110\u1ecbnh",
+        "value": "T\u1ec9nh Nam \u0110\u1ecbnh",
+        "districts": [
+            {
+                "label": "Th\u00e0nh ph\u1ed1 Nam \u0110\u1ecbnh",
+                "value": "Th\u00e0nh ph\u1ed1 Nam \u0110\u1ecbnh"
+            },
+            {
+                "label": "Huy\u1ec7n M\u1ef9 L\u1ed9c",
+                "value": "Huy\u1ec7n M\u1ef9 L\u1ed9c"
+            },
+            {
+                "label": "Huy\u1ec7n V\u1ee5 B\u1ea3n",
+                "value": "Huy\u1ec7n V\u1ee5 B\u1ea3n"
+            },
+            {
+                "label": "Huy\u1ec7n \u00dd Y\u00ean",
+                "value": "Huy\u1ec7n \u00dd Y\u00ean"
+            },
+            {
+                "label": "Huy\u1ec7n Ngh\u0129a H\u01b0ng",
+                "value": "Huy\u1ec7n Ngh\u0129a H\u01b0ng"
+            },
+            {
+                "label": "Huy\u1ec7n Nam Tr\u1ef1c",
+                "value": "Huy\u1ec7n Nam Tr\u1ef1c"
+            },
+            {
+                "label": "Huy\u1ec7n Tr\u1ef1c Ninh",
+                "value": "Huy\u1ec7n Tr\u1ef1c Ninh"
+            },
+            {
+                "label": "Huy\u1ec7n Xu\u00e2n Tr\u01b0\u1eddng",
+                "value": "Huy\u1ec7n Xu\u00e2n Tr\u01b0\u1eddng"
+            },
+            {
+                "label": "Huy\u1ec7n Giao Th\u1ee7y",
+                "value": "Huy\u1ec7n Giao Th\u1ee7y"
+            },
+            {
+                "label": "Huy\u1ec7n H\u1ea3i H\u1eadu",
+                "value": "Huy\u1ec7n H\u1ea3i H\u1eadu"
+            }
+        ]
+    },
+    {
+        "label": "T\u1ec9nh Ninh B\u00ecnh",
+        "value": "T\u1ec9nh Ninh B\u00ecnh",
+        "districts": [
+            {
+                "label": "Th\u00e0nh ph\u1ed1 Ninh B\u00ecnh",
+                "value": "Th\u00e0nh ph\u1ed1 Ninh B\u00ecnh"
+            },
+            {
+                "label": "Th\u00e0nh ph\u1ed1 Tam \u0110i\u1ec7p",
+                "value": "Th\u00e0nh ph\u1ed1 Tam \u0110i\u1ec7p"
+            },
+            {
+                "label": "Huy\u1ec7n Nho Quan",
+                "value": "Huy\u1ec7n Nho Quan"
+            },
+            {
+                "label": "Huy\u1ec7n Gia Vi\u1ec5n",
+                "value": "Huy\u1ec7n Gia Vi\u1ec5n"
+            },
+            {
+                "label": "Huy\u1ec7n Hoa L\u01b0",
+                "value": "Huy\u1ec7n Hoa L\u01b0"
+            },
+            {
+                "label": "Huy\u1ec7n Y\u00ean Kh\u00e1nh",
+                "value": "Huy\u1ec7n Y\u00ean Kh\u00e1nh"
+            },
+            {
+                "label": "Huy\u1ec7n Kim S\u01a1n",
+                "value": "Huy\u1ec7n Kim S\u01a1n"
+            },
+            {
+                "label": "Huy\u1ec7n Y\u00ean M\u00f4",
+                "value": "Huy\u1ec7n Y\u00ean M\u00f4"
+            }
+        ]
+    },
+    {
+        "label": "T\u1ec9nh Thanh H\u00f3a",
+        "value": "T\u1ec9nh Thanh H\u00f3a",
+        "districts": [
+            {
+                "label": "Th\u00e0nh ph\u1ed1 Thanh H\u00f3a",
+                "value": "Th\u00e0nh ph\u1ed1 Thanh H\u00f3a"
+            },
+            {
+                "label": "Th\u1ecb x\u00e3 B\u1ec9m S\u01a1n",
+                "value": "Th\u1ecb x\u00e3 B\u1ec9m S\u01a1n"
+            },
+            {
+                "label": "Th\u00e0nh ph\u1ed1 S\u1ea7m S\u01a1n",
+                "value": "Th\u00e0nh ph\u1ed1 S\u1ea7m S\u01a1n"
+            },
+            {
+                "label": "Huy\u1ec7n M\u01b0\u1eddng L\u00e1t",
+                "value": "Huy\u1ec7n M\u01b0\u1eddng L\u00e1t"
+            },
+            {
+                "label": "Huy\u1ec7n Quan H\u00f3a",
+                "value": "Huy\u1ec7n Quan H\u00f3a"
+            },
+            {
+                "label": "Huy\u1ec7n B\u00e1 Th\u01b0\u1edbc",
+                "value": "Huy\u1ec7n B\u00e1 Th\u01b0\u1edbc"
+            },
+            {
+                "label": "Huy\u1ec7n Quan S\u01a1n",
+                "value": "Huy\u1ec7n Quan S\u01a1n"
+            },
+            {
+                "label": "Huy\u1ec7n Lang Ch\u00e1nh",
+                "value": "Huy\u1ec7n Lang Ch\u00e1nh"
+            },
+            {
+                "label": "Huy\u1ec7n Ng\u1ecdc L\u1eb7c",
+                "value": "Huy\u1ec7n Ng\u1ecdc L\u1eb7c"
+            },
+            {
+                "label": "Huy\u1ec7n C\u1ea9m Th\u1ee7y",
+                "value": "Huy\u1ec7n C\u1ea9m Th\u1ee7y"
+            },
+            {
+                "label": "Huy\u1ec7n Th\u1ea1ch Th\u00e0nh",
+                "value": "Huy\u1ec7n Th\u1ea1ch Th\u00e0nh"
+            },
+            {
+                "label": "Huy\u1ec7n H\u00e0 Trung",
+                "value": "Huy\u1ec7n H\u00e0 Trung"
+            },
+            {
+                "label": "Huy\u1ec7n V\u0129nh L\u1ed9c",
+                "value": "Huy\u1ec7n V\u0129nh L\u1ed9c"
+            },
+            {
+                "label": "Huy\u1ec7n Y\u00ean \u0110\u1ecbnh",
+                "value": "Huy\u1ec7n Y\u00ean \u0110\u1ecbnh"
+            },
+            {
+                "label": "Huy\u1ec7n Th\u1ecd Xu\u00e2n",
+                "value": "Huy\u1ec7n Th\u1ecd Xu\u00e2n"
+            },
+            {
+                "label": "Huy\u1ec7n Th\u01b0\u1eddng Xu\u00e2n",
+                "value": "Huy\u1ec7n Th\u01b0\u1eddng Xu\u00e2n"
+            },
+            {
+                "label": "Huy\u1ec7n Tri\u1ec7u S\u01a1n",
+                "value": "Huy\u1ec7n Tri\u1ec7u S\u01a1n"
+            },
+            {
+                "label": "Huy\u1ec7n Thi\u1ec7u H\u00f3a",
+                "value": "Huy\u1ec7n Thi\u1ec7u H\u00f3a"
+            },
+            {
+                "label": "Huy\u1ec7n Ho\u1eb1ng H\u00f3a",
+                "value": "Huy\u1ec7n Ho\u1eb1ng H\u00f3a"
+            },
+            {
+                "label": "Huy\u1ec7n H\u1eadu L\u1ed9c",
+                "value": "Huy\u1ec7n H\u1eadu L\u1ed9c"
+            },
+            {
+                "label": "Huy\u1ec7n Nga S\u01a1n",
+                "value": "Huy\u1ec7n Nga S\u01a1n"
+            },
+            {
+                "label": "Huy\u1ec7n Nh\u01b0 Xu\u00e2n",
+                "value": "Huy\u1ec7n Nh\u01b0 Xu\u00e2n"
+            },
+            {
+                "label": "Huy\u1ec7n Nh\u01b0 Thanh",
+                "value": "Huy\u1ec7n Nh\u01b0 Thanh"
+            },
+            {
+                "label": "Huy\u1ec7n N\u00f4ng C\u1ed1ng",
+                "value": "Huy\u1ec7n N\u00f4ng C\u1ed1ng"
+            },
+            {
+                "label": "Huy\u1ec7n \u0110\u00f4ng S\u01a1n",
+                "value": "Huy\u1ec7n \u0110\u00f4ng S\u01a1n"
+            },
+            {
+                "label": "Huy\u1ec7n Qu\u1ea3ng X\u01b0\u01a1ng",
+                "value": "Huy\u1ec7n Qu\u1ea3ng X\u01b0\u01a1ng"
+            },
+            {
+                "label": "Th\u1ecb x\u00e3 Nghi S\u01a1n",
+                "value": "Th\u1ecb x\u00e3 Nghi S\u01a1n"
+            }
+        ]
+    },
+    {
+        "label": "T\u1ec9nh Ngh\u1ec7 An",
+        "value": "T\u1ec9nh Ngh\u1ec7 An",
+        "districts": [
+            {
+                "label": "Th\u00e0nh ph\u1ed1 Vinh",
+                "value": "Th\u00e0nh ph\u1ed1 Vinh"
+            },
+            {
+                "label": "Th\u1ecb x\u00e3 C\u1eeda L\u00f2",
+                "value": "Th\u1ecb x\u00e3 C\u1eeda L\u00f2"
+            },
+            {
+                "label": "Th\u1ecb x\u00e3 Th\u00e1i Ho\u00e0",
+                "value": "Th\u1ecb x\u00e3 Th\u00e1i Ho\u00e0"
+            },
+            {
+                "label": "Huy\u1ec7n Qu\u1ebf Phong",
+                "value": "Huy\u1ec7n Qu\u1ebf Phong"
+            },
+            {
+                "label": "Huy\u1ec7n Qu\u1ef3 Ch\u00e2u",
+                "value": "Huy\u1ec7n Qu\u1ef3 Ch\u00e2u"
+            },
+            {
+                "label": "Huy\u1ec7n K\u1ef3 S\u01a1n",
+                "value": "Huy\u1ec7n K\u1ef3 S\u01a1n"
+            },
+            {
+                "label": "Huy\u1ec7n T\u01b0\u01a1ng D\u01b0\u01a1ng",
+                "value": "Huy\u1ec7n T\u01b0\u01a1ng D\u01b0\u01a1ng"
+            },
+            {
+                "label": "Huy\u1ec7n Ngh\u0129a \u0110\u00e0n",
+                "value": "Huy\u1ec7n Ngh\u0129a \u0110\u00e0n"
+            },
+            {
+                "label": "Huy\u1ec7n Qu\u1ef3 H\u1ee3p",
+                "value": "Huy\u1ec7n Qu\u1ef3 H\u1ee3p"
+            },
+            {
+                "label": "Huy\u1ec7n Qu\u1ef3nh L\u01b0u",
+                "value": "Huy\u1ec7n Qu\u1ef3nh L\u01b0u"
+            },
+            {
+                "label": "Huy\u1ec7n Con Cu\u00f4ng",
+                "value": "Huy\u1ec7n Con Cu\u00f4ng"
+            },
+            {
+                "label": "Huy\u1ec7n T\u00e2n K\u1ef3",
+                "value": "Huy\u1ec7n T\u00e2n K\u1ef3"
+            },
+            {
+                "label": "Huy\u1ec7n Anh S\u01a1n",
+                "value": "Huy\u1ec7n Anh S\u01a1n"
+            },
+            {
+                "label": "Huy\u1ec7n Di\u1ec5n Ch\u00e2u",
+                "value": "Huy\u1ec7n Di\u1ec5n Ch\u00e2u"
+            },
+            {
+                "label": "Huy\u1ec7n Y\u00ean Th\u00e0nh",
+                "value": "Huy\u1ec7n Y\u00ean Th\u00e0nh"
+            },
+            {
+                "label": "Huy\u1ec7n \u0110\u00f4 L\u01b0\u01a1ng",
+                "value": "Huy\u1ec7n \u0110\u00f4 L\u01b0\u01a1ng"
+            },
+            {
+                "label": "Huy\u1ec7n Thanh Ch\u01b0\u01a1ng",
+                "value": "Huy\u1ec7n Thanh Ch\u01b0\u01a1ng"
+            },
+            {
+                "label": "Huy\u1ec7n Nghi L\u1ed9c",
+                "value": "Huy\u1ec7n Nghi L\u1ed9c"
+            },
+            {
+                "label": "Huy\u1ec7n Nam \u0110\u00e0n",
+                "value": "Huy\u1ec7n Nam \u0110\u00e0n"
+            },
+            {
+                "label": "Huy\u1ec7n H\u01b0ng Nguy\u00ean",
+                "value": "Huy\u1ec7n H\u01b0ng Nguy\u00ean"
+            },
+            {
+                "label": "Th\u1ecb x\u00e3 Ho\u00e0ng Mai",
+                "value": "Th\u1ecb x\u00e3 Ho\u00e0ng Mai"
+            }
+        ]
+    },
+    {
+        "label": "T\u1ec9nh H\u00e0 T\u0129nh",
+        "value": "T\u1ec9nh H\u00e0 T\u0129nh",
+        "districts": [
+            {
+                "label": "Th\u00e0nh ph\u1ed1 H\u00e0 T\u0129nh",
+                "value": "Th\u00e0nh ph\u1ed1 H\u00e0 T\u0129nh"
+            },
+            {
+                "label": "Th\u1ecb x\u00e3 H\u1ed3ng L\u0129nh",
+                "value": "Th\u1ecb x\u00e3 H\u1ed3ng L\u0129nh"
+            },
+            {
+                "label": "Huy\u1ec7n H\u01b0\u01a1ng S\u01a1n",
+                "value": "Huy\u1ec7n H\u01b0\u01a1ng S\u01a1n"
+            },
+            {
+                "label": "Huy\u1ec7n \u0110\u1ee9c Th\u1ecd",
+                "value": "Huy\u1ec7n \u0110\u1ee9c Th\u1ecd"
+            },
+            {
+                "label": "Huy\u1ec7n V\u0169 Quang",
+                "value": "Huy\u1ec7n V\u0169 Quang"
+            },
+            {
+                "label": "Huy\u1ec7n Nghi Xu\u00e2n",
+                "value": "Huy\u1ec7n Nghi Xu\u00e2n"
+            },
+            {
+                "label": "Huy\u1ec7n Can L\u1ed9c",
+                "value": "Huy\u1ec7n Can L\u1ed9c"
+            },
+            {
+                "label": "Huy\u1ec7n H\u01b0\u01a1ng Kh\u00ea",
+                "value": "Huy\u1ec7n H\u01b0\u01a1ng Kh\u00ea"
+            },
+            {
+                "label": "Huy\u1ec7n Th\u1ea1ch H\u00e0",
+                "value": "Huy\u1ec7n Th\u1ea1ch H\u00e0"
+            },
+            {
+                "label": "Huy\u1ec7n C\u1ea9m Xuy\u00ean",
+                "value": "Huy\u1ec7n C\u1ea9m Xuy\u00ean"
+            },
+            {
+                "label": "Huy\u1ec7n K\u1ef3 Anh",
+                "value": "Huy\u1ec7n K\u1ef3 Anh"
+            },
+            {
+                "label": "Huy\u1ec7n L\u1ed9c H\u00e0",
+                "value": "Huy\u1ec7n L\u1ed9c H\u00e0"
+            },
+            {
+                "label": "Th\u1ecb x\u00e3 K\u1ef3 Anh",
+                "value": "Th\u1ecb x\u00e3 K\u1ef3 Anh"
+            }
+        ]
+    },
+    {
+        "label": "T\u1ec9nh Qu\u1ea3ng B\u00ecnh",
+        "value": "T\u1ec9nh Qu\u1ea3ng B\u00ecnh",
+        "districts": [
+            {
+                "label": "Th\u00e0nh Ph\u1ed1 \u0110\u1ed3ng H\u1edbi",
+                "value": "Th\u00e0nh Ph\u1ed1 \u0110\u1ed3ng H\u1edbi"
+            },
+            {
+                "label": "Huy\u1ec7n Minh H\u00f3a",
+                "value": "Huy\u1ec7n Minh H\u00f3a"
+            },
+            {
+                "label": "Huy\u1ec7n Tuy\u00ean H\u00f3a",
+                "value": "Huy\u1ec7n Tuy\u00ean H\u00f3a"
+            },
+            {
+                "label": "Huy\u1ec7n Qu\u1ea3ng Tr\u1ea1ch",
+                "value": "Huy\u1ec7n Qu\u1ea3ng Tr\u1ea1ch"
+            },
+            {
+                "label": "Huy\u1ec7n B\u1ed1 Tr\u1ea1ch",
+                "value": "Huy\u1ec7n B\u1ed1 Tr\u1ea1ch"
+            },
+            {
+                "label": "Huy\u1ec7n Qu\u1ea3ng Ninh",
+                "value": "Huy\u1ec7n Qu\u1ea3ng Ninh"
+            },
+            {
+                "label": "Huy\u1ec7n L\u1ec7 Th\u1ee7y",
+                "value": "Huy\u1ec7n L\u1ec7 Th\u1ee7y"
+            },
+            {
+                "label": "Th\u1ecb x\u00e3 Ba \u0110\u1ed3n",
+                "value": "Th\u1ecb x\u00e3 Ba \u0110\u1ed3n"
+            }
+        ]
+    },
+    {
+        "label": "T\u1ec9nh Qu\u1ea3ng Tr\u1ecb",
+        "value": "T\u1ec9nh Qu\u1ea3ng Tr\u1ecb",
+        "districts": [
+            {
+                "label": "Th\u00e0nh ph\u1ed1 \u0110\u00f4ng H\u00e0",
+                "value": "Th\u00e0nh ph\u1ed1 \u0110\u00f4ng H\u00e0"
+            },
+            {
+                "label": "Th\u1ecb x\u00e3 Qu\u1ea3ng Tr\u1ecb",
+                "value": "Th\u1ecb x\u00e3 Qu\u1ea3ng Tr\u1ecb"
+            },
+            {
+                "label": "Huy\u1ec7n V\u0129nh Linh",
+                "value": "Huy\u1ec7n V\u0129nh Linh"
+            },
+            {
+                "label": "Huy\u1ec7n H\u01b0\u1edbng H\u00f3a",
+                "value": "Huy\u1ec7n H\u01b0\u1edbng H\u00f3a"
+            },
+            {
+                "label": "Huy\u1ec7n Gio Linh",
+                "value": "Huy\u1ec7n Gio Linh"
+            },
+            {
+                "label": "Huy\u1ec7n \u0110a Kr\u00f4ng",
+                "value": "Huy\u1ec7n \u0110a Kr\u00f4ng"
+            },
+            {
+                "label": "Huy\u1ec7n Cam L\u1ed9",
+                "value": "Huy\u1ec7n Cam L\u1ed9"
+            },
+            {
+                "label": "Huy\u1ec7n Tri\u1ec7u Phong",
+                "value": "Huy\u1ec7n Tri\u1ec7u Phong"
+            },
+            {
+                "label": "Huy\u1ec7n H\u1ea3i L\u0103ng",
+                "value": "Huy\u1ec7n H\u1ea3i L\u0103ng"
+            },
+            {
+                "label": "Huy\u1ec7n C\u1ed3n C\u1ecf",
+                "value": "Huy\u1ec7n C\u1ed3n C\u1ecf"
+            }
+        ]
+    },
+    {
+        "label": "T\u1ec9nh Th\u1eeba Thi\u00ean Hu\u1ebf",
+        "value": "T\u1ec9nh Th\u1eeba Thi\u00ean Hu\u1ebf",
+        "districts": [
+            {
+                "label": "Th\u00e0nh ph\u1ed1 Hu\u1ebf",
+                "value": "Th\u00e0nh ph\u1ed1 Hu\u1ebf"
+            },
+            {
+                "label": "Huy\u1ec7n Phong \u0110i\u1ec1n",
+                "value": "Huy\u1ec7n Phong \u0110i\u1ec1n"
+            },
+            {
+                "label": "Huy\u1ec7n Qu\u1ea3ng \u0110i\u1ec1n",
+                "value": "Huy\u1ec7n Qu\u1ea3ng \u0110i\u1ec1n"
+            },
+            {
+                "label": "Huy\u1ec7n Ph\u00fa Vang",
+                "value": "Huy\u1ec7n Ph\u00fa Vang"
+            },
+            {
+                "label": "Th\u1ecb x\u00e3 H\u01b0\u01a1ng Th\u1ee7y",
+                "value": "Th\u1ecb x\u00e3 H\u01b0\u01a1ng Th\u1ee7y"
+            },
+            {
+                "label": "Th\u1ecb x\u00e3 H\u01b0\u01a1ng Tr\u00e0",
+                "value": "Th\u1ecb x\u00e3 H\u01b0\u01a1ng Tr\u00e0"
+            },
+            {
+                "label": "Huy\u1ec7n A L\u01b0\u1edbi",
+                "value": "Huy\u1ec7n A L\u01b0\u1edbi"
+            },
+            {
+                "label": "Huy\u1ec7n Ph\u00fa L\u1ed9c",
+                "value": "Huy\u1ec7n Ph\u00fa L\u1ed9c"
+            },
+            {
+                "label": "Huy\u1ec7n Nam \u0110\u00f4ng",
+                "value": "Huy\u1ec7n Nam \u0110\u00f4ng"
+            }
+        ]
+    },
+    {
+        "label": "Th\u00e0nh ph\u1ed1 \u0110\u00e0 N\u1eb5ng",
+        "value": "Th\u00e0nh ph\u1ed1 \u0110\u00e0 N\u1eb5ng",
+        "districts": [
+            {
+                "label": "Qu\u1eadn Li\u00ean Chi\u1ec3u",
+                "value": "Qu\u1eadn Li\u00ean Chi\u1ec3u"
+            },
+            {
+                "label": "Qu\u1eadn Thanh Kh\u00ea",
+                "value": "Qu\u1eadn Thanh Kh\u00ea"
+            },
+            {
+                "label": "Qu\u1eadn H\u1ea3i Ch\u00e2u",
+                "value": "Qu\u1eadn H\u1ea3i Ch\u00e2u"
+            },
+            {
+                "label": "Qu\u1eadn S\u01a1n Tr\u00e0",
+                "value": "Qu\u1eadn S\u01a1n Tr\u00e0"
+            },
+            {
+                "label": "Qu\u1eadn Ng\u0169 H\u00e0nh S\u01a1n",
+                "value": "Qu\u1eadn Ng\u0169 H\u00e0nh S\u01a1n"
+            },
+            {
+                "label": "Qu\u1eadn C\u1ea9m L\u1ec7",
+                "value": "Qu\u1eadn C\u1ea9m L\u1ec7"
+            },
+            {
+                "label": "Huy\u1ec7n H\u00f2a Vang",
+                "value": "Huy\u1ec7n H\u00f2a Vang"
+            },
+            {
+                "label": "Huy\u1ec7n Ho\u00e0ng Sa",
+                "value": "Huy\u1ec7n Ho\u00e0ng Sa"
+            }
+        ]
+    },
+    {
+        "label": "T\u1ec9nh Qu\u1ea3ng Nam",
+        "value": "T\u1ec9nh Qu\u1ea3ng Nam",
+        "districts": [
+            {
+                "label": "Th\u00e0nh ph\u1ed1 Tam K\u1ef3",
+                "value": "Th\u00e0nh ph\u1ed1 Tam K\u1ef3"
+            },
+            {
+                "label": "Th\u00e0nh ph\u1ed1 H\u1ed9i An",
+                "value": "Th\u00e0nh ph\u1ed1 H\u1ed9i An"
+            },
+            {
+                "label": "Huy\u1ec7n T\u00e2y Giang",
+                "value": "Huy\u1ec7n T\u00e2y Giang"
+            },
+            {
+                "label": "Huy\u1ec7n \u0110\u00f4ng Giang",
+                "value": "Huy\u1ec7n \u0110\u00f4ng Giang"
+            },
+            {
+                "label": "Huy\u1ec7n \u0110\u1ea1i L\u1ed9c",
+                "value": "Huy\u1ec7n \u0110\u1ea1i L\u1ed9c"
+            },
+            {
+                "label": "Th\u1ecb x\u00e3 \u0110i\u1ec7n B\u00e0n",
+                "value": "Th\u1ecb x\u00e3 \u0110i\u1ec7n B\u00e0n"
+            },
+            {
+                "label": "Huy\u1ec7n Duy Xuy\u00ean",
+                "value": "Huy\u1ec7n Duy Xuy\u00ean"
+            },
+            {
+                "label": "Huy\u1ec7n Qu\u1ebf S\u01a1n",
+                "value": "Huy\u1ec7n Qu\u1ebf S\u01a1n"
+            },
+            {
+                "label": "Huy\u1ec7n Nam Giang",
+                "value": "Huy\u1ec7n Nam Giang"
+            },
+            {
+                "label": "Huy\u1ec7n Ph\u01b0\u1edbc S\u01a1n",
+                "value": "Huy\u1ec7n Ph\u01b0\u1edbc S\u01a1n"
+            },
+            {
+                "label": "Huy\u1ec7n Hi\u1ec7p \u0110\u1ee9c",
+                "value": "Huy\u1ec7n Hi\u1ec7p \u0110\u1ee9c"
+            },
+            {
+                "label": "Huy\u1ec7n Th\u0103ng B\u00ecnh",
+                "value": "Huy\u1ec7n Th\u0103ng B\u00ecnh"
+            },
+            {
+                "label": "Huy\u1ec7n Ti\u00ean Ph\u01b0\u1edbc",
+                "value": "Huy\u1ec7n Ti\u00ean Ph\u01b0\u1edbc"
+            },
+            {
+                "label": "Huy\u1ec7n B\u1eafc Tr\u00e0 My",
+                "value": "Huy\u1ec7n B\u1eafc Tr\u00e0 My"
+            },
+            {
+                "label": "Huy\u1ec7n Nam Tr\u00e0 My",
+                "value": "Huy\u1ec7n Nam Tr\u00e0 My"
+            },
+            {
+                "label": "Huy\u1ec7n N\u00fai Th\u00e0nh",
+                "value": "Huy\u1ec7n N\u00fai Th\u00e0nh"
+            },
+            {
+                "label": "Huy\u1ec7n Ph\u00fa Ninh",
+                "value": "Huy\u1ec7n Ph\u00fa Ninh"
+            },
+            {
+                "label": "Huy\u1ec7n N\u00f4ng S\u01a1n",
+                "value": "Huy\u1ec7n N\u00f4ng S\u01a1n"
+            }
+        ]
+    },
+    {
+        "label": "T\u1ec9nh Qu\u1ea3ng Ng\u00e3i",
+        "value": "T\u1ec9nh Qu\u1ea3ng Ng\u00e3i",
+        "districts": [
+            {
+                "label": "Th\u00e0nh ph\u1ed1 Qu\u1ea3ng Ng\u00e3i",
+                "value": "Th\u00e0nh ph\u1ed1 Qu\u1ea3ng Ng\u00e3i"
+            },
+            {
+                "label": "Huy\u1ec7n B\u00ecnh S\u01a1n",
+                "value": "Huy\u1ec7n B\u00ecnh S\u01a1n"
+            },
+            {
+                "label": "Huy\u1ec7n Tr\u00e0 B\u1ed3ng",
+                "value": "Huy\u1ec7n Tr\u00e0 B\u1ed3ng"
+            },
+            {
+                "label": "Huy\u1ec7n S\u01a1n T\u1ecbnh",
+                "value": "Huy\u1ec7n S\u01a1n T\u1ecbnh"
+            },
+            {
+                "label": "Huy\u1ec7n T\u01b0 Ngh\u0129a",
+                "value": "Huy\u1ec7n T\u01b0 Ngh\u0129a"
+            },
+            {
+                "label": "Huy\u1ec7n S\u01a1n H\u00e0",
+                "value": "Huy\u1ec7n S\u01a1n H\u00e0"
+            },
+            {
+                "label": "Huy\u1ec7n S\u01a1n T\u00e2y",
+                "value": "Huy\u1ec7n S\u01a1n T\u00e2y"
+            },
+            {
+                "label": "Huy\u1ec7n Minh Long",
+                "value": "Huy\u1ec7n Minh Long"
+            },
+            {
+                "label": "Huy\u1ec7n Ngh\u0129a H\u00e0nh",
+                "value": "Huy\u1ec7n Ngh\u0129a H\u00e0nh"
+            },
+            {
+                "label": "Huy\u1ec7n M\u1ed9 \u0110\u1ee9c",
+                "value": "Huy\u1ec7n M\u1ed9 \u0110\u1ee9c"
+            },
+            {
+                "label": "Th\u1ecb x\u00e3 \u0110\u1ee9c Ph\u1ed5",
+                "value": "Th\u1ecb x\u00e3 \u0110\u1ee9c Ph\u1ed5"
+            },
+            {
+                "label": "Huy\u1ec7n Ba T\u01a1",
+                "value": "Huy\u1ec7n Ba T\u01a1"
+            },
+            {
+                "label": "Huy\u1ec7n L\u00fd S\u01a1n",
+                "value": "Huy\u1ec7n L\u00fd S\u01a1n"
+            }
+        ]
+    },
+    {
+        "label": "T\u1ec9nh B\u00ecnh \u0110\u1ecbnh",
+        "value": "T\u1ec9nh B\u00ecnh \u0110\u1ecbnh",
+        "districts": [
+            {
+                "label": "Th\u00e0nh ph\u1ed1 Quy Nh\u01a1n",
+                "value": "Th\u00e0nh ph\u1ed1 Quy Nh\u01a1n"
+            },
+            {
+                "label": "Huy\u1ec7n An L\u00e3o",
+                "value": "Huy\u1ec7n An L\u00e3o"
+            },
+            {
+                "label": "Th\u1ecb x\u00e3 Ho\u00e0i Nh\u01a1n",
+                "value": "Th\u1ecb x\u00e3 Ho\u00e0i Nh\u01a1n"
+            },
+            {
+                "label": "Huy\u1ec7n Ho\u00e0i \u00c2n",
+                "value": "Huy\u1ec7n Ho\u00e0i \u00c2n"
+            },
+            {
+                "label": "Huy\u1ec7n Ph\u00f9 M\u1ef9",
+                "value": "Huy\u1ec7n Ph\u00f9 M\u1ef9"
+            },
+            {
+                "label": "Huy\u1ec7n V\u0129nh Th\u1ea1nh",
+                "value": "Huy\u1ec7n V\u0129nh Th\u1ea1nh"
+            },
+            {
+                "label": "Huy\u1ec7n T\u00e2y S\u01a1n",
+                "value": "Huy\u1ec7n T\u00e2y S\u01a1n"
+            },
+            {
+                "label": "Huy\u1ec7n Ph\u00f9 C\u00e1t",
+                "value": "Huy\u1ec7n Ph\u00f9 C\u00e1t"
+            },
+            {
+                "label": "Th\u1ecb x\u00e3 An Nh\u01a1n",
+                "value": "Th\u1ecb x\u00e3 An Nh\u01a1n"
+            },
+            {
+                "label": "Huy\u1ec7n Tuy Ph\u01b0\u1edbc",
+                "value": "Huy\u1ec7n Tuy Ph\u01b0\u1edbc"
+            },
+            {
+                "label": "Huy\u1ec7n V\u00e2n Canh",
+                "value": "Huy\u1ec7n V\u00e2n Canh"
+            }
+        ]
+    },
+    {
+        "label": "T\u1ec9nh Ph\u00fa Y\u00ean",
+        "value": "T\u1ec9nh Ph\u00fa Y\u00ean",
+        "districts": [
+            {
+                "label": "Th\u00e0nh ph\u1ed1 Tuy Ho\u00e0",
+                "value": "Th\u00e0nh ph\u1ed1 Tuy Ho\u00e0"
+            },
+            {
+                "label": "Th\u1ecb x\u00e3 S\u00f4ng C\u1ea7u",
+                "value": "Th\u1ecb x\u00e3 S\u00f4ng C\u1ea7u"
+            },
+            {
+                "label": "Huy\u1ec7n \u0110\u1ed3ng Xu\u00e2n",
+                "value": "Huy\u1ec7n \u0110\u1ed3ng Xu\u00e2n"
+            },
+            {
+                "label": "Huy\u1ec7n Tuy An",
+                "value": "Huy\u1ec7n Tuy An"
+            },
+            {
+                "label": "Huy\u1ec7n S\u01a1n H\u00f2a",
+                "value": "Huy\u1ec7n S\u01a1n H\u00f2a"
+            },
+            {
+                "label": "Huy\u1ec7n S\u00f4ng Hinh",
+                "value": "Huy\u1ec7n S\u00f4ng Hinh"
+            },
+            {
+                "label": "Huy\u1ec7n T\u00e2y Ho\u00e0",
+                "value": "Huy\u1ec7n T\u00e2y Ho\u00e0"
+            },
+            {
+                "label": "Huy\u1ec7n Ph\u00fa Ho\u00e0",
+                "value": "Huy\u1ec7n Ph\u00fa Ho\u00e0"
+            },
+            {
+                "label": "Th\u1ecb x\u00e3 \u0110\u00f4ng H\u00f2a",
+                "value": "Th\u1ecb x\u00e3 \u0110\u00f4ng H\u00f2a"
+            }
+        ]
+    },
+    {
+        "label": "T\u1ec9nh Kh\u00e1nh H\u00f2a",
+        "value": "T\u1ec9nh Kh\u00e1nh H\u00f2a",
+        "districts": [
+            {
+                "label": "Th\u00e0nh ph\u1ed1 Nha Trang",
+                "value": "Th\u00e0nh ph\u1ed1 Nha Trang"
+            },
+            {
+                "label": "Th\u00e0nh ph\u1ed1 Cam Ranh",
+                "value": "Th\u00e0nh ph\u1ed1 Cam Ranh"
+            },
+            {
+                "label": "Huy\u1ec7n Cam L\u00e2m",
+                "value": "Huy\u1ec7n Cam L\u00e2m"
+            },
+            {
+                "label": "Huy\u1ec7n V\u1ea1n Ninh",
+                "value": "Huy\u1ec7n V\u1ea1n Ninh"
+            },
+            {
+                "label": "Th\u1ecb x\u00e3 Ninh H\u00f2a",
+                "value": "Th\u1ecb x\u00e3 Ninh H\u00f2a"
+            },
+            {
+                "label": "Huy\u1ec7n Kh\u00e1nh V\u0129nh",
+                "value": "Huy\u1ec7n Kh\u00e1nh V\u0129nh"
+            },
+            {
+                "label": "Huy\u1ec7n Di\u00ean Kh\u00e1nh",
+                "value": "Huy\u1ec7n Di\u00ean Kh\u00e1nh"
+            },
+            {
+                "label": "Huy\u1ec7n Kh\u00e1nh S\u01a1n",
+                "value": "Huy\u1ec7n Kh\u00e1nh S\u01a1n"
+            },
+            {
+                "label": "Huy\u1ec7n Tr\u01b0\u1eddng Sa",
+                "value": "Huy\u1ec7n Tr\u01b0\u1eddng Sa"
+            }
+        ]
+    },
+    {
+        "label": "T\u1ec9nh Ninh Thu\u1eadn",
+        "value": "T\u1ec9nh Ninh Thu\u1eadn",
+        "districts": [
+            {
+                "label": "Th\u00e0nh ph\u1ed1 Phan Rang-Th\u00e1p Ch\u00e0m",
+                "value": "Th\u00e0nh ph\u1ed1 Phan Rang-Th\u00e1p Ch\u00e0m"
+            },
+            {
+                "label": "Huy\u1ec7n B\u00e1c \u00c1i",
+                "value": "Huy\u1ec7n B\u00e1c \u00c1i"
+            },
+            {
+                "label": "Huy\u1ec7n Ninh S\u01a1n",
+                "value": "Huy\u1ec7n Ninh S\u01a1n"
+            },
+            {
+                "label": "Huy\u1ec7n Ninh H\u1ea3i",
+                "value": "Huy\u1ec7n Ninh H\u1ea3i"
+            },
+            {
+                "label": "Huy\u1ec7n Ninh Ph\u01b0\u1edbc",
+                "value": "Huy\u1ec7n Ninh Ph\u01b0\u1edbc"
+            },
+            {
+                "label": "Huy\u1ec7n Thu\u1eadn B\u1eafc",
+                "value": "Huy\u1ec7n Thu\u1eadn B\u1eafc"
+            },
+            {
+                "label": "Huy\u1ec7n Thu\u1eadn Nam",
+                "value": "Huy\u1ec7n Thu\u1eadn Nam"
+            }
+        ]
+    },
+    {
+        "label": "T\u1ec9nh B\u00ecnh Thu\u1eadn",
+        "value": "T\u1ec9nh B\u00ecnh Thu\u1eadn",
+        "districts": [
+            {
+                "label": "Th\u00e0nh ph\u1ed1 Phan Thi\u1ebft",
+                "value": "Th\u00e0nh ph\u1ed1 Phan Thi\u1ebft"
+            },
+            {
+                "label": "Th\u1ecb x\u00e3 La Gi",
+                "value": "Th\u1ecb x\u00e3 La Gi"
+            },
+            {
+                "label": "Huy\u1ec7n Tuy Phong",
+                "value": "Huy\u1ec7n Tuy Phong"
+            },
+            {
+                "label": "Huy\u1ec7n B\u1eafc B\u00ecnh",
+                "value": "Huy\u1ec7n B\u1eafc B\u00ecnh"
+            },
+            {
+                "label": "Huy\u1ec7n H\u00e0m Thu\u1eadn B\u1eafc",
+                "value": "Huy\u1ec7n H\u00e0m Thu\u1eadn B\u1eafc"
+            },
+            {
+                "label": "Huy\u1ec7n H\u00e0m Thu\u1eadn Nam",
+                "value": "Huy\u1ec7n H\u00e0m Thu\u1eadn Nam"
+            },
+            {
+                "label": "Huy\u1ec7n T\u00e1nh Linh",
+                "value": "Huy\u1ec7n T\u00e1nh Linh"
+            },
+            {
+                "label": "Huy\u1ec7n \u0110\u1ee9c Linh",
+                "value": "Huy\u1ec7n \u0110\u1ee9c Linh"
+            },
+            {
+                "label": "Huy\u1ec7n H\u00e0m T\u00e2n",
+                "value": "Huy\u1ec7n H\u00e0m T\u00e2n"
+            },
+            {
+                "label": "Huy\u1ec7n Ph\u00fa Qu\u00ed",
+                "value": "Huy\u1ec7n Ph\u00fa Qu\u00ed"
+            }
+        ]
+    },
+    {
+        "label": "T\u1ec9nh Kon Tum",
+        "value": "T\u1ec9nh Kon Tum",
+        "districts": [
+            {
+                "label": "Th\u00e0nh ph\u1ed1 Kon Tum",
+                "value": "Th\u00e0nh ph\u1ed1 Kon Tum"
+            },
+            {
+                "label": "Huy\u1ec7n \u0110\u1eafk Glei",
+                "value": "Huy\u1ec7n \u0110\u1eafk Glei"
+            },
+            {
+                "label": "Huy\u1ec7n Ng\u1ecdc H\u1ed3i",
+                "value": "Huy\u1ec7n Ng\u1ecdc H\u1ed3i"
+            },
+            {
+                "label": "Huy\u1ec7n \u0110\u1eafk T\u00f4",
+                "value": "Huy\u1ec7n \u0110\u1eafk T\u00f4"
+            },
+            {
+                "label": "Huy\u1ec7n Kon Pl\u00f4ng",
+                "value": "Huy\u1ec7n Kon Pl\u00f4ng"
+            },
+            {
+                "label": "Huy\u1ec7n Kon R\u1eaby",
+                "value": "Huy\u1ec7n Kon R\u1eaby"
+            },
+            {
+                "label": "Huy\u1ec7n \u0110\u1eafk H\u00e0",
+                "value": "Huy\u1ec7n \u0110\u1eafk H\u00e0"
+            },
+            {
+                "label": "Huy\u1ec7n Sa Th\u1ea7y",
+                "value": "Huy\u1ec7n Sa Th\u1ea7y"
+            },
+            {
+                "label": "Huy\u1ec7n Tu M\u01a1 R\u00f4ng",
+                "value": "Huy\u1ec7n Tu M\u01a1 R\u00f4ng"
+            },
+            {
+                "label": "Huy\u1ec7n Ia H' Drai",
+                "value": "Huy\u1ec7n Ia H' Drai"
+            }
+        ]
+    },
+    {
+        "label": "T\u1ec9nh Gia Lai",
+        "value": "T\u1ec9nh Gia Lai",
+        "districts": [
+            {
+                "label": "Th\u00e0nh ph\u1ed1 Pleiku",
+                "value": "Th\u00e0nh ph\u1ed1 Pleiku"
+            },
+            {
+                "label": "Th\u1ecb x\u00e3 An Kh\u00ea",
+                "value": "Th\u1ecb x\u00e3 An Kh\u00ea"
+            },
+            {
+                "label": "Th\u1ecb x\u00e3 Ayun Pa",
+                "value": "Th\u1ecb x\u00e3 Ayun Pa"
+            },
+            {
+                "label": "Huy\u1ec7n KBang",
+                "value": "Huy\u1ec7n KBang"
+            },
+            {
+                "label": "Huy\u1ec7n \u0110\u0103k \u0110oa",
+                "value": "Huy\u1ec7n \u0110\u0103k \u0110oa"
+            },
+            {
+                "label": "Huy\u1ec7n Ch\u01b0 P\u0103h",
+                "value": "Huy\u1ec7n Ch\u01b0 P\u0103h"
+            },
+            {
+                "label": "Huy\u1ec7n Ia Grai",
+                "value": "Huy\u1ec7n Ia Grai"
+            },
+            {
+                "label": "Huy\u1ec7n Mang Yang",
+                "value": "Huy\u1ec7n Mang Yang"
+            },
+            {
+                "label": "Huy\u1ec7n K\u00f4ng Chro",
+                "value": "Huy\u1ec7n K\u00f4ng Chro"
+            },
+            {
+                "label": "Huy\u1ec7n \u0110\u1ee9c C\u01a1",
+                "value": "Huy\u1ec7n \u0110\u1ee9c C\u01a1"
+            },
+            {
+                "label": "Huy\u1ec7n Ch\u01b0 Pr\u00f4ng",
+                "value": "Huy\u1ec7n Ch\u01b0 Pr\u00f4ng"
+            },
+            {
+                "label": "Huy\u1ec7n Ch\u01b0 S\u00ea",
+                "value": "Huy\u1ec7n Ch\u01b0 S\u00ea"
+            },
+            {
+                "label": "Huy\u1ec7n \u0110\u0103k P\u01a1",
+                "value": "Huy\u1ec7n \u0110\u0103k P\u01a1"
+            },
+            {
+                "label": "Huy\u1ec7n Ia Pa",
+                "value": "Huy\u1ec7n Ia Pa"
+            },
+            {
+                "label": "Huy\u1ec7n Kr\u00f4ng Pa",
+                "value": "Huy\u1ec7n Kr\u00f4ng Pa"
+            },
+            {
+                "label": "Huy\u1ec7n Ph\u00fa Thi\u1ec7n",
+                "value": "Huy\u1ec7n Ph\u00fa Thi\u1ec7n"
+            },
+            {
+                "label": "Huy\u1ec7n Ch\u01b0 P\u01b0h",
+                "value": "Huy\u1ec7n Ch\u01b0 P\u01b0h"
+            }
+        ]
+    },
+    {
+        "label": "T\u1ec9nh \u0110\u1eafk L\u1eafk",
+        "value": "T\u1ec9nh \u0110\u1eafk L\u1eafk",
+        "districts": [
+            {
+                "label": "Th\u00e0nh ph\u1ed1 Bu\u00f4n Ma Thu\u1ed9t",
+                "value": "Th\u00e0nh ph\u1ed1 Bu\u00f4n Ma Thu\u1ed9t"
+            },
+            {
+                "label": "Th\u1ecb x\u00e3 Bu\u00f4n H\u1ed3",
+                "value": "Th\u1ecb x\u00e3 Bu\u00f4n H\u1ed3"
+            },
+            {
+                "label": "Huy\u1ec7n Ea H'leo",
+                "value": "Huy\u1ec7n Ea H'leo"
+            },
+            {
+                "label": "Huy\u1ec7n Ea S\u00fap",
+                "value": "Huy\u1ec7n Ea S\u00fap"
+            },
+            {
+                "label": "Huy\u1ec7n Bu\u00f4n \u0110\u00f4n",
+                "value": "Huy\u1ec7n Bu\u00f4n \u0110\u00f4n"
+            },
+            {
+                "label": "Huy\u1ec7n C\u01b0 M'gar",
+                "value": "Huy\u1ec7n C\u01b0 M'gar"
+            },
+            {
+                "label": "Huy\u1ec7n Kr\u00f4ng B\u00fak",
+                "value": "Huy\u1ec7n Kr\u00f4ng B\u00fak"
+            },
+            {
+                "label": "Huy\u1ec7n Kr\u00f4ng N\u0103ng",
+                "value": "Huy\u1ec7n Kr\u00f4ng N\u0103ng"
+            },
+            {
+                "label": "Huy\u1ec7n Ea Kar",
+                "value": "Huy\u1ec7n Ea Kar"
+            },
+            {
+                "label": "Huy\u1ec7n M'\u0110r\u1eafk",
+                "value": "Huy\u1ec7n M'\u0110r\u1eafk"
+            },
+            {
+                "label": "Huy\u1ec7n Kr\u00f4ng B\u00f4ng",
+                "value": "Huy\u1ec7n Kr\u00f4ng B\u00f4ng"
+            },
+            {
+                "label": "Huy\u1ec7n Kr\u00f4ng P\u1eafc",
+                "value": "Huy\u1ec7n Kr\u00f4ng P\u1eafc"
+            },
+            {
+                "label": "Huy\u1ec7n Kr\u00f4ng A Na",
+                "value": "Huy\u1ec7n Kr\u00f4ng A Na"
+            },
+            {
+                "label": "Huy\u1ec7n L\u1eafk",
+                "value": "Huy\u1ec7n L\u1eafk"
+            },
+            {
+                "label": "Huy\u1ec7n C\u01b0 Kuin",
+                "value": "Huy\u1ec7n C\u01b0 Kuin"
+            }
+        ]
+    },
+    {
+        "label": "T\u1ec9nh \u0110\u1eafk N\u00f4ng",
+        "value": "T\u1ec9nh \u0110\u1eafk N\u00f4ng",
+        "districts": [
+            {
+                "label": "Th\u00e0nh ph\u1ed1 Gia Ngh\u0129a",
+                "value": "Th\u00e0nh ph\u1ed1 Gia Ngh\u0129a"
+            },
+            {
+                "label": "Huy\u1ec7n \u0110\u0103k Glong",
+                "value": "Huy\u1ec7n \u0110\u0103k Glong"
+            },
+            {
+                "label": "Huy\u1ec7n C\u01b0 J\u00fat",
+                "value": "Huy\u1ec7n C\u01b0 J\u00fat"
+            },
+            {
+                "label": "Huy\u1ec7n \u0110\u1eafk Mil",
+                "value": "Huy\u1ec7n \u0110\u1eafk Mil"
+            },
+            {
+                "label": "Huy\u1ec7n Kr\u00f4ng N\u00f4",
+                "value": "Huy\u1ec7n Kr\u00f4ng N\u00f4"
+            },
+            {
+                "label": "Huy\u1ec7n \u0110\u1eafk Song",
+                "value": "Huy\u1ec7n \u0110\u1eafk Song"
+            },
+            {
+                "label": "Huy\u1ec7n \u0110\u1eafk R'L\u1ea5p",
+                "value": "Huy\u1ec7n \u0110\u1eafk R'L\u1ea5p"
+            },
+            {
+                "label": "Huy\u1ec7n Tuy \u0110\u1ee9c",
+                "value": "Huy\u1ec7n Tuy \u0110\u1ee9c"
+            }
+        ]
+    },
+    {
+        "label": "T\u1ec9nh L\u00e2m \u0110\u1ed3ng",
+        "value": "T\u1ec9nh L\u00e2m \u0110\u1ed3ng",
+        "districts": [
+            {
+                "label": "Th\u00e0nh ph\u1ed1 \u0110\u00e0 L\u1ea1t",
+                "value": "Th\u00e0nh ph\u1ed1 \u0110\u00e0 L\u1ea1t"
+            },
+            {
+                "label": "Th\u00e0nh ph\u1ed1 B\u1ea3o L\u1ed9c",
+                "value": "Th\u00e0nh ph\u1ed1 B\u1ea3o L\u1ed9c"
+            },
+            {
+                "label": "Huy\u1ec7n \u0110am R\u00f4ng",
+                "value": "Huy\u1ec7n \u0110am R\u00f4ng"
+            },
+            {
+                "label": "Huy\u1ec7n L\u1ea1c D\u01b0\u01a1ng",
+                "value": "Huy\u1ec7n L\u1ea1c D\u01b0\u01a1ng"
+            },
+            {
+                "label": "Huy\u1ec7n L\u00e2m H\u00e0",
+                "value": "Huy\u1ec7n L\u00e2m H\u00e0"
+            },
+            {
+                "label": "Huy\u1ec7n \u0110\u01a1n D\u01b0\u01a1ng",
+                "value": "Huy\u1ec7n \u0110\u01a1n D\u01b0\u01a1ng"
+            },
+            {
+                "label": "Huy\u1ec7n \u0110\u1ee9c Tr\u1ecdng",
+                "value": "Huy\u1ec7n \u0110\u1ee9c Tr\u1ecdng"
+            },
+            {
+                "label": "Huy\u1ec7n Di Linh",
+                "value": "Huy\u1ec7n Di Linh"
+            },
+            {
+                "label": "Huy\u1ec7n B\u1ea3o L\u00e2m",
+                "value": "Huy\u1ec7n B\u1ea3o L\u00e2m"
+            },
+            {
+                "label": "Huy\u1ec7n \u0110\u1ea1 Huoai",
+                "value": "Huy\u1ec7n \u0110\u1ea1 Huoai"
+            },
+            {
+                "label": "Huy\u1ec7n \u0110\u1ea1 T\u1ebbh",
+                "value": "Huy\u1ec7n \u0110\u1ea1 T\u1ebbh"
+            },
+            {
+                "label": "Huy\u1ec7n C\u00e1t Ti\u00ean",
+                "value": "Huy\u1ec7n C\u00e1t Ti\u00ean"
+            }
+        ]
+    },
+    {
+        "label": "T\u1ec9nh B\u00ecnh Ph\u01b0\u1edbc",
+        "value": "T\u1ec9nh B\u00ecnh Ph\u01b0\u1edbc",
+        "districts": [
+            {
+                "label": "Th\u1ecb x\u00e3 Ph\u01b0\u1edbc Long",
+                "value": "Th\u1ecb x\u00e3 Ph\u01b0\u1edbc Long"
+            },
+            {
+                "label": "Th\u00e0nh ph\u1ed1 \u0110\u1ed3ng Xo\u00e0i",
+                "value": "Th\u00e0nh ph\u1ed1 \u0110\u1ed3ng Xo\u00e0i"
+            },
+            {
+                "label": "Th\u1ecb x\u00e3 B\u00ecnh Long",
+                "value": "Th\u1ecb x\u00e3 B\u00ecnh Long"
+            },
+            {
+                "label": "Huy\u1ec7n B\u00f9 Gia M\u1eadp",
+                "value": "Huy\u1ec7n B\u00f9 Gia M\u1eadp"
+            },
+            {
+                "label": "Huy\u1ec7n L\u1ed9c Ninh",
+                "value": "Huy\u1ec7n L\u1ed9c Ninh"
+            },
+            {
+                "label": "Huy\u1ec7n B\u00f9 \u0110\u1ed1p",
+                "value": "Huy\u1ec7n B\u00f9 \u0110\u1ed1p"
+            },
+            {
+                "label": "Huy\u1ec7n H\u1edbn Qu\u1ea3n",
+                "value": "Huy\u1ec7n H\u1edbn Qu\u1ea3n"
+            },
+            {
+                "label": "Huy\u1ec7n \u0110\u1ed3ng Ph\u00fa",
+                "value": "Huy\u1ec7n \u0110\u1ed3ng Ph\u00fa"
+            },
+            {
+                "label": "Huy\u1ec7n B\u00f9 \u0110\u0103ng",
+                "value": "Huy\u1ec7n B\u00f9 \u0110\u0103ng"
+            },
+            {
+                "label": "Th\u1ecb x\u00e3 Ch\u01a1n Th\u00e0nh",
+                "value": "Th\u1ecb x\u00e3 Ch\u01a1n Th\u00e0nh"
+            },
+            {
+                "label": "Huy\u1ec7n Ph\u00fa Ri\u1ec1ng",
+                "value": "Huy\u1ec7n Ph\u00fa Ri\u1ec1ng"
+            }
+        ]
+    },
+    {
+        "label": "T\u1ec9nh T\u00e2y Ninh",
+        "value": "T\u1ec9nh T\u00e2y Ninh",
+        "districts": [
+            {
+                "label": "Th\u00e0nh ph\u1ed1 T\u00e2y Ninh",
+                "value": "Th\u00e0nh ph\u1ed1 T\u00e2y Ninh"
+            },
+            {
+                "label": "Huy\u1ec7n T\u00e2n Bi\u00ean",
+                "value": "Huy\u1ec7n T\u00e2n Bi\u00ean"
+            },
+            {
+                "label": "Huy\u1ec7n T\u00e2n Ch\u00e2u",
+                "value": "Huy\u1ec7n T\u00e2n Ch\u00e2u"
+            },
+            {
+                "label": "Huy\u1ec7n D\u01b0\u01a1ng Minh Ch\u00e2u",
+                "value": "Huy\u1ec7n D\u01b0\u01a1ng Minh Ch\u00e2u"
+            },
+            {
+                "label": "Huy\u1ec7n Ch\u00e2u Th\u00e0nh",
+                "value": "Huy\u1ec7n Ch\u00e2u Th\u00e0nh"
+            },
+            {
+                "label": "Th\u1ecb x\u00e3 H\u00f2a Th\u00e0nh",
+                "value": "Th\u1ecb x\u00e3 H\u00f2a Th\u00e0nh"
+            },
+            {
+                "label": "Huy\u1ec7n G\u00f2 D\u1ea7u",
+                "value": "Huy\u1ec7n G\u00f2 D\u1ea7u"
+            },
+            {
+                "label": "Huy\u1ec7n B\u1ebfn C\u1ea7u",
+                "value": "Huy\u1ec7n B\u1ebfn C\u1ea7u"
+            },
+            {
+                "label": "Th\u1ecb x\u00e3 Tr\u1ea3ng B\u00e0ng",
+                "value": "Th\u1ecb x\u00e3 Tr\u1ea3ng B\u00e0ng"
+            }
+        ]
+    },
+    {
+        "label": "T\u1ec9nh B\u00ecnh D\u01b0\u01a1ng",
+        "value": "T\u1ec9nh B\u00ecnh D\u01b0\u01a1ng",
+        "districts": [
+            {
+                "label": "Th\u00e0nh ph\u1ed1 Th\u1ee7 D\u1ea7u M\u1ed9t",
+                "value": "Th\u00e0nh ph\u1ed1 Th\u1ee7 D\u1ea7u M\u1ed9t"
+            },
+            {
+                "label": "Huy\u1ec7n B\u00e0u B\u00e0ng",
+                "value": "Huy\u1ec7n B\u00e0u B\u00e0ng"
+            },
+            {
+                "label": "Huy\u1ec7n D\u1ea7u Ti\u1ebfng",
+                "value": "Huy\u1ec7n D\u1ea7u Ti\u1ebfng"
+            },
+            {
+                "label": "Th\u1ecb x\u00e3 B\u1ebfn C\u00e1t",
+                "value": "Th\u1ecb x\u00e3 B\u1ebfn C\u00e1t"
+            },
+            {
+                "label": "Huy\u1ec7n Ph\u00fa Gi\u00e1o",
+                "value": "Huy\u1ec7n Ph\u00fa Gi\u00e1o"
+            },
+            {
+                "label": "Th\u00e0nh ph\u1ed1 T\u00e2n Uy\u00ean",
+                "value": "Th\u00e0nh ph\u1ed1 T\u00e2n Uy\u00ean"
+            },
+            {
+                "label": "Th\u00e0nh ph\u1ed1 D\u0129 An",
+                "value": "Th\u00e0nh ph\u1ed1 D\u0129 An"
+            },
+            {
+                "label": "Th\u00e0nh ph\u1ed1 Thu\u1eadn An",
+                "value": "Th\u00e0nh ph\u1ed1 Thu\u1eadn An"
+            },
+            {
+                "label": "Huy\u1ec7n B\u1eafc T\u00e2n Uy\u00ean",
+                "value": "Huy\u1ec7n B\u1eafc T\u00e2n Uy\u00ean"
+            }
+        ]
+    },
+    {
+        "label": "T\u1ec9nh \u0110\u1ed3ng Nai",
+        "value": "T\u1ec9nh \u0110\u1ed3ng Nai",
+        "districts": [
+            {
+                "label": "Th\u00e0nh ph\u1ed1 Bi\u00ean H\u00f2a",
+                "value": "Th\u00e0nh ph\u1ed1 Bi\u00ean H\u00f2a"
+            },
+            {
+                "label": "Th\u00e0nh ph\u1ed1 Long Kh\u00e1nh",
+                "value": "Th\u00e0nh ph\u1ed1 Long Kh\u00e1nh"
+            },
+            {
+                "label": "Huy\u1ec7n T\u00e2n Ph\u00fa",
+                "value": "Huy\u1ec7n T\u00e2n Ph\u00fa"
+            },
+            {
+                "label": "Huy\u1ec7n V\u0129nh C\u1eedu",
+                "value": "Huy\u1ec7n V\u0129nh C\u1eedu"
+            },
+            {
+                "label": "Huy\u1ec7n \u0110\u1ecbnh Qu\u00e1n",
+                "value": "Huy\u1ec7n \u0110\u1ecbnh Qu\u00e1n"
+            },
+            {
+                "label": "Huy\u1ec7n Tr\u1ea3ng Bom",
+                "value": "Huy\u1ec7n Tr\u1ea3ng Bom"
+            },
+            {
+                "label": "Huy\u1ec7n Th\u1ed1ng Nh\u1ea5t",
+                "value": "Huy\u1ec7n Th\u1ed1ng Nh\u1ea5t"
+            },
+            {
+                "label": "Huy\u1ec7n C\u1ea9m M\u1ef9",
+                "value": "Huy\u1ec7n C\u1ea9m M\u1ef9"
+            },
+            {
+                "label": "Huy\u1ec7n Long Th\u00e0nh",
+                "value": "Huy\u1ec7n Long Th\u00e0nh"
+            },
+            {
+                "label": "Huy\u1ec7n Xu\u00e2n L\u1ed9c",
+                "value": "Huy\u1ec7n Xu\u00e2n L\u1ed9c"
+            },
+            {
+                "label": "Huy\u1ec7n Nh\u01a1n Tr\u1ea1ch",
+                "value": "Huy\u1ec7n Nh\u01a1n Tr\u1ea1ch"
+            }
+        ]
+    },
+    {
+        "label": "T\u1ec9nh B\u00e0 R\u1ecba - V\u0169ng T\u00e0u",
+        "value": "T\u1ec9nh B\u00e0 R\u1ecba - V\u0169ng T\u00e0u",
+        "districts": [
+            {
+                "label": "Th\u00e0nh ph\u1ed1 V\u0169ng T\u00e0u",
+                "value": "Th\u00e0nh ph\u1ed1 V\u0169ng T\u00e0u"
+            },
+            {
+                "label": "Th\u00e0nh ph\u1ed1 B\u00e0 R\u1ecba",
+                "value": "Th\u00e0nh ph\u1ed1 B\u00e0 R\u1ecba"
+            },
+            {
+                "label": "Huy\u1ec7n Ch\u00e2u \u0110\u1ee9c",
+                "value": "Huy\u1ec7n Ch\u00e2u \u0110\u1ee9c"
+            },
+            {
+                "label": "Huy\u1ec7n Xuy\u00ean M\u1ed9c",
+                "value": "Huy\u1ec7n Xuy\u00ean M\u1ed9c"
+            },
+            {
+                "label": "Huy\u1ec7n Long \u0110i\u1ec1n",
+                "value": "Huy\u1ec7n Long \u0110i\u1ec1n"
+            },
+            {
+                "label": "Huy\u1ec7n \u0110\u1ea5t \u0110\u1ecf",
+                "value": "Huy\u1ec7n \u0110\u1ea5t \u0110\u1ecf"
+            },
+            {
+                "label": "Th\u1ecb x\u00e3 Ph\u00fa M\u1ef9",
+                "value": "Th\u1ecb x\u00e3 Ph\u00fa M\u1ef9"
+            },
+            {
+                "label": "Huy\u1ec7n C\u00f4n \u0110\u1ea3o",
+                "value": "Huy\u1ec7n C\u00f4n \u0110\u1ea3o"
+            }
+        ]
+    },
+    {
+        "label": "Th\u00e0nh ph\u1ed1 H\u1ed3 Ch\u00ed Minh",
+        "value": "Th\u00e0nh ph\u1ed1 H\u1ed3 Ch\u00ed Minh",
+        "districts": [
+            {
+                "label": "Qu\u1eadn 1",
+                "value": "Qu\u1eadn 1"
+            },
+            {
+                "label": "Qu\u1eadn 12",
+                "value": "Qu\u1eadn 12"
+            },
+            {
+                "label": "Qu\u1eadn G\u00f2 V\u1ea5p",
+                "value": "Qu\u1eadn G\u00f2 V\u1ea5p"
+            },
+            {
+                "label": "Qu\u1eadn B\u00ecnh Th\u1ea1nh",
+                "value": "Qu\u1eadn B\u00ecnh Th\u1ea1nh"
+            },
+            {
+                "label": "Qu\u1eadn T\u00e2n B\u00ecnh",
+                "value": "Qu\u1eadn T\u00e2n B\u00ecnh"
+            },
+            {
+                "label": "Qu\u1eadn T\u00e2n Ph\u00fa",
+                "value": "Qu\u1eadn T\u00e2n Ph\u00fa"
+            },
+            {
+                "label": "Qu\u1eadn Ph\u00fa Nhu\u1eadn",
+                "value": "Qu\u1eadn Ph\u00fa Nhu\u1eadn"
+            },
+            {
+                "label": "Th\u00e0nh ph\u1ed1 Th\u1ee7 \u0110\u1ee9c",
+                "value": "Th\u00e0nh ph\u1ed1 Th\u1ee7 \u0110\u1ee9c"
+            },
+            {
+                "label": "Qu\u1eadn 3",
+                "value": "Qu\u1eadn 3"
+            },
+            {
+                "label": "Qu\u1eadn 10",
+                "value": "Qu\u1eadn 10"
+            },
+            {
+                "label": "Qu\u1eadn 11",
+                "value": "Qu\u1eadn 11"
+            },
+            {
+                "label": "Qu\u1eadn 4",
+                "value": "Qu\u1eadn 4"
+            },
+            {
+                "label": "Qu\u1eadn 5",
+                "value": "Qu\u1eadn 5"
+            },
+            {
+                "label": "Qu\u1eadn 6",
+                "value": "Qu\u1eadn 6"
+            },
+            {
+                "label": "Qu\u1eadn 8",
+                "value": "Qu\u1eadn 8"
+            },
+            {
+                "label": "Qu\u1eadn B\u00ecnh T\u00e2n",
+                "value": "Qu\u1eadn B\u00ecnh T\u00e2n"
+            },
+            {
+                "label": "Qu\u1eadn 7",
+                "value": "Qu\u1eadn 7"
+            },
+            {
+                "label": "Huy\u1ec7n C\u1ee7 Chi",
+                "value": "Huy\u1ec7n C\u1ee7 Chi"
+            },
+            {
+                "label": "Huy\u1ec7n H\u00f3c M\u00f4n",
+                "value": "Huy\u1ec7n H\u00f3c M\u00f4n"
+            },
+            {
+                "label": "Huy\u1ec7n B\u00ecnh Ch\u00e1nh",
+                "value": "Huy\u1ec7n B\u00ecnh Ch\u00e1nh"
+            },
+            {
+                "label": "Huy\u1ec7n Nh\u00e0 B\u00e8",
+                "value": "Huy\u1ec7n Nh\u00e0 B\u00e8"
+            },
+            {
+                "label": "Huy\u1ec7n C\u1ea7n Gi\u1edd",
+                "value": "Huy\u1ec7n C\u1ea7n Gi\u1edd"
+            }
+        ]
+    },
+    {
+        "label": "T\u1ec9nh Long An",
+        "value": "T\u1ec9nh Long An",
+        "districts": [
+            {
+                "label": "Th\u00e0nh ph\u1ed1 T\u00e2n An",
+                "value": "Th\u00e0nh ph\u1ed1 T\u00e2n An"
+            },
+            {
+                "label": "Th\u1ecb x\u00e3 Ki\u1ebfn T\u01b0\u1eddng",
+                "value": "Th\u1ecb x\u00e3 Ki\u1ebfn T\u01b0\u1eddng"
+            },
+            {
+                "label": "Huy\u1ec7n T\u00e2n H\u01b0ng",
+                "value": "Huy\u1ec7n T\u00e2n H\u01b0ng"
+            },
+            {
+                "label": "Huy\u1ec7n V\u0129nh H\u01b0ng",
+                "value": "Huy\u1ec7n V\u0129nh H\u01b0ng"
+            },
+            {
+                "label": "Huy\u1ec7n M\u1ed9c H\u00f3a",
+                "value": "Huy\u1ec7n M\u1ed9c H\u00f3a"
+            },
+            {
+                "label": "Huy\u1ec7n T\u00e2n Th\u1ea1nh",
+                "value": "Huy\u1ec7n T\u00e2n Th\u1ea1nh"
+            },
+            {
+                "label": "Huy\u1ec7n Th\u1ea1nh H\u00f3a",
+                "value": "Huy\u1ec7n Th\u1ea1nh H\u00f3a"
+            },
+            {
+                "label": "Huy\u1ec7n \u0110\u1ee9c Hu\u1ec7",
+                "value": "Huy\u1ec7n \u0110\u1ee9c Hu\u1ec7"
+            },
+            {
+                "label": "Huy\u1ec7n \u0110\u1ee9c H\u00f2a",
+                "value": "Huy\u1ec7n \u0110\u1ee9c H\u00f2a"
+            },
+            {
+                "label": "Huy\u1ec7n B\u1ebfn L\u1ee9c",
+                "value": "Huy\u1ec7n B\u1ebfn L\u1ee9c"
+            },
+            {
+                "label": "Huy\u1ec7n Th\u1ee7 Th\u1eeba",
+                "value": "Huy\u1ec7n Th\u1ee7 Th\u1eeba"
+            },
+            {
+                "label": "Huy\u1ec7n T\u00e2n Tr\u1ee5",
+                "value": "Huy\u1ec7n T\u00e2n Tr\u1ee5"
+            },
+            {
+                "label": "Huy\u1ec7n C\u1ea7n \u0110\u01b0\u1edbc",
+                "value": "Huy\u1ec7n C\u1ea7n \u0110\u01b0\u1edbc"
+            },
+            {
+                "label": "Huy\u1ec7n C\u1ea7n Giu\u1ed9c",
+                "value": "Huy\u1ec7n C\u1ea7n Giu\u1ed9c"
+            },
+            {
+                "label": "Huy\u1ec7n Ch\u00e2u Th\u00e0nh",
+                "value": "Huy\u1ec7n Ch\u00e2u Th\u00e0nh"
+            }
+        ]
+    },
+    {
+        "label": "T\u1ec9nh Ti\u1ec1n Giang",
+        "value": "T\u1ec9nh Ti\u1ec1n Giang",
+        "districts": [
+            {
+                "label": "Th\u00e0nh ph\u1ed1 M\u1ef9 Tho",
+                "value": "Th\u00e0nh ph\u1ed1 M\u1ef9 Tho"
+            },
+            {
+                "label": "Th\u1ecb x\u00e3 G\u00f2 C\u00f4ng",
+                "value": "Th\u1ecb x\u00e3 G\u00f2 C\u00f4ng"
+            },
+            {
+                "label": "Th\u1ecb x\u00e3 Cai L\u1eady",
+                "value": "Th\u1ecb x\u00e3 Cai L\u1eady"
+            },
+            {
+                "label": "Huy\u1ec7n T\u00e2n Ph\u01b0\u1edbc",
+                "value": "Huy\u1ec7n T\u00e2n Ph\u01b0\u1edbc"
+            },
+            {
+                "label": "Huy\u1ec7n C\u00e1i B\u00e8",
+                "value": "Huy\u1ec7n C\u00e1i B\u00e8"
+            },
+            {
+                "label": "Huy\u1ec7n Cai L\u1eady",
+                "value": "Huy\u1ec7n Cai L\u1eady"
+            },
+            {
+                "label": "Huy\u1ec7n Ch\u00e2u Th\u00e0nh",
+                "value": "Huy\u1ec7n Ch\u00e2u Th\u00e0nh"
+            },
+            {
+                "label": "Huy\u1ec7n Ch\u1ee3 G\u1ea1o",
+                "value": "Huy\u1ec7n Ch\u1ee3 G\u1ea1o"
+            },
+            {
+                "label": "Huy\u1ec7n G\u00f2 C\u00f4ng T\u00e2y",
+                "value": "Huy\u1ec7n G\u00f2 C\u00f4ng T\u00e2y"
+            },
+            {
+                "label": "Huy\u1ec7n G\u00f2 C\u00f4ng \u0110\u00f4ng",
+                "value": "Huy\u1ec7n G\u00f2 C\u00f4ng \u0110\u00f4ng"
+            },
+            {
+                "label": "Huy\u1ec7n T\u00e2n Ph\u00fa \u0110\u00f4ng",
+                "value": "Huy\u1ec7n T\u00e2n Ph\u00fa \u0110\u00f4ng"
+            }
+        ]
+    },
+    {
+        "label": "T\u1ec9nh B\u1ebfn Tre",
+        "value": "T\u1ec9nh B\u1ebfn Tre",
+        "districts": [
+            {
+                "label": "Th\u00e0nh ph\u1ed1 B\u1ebfn Tre",
+                "value": "Th\u00e0nh ph\u1ed1 B\u1ebfn Tre"
+            },
+            {
+                "label": "Huy\u1ec7n Ch\u00e2u Th\u00e0nh",
+                "value": "Huy\u1ec7n Ch\u00e2u Th\u00e0nh"
+            },
+            {
+                "label": "Huy\u1ec7n Ch\u1ee3 L\u00e1ch",
+                "value": "Huy\u1ec7n Ch\u1ee3 L\u00e1ch"
+            },
+            {
+                "label": "Huy\u1ec7n M\u1ecf C\u00e0y Nam",
+                "value": "Huy\u1ec7n M\u1ecf C\u00e0y Nam"
+            },
+            {
+                "label": "Huy\u1ec7n Gi\u1ed3ng Tr\u00f4m",
+                "value": "Huy\u1ec7n Gi\u1ed3ng Tr\u00f4m"
+            },
+            {
+                "label": "Huy\u1ec7n B\u00ecnh \u0110\u1ea1i",
+                "value": "Huy\u1ec7n B\u00ecnh \u0110\u1ea1i"
+            },
+            {
+                "label": "Huy\u1ec7n Ba Tri",
+                "value": "Huy\u1ec7n Ba Tri"
+            },
+            {
+                "label": "Huy\u1ec7n Th\u1ea1nh Ph\u00fa",
+                "value": "Huy\u1ec7n Th\u1ea1nh Ph\u00fa"
+            },
+            {
+                "label": "Huy\u1ec7n M\u1ecf C\u00e0y B\u1eafc",
+                "value": "Huy\u1ec7n M\u1ecf C\u00e0y B\u1eafc"
+            }
+        ]
+    },
+    {
+        "label": "T\u1ec9nh Tr\u00e0 Vinh",
+        "value": "T\u1ec9nh Tr\u00e0 Vinh",
+        "districts": [
+            {
+                "label": "Th\u00e0nh ph\u1ed1 Tr\u00e0 Vinh",
+                "value": "Th\u00e0nh ph\u1ed1 Tr\u00e0 Vinh"
+            },
+            {
+                "label": "Huy\u1ec7n C\u00e0ng Long",
+                "value": "Huy\u1ec7n C\u00e0ng Long"
+            },
+            {
+                "label": "Huy\u1ec7n C\u1ea7u K\u00e8",
+                "value": "Huy\u1ec7n C\u1ea7u K\u00e8"
+            },
+            {
+                "label": "Huy\u1ec7n Ti\u1ec3u C\u1ea7n",
+                "value": "Huy\u1ec7n Ti\u1ec3u C\u1ea7n"
+            },
+            {
+                "label": "Huy\u1ec7n Ch\u00e2u Th\u00e0nh",
+                "value": "Huy\u1ec7n Ch\u00e2u Th\u00e0nh"
+            },
+            {
+                "label": "Huy\u1ec7n C\u1ea7u Ngang",
+                "value": "Huy\u1ec7n C\u1ea7u Ngang"
+            },
+            {
+                "label": "Huy\u1ec7n Tr\u00e0 C\u00fa",
+                "value": "Huy\u1ec7n Tr\u00e0 C\u00fa"
+            },
+            {
+                "label": "Huy\u1ec7n Duy\u00ean H\u1ea3i",
+                "value": "Huy\u1ec7n Duy\u00ean H\u1ea3i"
+            },
+            {
+                "label": "Th\u1ecb x\u00e3 Duy\u00ean H\u1ea3i",
+                "value": "Th\u1ecb x\u00e3 Duy\u00ean H\u1ea3i"
+            }
+        ]
+    },
+    {
+        "label": "T\u1ec9nh V\u0129nh Long",
+        "value": "T\u1ec9nh V\u0129nh Long",
+        "districts": [
+            {
+                "label": "Th\u00e0nh ph\u1ed1 V\u0129nh Long",
+                "value": "Th\u00e0nh ph\u1ed1 V\u0129nh Long"
+            },
+            {
+                "label": "Huy\u1ec7n Long H\u1ed3",
+                "value": "Huy\u1ec7n Long H\u1ed3"
+            },
+            {
+                "label": "Huy\u1ec7n Mang Th\u00edt",
+                "value": "Huy\u1ec7n Mang Th\u00edt"
+            },
+            {
+                "label": "Huy\u1ec7n V\u0169ng Li\u00eam",
+                "value": "Huy\u1ec7n V\u0169ng Li\u00eam"
+            },
+            {
+                "label": "Huy\u1ec7n Tam B\u00ecnh",
+                "value": "Huy\u1ec7n Tam B\u00ecnh"
+            },
+            {
+                "label": "Th\u1ecb x\u00e3 B\u00ecnh Minh",
+                "value": "Th\u1ecb x\u00e3 B\u00ecnh Minh"
+            },
+            {
+                "label": "Huy\u1ec7n Tr\u00e0 \u00d4n",
+                "value": "Huy\u1ec7n Tr\u00e0 \u00d4n"
+            },
+            {
+                "label": "Huy\u1ec7n B\u00ecnh T\u00e2n",
+                "value": "Huy\u1ec7n B\u00ecnh T\u00e2n"
+            }
+        ]
+    },
+    {
+        "label": "T\u1ec9nh \u0110\u1ed3ng Th\u00e1p",
+        "value": "T\u1ec9nh \u0110\u1ed3ng Th\u00e1p",
+        "districts": [
+            {
+                "label": "Th\u00e0nh ph\u1ed1 Cao L\u00e3nh",
+                "value": "Th\u00e0nh ph\u1ed1 Cao L\u00e3nh"
+            },
+            {
+                "label": "Th\u00e0nh ph\u1ed1 Sa \u0110\u00e9c",
+                "value": "Th\u00e0nh ph\u1ed1 Sa \u0110\u00e9c"
+            },
+            {
+                "label": "Th\u00e0nh ph\u1ed1 H\u1ed3ng Ng\u1ef1",
+                "value": "Th\u00e0nh ph\u1ed1 H\u1ed3ng Ng\u1ef1"
+            },
+            {
+                "label": "Huy\u1ec7n T\u00e2n H\u1ed3ng",
+                "value": "Huy\u1ec7n T\u00e2n H\u1ed3ng"
+            },
+            {
+                "label": "Huy\u1ec7n H\u1ed3ng Ng\u1ef1",
+                "value": "Huy\u1ec7n H\u1ed3ng Ng\u1ef1"
+            },
+            {
+                "label": "Huy\u1ec7n Tam N\u00f4ng",
+                "value": "Huy\u1ec7n Tam N\u00f4ng"
+            },
+            {
+                "label": "Huy\u1ec7n Th\u00e1p M\u01b0\u1eddi",
+                "value": "Huy\u1ec7n Th\u00e1p M\u01b0\u1eddi"
+            },
+            {
+                "label": "Huy\u1ec7n Cao L\u00e3nh",
+                "value": "Huy\u1ec7n Cao L\u00e3nh"
+            },
+            {
+                "label": "Huy\u1ec7n Thanh B\u00ecnh",
+                "value": "Huy\u1ec7n Thanh B\u00ecnh"
+            },
+            {
+                "label": "Huy\u1ec7n L\u1ea5p V\u00f2",
+                "value": "Huy\u1ec7n L\u1ea5p V\u00f2"
+            },
+            {
+                "label": "Huy\u1ec7n Lai Vung",
+                "value": "Huy\u1ec7n Lai Vung"
+            },
+            {
+                "label": "Huy\u1ec7n Ch\u00e2u Th\u00e0nh",
+                "value": "Huy\u1ec7n Ch\u00e2u Th\u00e0nh"
+            }
+        ]
+    },
+    {
+        "label": "T\u1ec9nh An Giang",
+        "value": "T\u1ec9nh An Giang",
+        "districts": [
+            {
+                "label": "Th\u00e0nh ph\u1ed1 Long Xuy\u00ean",
+                "value": "Th\u00e0nh ph\u1ed1 Long Xuy\u00ean"
+            },
+            {
+                "label": "Th\u00e0nh ph\u1ed1 Ch\u00e2u \u0110\u1ed1c",
+                "value": "Th\u00e0nh ph\u1ed1 Ch\u00e2u \u0110\u1ed1c"
+            },
+            {
+                "label": "Huy\u1ec7n An Ph\u00fa",
+                "value": "Huy\u1ec7n An Ph\u00fa"
+            },
+            {
+                "label": "Th\u1ecb x\u00e3 T\u00e2n Ch\u00e2u",
+                "value": "Th\u1ecb x\u00e3 T\u00e2n Ch\u00e2u"
+            },
+            {
+                "label": "Huy\u1ec7n Ph\u00fa T\u00e2n",
+                "value": "Huy\u1ec7n Ph\u00fa T\u00e2n"
+            },
+            {
+                "label": "Huy\u1ec7n Ch\u00e2u Ph\u00fa",
+                "value": "Huy\u1ec7n Ch\u00e2u Ph\u00fa"
+            },
+            {
+                "label": "Th\u1ecb x\u00e3 T\u1ecbnh Bi\u00ean",
+                "value": "Th\u1ecb x\u00e3 T\u1ecbnh Bi\u00ean"
+            },
+            {
+                "label": "Huy\u1ec7n Tri T\u00f4n",
+                "value": "Huy\u1ec7n Tri T\u00f4n"
+            },
+            {
+                "label": "Huy\u1ec7n Ch\u00e2u Th\u00e0nh",
+                "value": "Huy\u1ec7n Ch\u00e2u Th\u00e0nh"
+            },
+            {
+                "label": "Huy\u1ec7n Ch\u1ee3 M\u1edbi",
+                "value": "Huy\u1ec7n Ch\u1ee3 M\u1edbi"
+            },
+            {
+                "label": "Huy\u1ec7n Tho\u1ea1i S\u01a1n",
+                "value": "Huy\u1ec7n Tho\u1ea1i S\u01a1n"
+            }
+        ]
+    },
+    {
+        "label": "T\u1ec9nh Ki\u00ean Giang",
+        "value": "T\u1ec9nh Ki\u00ean Giang",
+        "districts": [
+            {
+                "label": "Th\u00e0nh ph\u1ed1 R\u1ea1ch Gi\u00e1",
+                "value": "Th\u00e0nh ph\u1ed1 R\u1ea1ch Gi\u00e1"
+            },
+            {
+                "label": "Th\u00e0nh ph\u1ed1 H\u00e0 Ti\u00ean",
+                "value": "Th\u00e0nh ph\u1ed1 H\u00e0 Ti\u00ean"
+            },
+            {
+                "label": "Huy\u1ec7n Ki\u00ean L\u01b0\u01a1ng",
+                "value": "Huy\u1ec7n Ki\u00ean L\u01b0\u01a1ng"
+            },
+            {
+                "label": "Huy\u1ec7n H\u00f2n \u0110\u1ea5t",
+                "value": "Huy\u1ec7n H\u00f2n \u0110\u1ea5t"
+            },
+            {
+                "label": "Huy\u1ec7n T\u00e2n Hi\u1ec7p",
+                "value": "Huy\u1ec7n T\u00e2n Hi\u1ec7p"
+            },
+            {
+                "label": "Huy\u1ec7n Ch\u00e2u Th\u00e0nh",
+                "value": "Huy\u1ec7n Ch\u00e2u Th\u00e0nh"
+            },
+            {
+                "label": "Huy\u1ec7n Gi\u1ed3ng Ri\u1ec1ng",
+                "value": "Huy\u1ec7n Gi\u1ed3ng Ri\u1ec1ng"
+            },
+            {
+                "label": "Huy\u1ec7n G\u00f2 Quao",
+                "value": "Huy\u1ec7n G\u00f2 Quao"
+            },
+            {
+                "label": "Huy\u1ec7n An Bi\u00ean",
+                "value": "Huy\u1ec7n An Bi\u00ean"
+            },
+            {
+                "label": "Huy\u1ec7n An Minh",
+                "value": "Huy\u1ec7n An Minh"
+            },
+            {
+                "label": "Huy\u1ec7n V\u0129nh Thu\u1eadn",
+                "value": "Huy\u1ec7n V\u0129nh Thu\u1eadn"
+            },
+            {
+                "label": "Th\u00e0nh ph\u1ed1 Ph\u00fa Qu\u1ed1c",
+                "value": "Th\u00e0nh ph\u1ed1 Ph\u00fa Qu\u1ed1c"
+            },
+            {
+                "label": "Huy\u1ec7n Ki\u00ean H\u1ea3i",
+                "value": "Huy\u1ec7n Ki\u00ean H\u1ea3i"
+            },
+            {
+                "label": "Huy\u1ec7n U Minh Th\u01b0\u1ee3ng",
+                "value": "Huy\u1ec7n U Minh Th\u01b0\u1ee3ng"
+            },
+            {
+                "label": "Huy\u1ec7n Giang Th\u00e0nh",
+                "value": "Huy\u1ec7n Giang Th\u00e0nh"
+            }
+        ]
+    },
+    {
+        "label": "Th\u00e0nh ph\u1ed1 C\u1ea7n Th\u01a1",
+        "value": "Th\u00e0nh ph\u1ed1 C\u1ea7n Th\u01a1",
+        "districts": [
+            {
+                "label": "Qu\u1eadn Ninh Ki\u1ec1u",
+                "value": "Qu\u1eadn Ninh Ki\u1ec1u"
+            },
+            {
+                "label": "Qu\u1eadn \u00d4 M\u00f4n",
+                "value": "Qu\u1eadn \u00d4 M\u00f4n"
+            },
+            {
+                "label": "Qu\u1eadn B\u00ecnh Thu\u1ef7",
+                "value": "Qu\u1eadn B\u00ecnh Thu\u1ef7"
+            },
+            {
+                "label": "Qu\u1eadn C\u00e1i R\u0103ng",
+                "value": "Qu\u1eadn C\u00e1i R\u0103ng"
+            },
+            {
+                "label": "Qu\u1eadn Th\u1ed1t N\u1ed1t",
+                "value": "Qu\u1eadn Th\u1ed1t N\u1ed1t"
+            },
+            {
+                "label": "Huy\u1ec7n V\u0129nh Th\u1ea1nh",
+                "value": "Huy\u1ec7n V\u0129nh Th\u1ea1nh"
+            },
+            {
+                "label": "Huy\u1ec7n C\u1edd \u0110\u1ecf",
+                "value": "Huy\u1ec7n C\u1edd \u0110\u1ecf"
+            },
+            {
+                "label": "Huy\u1ec7n Phong \u0110i\u1ec1n",
+                "value": "Huy\u1ec7n Phong \u0110i\u1ec1n"
+            },
+            {
+                "label": "Huy\u1ec7n Th\u1edbi Lai",
+                "value": "Huy\u1ec7n Th\u1edbi Lai"
+            }
+        ]
+    },
+    {
+        "label": "T\u1ec9nh H\u1eadu Giang",
+        "value": "T\u1ec9nh H\u1eadu Giang",
+        "districts": [
+            {
+                "label": "Th\u00e0nh ph\u1ed1 V\u1ecb Thanh",
+                "value": "Th\u00e0nh ph\u1ed1 V\u1ecb Thanh"
+            },
+            {
+                "label": "Th\u00e0nh ph\u1ed1 Ng\u00e3 B\u1ea3y",
+                "value": "Th\u00e0nh ph\u1ed1 Ng\u00e3 B\u1ea3y"
+            },
+            {
+                "label": "Huy\u1ec7n Ch\u00e2u Th\u00e0nh A",
+                "value": "Huy\u1ec7n Ch\u00e2u Th\u00e0nh A"
+            },
+            {
+                "label": "Huy\u1ec7n Ch\u00e2u Th\u00e0nh",
+                "value": "Huy\u1ec7n Ch\u00e2u Th\u00e0nh"
+            },
+            {
+                "label": "Huy\u1ec7n Ph\u1ee5ng Hi\u1ec7p",
+                "value": "Huy\u1ec7n Ph\u1ee5ng Hi\u1ec7p"
+            },
+            {
+                "label": "Huy\u1ec7n V\u1ecb Thu\u1ef7",
+                "value": "Huy\u1ec7n V\u1ecb Thu\u1ef7"
+            },
+            {
+                "label": "Huy\u1ec7n Long M\u1ef9",
+                "value": "Huy\u1ec7n Long M\u1ef9"
+            },
+            {
+                "label": "Th\u1ecb x\u00e3 Long M\u1ef9",
+                "value": "Th\u1ecb x\u00e3 Long M\u1ef9"
+            }
+        ]
+    },
+    {
+        "label": "T\u1ec9nh S\u00f3c Tr\u0103ng",
+        "value": "T\u1ec9nh S\u00f3c Tr\u0103ng",
+        "districts": [
+            {
+                "label": "Th\u00e0nh ph\u1ed1 S\u00f3c Tr\u0103ng",
+                "value": "Th\u00e0nh ph\u1ed1 S\u00f3c Tr\u0103ng"
+            },
+            {
+                "label": "Huy\u1ec7n Ch\u00e2u Th\u00e0nh",
+                "value": "Huy\u1ec7n Ch\u00e2u Th\u00e0nh"
+            },
+            {
+                "label": "Huy\u1ec7n K\u1ebf S\u00e1ch",
+                "value": "Huy\u1ec7n K\u1ebf S\u00e1ch"
+            },
+            {
+                "label": "Huy\u1ec7n M\u1ef9 T\u00fa",
+                "value": "Huy\u1ec7n M\u1ef9 T\u00fa"
+            },
+            {
+                "label": "Huy\u1ec7n C\u00f9 Lao Dung",
+                "value": "Huy\u1ec7n C\u00f9 Lao Dung"
+            },
+            {
+                "label": "Huy\u1ec7n Long Ph\u00fa",
+                "value": "Huy\u1ec7n Long Ph\u00fa"
+            },
+            {
+                "label": "Huy\u1ec7n M\u1ef9 Xuy\u00ean",
+                "value": "Huy\u1ec7n M\u1ef9 Xuy\u00ean"
+            },
+            {
+                "label": "Th\u1ecb x\u00e3 Ng\u00e3 N\u0103m",
+                "value": "Th\u1ecb x\u00e3 Ng\u00e3 N\u0103m"
+            },
+            {
+                "label": "Huy\u1ec7n Th\u1ea1nh Tr\u1ecb",
+                "value": "Huy\u1ec7n Th\u1ea1nh Tr\u1ecb"
+            },
+            {
+                "label": "Th\u1ecb x\u00e3 V\u0129nh Ch\u00e2u",
+                "value": "Th\u1ecb x\u00e3 V\u0129nh Ch\u00e2u"
+            },
+            {
+                "label": "Huy\u1ec7n Tr\u1ea7n \u0110\u1ec1",
+                "value": "Huy\u1ec7n Tr\u1ea7n \u0110\u1ec1"
+            }
+        ]
+    },
+    {
+        "label": "T\u1ec9nh B\u1ea1c Li\u00eau",
+        "value": "T\u1ec9nh B\u1ea1c Li\u00eau",
+        "districts": [
+            {
+                "label": "Th\u00e0nh ph\u1ed1 B\u1ea1c Li\u00eau",
+                "value": "Th\u00e0nh ph\u1ed1 B\u1ea1c Li\u00eau"
+            },
+            {
+                "label": "Huy\u1ec7n H\u1ed3ng D\u00e2n",
+                "value": "Huy\u1ec7n H\u1ed3ng D\u00e2n"
+            },
+            {
+                "label": "Huy\u1ec7n Ph\u01b0\u1edbc Long",
+                "value": "Huy\u1ec7n Ph\u01b0\u1edbc Long"
+            },
+            {
+                "label": "Huy\u1ec7n V\u0129nh L\u1ee3i",
+                "value": "Huy\u1ec7n V\u0129nh L\u1ee3i"
+            },
+            {
+                "label": "Th\u1ecb x\u00e3 Gi\u00e1 Rai",
+                "value": "Th\u1ecb x\u00e3 Gi\u00e1 Rai"
+            },
+            {
+                "label": "Huy\u1ec7n \u0110\u00f4ng H\u1ea3i",
+                "value": "Huy\u1ec7n \u0110\u00f4ng H\u1ea3i"
+            },
+            {
+                "label": "Huy\u1ec7n Ho\u00e0 B\u00ecnh",
+                "value": "Huy\u1ec7n Ho\u00e0 B\u00ecnh"
+            }
+        ]
+    },
+    {
+        "label": "T\u1ec9nh C\u00e0 Mau",
+        "value": "T\u1ec9nh C\u00e0 Mau",
+        "districts": [
+            {
+                "label": "Th\u00e0nh ph\u1ed1 C\u00e0 Mau",
+                "value": "Th\u00e0nh ph\u1ed1 C\u00e0 Mau"
+            },
+            {
+                "label": "Huy\u1ec7n U Minh",
+                "value": "Huy\u1ec7n U Minh"
+            },
+            {
+                "label": "Huy\u1ec7n Th\u1edbi B\u00ecnh",
+                "value": "Huy\u1ec7n Th\u1edbi B\u00ecnh"
+            },
+            {
+                "label": "Huy\u1ec7n Tr\u1ea7n V\u0103n Th\u1eddi",
+                "value": "Huy\u1ec7n Tr\u1ea7n V\u0103n Th\u1eddi"
+            },
+            {
+                "label": "Huy\u1ec7n C\u00e1i N\u01b0\u1edbc",
+                "value": "Huy\u1ec7n C\u00e1i N\u01b0\u1edbc"
+            },
+            {
+                "label": "Huy\u1ec7n \u0110\u1ea7m D\u01a1i",
+                "value": "Huy\u1ec7n \u0110\u1ea7m D\u01a1i"
+            },
+            {
+                "label": "Huy\u1ec7n N\u0103m C\u0103n",
+                "value": "Huy\u1ec7n N\u0103m C\u0103n"
+            },
+            {
+                "label": "Huy\u1ec7n Ph\u00fa T\u00e2n",
+                "value": "Huy\u1ec7n Ph\u00fa T\u00e2n"
+            },
+            {
+                "label": "Huy\u1ec7n Ng\u1ecdc Hi\u1ec3n",
+                "value": "Huy\u1ec7n Ng\u1ecdc Hi\u1ec3n"
+            }
+        ]
+    }
+]

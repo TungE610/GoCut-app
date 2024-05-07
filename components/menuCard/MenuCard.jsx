@@ -28,6 +28,8 @@ const styles = StyleSheet.create({
 	iconContainer: {
 		width: '100%',
 		height: 60,
+		alignItems: 'center',
+		justifyContent: 'center',
 		backgroundColor: '#fff',
 		borderRadius: 5,
 		shadowColor: "#000",

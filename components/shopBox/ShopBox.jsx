@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
 	},
 	icon: {
 		color: '#fff',
-		fontWeight: 600,
+		fontWeight: "600",
 	}
 })
 

@@ -11,7 +11,6 @@ const NavbarItem = (props) => {
 			backgroundColor: props.choosen ? '#FE7A01' : '#fff',
 			width: width/7.5,
 			height: width/7.5,
-			padding: 13,
 			backgroundColor: props.backgroundColor || '#3d5c98',
 			borderRadius: 5,
 			shadowOffset: {
@@ -22,6 +21,8 @@ const NavbarItem = (props) => {
 			shadowRadius: 5,
 			elevation: 6,
 			borderWidth: 0.25,
+			alignItems: 'center',
+			justifyContent: 'center',
 		}
 	})
 

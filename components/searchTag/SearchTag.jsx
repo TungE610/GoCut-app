@@ -4,7 +4,7 @@ const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window'
 const SearchTag = (props) => {
 
 	const searchWithTagHandler = () => {
-
+		props.onClick();
 	}
 	
 	return (
@@ -30,17 +30,18 @@ const styles = StyleSheet.create({
 		shadowOpacity:  0.17,
 		shadowRadius: 3.05,
 		elevation: 4,
-		marginLeft: 10,
 		flexDirection: 'row',
-		borderColor: '#E38228',
-		borderWidth: 0.5,
-		padding: 5,
+		paddingHorizontal: 6,
 		gap: 5,
+		border: "none",
+		outline: "none",
+		height: 33,
+		marginRight: 3,
 	},
 	text: {
 		fontSize: 15,
-		color: '#3d5c98',
-		fontWeight: 400,
+		color: '#888',
+		fontWeight: '400',
 		textAlign: 'center',
 	}
 })

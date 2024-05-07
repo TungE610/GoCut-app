@@ -19,7 +19,6 @@ const Profile = ({navigation, ...props}) => {
 	const [telephone, setTelephone] = useState(props.telephone || "0393859464");
 	const [isEdittingTelephone, setIsEdittingTelephone] = useState(false);
 	const [email, setEmail] = useState(props.email || "tung2082002@gmail.com");
-	const [isEdittingEmail, setIsEdittingEmail] = useState(false);
 
 
 	const returnHomeHandler = () => {
@@ -66,7 +65,7 @@ const Profile = ({navigation, ...props}) => {
 					<ListItem.Accordion
 						content={
 						<ListItem.Content>
-							<ListItem.Title style={{fontSize: 21, fontWeight: "700", color: '#3d5c98'}}>Profile</ListItem.Title>
+							<ListItem.Title style={{fontSize: 21, fontWeight: 700, color: '#3d5c98'}}>Profile</ListItem.Title>
 							<ListItem.Subtitle>Tap to see more</ListItem.Subtitle>
 						</ListItem.Content>
 						}
@@ -78,7 +77,7 @@ const Profile = ({navigation, ...props}) => {
 						<ListItem>
 						<ListItem.Content style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', gap: 20}}>
 							<View style={{flexDirection: 'row', alignItems: 'center', gap: 20}}>
-								<ListItem.Title style={{fontSize: 16, fontWeight: "700", color: '#3d5c98'}}>Full Name: </ListItem.Title>
+								<ListItem.Title style={{fontSize: 16, fontWeight: "", color: '#3d5c98'}}>Full Name: </ListItem.Title>
 								{!isEdittingUserName ? <ListItem.Subtitle>{userName}</ListItem.Subtitle> : 
 									<TextInput
 										style={styles.modifyInput}
@@ -107,7 +106,7 @@ const Profile = ({navigation, ...props}) => {
 						<ListItem>
 						<ListItem.Content style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', gap: 20}}>
 							<View style={{flexDirection: 'row', alignItems: 'center', gap: 20}}>
-								<ListItem.Title style={{fontSize: 16, fontWeight: "700", color: '#3d5c98'}}>Date of Birth: </ListItem.Title>
+								<ListItem.Title style={{fontSize: 16, fontWeight: 700, color: '#3d5c98'}}>Date of Birth: </ListItem.Title>
 								{!isEdittingDoB ? 
 									<ListItem.Subtitle>{dateOfBirth}</ListItem.Subtitle> : 
 									<TextInput
@@ -168,19 +167,20 @@ const Profile = ({navigation, ...props}) => {
 						</ListItem.Content>
 						</ListItem>
 					</ListItem.Accordion>
-					<ListItem.Accordion
-						content={
-						<ListItem.Content
-							onPress={() => {
-								navigation.navigate("SavedAddress");
-							}}
-						>
-							<ListItem.Title style={{fontSize: 21, fontWeight: "700", color: '#3d5c98'}}>Address</ListItem.Title>
-							<ListItem.Subtitle></ListItem.Subtitle>
-						</ListItem.Content>
-						}
-						// isExpanded={expanded}
-					></ListItem.Accordion>
+					<TouchableOpacity onPress={() => {
+						navigation.navigate("SavedAddress");
+					}}>
+						<ListItem.Accordion
+							content={
+								<ListItem.Content
+								>
+									<ListItem.Title style={{fontSize: 21, fontWeight: "700", color: '#3d5c98'}}>
+											Address
+									</ListItem.Title>
+								</ListItem.Content>
+							}
+						></ListItem.Accordion>
+					</TouchableOpacity>
 					<ListItem.Accordion
 						content={
 						<ListItem.Content>
@@ -258,7 +258,7 @@ const styles = StyleSheet.create({
 	followingNum: {
 		color: '#2A4780',
 		fontSize: 14,
-		fontWeight: 400,
+		fontWeight: "400",
 	},
 	modifyInput: {
 		height: 27,

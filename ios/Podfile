@@ -8,7 +8,7 @@ podfile_properties = JSON.parse(File.read(File.join(__dir__, 'Podfile.properties
 ENV['RCT_NEW_ARCH_ENABLED'] = podfile_properties['newArchEnabled'] == 'true' ? '1' : '0'
 ENV['EX_DEV_CLIENT_NETWORK_INSPECTOR'] = '1' if podfile_properties['EX_DEV_CLIENT_NETWORK_INSPECTOR'] == 'true'
 
-platform :ios, podfile_properties['ios.deploymentTarget'] || '13.0'
+platform :ios, podfile_properties['ios.deploymentTarget'] || '13.4'
 install! 'cocoapods',
   :deterministic_uuids => false
 
@@ -48,6 +48,9 @@ target 'reactnativeproject' do
   # Flags change depending on the env values.
   flags = get_default_flags()
 
+  rn_maps_path = '../node_modules/react-native-maps'
+  pod 'react-native-google-maps', :path => rn_maps_path
+
   use_react_native!(
     :path => config[:reactNativePath],
     :hermes_enabled => podfile_properties['expo.jsEngine'] == nil || podfile_properties['expo.jsEngine'] == 'hermes',
@@ -57,6 +60,10 @@ target 'reactnativeproject' do
     # Note that if you have use_frameworks! enabled, Flipper will not work if enabled
     :flipper_configuration => flipper_config
   )
+
+  pod 'rn-fetch-blob', :path => '../node_modules/rn-fetch-blob'
+  pod 'react-native-date-picker', :path => '../node_modules/react-native-date-picker'
+  pod 'react-native-compressor', :path => '../node_modules/react-native-compressor'
 
   post_install do |installer|
     react_native_post_install(

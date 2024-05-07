@@ -1,11 +1,12 @@
 import {StyleSheet, View, Image} from 'react-native';
 const avatar = require ('../../assets/avatar.jpg');
+import FastImage from 'react-native-fast-image';
 
 const AvatarBox = () => {
 
 	return(
 		<View style={styles.container}>
-			<Image
+			<FastImage
 				style={styles.avatar}
 				source={avatar}
       		/>

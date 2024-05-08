@@ -16,7 +16,6 @@ import StarIcon from '../assets/star.svg';
 import AssistantIcon from '../assets/assistant.svg';
 import CalendarIcon from '../assets/calendar.svg';
 import TimeGrid from '../components/timeGrid/TimeGrid';
-import Modal from "react-native-modal";
 import axios from 'axios';
 import DatePicker from 'react-native-date-picker'
 import { Dropdown } from 'react-native-element-dropdown';
@@ -40,10 +39,11 @@ import { createYYYYMMDDString } from '../helpers/createYYYYMMDDString';
 import { isInSameWeek } from '../helpers/isInSameWeek';
 import { findMaxId } from '../helpers/findMax';
 import { hashTimePoint, mergeArrays } from '../helpers/hashTimePoint';
+import * as Progress from 'react-native-progress';
 
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
 const deviceWidth = Dimensions.get("window").width;
-const host = "172.20.10.5";
+const host = "172.16.57.108";
 
 function comparisonFunction(a,b) {
     return a.distance - b.distance;
@@ -102,6 +102,9 @@ const BookingScreen = ({navigation}) => {
 	const sliderItemWidth = slideWidth + sliderItemHorizontalMargin * 2;
 	const [selectedStylist, setSelectedStylist] = useState({})
 	const [isLoading, setIsLoading] = useState(true);
+	const [isProcessingAnImage, setIsProcessingAnImage] = useState(false);
+  	const [isInferencing, setIsInferencing] = useState(false);
+
 	const [selectedDate, setSelectedDate] = useState(new Date())
 	const [datePickerOpen, setDatePickerOpen] = useState(false)
     const [isCityFocus, setIsCityFocus] = useState(false);
@@ -116,10 +119,13 @@ const BookingScreen = ({navigation}) => {
     const [prevStylistHair, setPrevStylistHair] = useState([]);
 	const [prevHairPreviewVisible, setPrevHairPreviewVisible] = useState(false);
 	const [viewingPrevHairIndex, setViewingPrevHairIndex] = useState(0);
-  	const [selectedTimePoint, setSelectedTimePoint] = useState([]);
+  	const [selectedTimePoint, setSelectedTimePoint] = useState(0);
   	const [selectedIndexes, setSelectedIndexes] = useState([]);
   	const [disabledIndexes, setDisabledIndexes] = useState([]);
   	const [helpSelect, setHelpSelect] = useState(true);
+  	const [progress, setProgress] = useState(0);
+	const [result, setResult] = useState("")
+	const [isPreviewingResult, setIsPreviewingResult] = useState(false);
 
   	 const hashValues = [];
 
@@ -179,6 +185,31 @@ const BookingScreen = ({navigation}) => {
 
 	}, [district]);
 
+	useEffect(() => {
+
+		if (isInferencing) {
+			const duration = 30000; // 30 seconds in milliseconds
+			const interval = 100; // Update interval (milliseconds)
+			const steps = duration / interval; // Number of steps to reach 1 from 0
+
+			let currentStep = 0;
+
+			const timer = setInterval(() => {
+			currentStep++;
+			const newProgress = currentStep / steps; // Calculate the new progress
+
+			setProgress(newProgress);
+
+			if (currentStep === steps) {
+				clearInterval(timer); // Stop the timer when progress reaches 1
+				setIsInferencing(false);
+			}
+			}, interval);
+
+			return () => clearInterval(timer); // Cleanup the timer on component unmount
+		}
+	}, [isInferencing]);
+
 	const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 	const dayOfWeek = daysOfWeek[selectedDate.getDay()];
 	const dayOfMonth = selectedDate.getDate();
@@ -220,12 +251,16 @@ const BookingScreen = ({navigation}) => {
 		};
 	}, []);
 
+	const updateFreeTime = async (date, selectedStylist, helpSelect) => {
 
-	const updateFreeTime = async (date) => {
-		if (date.toLocaleString('en-GB',{hour12: false}) < new Date().toLocaleString('en-GB',{hour12: false})) {
+		const dateString = date.toLocaleString('en-GB',{hour12: false}).split(", ")[0];
+		const currentDateString = new Date().toLocaleString('en-GB',{hour12: false}).split(", ")[0];
+
+		if (dateString < currentDateString) {
 			setDisabledIndexes(hashValues);
 
-		} else if (date.toLocaleString('en-GB',{hour12: false}) > new Date().toLocaleString('en-GB',{hour12: false}) && !isInSameWeek(new Date(), date)) {
+
+		} else if (dateString > currentDateString && !isInSameWeek(new Date(), date)) {
 		
 			showMessage({
 				message: "You only can book for this week",
@@ -237,8 +272,8 @@ const BookingScreen = ({navigation}) => {
 			setSelectedDate(new Date());
 			
 		} else {
-			if (selectedStylist.id) {
-				console.log("run");
+			if (selectedStylist.id && !helpSelect) {
+
 				await axios(`http://${host}:8000/api/users/${selectedStylist.id}/freeInDate`, {
 						params: {
 							date: createYYYYMMDDString(date),
@@ -250,7 +285,7 @@ const BookingScreen = ({navigation}) => {
 					const sequencedRanges = data.map(range => {
 						const sequencedRange = [];
 						const startIndex = hashTimePoint(range[0].slice(0, 5));
-						const endIndex = hashTimePoint(range[1].slice(0, 5));
+						const endIndex = hashTimePoint(range[1].slice(0, 5)) - 1;
 
 						for (let i = startIndex; i <= endIndex;i ++) {
 							sequencedRange.push(i);
@@ -259,7 +294,6 @@ const BookingScreen = ({navigation}) => {
 						return sequencedRange;
 					})
 					const mergedArray = mergeArrays(sequencedRanges);
-					console.log(mergedArray);
 					setDisabledIndexes(mergedArray)
 
 				})).catch(function (error) {
@@ -270,9 +304,11 @@ const BookingScreen = ({navigation}) => {
 					}
 				});
 			} else {
+
 				try {
 					await axios(`http://${host}:8000/api/salons/${selectedSalon.id}/${createYYYYMMDDString(date)}`)
 						.then(res => {
+							// console.log(res.data)
 							setDisabledIndexes(hashValues.filter(value => !res.data.includes(value)))
 						});
 				}catch(e) {
@@ -289,7 +325,7 @@ const BookingScreen = ({navigation}) => {
 	
 	useEffect(() => {
 		
-		updateFreeTime(selectedDate);
+		updateFreeTime(selectedDate, selectedStylist, helpSelect);
 
 	}, [selectedDate.toDateString()])
 
@@ -372,10 +408,20 @@ const BookingScreen = ({navigation}) => {
 
 	const selectStylist = async (stylist) => {
 
-		setHelpSelect(false);
+		if (helpSelect) {
+			setHelpSelect(false);
+
+		}
+
+		setSelectedTimePoint(null);
+
+		setSelectedIndexes([]);
+
 		setSelectedStylist(stylist);
 
 		await selectPrevHair(stylist.id);
+
+		await updateFreeTime(selectedDate, stylist, false);
 	}
 
 	const retrieveCSRFToken = async () => {
@@ -401,9 +447,13 @@ const BookingScreen = ({navigation}) => {
 
 	const bookingConfirm = async () => {
     	const csrfToken = await retrieveCSRFToken();
+
 		const currentDate = new Date();
-    	const startDateTime = createDateTimeObject(selectedDate, selectedTimePoint[0])
-    	const endDateTime = createDateTimeObject(selectedDate, addMinutesToTimeString(selectedTimePoint[selectedTimePoint.length - 1], 20));
+		console.log(selectedTimePoint);
+
+    	const startDateTime = createDateTimeObject(selectedDate, selectedTimePoint)
+
+    	const endDateTime = createDateTimeObject(selectedDate, hashTimePoint(addMinutesToTimeString(selectedTimePoint, totalTime)));
 
         await axios.post(`http://${host}:8000/api/orders/booking`, {
 			salon_id: selectedSalon.id,
@@ -483,7 +533,7 @@ const BookingScreen = ({navigation}) => {
 		}
 	}
 
-	const helpSelectHandler = async () => {
+	const helpSelectHandler = async (selectedTimePoint) => {
 
 		setHelpSelect(true);
 
@@ -514,7 +564,6 @@ const BookingScreen = ({navigation}) => {
 	}
 
 	const selectTimePointHandler = (timepoints) => {
-		setSelectedTimePoint(timepoints)
 		const newSelected = [];
 
 		for (let i = timepoints; i <= timepoints + totalTime / 20; i ++) {
@@ -522,24 +571,59 @@ const BookingScreen = ({navigation}) => {
 		}
 
 		setSelectedIndexes(newSelected);
+		setSelectedTimePoint(timepoints)
+
 
 		if (helpSelect) {
-			helpSelectHandler();
+			helpSelectHandler(timepoints);
 		}
 	}
 
 	const deselectTimePoints = () => {
-		setSelectedTimePoint([]);
+
+		setSelectedTimePoint(null);
+
 		setSelectedIndexes([]);
+
+		if (selectedStylist.id && helpSelect) {
+			setSelectedStylist(prev => { return {id: null, rating: null, name: null}})
+		}
 	}
+
+	const changeProcessImageState = (state) => {
+		setIsProcessingAnImage(state);
+
+		if (!state) {
+			setIsInferencing(true)
+		}
+	}
+
+	const getResult = (result) => {
+		setResult(result);	
+		setIsPreviewingResult(true);
+	}
+
 
 	return (
 		<View style={styles.container}>
+			<ImageView
+				images={[{uri: result}]}
+				imageIndex={0}
+				visible={isPreviewingResult}
+				onRequestClose={() => setIsPreviewingResult(false)}
+			/>
 			<View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
 				{isLoading && <ActivityIndicator color={"#fff"} />}
+				{isProcessingAnImage && 
+				<View style={{gap: 5, alignItems: 'center'}}>
+					<ActivityIndicator color={"#fff"} />
+					<Text style={{color: '#fff'}}>Processing image, it may takes some seconds ... </Text>
+				</View>
+				}
+				{isInferencing && <Progress.Pie progress={progress} size={50}/> }
 			</View>
 			{
-				!isLoading && 
+				!isLoading && !isProcessingAnImage && !isInferencing && 
 				<View>
 					<View style={styles.backButton}>
 						<ReturnHomeButton onClick={backButtonClickHandler} page="booking" />
@@ -805,6 +889,8 @@ const BookingScreen = ({navigation}) => {
 																	image={service.illustration}
 																	selectService={toggleServiceSelection}
 																	selected={selectedServices.some((selectedService) => selectedService.id === service.id)}
+																	changeProcessImageState={changeProcessImageState}
+																	getResult={getResult}
 																/>
 															</TouchableOpacity>
 														)
@@ -838,7 +924,7 @@ const BookingScreen = ({navigation}) => {
 
 									deselectTimePoints();
 
-									updateFreeTime(date);
+									updateFreeTime(date, selectedStylist, helpSelect);
 								}}
 								onCancel={() => {
 									setDatePickerOpen(false)
@@ -862,7 +948,21 @@ const BookingScreen = ({navigation}) => {
 										showStylistList ? 
 									<View style={{paddingHorizontal: 5}}>
 										<View style={{flexDirection: 'row', alignItems: 'center'}}>
-											<TouchableOpacity style={[{alignItems: 'center', marginRight: 10}, helpSelect && {backgroundColor:"#f09000", borderRadius: 5, padding: 7}]} onPress={helpSelectHandler}>
+											<TouchableOpacity style={[{alignItems: 'center', marginRight: 10}, helpSelect && {backgroundColor:"#f09000", borderRadius: 5, padding: 7}]} onPress={
+												() => {
+													if (!helpSelect && selectedTimePoint) {
+														helpSelectHandler(selectedTimePoint);
+													} else if (!helpSelect && !selectedTimePoint) {
+														setHelpSelect(true);
+
+														setSelectedStylist({id: null, name:null, rating: null});
+
+														setPrevStylistHair([]);
+
+														updateFreeTime(selectedDate, {id: null}, true);
+													}
+												}
+											}>
 												<AssistantIcon />
 												<Text style={{color: helpSelect ? '#fff' : '#3d5c98', fontWeight: 600}}>help select</Text>
 											</TouchableOpacity>
@@ -944,7 +1044,7 @@ const BookingScreen = ({navigation}) => {
 											<TimeGrid selectTimePointHandler={selectTimePointHandler} totalTime={totalTime} disabledIndexes={disabledIndexes} selectedIndexes={selectedIndexes}/>
 										</View>
 									</View>
-									<TouchableOpacity style={[styles.confirmButton, (!selectedSalon.id || selectedServices.length == 0 || !selectedStylist.id || selectedTimePoint.length == 0) && {backgroundColor: "#ccc"} ]} onPress={bookingConfirm} disabled={!selectedSalon.id || selectedServices.length == 0 || !selectedStylist.id || selectedTimePoint.length == 0}>
+									<TouchableOpacity style={[styles.confirmButton, (!selectedSalon.id || selectedServices.length == 0 || !selectedStylist.id || !selectedTimePoint) && {backgroundColor: "#ccc"} ]} onPress={bookingConfirm} disabled={!selectedSalon.id || selectedServices.length == 0 || !selectedStylist.id || !selectedTimePoint}>
 										<Text style={styles.confirmText}>Book</Text>
 									</TouchableOpacity>
 							</View>

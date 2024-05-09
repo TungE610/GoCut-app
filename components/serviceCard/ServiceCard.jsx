@@ -14,6 +14,58 @@ const ServiceCard = (props) => {
 
 	const [image, setImage] = useState('');
 
+
+	const transferImage = async (uri) => {
+
+		const formData = new FormData();
+
+		formData.append("file_upload", {uri: uri, name: 'new_file.png', type: 'image/jpeg'});
+		formData.append("id", props.id);
+
+		try {
+			props.changeProcessImageState(true);
+
+			const endPoint = 'https://8eca-144-6-107-170.ngrok-free.app/uploadfile';
+
+			await fetch(endPoint, {
+				method: 'POST',
+				body: formData,
+				headers: {
+					'Content-Type': 'multipart/form-data',
+				},            
+			})
+			.then(async (response) => {const text = await response.text(); return text})
+				.then(async (text) => {
+					if (text.replaceAll('"', '') == "Done") {
+
+						props.changeProcessImageState(false);
+
+						const transferEndPoint = 'https://8eca-144-6-107-170.ngrok-free.app/hair-transfer';
+
+						const transferFormData = new FormData();
+
+						transferFormData.append("id", props.id);
+
+						await fetch(transferEndPoint, {
+							method: 'POST',
+							body: transferFormData,
+							headers: {
+								'Content-Type': 'multipart/form-data',
+							},            
+						}).then(async (response) => {
+								const text =  await response.text();
+								return text
+							})
+							.then((text) => {
+								props.getResult(text.replaceAll('"', ''));
+							});
+						}
+				})
+
+		} catch (error) {
+			return error
+		}
+	}
  	const onImageGalleryClick = useCallback(() => {
 		const options = {
 			selectionLimit: 1,
@@ -28,9 +80,12 @@ const ServiceCard = (props) => {
 				console.log('ImagePickerError: ', res.errorMessage)
 			} else {
 				setImage(res.assets[0].uri);
+
+        		transferImage(res.assets[0].uri)
 			}
 		});
 	}, [])
+
 
 	const onCameraPress = useCallback(() => {
         const options = {
@@ -49,52 +104,7 @@ const ServiceCard = (props) => {
 
 				const formData = new FormData();
 
-        		formData.append("file_upload", {uri: res.assets[0].uri, name: 'new_file.png', type: 'image/jpeg'});
-        		formData.append("id", props.id);
-
-				try {
-					props.changeProcessImageState(true);
-
-					const endPoint = 'https://bfe7-1-160-179-117.ngrok-free.app/uploadfile';
-
-					await fetch(endPoint, {
-						method: 'POST',
-						body: formData,
-						headers: {
-							'Content-Type': 'multipart/form-data',
-						},            
-					})
-					.then(async (response) => {const text = await response.text(); return text})
-						.then(async (text) => {
-							if (text.replaceAll('"', '') == "Done") {
-
-								props.changeProcessImageState(false);
-
-								const transferEndPoint = 'https://bfe7-1-160-179-117.ngrok-free.app/hair-transfer';
-
-								const transferFormData = new FormData();
-
-								transferFormData.append("id", props.id);
-
-								await fetch(transferEndPoint, {
-									method: 'POST',
-									body: transferFormData,
-									headers: {
-										'Content-Type': 'multipart/form-data',
-									},            
-								}).then(async (response) => {
-										const text =  await response.text();
-										return text
-									})
-									.then((text) => {
-										props.getResult(text.replaceAll('"', ''));
-									});
-								}
-						})
-
-				} catch (error) {
-					return error
-				}
+        		transferImage(res.assets[0].uri)
             }
         });
     }, []);

@@ -43,7 +43,7 @@ import * as Progress from 'react-native-progress';
 
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
 const deviceWidth = Dimensions.get("window").width;
-const host = "172.16.57.108";
+const host = "192.168.1.10";
 
 function comparisonFunction(a,b) {
     return a.distance - b.distance;
@@ -620,7 +620,12 @@ const BookingScreen = ({navigation}) => {
 					<Text style={{color: '#fff'}}>Processing image, it may takes some seconds ... </Text>
 				</View>
 				}
-				{isInferencing && <Progress.Pie progress={progress} size={50}/> }
+				{isInferencing && 
+				<View style={{gap: 30, alignItems: 'center'}}>
+					<Progress.Circle progress={progress} size={100} color={"white"} thickness={7} borderWidth={3} showsText={true}/> 
+					<Text style={{color: '#fff'}}>Transfering, please wait ...</Text>
+				</View>
+				}
 			</View>
 			{
 				!isLoading && !isProcessingAnImage && !isInferencing && 

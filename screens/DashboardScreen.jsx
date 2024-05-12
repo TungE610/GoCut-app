@@ -9,11 +9,11 @@ import RecommendedCarousel from '../components/recommendCarousel/RecommendCarous
 import menuItems from '../data/menuItems';
 import NavigationBar from '../components/navigationBar/NavigationBar';
 import SalonCard from '../components/salonCard/SalonCard';
-import sampleSalon from '../data/sampleSalon';
 import Carousel from 'react-native-snap-carousel';
-import sampleStylist from '../data/sampleStylist';
 import StylistCard from '../components/stylistCard/StylistCard';
 import axios from 'axios';
+
+const host = 'http://172.20.10.5';
 
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
 
@@ -22,27 +22,57 @@ const wp = (percentage) => {
 	return Math.round(value);
   }
 
-const DashboardScreen = ({navigation, ...props}) => {
+const DashboardScreen = ({route, navigation, ...props}) => {
 	const sliderItemHorizontalMargin = wp(2);
 	const slideWidth = wp(28);
 	const sliderWidth = viewportWidth;
 	const sliderItemWidth = slideWidth + sliderItemHorizontalMargin * 2;
 	const [recommendedSalons, setRecommendedSalons] = useState([]);
+	const [recommendedStylists, setRecommendedStylists] = useState([]);
 
-	useEffect(async () => {
+	useEffect(() => {
 
-		await axios({
-			method: 'get',
-			url: 'http://192.168.1.10:8000/api/salons',
-			})
-			.then(function (response) {
-				setRecommendedSalons(response.data.slice(0, 5));
-  		});
+		const getSalons = async () => {
+			await axios({
+				method: 'get',
+				url: `${host}:8000/api/salons`,
+				})
+				.then(function (response) {
+					setRecommendedSalons(response.data.slice(0, 5));
+			});
+
+			await axios({
+				method: 'get',
+				url: `${host}:8000/api/salons`,
+				})
+				.then(function (response) {
+					setRecommendedSalons(response.data.slice(0, 5));
+			});
+		}
+
+		const getRecommendedStylist = async () => {
+
+			await axios({
+				method: 'get',
+				url: `${host}:8000/api/recommendedStylists`,
+				})
+				.then(function (response) {
+					setRecommendedStylists(response.data);
+			});
+		}
+
+		getSalons();
+		getRecommendedStylist();
 	}, []);
 
 	const menuCardClickHandler = (index) => {
 		if (index === 0) {
-			navigation.navigate('Booking');
+			navigation.navigate('Booking', {
+				initStep: null,
+				selectedSalonId: null,
+				selectedServicesId: [],
+				selectedTotalTime: 0,
+			});
 		} else if (index === 1) {
 			navigation.navigate('PriceList');
 		} else if (index === 2) {
@@ -65,17 +95,12 @@ const DashboardScreen = ({navigation, ...props}) => {
 		navigation.navigate("Shop");
 	}
 
-	const openCamera = () => {
-		navigation.navigate("Camera");
+	const openFavourite = () => {
+		navigation.navigate("Favourite");
 	}
 
-	const openMap = () => {
-		navigation.navigate("Map");
-	}
+	const seeStylistDetailHandler = () => {
 
-
-	const openGallery = () => {
-		navigation.navigate("Gallery");
 	}
 
 	return (
@@ -103,17 +128,17 @@ const DashboardScreen = ({navigation, ...props}) => {
 					<Text style={styles.recommendText}>Recommended for You</Text>
 					<RecommendedCarousel 
 						data={recommendedSalons} 
-						item={(props) => <SalonCard {...props} 
-							onClick={(props) => {
-								navigation.navigate('SalonDetail', {salon: props.item});
-							}}/>} 
+						item={(props) => <SalonCard {...props} onClick={() => {
+								navigation.navigate('SalonDetail', {salon: props.item})
+							}}/>
+							} 
 						/>
 					<Text style={styles.hairStylistText}>Hair Stylist</Text>
 					<Carousel 
-						data={sampleStylist}
-						renderItem={item => <StylistCard key={item.id} item={item}/>}
+						data={recommendedStylists}
+						renderItem={item => <StylistCard key={item.id} item={item} onClick={seeStylistDetailHandler}/>}
 						sliderWidth={sliderWidth+50}
-						itemWidth={sliderItemWidth+50}
+						itemWidth={sliderItemWidth}
 						activeSlideAlignment={'start'}
 						inactiveSlideScale={1}
 						inactiveSlideOpacity={1}
@@ -127,8 +152,7 @@ const DashboardScreen = ({navigation, ...props}) => {
 			returnHome={returnHomeHandler}
 			seeUserProfile={seeUserProfileHandler}
 			seeShop={seeShopHandler}
-			openMap={openMap}
-			openGallery={openGallery}
+			openFavourite={openFavourite}
 		/>
 	</View>
 	);

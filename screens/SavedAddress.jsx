@@ -7,11 +7,13 @@ import FootIcon from '../assets/foot.svg';
 
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
 
-const SavedAddress = ({navigation}) => {
+const SavedAddress = ({route, navigation}) => {
 
 	const backButtonClickedHandler = () => {
 		navigation.navigate('Profile');
 	}
+
+	const {homeAddress, officeAddress, regularAddress, userId} = route.params;
 	
 	return (
 		<View style={styles.container}>
@@ -22,9 +24,9 @@ const SavedAddress = ({navigation}) => {
 				<Text style={styles.screenTitle}>Saved Address</Text>
 			</View>
 			<View style={styles.savedAddressStack}>
-				<AddressBox icon={<HomeIcon width={30} height={30} color={'#3d5c98'}/>} addressType="Home address" address="151 Nguyễn Đức Cảnh, Tương Mai, Hoàng Mai"/>
-				<AddressBox icon={<OfficeIcon width={30} height={30} color={'#3d5c98'} />} addressType="Office address" address="Số 7 Thiền Quang"/>
-				<AddressBox icon={<FootIcon width={30} height={30} color={'#3d5c98'} />} addressType="Regular address" address="151 Nguyễn Đức Cảnh, Tương Mai, Hoàng Mai"/>
+				<AddressBox icon={<HomeIcon width={30} height={30} color={'#3d5c98'}/>} addressType="home" address={homeAddress} userId={userId}/>
+				<AddressBox icon={<OfficeIcon width={30} height={30} color={'#3d5c98'} />} addressType="office" address={officeAddress} userId={userId}/>
+				<AddressBox icon={<FootIcon width={30} height={30} color={'#3d5c98'} />} addressType="regular" address={regularAddress} userId={userId}/>
 			</View>
 		</View>
 	)

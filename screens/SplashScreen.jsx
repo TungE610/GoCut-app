@@ -5,14 +5,46 @@ import LottieView from 'lottie-react-native';
 import auth from '@react-native-firebase/auth';
 import axios from 'axios';
 import { showMessage } from "react-native-flash-message";
+import FastImage from 'react-native-fast-image';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const splash1 = require ('../assets/splash1.jpeg');
 
 const {width: viewportWidth, height: viewportHeight} = Dimensions.get('screen');
 
+const storeToken = async (value) => {
+  try {
+    	await AsyncStorage.setItem('bearerToken', value);
+
+  } catch (error) {
+		console.log("error");
+	if (error.response && error.response.data) {
+		console.log(error.response.data.error);
+	} else {
+		console.log(error);
+	}
+  }
+};
+
+const storeUserId = async (value) => {
+  try {
+    	await AsyncStorage.setItem('userId', value);
+
+  } catch (error) {
+		console.log("error");
+	if (error.response && error.response.data) {
+		console.log(error.response.data.error);
+	} else {
+		console.log(error);
+	}
+  }
+};
+
+
 const SplashScreen = ({navigation}) => {
 	const [isLoading, setIsLoading] = useState(true);
-	const host = "http://192.168.1.10";
+
+	const host = "http://192.168.1.9";
 
 	const countryCode= "+84";
 	let confirm = null;
@@ -236,7 +268,11 @@ const SplashScreen = ({navigation}) => {
     };
 
 	useEffect(() => {
-		animationRef.current?.play();
+		const playAnimation = () => {
+			animationRef.current?.play();
+		}
+
+		playAnimation();
 	  }, []);
 
 
@@ -273,23 +309,27 @@ const SplashScreen = ({navigation}) => {
 
 			res = await axios.post(`${host}:8000/api/login`, {
 				phone_number: res.user.phoneNumber,
-			})
+			})		
 
 			if(res.data.status_code === 200) {
-				
+
+				showMessage({
+					message: "Welcome back!!",
+					type: "success",
+					autoHide: true,
+					duration: 1500,
+				});
+
+				await storeToken(res.data.access_token);
+				await storeUserId(res.data.user_id);
+
+				navigation.navigate("Dashboard");
 			}
 
 			loginPhoneNumberRef.current.value = "";
 			loginOtpRef.current.value = "";
 
-			showMessage({
-				message: "Welcome back!!",
-				type: "success",
-                autoHide: true,
-                duration: 1500,
-			});
 
-			navigation.navigate("Dashboard");
 		}catch(error) {
 			if (error.response && error.response.data) {
 				console.log(error.response.data.error);
@@ -318,9 +358,9 @@ const SplashScreen = ({navigation}) => {
 					<ClipPath id="clipPathId">
 						<Ellipse cx={viewportWidth/2} rx={viewportHeight} ry={viewportHeight} />
 					</ClipPath>
-					<ImageBackground style={styles.backgroundImageContainer} source={splash1} imageStyle={{opacity: 0.4}} clipPath="url(#clipPathId)" >
+					<FastImage style={styles.backgroundImageContainer} source={splash1} imageStyle={{opacity: 0.4}} clipPath="url(#clipPathId)" >
 						<Text style={styles.text}>Booking your appointment <Text style={styles.decoratedText}>Quickly</Text> at the <Text style={styles.decoratedText}>BEST</Text> salons</Text>
-					</ImageBackground>
+					</FastImage>
 					<TouchableHighlight style={styles.closeButtonContainer} onPress={closeButtonClickedHandler}>
 						<Text style={{color: '#fff'}}>X</Text>
 					</TouchableHighlight>

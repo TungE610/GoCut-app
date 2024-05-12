@@ -4,11 +4,12 @@ import StarICon from '../../assets/star.svg';
 import FastImage from 'react-native-fast-image'
 
 const StylistCard = (props) => {
+
 	const styles = StyleSheet.create({
 		container: {
 			backgroundColor: props.backgroundColor,
-			width: viewportHeight/9,
-			height: viewportHeight/9,
+			width: viewportHeight/8,
+			height: viewportHeight/8,
 			padding: 5,
 			borderRadius: 10,
 			shadowColor: "#000",
@@ -48,7 +49,6 @@ const StylistCard = (props) => {
 			textAlign: 'center',
 		}
 	})
-	
 	const selectSalon = () => {
 		
 		props.onClick({
@@ -66,7 +66,7 @@ const StylistCard = (props) => {
 			/>
 			<View style={styles.rateContainer}>
 				<StarICon width={10} height={10} color="#fff"/>
-				<Text style={styles.rate}>{props.rating}</Text>
+				<Text style={styles.rate}>{props.item.item.rating || props.rating}</Text>
 			</View>
 		</TouchableOpacity>
 	)

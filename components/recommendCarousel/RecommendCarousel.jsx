@@ -31,7 +31,7 @@ const RecommendCarousel = ({data, item: Item}) => {
     <View style={styles.container}>
       	<FlatList
 			data={data}
-			renderItem={(item,id) => <Item key={id} item={item} />}
+			renderItem={({item, id}) => {return <Item key={id} item={item}/>}}
 			horizontal
 			pagingEnabled
 			snapToAlignment="center"

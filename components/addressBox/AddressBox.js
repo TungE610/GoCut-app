@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { StyleSheet, View , Text, TouchableOpacity, TextInput, Dimensions} from 'react-native';
 import WriteIcon from '../../assets/write.svg';
 import SaveIcon from '../../assets/save.svg';
+import axios from 'axios';
+const host = "http://192.168.1.5"
 
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
 
@@ -10,13 +12,44 @@ const AddressBox = (props) => {
 	const [isRewriting, setIsRewriting] = useState(false);
 	const [address, setAddress] = useState(props.address);
 
+	const saveAddressHandler = async (prop, newValue) => {
+		try {
+			await axios.put(`${host}:8000/api/customer/update`, null, {
+				params: {
+					user_id: props.userId,
+					prop: prop,
+					new_value: newValue,
+				}
+			}).then(res => {
+				console.log(res.data);
+
+			}).catch((error) => console.log(error))
+		}catch(error) {
+			if (error.response && error.response.data) {
+				console.log(error.response.data.error);
+			} else {
+				console.log(error);
+			}
+		}
+	}
 	const rewriteAddresHandler = () => {
 		setIsRewriting(prev => !prev);
+
+		if (props.addressType === "home") {
+			saveAddressHandler("address", address);
+		} else if (props.addressType === "office") {
+			saveAddressHandler("office_address", address);
+		} else {
+			saveAddressHandler("regular_address", address);
+		}
 	}
+
 
 	const modifyAddressHandler = (address) => {
 		setAddress(address);
 	}
+
+	console.log(address);
 
 	return (
 		<View style={styles.container}>

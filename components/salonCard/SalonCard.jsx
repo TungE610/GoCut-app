@@ -6,7 +6,7 @@ import FastImage from 'react-native-fast-image'
 const SalonCard = ({item, ...props}) => {
 	
 	const translateYImage = new Animated.Value(40);
-	
+
 	Animated.timing(translateYImage, {
 		toValue: 0,
 		duration: 600,
@@ -21,7 +21,7 @@ const SalonCard = ({item, ...props}) => {
 		>
 			<Animated.View>
 			<FastImage
-				source={{uri: item.item.images.length > 0 ? item.item.images[0].image_url : ""}}
+				source={{uri: item.images.length > 0 ? item.images[0].image_url : ""}}
 				resizeMode="cover"
 				style={[
 					styles.image,
@@ -30,10 +30,10 @@ const SalonCard = ({item, ...props}) => {
 					},
 				]}
 			/>
-			<Text style={styles.salonName}>{item.item.name}</Text>
+			<Text style={styles.salonName}>{item.name}</Text>
 			<View style={styles.addressContainer}>
 				<Location width={17} height={17} />
-				<Text style={styles.location}>{item.item.address}</Text>
+				<Text style={styles.location}>{item.address}</Text>
 			</View>
 			</Animated.View>
 		</TouchableWithoutFeedback>

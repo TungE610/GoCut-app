@@ -37,7 +37,7 @@ const SearchInput = (props) => {
 					shadowOpacity: 0.2,
 					shadowRadius: 3,
 				}}
-				placeholderTextColor="#999"
+				placeholderTextColor="#888"
 				searchIcon={{ size: 28 }}
 				cancelButtonProps={{
 					color: props.cancelButtonColor ? props.cancelButtonColor : '#fff'

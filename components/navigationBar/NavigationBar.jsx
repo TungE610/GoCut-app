@@ -15,7 +15,7 @@ const NavigationBar = (props) => {
 		} else if (id === 2) {
 			props.openGallery();
 		} else if (id === 3) {
-			props.openMap();
+			props.openFavourite();
 		} else {
 		props.seeUserProfile();
 		}

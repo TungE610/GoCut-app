@@ -102,8 +102,6 @@ const ServiceCard = (props) => {
             } else {
 				setImage(res.assets[0].uri);
 
-				const formData = new FormData();
-
         		transferImage(res.assets[0].uri)
             }
         });

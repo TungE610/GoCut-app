@@ -1,10 +1,10 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import {StyleSheet, Dimensions, ScrollView, View, Text} from 'react-native';
 import ReturnHomeButton from '../../components/returnHomeButton/ReturnHomeButton';
 import MarkButton from '../../components/markButton/MarkButton';
 import ClockIcon from '../../assets/clock.svg';
 import StarIcon from '../../assets/star.svg';
-import ViewIcon from '../../assets/view.svg';
+import CatIcon from '../../assets/cut.svg';
 import CircleIcon from '../../assets/circle.svg';
 import ServiceTypeCard from '../../components/serviceTypeCard/ServiceTypeCard';
 import ServiceCard from '../../components/serviceCard/ServiceCard';
@@ -13,36 +13,61 @@ import CutIcon from '../../assets/cut.svg';
 import FacialIcon from '../../assets/facial.svg';
 import NailIcon from '../../assets/nail.svg';
 import FastImage from 'react-native-fast-image'
+import axios from 'axios';
 
 const {width: viewportWidth, height: viewportHeight} = Dimensions.get('screen');
-
+const host = 'http://192.168.1.5';
 
 const SalonDetail = ({route, navigation, ...props}) => {
 
 	const initialServices =  [].filter(service => service.type === 'haircut');
 
-	const [selectedServiceType, setSelectedServiceType] = useState("haircut");
+	// const [selectedServiceType, setSelectedServiceType] = useState("haircut");
 	const [selectedServices, setSelectedServices] = useState([]);
-	const [filtedServices, setFilteredServices] = useState(initialServices);
+	// const [filtedServices, setFilteredServices] = useState(initialServices);
+	const [orderedNumber, setOrderedNumber] = useState(0);
+	const [selectedCategoryIndex, setSelectedCategoryIndex] = useState(0);
+	const [categories , setCategories] = useState([]);
+	const [totalTime, setTotalTime] = useState(0);
+
 	const {salon} = route.params;
 
+	useEffect(() => {
+
+		const getSalonOrderedNumber = async () => {
+			await axios(`${host}:8000/api/salons/orderedNumber`, {
+				params: {
+					salonId: salon.id,
+				}
+			}).then (res => {
+				setOrderedNumber(res.data);
+			})
+		}
+
+		const getCategories = async () => {
+			const response = await axios.get(`${host}:8000/api/salons/${salon.id}/services`);
+
+			setCategories(response.data.categories);
+		}
+
+		getSalonOrderedNumber();
+		getCategories();
+
+	}, [])
 	const returnHomeHandler = () => {
 		navigation.navigate('Dashboard');
 	}
-
-	const selectServiceTypeHandler = (value) => {
-		setSelectedServiceType(value);
-	}
-
 	const toggleServiceSelection = (service) => {
 
 		const isSelected = selectedServices.some((selectedService) => selectedService.id === service.id);
+
 		if (isSelected) {
-		  // Remove the service from the selectedServices array
-		  setSelectedServices((prevSelectedServices) => prevSelectedServices.filter((selectedService) => selectedService.id !== service.id));
+		  	setSelectedServices((prevSelectedServices) => prevSelectedServices.filter((selectedService) => selectedService.id !== service.id));
+			setTotalTime(prev => prev - service.duration)
 		} else {
-		  // Add the service to the selectedServices array
-		  setSelectedServices((prevSelectedServices) => [...prevSelectedServices, service]);
+		  	setSelectedServices((prevSelectedServices) => [...prevSelectedServices, service]);
+			console.log("add:", service.duration)
+			setTotalTime(prev => prev + service.duration)
 		}
 	};
 	
@@ -50,7 +75,7 @@ const SalonDetail = ({route, navigation, ...props}) => {
 		<View style={styles.container}>
 			<ScrollView style={styles.content}>
 				<FastImage
-					source={{uri: '../../assets/salon1.jpg'}}
+					source={{uri: salon.images.length > 0 ? salon.images[0].image_url : ""}}
 					style={styles.salonImage}
 				>
 					<View style={styles.buttonsContainer}>
@@ -60,10 +85,10 @@ const SalonDetail = ({route, navigation, ...props}) => {
 				</FastImage>
 				<View style={styles.salonDetail}>
 					<Text style={styles.salonName}>
-						{props.salonName || 'Plush beauty Salon'}
+						{salon.name}
 					</Text>
 					<Text style={styles.salonAddress}>
-						{props.salonAddress || '151 Nguyễn Đức Cảnh, Tương Mai, Hoàng Mai'}
+						{salon.address}
 					</Text>
 					<View style={styles.currentStatus}>
 						<ClockIcon width={30} height={30} color='#2A4780' />
@@ -72,12 +97,12 @@ const SalonDetail = ({route, navigation, ...props}) => {
 					<View style={styles.popularity}>
 						<View style={styles.ratting}>
 							<StarIcon width={25} height={25} color="#FE7A01"/>
-							<Text style={styles.rattingPoint}>{props.rattingPoint || '8.7'}</Text>
+							<Text style={styles.rattingPoint}>{salon.rating}</Text>
 							<Text style={styles.rattingNum}>({props.rattingNum || '1.3K'})</Text>
 						</View>
 						<View style={styles.view}>
-							<ViewIcon />
-							<Text style={styles.viewNum}>{props.viewNum || '2.7K'}</Text>
+							<CatIcon width={20} height={20} color={"#3d5c98"}/>
+							<Text style={styles.viewNum}>{orderedNumber}</Text>
 						</View>
 					</View>
 					<View style={styles.about}>
@@ -85,8 +110,7 @@ const SalonDetail = ({route, navigation, ...props}) => {
 							About:
 						</Text>
 						<Text style={styles.aboutDetail}>
-							{props.about || 
-							'lorem ipsum lorem ipsum lorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsum lorem ipsumlorem ipsumlorem ipsum'}
+							{salon.description}
 						</Text>
 					</View>
 					<View style={styles.about}>
@@ -115,59 +139,44 @@ const SalonDetail = ({route, navigation, ...props}) => {
 							Our services:
 						</Text>
 						<View style={styles.serviceTypesStack}>
-							<ServiceTypeCard 
-								icon={<CutIcon width={18} height={18} color={selectedServiceType === 'haircut' ? '#fff' : '#3d5c98'}/>} 
-								service="Haircut"
-								backgroundColor= {selectedServiceType === 'haircut' ? '#3d5c98' : '#fff'}
-								color={selectedServiceType === 'haircut' ? '#fff' : '#3d5c98'}
-								onClick={() => {
-									setSelectedServiceType("haircut");
-									setFilteredServices([].filter(service => service.type === 'haircut'))
-									selectedServices.length = 0;
-								}}
-							/>
-							<ServiceTypeCard 
-								icon={<FacialIcon width={22} height={22} color={selectedServiceType === 'facial' ? '#fff' : '#3d5c98'}/>} 
-								service="Facial"
-								backgroundColor= {selectedServiceType === 'facial' ? '#3d5c98' : '#fff'}
-								color={selectedServiceType === 'facial' ? '#fff' : '#3d5c98'}
-								onClick={() => {
-									setSelectedServiceType("facial");
-									setFilteredServices(sampleServices.filter(service => service.type === 'facial'));
-									selectedServices.length = 0;
-								}}
-							/>
-							<ServiceTypeCard 
-								icon={<NailIcon width={22} height={22} color={selectedServiceType === 'nail' ? '#fff' : '#3d5c98'}/>} 
-								service="Nail"
-								backgroundColor= {selectedServiceType === 'nail' ? '#3d5c98' : '#fff'}
-								color={selectedServiceType === 'nail' ? '#fff' : '#3d5c98'}
-								onClick={() => {
-									setSelectedServiceType("nail");
-									setFilteredServices(sampleServices.filter(service => service.type === 'nail'));
-									selectedServices.length = 0;
-								}}
-							/>
+								<ScrollView horizontal>
+									{
+										categories.map((category, index) =>  
+											<ServiceTypeCard 
+												key={index}
+												service={category.name}
+												backgroundColor= {selectedCategoryIndex === index ? '#3d5c98' : '#fff'}
+												color={selectedCategoryIndex === index ? '#fff' : '#3d5c98'}
+												onClick={() => {
+													setSelectedCategoryIndex(index);
+												}}
+
+											/>
+										)
+									}
+								</ScrollView>
+							
 						</View>
 						<View style={styles.servicesStack}>
 							{
-								filtedServices.map(service => {
-
+								categories.length > 0 ? categories[selectedCategoryIndex].products.map(service => {
+									
 									return (
 										<ServiceCard 
 										    key = {service.id}
 											id = {service.id}
 											serviceName = {service.name}
-											serviceTime = {service.serviceTime}
-											serviceFee = {service.serviceFee}
-											image ={service.image}
+											serviceTime = {service.duration}
+											serviceFee = {service.price}
+											image ={service.illustration}
+											selected={selectedServices.some((selectedService) => selectedService.id === service.id)}
 											selectService={toggleServiceSelection}
 										/>
 									)
-								})
+								}) : ""
 							}
 							{
-								filtedServices.length === 0 ? <Text style={{textAlign: 'center', marginTop: 10, fontSize: 16, fontWeight: "600", color: '#3d5c98'}}>Not found any services</Text> : ""
+								categories.length > 0 ? <Text style={{textAlign: 'center', marginTop: 10, fontSize: 16, fontWeight: "600", color: '#3d5c98'}}>Not found any services of this category</Text> : ""
 							}
 						</View>
 					</View>
@@ -176,7 +185,14 @@ const SalonDetail = ({route, navigation, ...props}) => {
 			<View style={styles.addServicesButton}>
 				{
 					selectedServices.length > 0 ?
-					<AddServicesButton selectedCount={selectedServices.length}/>
+					<AddServicesButton selectedCount={selectedServices.length} nextStepHandler={() => {
+						navigation.navigate('Booking', {
+							initStep: 2,
+							selectedSalonId: salon.id,
+							selectedServicesId: selectedServices.map(service => service.id),
+							selectedTotalTime: totalTime,
+						})
+					}}/>
 					: ""
 				}
 			</View>
@@ -201,27 +217,26 @@ const styles = StyleSheet.create({
 		width: viewportWidth,
 		height: viewportHeight/3.5,
 	},
-	salonDetail: {
-		paddingHorizontal: 10,
-	},
 	salonName: {
 		fontSize: 22,
 		fontWeight: "700",
 		letterSpacing: 0.4,
 		color: '#2A4780',
 		marginTop: 20,
-		
+		paddingHorizontal: 10
 	},
 	salonAddress: {
 		fontSize: 15,
 		color: '#555',
 		marginTop: 10,
+		paddingHorizontal: 10
 	},
 	currentStatus: {
 		flexDirection: 'row',
 		alignItems: 'center',
 		gap: 10,
 		marginTop: 20,
+		paddingHorizontal: 10
 	},
 	popularity: {
 		flexDirection: 'row',
@@ -231,11 +246,13 @@ const styles = StyleSheet.create({
 		paddingBottom: 15,
 		borderBottomColor: '#555',
 		borderBottomWidth: 0.4,
+		paddingHorizontal: 10
 	},
 	ratting: {
 		flexDirection: 'row',
 		alignItems: 'center',
 		gap: 10,
+		paddingHorizontal: 10
 	},
 	rattingPoint: {
 		fontSize: 19,
@@ -264,15 +281,18 @@ const styles = StyleSheet.create({
 	aboutTitle: {
 		fontSize: 20,
 		fontWeight: "600",
-		color: '#2A4780'
+		color: '#2A4780',
+		paddingHorizontal: 10
 	},
 	aboutDetail: {
 		color: '#555',
+		paddingHorizontal: 10
 	},
 	openingHoursDetail: {
 		marginTop: 20,
 		flexDirection: 'row',
-		justifyContent: 'space-between'
+		justifyContent: 'space-between',
+		paddingHorizontal: 10
 	},
 	Am: {
 		flexDirection: 'row',
@@ -294,9 +314,10 @@ const styles = StyleSheet.create({
 	serviceTypesStack: {
 		flexDirection: 'row',
 		gap: 5,
+		paddingHorizontal: 10
 	},
 	servicesStack: {
-
+		
 	},
 	addServicesButton: {
 		position: 'absolute',

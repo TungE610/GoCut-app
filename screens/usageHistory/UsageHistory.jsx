@@ -1,22 +1,15 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { StyleSheet, Dimensions, View, ScrollView, Text } from 'react-native';
 import ReturnHomeButton from '../../components/returnHomeButton/ReturnHomeButton';
-import { Tab, TabView} from '@rneui/themed';
-import CutIcon from '../../assets/cut.svg';
 import BookingButton from '../../components/bookingButton/BookingButton';
 import SadIcon from '../../assets/sad.svg';
 import HistoryBox from '../../components/historyBox/HistoryBox';
-import FacialIcon from '../../assets/facial.svg';
 import SearchInput from '../../components/searchInput/SearchInput';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import axios from 'axios';
+const host = "http://192.168.1.5";
 
-const calculateTotalFee = (services) => {
-
-	let totalFee = 0;
-	for (const service of services) {
-	  totalFee += service.fee;
-	}
-	return totalFee;
-}
+const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
 
 const concatenateServiceNames = (services) => {
 	const serviceNames = services.map(service => service.name);
@@ -29,29 +22,8 @@ const concatenateServiceNames = (services) => {
   	return concatenatedNames;
   };
 
-
-const sampleHistory = [
-	{
-		id: 0,
-		time: "Mar 13th, 2023",
-		salonImage: require('../../assets/salon2.jpg'),
-		salon: {
-			name: "Pretty Salon",
-			address: "151 Nguyễn Đức Cảnh, Tương Mai, Hoàng Mai",
-			services: [
-				{
-					id: 0, 
-					name: "Cutting sidepart and dying",
-					fee: 20,
-				}
-			]
-		},
-		ratting: 0,
-	},
-]
-
 const NoUsedHistory = (props) => {
-	
+
 	return (
 		<View style={{marginTop: 30, paddingHorizontal: 30}}>
 			<View style={{flexDirection: 'row', alignItems: 'center', gap: 10, alignSelf: 'center'}}>
@@ -69,48 +41,65 @@ const NoUsedHistory = (props) => {
 
 const UsedHistory = (props) => {
 
-	const historySearchHandler = (value) => {
+	const [usageHistory, setUsageHistory] = useState([]);
+
+	useEffect(() => {
+		const getUsageHistory = async () => {
+			const userId = await AsyncStorage.getItem('userId').then((userId) => userId).catch((error) => console.log(error));
+
+			await axios(`${host}:8000/api/usageHistory`, {
+				params: {
+					user_id: userId,
+				}
+			}).then(res => {
+				setUsageHistory(res.data);
+			})
+		}
+
+		getUsageHistory();
+	}, [])
+	const historySearchHandler = () => {
 
 	}
 
 	return (
 		<View>
 			<SearchInput
-				placeholder='Search salon with name' 
+				placeholder='Type salon name to find usage history' 
 				backgroundColor="#eee" 
 				cancelButtonColor="#3d5c98"
 				onChange={historySearchHandler}
 			/>
-			{
-				sampleHistory.map(history => {
-					return (
-						<HistoryBox 
-							key={history.id}
-							time={history.time}
-							salonName={history.salon.name}
-							salonAddress={history.salon.address}
-							totalFee={calculateTotalFee(history.salon.services)}
-							salonImage={history.salonImage}
-							services={concatenateServiceNames(history.salon.services)}
-						/>
-					)
-				})
-			}
+				<ScrollView>
+					{
+						usageHistory.map(history => {
+							return (
+								<HistoryBox 
+									key={history.id}
+									id={history.id}
+									orderedStartAt={history.ordered_start_at}
+									orderedEndAt={history.ordered_end_at}
+									finalImageUrl={history.final_image_url}
+									salonName={history.salon_name}
+									staffFirstName={history.staff_first_name}
+									staffLastName={history.staff_last_name}
+									status={history.status}
+									// totalFee={calculateTotalFee(history.salon.services)}
+									// salonImage={history.salonImage}
+									// services={concatenateServiceNames(history.salon.services)}
+								/>
+							)
+						})
+					}
+				</ScrollView>
 		</View>
 	)
 }
 
-const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
-
 const UsageHistory = ({navigation}) => {
-	const [index, setIndex] = useState(0);
-	
-	const backButtonClickHandler = () => {
-		navigation.navigate('Dashboard', {name: 'Tung'})
-	}
 
-	const comeToBookingScreen = () => {
-		navigation.navigate('Booking');
+	const backButtonClickHandler = () => {
+		navigation.navigate('Dashboard')
 	}
 
 	return (
@@ -123,37 +112,15 @@ const UsageHistory = ({navigation}) => {
 						<Text style={styles.screenTitle}>History</Text>
 					</View>
 				</View>
-				<Tab
-					value={index}
-					onChange={setIndex}
-					indicatorStyle={{
-						backgroundColor: '#3d5c98',
-						height: 4,
-					}}
-					variant="primary"
-					>
-					<Tab.Item
-						title="Hair cut"
-						titleStyle={{ fontSize: 15, fontWeight: 500, marginTop: 9, color: '#3d5c98' }}
-						style={{backgroundColor: '#eee'}}
-						icon={<CutIcon color="#3d5c98" width={20} height={20} />}
-					/>
-					<Tab.Item
-						title="Services"
-						titleStyle={{ fontSize: 15, fontWeight: 500, marginTop: 6, color: '#3d5c98' }}
-						style={{backgroundColor: '#eee'}}
-						icon={<FacialIcon color="#3d5c98" width={23} height={23} />}
-					/>
-    			</Tab>
 
-				<TabView value={index} onChange={setIndex} animationType="spring" style={{height: 100}}>
+				{/* <TabView value={index} onChange={setIndex} animationType="spring" style={{height: 100}}>
 					<TabView.Item>
 						<NoUsedHistory comeToBookingScreen={comeToBookingScreen}/>
-					</TabView.Item>
+					</TabView.Item> */}
 						<UsedHistory />
-					<TabView.Item>
+					{/* <TabView.Item>
 					</TabView.Item>
-				</TabView>
+				</TabView> */}
 			</View>
 	)
 }

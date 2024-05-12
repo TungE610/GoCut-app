@@ -43,7 +43,7 @@ import * as Progress from 'react-native-progress';
 
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
 const deviceWidth = Dimensions.get("window").width;
-const host = "192.168.1.10";
+const host = "192.168.1.9";
 
 function comparisonFunction(a,b) {
     return a.distance - b.distance;
@@ -80,7 +80,7 @@ const wp = (percentage) => {
 	return Math.round(value);
 }
 
-const BookingScreen = ({navigation}) => {
+const BookingScreen = ({route, navigation}) => {
 	
 	const [currentPage, setCurrentPage] = useState(0);
 	const [searchInput, setSearchInput] = useState('');
@@ -100,7 +100,7 @@ const BookingScreen = ({navigation}) => {
 	const slideWidth = wp(24);
 	const sliderWidth = viewportWidth - 30;
 	const sliderItemWidth = slideWidth + sliderItemHorizontalMargin * 2;
-	const [selectedStylist, setSelectedStylist] = useState({})
+	const [selectedStylist, setSelectedStylist] = useState({id: null, name: null, rating: null})
 	const [isLoading, setIsLoading] = useState(true);
 	const [isProcessingAnImage, setIsProcessingAnImage] = useState(false);
   	const [isInferencing, setIsInferencing] = useState(false);
@@ -126,6 +126,7 @@ const BookingScreen = ({navigation}) => {
   	const [progress, setProgress] = useState(0);
 	const [result, setResult] = useState("")
 	const [isPreviewingResult, setIsPreviewingResult] = useState(false);
+	const { initStep, selectedSalonId, selectedServicesId, selectedTotalTime } = route.params;
 
   	 const hashValues = [];
 
@@ -184,7 +185,6 @@ const BookingScreen = ({navigation}) => {
 		}
 
 	}, [district]);
-
 	useEffect(() => {
 
 		if (isInferencing) {
@@ -215,8 +215,8 @@ const BookingScreen = ({navigation}) => {
 	const dayOfMonth = selectedDate.getDate();
 	const month = ('0' + (selectedDate.getMonth() + 1)).slice(-2);
 	const year = selectedDate.getFullYear();
-
 	useEffect(() => {
+	
 		const fetchData = async () => {
 			setIsLoading(true);
 			try {
@@ -233,11 +233,37 @@ const BookingScreen = ({navigation}) => {
 					return {...salon, distance: getDistance({latitude: currentLocation.latitude, longitude:currentLocation.longitude}, {latitude: salon.lat, longitude: salon.lng})}
 				}));
 
+				if (selectedSalonId) {
+					setSelectedSalon(response.data.filter(salon => salon.id == selectedSalonId)[0]);
+
+					res = await axios.get(`http://${host}:8000/api/salons/${selectedSalonId}/services`);
+
+					setCategories(res.data.categories);
+
+					setStylists(res.data.users);
+
+					const productsArray = res.data.categories.length > 0 ? res.data.categories.map(cate => cate.products) : [];
+
+					setSelectedServices([].concat(...productsArray).filter(service => selectedServicesId.includes(service.id)));
+
+					setSelectedStylist({id: null, name:null, rating: null});
+
+					setSelectedDate(new Date());
+
+					setTotalTime(selectedTotalTime);
+				}
+
 				setFilteredSalon(response.data.map(salon => {
 					return {...salon, distance: getDistance({latitude: currentLocation.latitude, longitude:currentLocation.longitude}, {latitude: salon.lat, longitude: salon.lng})}
 				}).sort(comparisonFunction));
 
 				setIsLoading(false);
+				if (initStep && initStep == 2) {
+					setTimeout(() => {
+						lastStepHandler();
+					}, 300);
+				}
+
 			} catch (error) {
 				console.error(error);
 				navigation.navigate('Dashboard');
@@ -304,11 +330,15 @@ const BookingScreen = ({navigation}) => {
 					}
 				});
 			} else {
-
+				let newSalonId;
+				if (initStep && initStep == 2) {
+					newSalonId = selectedSalonId;
+				} else {
+					newSalonId = selectedSalon.id;
+				}
 				try {
-					await axios(`http://${host}:8000/api/salons/${selectedSalon.id}/${createYYYYMMDDString(date)}`)
+					await axios(`http://${host}:8000/api/salons/${newSalonId}/${createYYYYMMDDString(date)}`)
 						.then(res => {
-							// console.log(res.data)
 							setDisabledIndexes(hashValues.filter(value => !res.data.includes(value)))
 						});
 				}catch(e) {
@@ -336,6 +366,7 @@ const BookingScreen = ({navigation}) => {
 			const response = await axios.get(`http://${host}:8000/api/salons/${value.id}/services`);
 
 			setCategories(response.data.categories);
+
 			setStylists(response.data.users);
 
 			nextStepHandler();
@@ -372,10 +403,11 @@ const BookingScreen = ({navigation}) => {
 		const isSelected = selectedServices.some((selectedService) => selectedService.id === service.id);
 
 		if (isSelected) {
-		  setSelectedServices((prevSelectedServices) => prevSelectedServices.filter((selectedService) => selectedService.id !== service.id));
-		  setTotalTime(prev => prev - service.duration)
+		  	setSelectedServices((prevSelectedServices) => 
+			prevSelectedServices.filter((selectedService) => selectedService.id !== service.id));
+		  	setTotalTime(prev => prev - service.duration)
 		} else {
-		  setSelectedServices((prevSelectedServices) => [...prevSelectedServices, service]);
+		  	setSelectedServices((prevSelectedServices) => [...prevSelectedServices, service]);
 			setTotalTime(prev => prev + service.duration)
 		}
 	};

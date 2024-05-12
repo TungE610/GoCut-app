@@ -15,6 +15,8 @@ import CartScreen from './screens/card/CardScreen';
 import CameraScreen from './screens/CameraScreen';
 import Gallery from './screens/gallery/Gallery';
 import Map from './screens/map/Map';
+import Favourite from './screens/favourite/Favourite';
+
 import FlashMessage from "react-native-flash-message";
 
 const Stack = createNativeStackNavigator();
@@ -47,6 +49,8 @@ export default function App() {
 			<Stack.Screen name="Camera" component={CameraScreen} />
 			<Stack.Screen name="Gallery" component={Gallery} />
 			<Stack.Screen name="Map" component={Map} />
+			<Stack.Screen name="Favourite" component={Favourite} />
+
 		</Stack.Navigator>
 	</NavigationContainer>
   );

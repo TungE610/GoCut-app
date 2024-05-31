@@ -14,7 +14,6 @@ const ServiceCard = (props) => {
 
 	const [image, setImage] = useState('');
 
-
 	const transferImage = async (uri) => {
 
 		const formData = new FormData();
@@ -25,7 +24,7 @@ const ServiceCard = (props) => {
 		try {
 			props.changeProcessImageState(true);
 
-			const endPoint = 'https://8eca-144-6-107-170.ngrok-free.app/uploadfile';
+			const endPoint = 'https://b967-144-6-107-170.ngrok-free.app/uploadfile';
 
 			await fetch(endPoint, {
 				method: 'POST',
@@ -40,7 +39,7 @@ const ServiceCard = (props) => {
 
 						props.changeProcessImageState(false);
 
-						const transferEndPoint = 'https://8eca-144-6-107-170.ngrok-free.app/hair-transfer';
+						const transferEndPoint = 'https://b967-144-6-107-170.ngrok-free.app/hair-transfer';
 
 						const transferFormData = new FormData();
 
@@ -167,7 +166,7 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		paddingVertical: 8,
 		paddingHorizontal: 5,
-		gap: -10,
+		gap: -15,
 		justifyContent: 'space-between',
 		backgroundColor: '#fff',
 		marginBottom: 5,

@@ -4,7 +4,6 @@ import SearchIcon from '../../assets/search.svg';
 import ShopBox from '../../components/shopBox/ShopBox';
 import SearchInput from '../../components/searchInput/SearchInput';
 import RecommendCarousel from '../../components/recommendCarousel/RecommendCarousel';
-import sampleRecommendProduct from '../../data/sampleRecommendProduct';
 import shopItems from '../../data/shopItems';
 import MenuCard from '../../components/menuCard/MenuCard';
 
@@ -42,7 +41,7 @@ const ShopScreen = ({navigation}) => {
 				<ShopBox />
 			</View>
 			<RecommendCarousel 
-				data={sampleRecommendProduct}
+				data={[]}
 				item={(props) => <Image source={props.item.item.image} style={styles.carouselImage}/>} 
 			/>
 			<View style={styles.mainMenu}>

@@ -16,7 +16,7 @@ import FastImage from 'react-native-fast-image'
 import axios from 'axios';
 
 const {width: viewportWidth, height: viewportHeight} = Dimensions.get('screen');
-const host = 'http://192.168.1.5';
+const host = 'http://192.168.1.14';
 
 const SalonDetail = ({route, navigation, ...props}) => {
 

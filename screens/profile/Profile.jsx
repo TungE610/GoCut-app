@@ -10,7 +10,7 @@ import SaveIcon from '../../assets/save.svg';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const host = "http://192.168.1.5"
+const host = "http://192.168.1.14"
 
 const Profile = ({route, navigation, ...props}) => {
 

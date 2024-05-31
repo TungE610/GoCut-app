@@ -7,7 +7,7 @@ import axios from 'axios';
 import * as ImagePicker from 'react-native-image-picker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const host = "http://192.168.1.9";
+const host = process.env.HOST
 
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
 
@@ -20,7 +20,7 @@ const FavouriteItem = (props) => {
         setIsEditing(prev => !prev);
 
         if (isEditing) {                
-                await axios.put(`${host}:8000/api/favourite-images/rename`, null, {
+                await axios.put(`http://${host}:8000/api/favourite-images/rename`, null, {
                     params: {
                         imageUrl: props.image_url,
                         newName: name,
@@ -41,7 +41,7 @@ const FavouriteItem = (props) => {
 		try {
 			props.changeProcessImageState(true);
 
-			const endPoint = 'https://2b38-213-181-123-79.ngrok-free.app/uploadfile';
+			const endPoint = 'https://b967-144-6-107-170.ngrok-free.app/uploadfile';
 
 			await fetch(endPoint, {
 				method: 'POST',
@@ -57,7 +57,7 @@ const FavouriteItem = (props) => {
 
 						props.changeProcessImageState(false);
 
-						const transferEndPoint = 'https://2b38-213-181-123-79.ngrok-free.app/hair-transfer';
+						const transferEndPoint = 'https://b967-144-6-107-170.ngrok-free.app/hair-transfer';
 
 						const transferFormData = new FormData();
 

@@ -50,12 +50,12 @@ const GridComponent = (props) => {
             props.selectTimePointHandler(value);
         } else {
             showMessage({
-				message: "Not enough time to do all services, please select other slots",
-				type: "danger",
-                autoHide: false,
-                duration: 60000,
-                icon: "danger",
-			});
+              message: "Not enough time to do all services, please select other slots",
+              type: "danger",
+                      autoHide: false,
+                      duration: 60000,
+                      icon: "danger",
+            });
         }
     }
 

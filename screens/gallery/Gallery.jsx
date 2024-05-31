@@ -1,7 +1,7 @@
 import {View, StyleSheet, Dimensions, Text, ScrollView} from 'react-native';
 import BackButton from '../../components/backButton/BackButton';
 import GalleryBox from '../../components/galleryBox/GalleryBox';
-import sampleHairStyle from '../../data/sampleHairStyle';
+// import sampleHairStyle from '../../data/sampleHairStyle';
 
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
 
@@ -19,7 +19,7 @@ const Gallery  = ({navigation}) => {
             </View>
             <ScrollView>
                 <View style={styles.galleryContent}>
-                    {sampleHairStyle.map(style => {
+                    {[].map(style => {
                         return <GalleryBox image={style.image} name={style.name}/>
                     })}
                 </View>

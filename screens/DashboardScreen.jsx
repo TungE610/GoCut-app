@@ -13,7 +13,7 @@ import Carousel from 'react-native-snap-carousel';
 import StylistCard from '../components/stylistCard/StylistCard';
 import axios from 'axios';
 
-const host = 'http://172.20.10.5';
+const host = 'http://192.168.1.14';
 
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
 
@@ -74,7 +74,12 @@ const DashboardScreen = ({route, navigation, ...props}) => {
 				selectedTotalTime: 0,
 			});
 		} else if (index === 1) {
-			navigation.navigate('PriceList');
+			navigation.navigate('Salons', {
+				initStep: null,
+				selectedSalonId: null,
+				selectedServicesId: [],
+				selectedTotalTime: 0,
+			});
 		} else if (index === 2) {
 			navigation.navigate('UsageHistory');
 		}	else if (index === 3) {

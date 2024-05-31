@@ -32,7 +32,7 @@ const ServiceDetail = ({route, navigation, ...props}) => {
 		const getImages = async () => {
 			try {
 
-				const response = await axios.get(`http://192.168.1.5:8000/api/products/${service.id}/images`);
+				const response = await axios.get(`http://192.168.1.14:8000/api/products/${service.id}/images`);
 
 				setImages(response.data.map(ele => ele.image_url));
 
@@ -51,7 +51,12 @@ const ServiceDetail = ({route, navigation, ...props}) => {
 
 	const turnBack = () => {
 		if (prev && prev === 'booking') {
-			navigation.navigate("Booking")
+			navigation.navigate("Booking", {
+				initStep: null,
+				selectedSalonId: null,
+				selectedServicesId: [],
+				selectedTotalTime: 0,
+			})
 		}
 	}
 

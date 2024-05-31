@@ -7,7 +7,9 @@ import HistoryBox from '../../components/historyBox/HistoryBox';
 import SearchInput from '../../components/searchInput/SearchInput';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
-const host = "http://192.168.1.5";
+import { showMessage } from "react-native-flash-message";
+
+const host = "http://192.168.1.14";
 
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
 
@@ -62,6 +64,19 @@ const UsedHistory = (props) => {
 
 	}
 
+	const confirmCancelOrder = async (id) => {
+		await axios.delete(`${host}:8000/api/orders/${id}`).then(res => {
+			showMessage({
+				message: "Successfully canceled the order",
+				type: "success",
+					autoHide: false,
+					duration: 6000,
+					icon: "success",
+            });
+			setUsageHistory(prev => prev.filter(item => item.id != id));
+		})
+	}
+
 	return (
 		<View>
 			<SearchInput
@@ -73,6 +88,7 @@ const UsedHistory = (props) => {
 				<ScrollView>
 					{
 						usageHistory.map(history => {
+							console.log(history);
 							return (
 								<HistoryBox 
 									key={history.id}
@@ -84,9 +100,8 @@ const UsedHistory = (props) => {
 									staffFirstName={history.staff_first_name}
 									staffLastName={history.staff_last_name}
 									status={history.status}
-									// totalFee={calculateTotalFee(history.salon.services)}
-									// salonImage={history.salonImage}
-									// services={concatenateServiceNames(history.salon.services)}
+									cancel={confirmCancelOrder}
+									salonImage={history.salon_image}
 								/>
 							)
 						})

@@ -6,8 +6,8 @@ export default [
 	},
 	{
 		id: 1,
-		name: 'Price List',
-		icon: require('../assets/priceList.svg')
+		name: 'Salons',
+		icon: require('../assets/salon.svg')
 	},
 	{
 		id: 2,

@@ -3,7 +3,7 @@ import { StyleSheet, View , Text, TouchableOpacity, TextInput, Dimensions} from 
 import WriteIcon from '../../assets/write.svg';
 import SaveIcon from '../../assets/save.svg';
 import axios from 'axios';
-const host = "http://192.168.1.5"
+const host = "http://192.168.1.14"
 
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
 

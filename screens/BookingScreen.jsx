@@ -43,13 +43,13 @@ import * as Progress from 'react-native-progress';
 
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
 const deviceWidth = Dimensions.get("window").width;
-const host = "192.168.1.9";
+const host = "192.168.1.14";
 
 function comparisonFunction(a,b) {
     return a.distance - b.distance;
 }
 
-Geocoder.init("AIzaSyApcwoXFQwI-3YH7kUAs1rVQy45TOxQeWQ", {language : "vi"}); // use a valid API key
+Geocoder.init("AIzaSyCXMER8nT28GR0VF--NbVdWROad-vDeZo4", {language : "vi"}); // use a valid API key
 
 const customStyles = {
 	stepIndicatorSize: 25,
@@ -201,6 +201,7 @@ const BookingScreen = ({route, navigation}) => {
 			setProgress(newProgress);
 
 			if (currentStep === steps) {
+				setLoading(true);
 				clearInterval(timer); // Stop the timer when progress reaches 1
 				setIsInferencing(false);
 			}
@@ -632,9 +633,9 @@ const BookingScreen = ({route, navigation}) => {
 
 	const getResult = (result) => {
 		setResult(result);	
+		setLoading(false);
 		setIsPreviewingResult(true);
 	}
-
 
 	return (
 		<View style={styles.container}>
@@ -725,7 +726,7 @@ const BookingScreen = ({route, navigation}) => {
 										keepResultsAfterBlur={true}
 										nearbyPlacesAPI='GooglePlacesSearch'
 										query={{
-											key: 'AIzaSyApcwoXFQwI-3YH7kUAs1rVQy45TOxQeWQ',
+											key: 'AIzaSyCXMER8nT28GR0VF--NbVdWROad-vDeZo4',
 											language: 'vi',
 										}}
             							enablePoweredByContainer={false}

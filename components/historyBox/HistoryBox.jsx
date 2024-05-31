@@ -1,10 +1,11 @@
-import { StyleSheet, Dimensions, View, Text, TouchableOpacity, ScrollView, FlatList } from "react-native";
-const salonImage = require ('../../assets/salon2.jpg');
+import { StyleSheet, Dimensions, View, Text, TouchableOpacity, Alert} from "react-native";
 import FastImage from 'react-native-fast-image'
 import axios from 'axios';
 import {useEffect, useState} from 'react';
+import { Button } from "react-native-elements";
 
-const host = "http://192.168.1.5";
+const host = "http://192.168.1.14";
+
 
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
 const calculateTotalFee = (services) => {
@@ -20,6 +21,31 @@ const HistoryBox = (props) => {
 	
 	const [services, setServices] = useState([]);
 	const [showServices, setShowServices] = useState(false);
+
+	const showAlert = () =>
+		Alert.alert(
+		'Are you sure to cancel this order',
+		'',
+		[
+		{
+			text: 'Cancel',
+			onPress: () => {},
+			style: 'cancel',
+		},
+		{
+			text: 'Confirm',
+			onPress: () => {props.cancel(props.id)},
+			style: 'cancel',
+		},
+		],
+		{
+		cancelable: true,
+		onDismiss: () =>
+			Alert.alert(
+			'This alert was dismissed by tapping outside of the alert dialog.',
+			),
+		},
+	);
 
 	const styles = StyleSheet.create({
 		container: {
@@ -46,15 +72,14 @@ const HistoryBox = (props) => {
 		},
 		salonInfo: {
 			flex: 1,
-			width: viewportWidth,
 			flexDirection: 'row',
 			gap: 10,
 		},
 
 		salonImage: {
-			width: viewportWidth / 4,
-			height: viewportWidth / 4,
-			borderRadius: 5,
+			width: viewportHeight / 9,
+			height: viewportHeight / 9,
+			borderRadius: 2,
 		},
 		stylistName: {
 			fontSize: 15,
@@ -118,8 +143,8 @@ const HistoryBox = (props) => {
 
 	return (		
 		<View style={styles.container}>
-			<View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-				<View style={{backgroundColor: '#fc7303', paddingHorizontal: 4, paddingTop: 2, borderRadius: 4}}>
+			<View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
+				<View style={{backgroundColor: '#fc7303', paddingHorizontal: 4, paddingVertical: 2, borderRadius: 4}}>
 					<Text style={styles.time}>
 						{props.orderedStartAt.replace(" ", ": ")} - {props.orderedEndAt.split(" ")[1]}
 					</Text>
@@ -161,8 +186,8 @@ const HistoryBox = (props) => {
 				</View>
 			</View>
 			<View style={styles.salonInfo}>
-				<FastImage style={styles.salonImage} source= {{uri: props.finalImageUrl}} />
-				<View style={{gap: 21}}>
+				<FastImage style={styles.salonImage} source= {{uri: props.finalImageUrl ? props.finalImageUrl : props.salonImage}} />
+				<View style={{gap: 21, flex: 1}}>
 					<View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
 						<Text style={styles.salonName}>Salon: {props.salonName}</Text>
 						{/* <Text style={styles.fee}>${props.totalFee}</Text> */}
@@ -173,8 +198,20 @@ const HistoryBox = (props) => {
 					</View>
 					<View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
 						<TouchableOpacity onPress={() => {setShowServices(prev => !prev)}}>
-							<Text style={[styles.seeAllServices]}>See details</Text>
+							<Text style={[styles.seeAllServices]}>{showServices ? "Hide details" : "See detail"}</Text>
 						</TouchableOpacity>
+						{
+							props.status === 0 ? 
+								<Button title="Cancel" size="sm" buttonStyle={{
+									backgroundColor: 'red',
+									padding: 0,
+									paddingHorizontal: 2,
+									fontSize: 15,
+								}}
+									onPress={showAlert}
+								/>
+ 							: ""
+						}
 					</View>
 				</View>
 			</View>
@@ -184,7 +221,7 @@ const HistoryBox = (props) => {
 					{
 						services.map((service) => {
 							return (
-								<View key={service.id} style={{gap: 10, flexDirection: 'row', width: viewportWidth - 40, justifyContent: 'space-between'}}>
+								<View key={service.name} style={{gap: 10, flexDirection: 'row', width: viewportWidth - 40, justifyContent: 'space-between'}}>
 									<Text style={{fontSize: 15, fontWeight: "500"}}>{service.name}</Text>
 									<View style={{flexDirection: 'row'}}>
 										<Text>{service.price}</Text>

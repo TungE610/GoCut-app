@@ -10,7 +10,7 @@ import ImageView from "react-native-image-viewing";
 import * as Progress from 'react-native-progress';
 import { showMessage } from "react-native-flash-message";
 
-const host = "http://192.168.1.9";
+const host = "http://192.168.1.14";
 
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
 
@@ -82,7 +82,7 @@ const Favourite = ({navigation}) => {
 		    formData.append("file_upload", {uri: image.path, name: 'favourite.png', type: 'image/jpeg'});
 		    formData.append("id", `${userId}_${favourites.length}`);
 
-            const endPoint = 'https://2b38-213-181-123-79.ngrok-free.app/embedImage';
+            const endPoint = 'https://b967-144-6-107-170.ngrok-free.app/embedImage';
             setLoading(true);
 
 			await fetch(endPoint, {

@@ -10,7 +10,6 @@ import Geocoder from 'react-native-geocoding';
 import GetLocation from 'react-native-get-location';
 import { getDistance } from 'geolib';
 import LocationIcon from '../assets/location.svg';
-import SadIcon from '../assets/sad.svg';
 import HomeIcon from '../assets/home.svg';
 import OfficeIcon from '../assets/office.svg';
 import SearchTag from '../components/searchTag/SearchTag';
@@ -18,7 +17,7 @@ import ToggleSwitch from 'toggle-switch-react-native';
 
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
 const deviceWidth = Dimensions.get("window").width;
-const host = "192.168.1.14";
+const host = "https://salon-docker-production.up.railway.app";
 
 function comparisonFunction(a,b) {
     return a.distance - b.distance;
@@ -39,7 +38,6 @@ const Salons = ({route, navigation}) => {
 	const [filteredSalon, setFilteredSalon] = useState([])
 	const [loading, setLoading] = useState(true);
 	const [selectedSalon, setSelectedSalon] = useState({});
-  	const [isInferencing, setIsInferencing] = useState(false);
 
     const [isCityFocus, setIsCityFocus] = useState(false);
     const [city, setCity] = useState("");
@@ -49,8 +47,6 @@ const Salons = ({route, navigation}) => {
     const [showDistrictDropdown, setShowDistrcitDropdown] = useState(false);
     const [hasCarPark, setHasCardPark] = useState(false);
     const [prevFilteredSalon, setPrevFilteredSalon] = useState([]);
-  	const [helpSelect, setHelpSelect] = useState(true);
-  	const [progress, setProgress] = useState(0);
 	const { initStep, selectedSalonId, selectedServicesId, selectedTotalTime } = route.params;
 
   	 const hashValues = [];
@@ -108,7 +104,7 @@ const Salons = ({route, navigation}) => {
 		const fetchData = async () => {
 			setLoading(true);
 			try {
-				const response = await axios.get(`http://${host}:8000/api/salons`);
+				const response = await axios.get(`${host}/api/salons`);
 
 				const currentLocation = await GetLocation.getCurrentPosition({
                     enableHighAccuracy: true,
@@ -148,6 +144,7 @@ const Salons = ({route, navigation}) => {
     const selectSalonHandler = (value) => {
 		setSelectedSalon(value);
 	}
+
 	const [listViewVisible, setListViewVisible] = useState(true)
 
 	const searchTagContent = [

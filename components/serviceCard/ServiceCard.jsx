@@ -1,9 +1,9 @@
-import { StyleSheet, Dimensions, View, Text, TouchableOpacity} from "react-native";
+import React, { useState, useEffect, useCallback, useRef } from 'react';
+import { StyleSheet, Dimensions, View, Text, TouchableOpacity, Animated, Easing} from "react-native";
 import AddIcon from '../../assets/add.svg';
 import RemoveIcon from '../../assets/remove.svg';
 import SaleIcon from '../../assets/sale.svg';
 import ClockIcon from '../../assets/clock.svg';
-import React, { useState, useCallback } from 'react';
 import * as ImagePicker from 'react-native-image-picker';
 import FastImage from 'react-native-fast-image'
 import {formatCurrency} from '../../helpers/formatCurrency';
@@ -13,6 +13,16 @@ const {width: viewportWidth, height: viewportHeight} = Dimensions.get('screen');
 const ServiceCard = (props) => {
 
 	const [image, setImage] = useState('');
+    const fadeInOpacity = useRef(new Animated.Value(0)).current;
+
+	useEffect(() => {
+        Animated.timing(fadeInOpacity, {
+            toValue: 1,
+            duration: 200,
+            useNativeDriver: true,
+            easing: Easing.ease,
+        }).start();
+    }, []);
 
 	const transferImage = async (uri) => {
 
@@ -24,7 +34,7 @@ const ServiceCard = (props) => {
 		try {
 			props.changeProcessImageState(true);
 
-			const endPoint = 'https://b967-144-6-107-170.ngrok-free.app/uploadfile';
+			const endPoint = 'https://goose-clean-rattler.ngrok-free.app/uploadfile';
 
 			await fetch(endPoint, {
 				method: 'POST',
@@ -39,7 +49,7 @@ const ServiceCard = (props) => {
 
 						props.changeProcessImageState(false);
 
-						const transferEndPoint = 'https://b967-144-6-107-170.ngrok-free.app/hair-transfer';
+						const transferEndPoint = 'https://goose-clean-rattler.ngrok-free.app/hair-transfer';
 
 						const transferFormData = new FormData();
 
@@ -116,47 +126,55 @@ const ServiceCard = (props) => {
 	}
 
 	return (
-		<View style={styles.container}>
-			<View style={{flexDirection: 'row', gap: 10}}>
-				<FastImage style={styles.image} source={{ uri: props.image }}
-                    resizeMode="cover" />
-				<View style={styles.serviceContent}>
-					<Text style={styles.serviceName}>{props.serviceName}</Text>
-					<Text>{props.serviceSummary ? props.serviceSummary : ""}</Text>
-					<View style={styles.serviceTime}>
-						<ClockIcon width={20} height={20} color="#3d5c98" />
-						<Text style={styles.serviceTimeText}>
-							{props.serviceTime} minutes
-						</Text>
+		<Animated.View style={{ opacity: fadeInOpacity }} >
+			<View style={styles.container}>
+				<View style={{flexDirection: 'row', gap: 10}}>
+					<FastImage style={styles.image} source={{ uri: props.image }}
+						resizeMode="cover" />
+					<View style={styles.serviceContent}>
+						<View style={{flexDirection: 'row'}}>
+							<Text style={styles.serviceName}>{props.serviceName}</Text>
+							{
+							props.sale > 0 ? 
+								<View style={styles.saleCard}>
+									<SaleIcon width={20} height={20} />
+									<Text style={styles.salePercent}>-{props.sale}%</Text>
+								</View> : <View></View>
+							}
+						</View>
+						<Text>{props.serviceSummary ? props.serviceSummary : ""}</Text>
+						<View style={{flexDirection: 'row', justifyContent: 'space-between', flex: 1}}>
+							<View style={styles.serviceTime}>
+								<ClockIcon width={20} height={20} color="#3d5c98" />
+								<Text style={styles.serviceTimeText}>
+									{props.serviceTime} minutes
+								</Text>
+							</View>
+							<TouchableOpacity onPress={toggleSelect}>
+								{
+									!props.selected ? 
+									<AddIcon width={viewportWidth/10} height={viewportWidth/10} /> :
+									<RemoveIcon width={viewportWidth/10} height={viewportWidth/10} />
+								}
+							</TouchableOpacity>
+						</View>
+						<View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+							<Text style={styles.serviceFee}>{formatCurrency(props.serviceFee)} <Text style={{textDecorationLine: 'underline'}}>đ</Text></Text>
+							<View style={styles.operations}>
+								<View style={{flexDirection: 'row', alignItems: 'center', gap: 10}}>
+									<TouchableOpacity onPress={onCameraPress} >
+										<Text style={{color: '#3d5c98'}}>Try now</Text>
+									</TouchableOpacity>
+									<TouchableOpacity onPress={onImageGalleryClick} >
+										<Text style={{color: '#3d5c98'}}>Transform image</Text>
+									</TouchableOpacity>
+								</View>
+							</View>
+						</View>
 					</View>
-					<Text style={styles.serviceFee}>{formatCurrency(props.serviceFee)} <Text style={{textDecorationLine: 'underline'}}>đ</Text></Text>
 				</View>
 			</View>
-			<View style={styles.operations}>
-				{
-				props.sale > 0 ? 
-					<View style={styles.saleCard}>
-						<SaleIcon width={20} height={20} />
-						<Text style={styles.salePercent}>-{props.sale}%</Text>
-					</View> : <View></View>
-				}
-				<TouchableOpacity onPress={toggleSelect}>
-				{
-					!props.selected ? 
-					<AddIcon width={viewportWidth/10} height={viewportWidth/10} /> :
-					<RemoveIcon width={viewportWidth/10} height={viewportWidth/10} />
-				}
-				</TouchableOpacity>
-				<View style={{flexDirection: 'row', alignItems: 'center', gap: 10}}>
-					<TouchableOpacity onPress={onCameraPress} >
-						<Text style={{color: '#3d5c98'}}>Try now</Text>
-					</TouchableOpacity>
-					<TouchableOpacity onPress={onImageGalleryClick} >
-						<Text style={{color: '#3d5c98'}}>Transform image</Text>
-					</TouchableOpacity>
-				</View>
-			</View>
-		</View>
+		</Animated.View>
 	)
 }
 
@@ -178,6 +196,7 @@ const styles = StyleSheet.create({
 	},
 	serviceContent: {
 		justifyContent: 'space-between',
+		width:  3 *  viewportWidth / 4.2
 	},
 	serviceName: {
 		fontSize: 16,

@@ -8,8 +8,9 @@ import SearchInput from '../../components/searchInput/SearchInput';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 import { showMessage } from "react-native-flash-message";
+import ImageView from "react-native-image-viewing";
 
-const host = "http://192.168.1.14";
+const host = "https://salon-docker-production.up.railway.app";
 
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
 
@@ -44,12 +45,14 @@ const NoUsedHistory = (props) => {
 const UsedHistory = (props) => {
 
 	const [usageHistory, setUsageHistory] = useState([]);
+	const [previewVisible, setPreviewVisible] = useState(false);
+	const [showingUrl, setShowingUrl] = useState('');
 
 	useEffect(() => {
 		const getUsageHistory = async () => {
 			const userId = await AsyncStorage.getItem('userId').then((userId) => userId).catch((error) => console.log(error));
 
-			await axios(`${host}:8000/api/usageHistory`, {
+			await axios(`${host}/api/usageHistory`, {
 				params: {
 					user_id: userId,
 				}
@@ -65,7 +68,7 @@ const UsedHistory = (props) => {
 	}
 
 	const confirmCancelOrder = async (id) => {
-		await axios.delete(`${host}:8000/api/orders/${id}`).then(res => {
+		await axios.put(`${host}:8000/api/orders/${id}/cancel`).then(res => {
 			showMessage({
 				message: "Successfully canceled the order",
 				type: "success",
@@ -73,12 +76,29 @@ const UsedHistory = (props) => {
 					duration: 6000,
 					icon: "success",
             });
-			setUsageHistory(prev => prev.filter(item => item.id != id));
+			setUsageHistory(prev => prev.map(order => {
+				if (order.id != id) {
+					return order;
+				} else {
+					return {...order, status: 6}
+				}
+			}));
 		})
 	}
 
+	const previewHandler = (url) => {
+		setPreviewVisible(true);
+		setShowingUrl(url);
+	}	
+
 	return (
 		<View>
+			<ImageView
+				images={[{uri: showingUrl}]}
+				imageIndex={0}
+				visible={previewVisible}
+				onRequestClose={() => setPreviewVisible(false)}
+			/>
 			<SearchInput
 				placeholder='Type salon name to find usage history' 
 				backgroundColor="#eee" 
@@ -87,11 +107,10 @@ const UsedHistory = (props) => {
 			/>
 				<ScrollView>
 					{
-						usageHistory.map(history => {
-							console.log(history);
+						usageHistory.map((history,id) => {
 							return (
 								<HistoryBox 
-									key={history.id}
+									key={id}
 									id={history.id}
 									orderedStartAt={history.ordered_start_at}
 									orderedEndAt={history.ordered_end_at}
@@ -102,6 +121,9 @@ const UsedHistory = (props) => {
 									status={history.status}
 									cancel={confirmCancelOrder}
 									salonImage={history.salon_image}
+									images={history.images}
+									previewHandler={previewHandler}
+									rating={history.rating}
 								/>
 							)
 						})

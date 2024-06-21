@@ -5,18 +5,16 @@ import MarkButton from '../../components/markButton/MarkButton';
 import ClockIcon from '../../assets/clock.svg';
 import StarIcon from '../../assets/star.svg';
 import CatIcon from '../../assets/cut.svg';
+import PersonIcon from '../../assets/person.svg';
 import CircleIcon from '../../assets/circle.svg';
 import ServiceTypeCard from '../../components/serviceTypeCard/ServiceTypeCard';
 import ServiceCard from '../../components/serviceCard/ServiceCard';
 import AddServicesButton from '../../components/addServicesButton/AddServicesButton';
-import CutIcon from '../../assets/cut.svg';
-import FacialIcon from '../../assets/facial.svg';
-import NailIcon from '../../assets/nail.svg';
 import FastImage from 'react-native-fast-image'
 import axios from 'axios';
 
 const {width: viewportWidth, height: viewportHeight} = Dimensions.get('screen');
-const host = 'http://192.168.1.14';
+const host = 'https://salon-docker-production.up.railway.app';
 
 const SalonDetail = ({route, navigation, ...props}) => {
 
@@ -31,11 +29,10 @@ const SalonDetail = ({route, navigation, ...props}) => {
 	const [totalTime, setTotalTime] = useState(0);
 
 	const {salon} = route.params;
-
 	useEffect(() => {
 
 		const getSalonOrderedNumber = async () => {
-			await axios(`${host}:8000/api/salons/orderedNumber`, {
+			await axios(`${host}/api/salons/orderedNumber`, {
 				params: {
 					salonId: salon.id,
 				}
@@ -45,7 +42,7 @@ const SalonDetail = ({route, navigation, ...props}) => {
 		}
 
 		const getCategories = async () => {
-			const response = await axios.get(`${host}:8000/api/salons/${salon.id}/services`);
+			const response = await axios.get(`${host}/api/salons/${salon.id}/services`);
 
 			setCategories(response.data.categories);
 		}
@@ -66,7 +63,6 @@ const SalonDetail = ({route, navigation, ...props}) => {
 			setTotalTime(prev => prev - service.duration)
 		} else {
 		  	setSelectedServices((prevSelectedServices) => [...prevSelectedServices, service]);
-			console.log("add:", service.duration)
 			setTotalTime(prev => prev + service.duration)
 		}
 	};
@@ -98,7 +94,7 @@ const SalonDetail = ({route, navigation, ...props}) => {
 						<View style={styles.ratting}>
 							<StarIcon width={25} height={25} color="#FE7A01"/>
 							<Text style={styles.rattingPoint}>{salon.rating}</Text>
-							<Text style={styles.rattingNum}>({props.rattingNum || '1.3K'})</Text>
+							<Text style={styles.rattingNum}>({salon.rated_number} <PersonIcon />)</Text>
 						</View>
 						<View style={styles.view}>
 							<CatIcon width={20} height={20} color={"#3d5c98"}/>
@@ -159,7 +155,7 @@ const SalonDetail = ({route, navigation, ...props}) => {
 						</View>
 						<View style={styles.servicesStack}>
 							{
-								categories.length > 0 ? categories[selectedCategoryIndex].products.map(service => {
+								categories.length > 0 ? categories[selectedCategoryIndex].services.map(service => {
 									
 									return (
 										<ServiceCard 
@@ -168,7 +164,7 @@ const SalonDetail = ({route, navigation, ...props}) => {
 											serviceName = {service.name}
 											serviceTime = {service.duration}
 											serviceFee = {service.price}
-											image ={service.illustration}
+											image ={service.try_on_image_url}
 											selected={selectedServices.some((selectedService) => selectedService.id === service.id)}
 											selectService={toggleServiceSelection}
 										/>
@@ -176,7 +172,7 @@ const SalonDetail = ({route, navigation, ...props}) => {
 								}) : ""
 							}
 							{
-								categories.length > 0 ? <Text style={{textAlign: 'center', marginTop: 10, fontSize: 16, fontWeight: "600", color: '#3d5c98'}}>Not found any services of this category</Text> : ""
+								categories.length > 0 && categories[selectedCategoryIndex].services.length == 0 ? <Text style={{textAlign: 'center', marginTop: 10, fontSize: 16, fontWeight: "600", color: '#3d5c98'}}>Not found any services of this category</Text> : ""
 							}
 						</View>
 					</View>
@@ -317,7 +313,7 @@ const styles = StyleSheet.create({
 		paddingHorizontal: 10
 	},
 	servicesStack: {
-		
+		paddingBottom: 40,
 	},
 	addServicesButton: {
 		position: 'absolute',

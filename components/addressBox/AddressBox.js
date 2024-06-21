@@ -3,7 +3,7 @@ import { StyleSheet, View , Text, TouchableOpacity, TextInput, Dimensions} from 
 import WriteIcon from '../../assets/write.svg';
 import SaveIcon from '../../assets/save.svg';
 import axios from 'axios';
-const host = "http://192.168.1.14"
+const host = "https://salon-docker-production.up.railway.app"
 
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
 
@@ -14,7 +14,7 @@ const AddressBox = (props) => {
 
 	const saveAddressHandler = async (prop, newValue) => {
 		try {
-			await axios.put(`${host}:8000/api/customer/update`, null, {
+			await axios.put(`${host}/api/customer/update`, null, {
 				params: {
 					user_id: props.userId,
 					prop: prop,

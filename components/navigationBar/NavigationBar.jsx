@@ -1,4 +1,4 @@
-import {StyleSheet, Dimensions, View} from 'react-native';
+import {StyleSheet, Dimensions, View, TouchableOpacity} from 'react-native';
 import navbarItems from '../../data/navbarItems';
 import NavbarItem from '../navbarItem/NavbarItem';
 import BookingNavbarItem from '../bookingNavbarItem/BookingNavbarItem';
@@ -39,7 +39,9 @@ const NavigationBar = (props) => {
 		<View style={styles.container}>
 			{navbarItems.map((item,id) => {
 				if (id === 2) {
-					return <BookingNavbarItem key={2} title={item.title} icon={item.icon.default} choosen={id === props.current} />
+					return <TouchableOpacity key={2} onPress={props.booking}>
+							<BookingNavbarItem title={item.title} icon={item.icon.default} choosen={id === props.current} />
+						</TouchableOpacity>
 				} else {
 					return <NavbarItem 
 								key={item.id} 

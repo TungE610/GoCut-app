@@ -40,10 +40,11 @@ import { isInSameWeek } from '../helpers/isInSameWeek';
 import { findMaxId } from '../helpers/findMax';
 import { hashTimePoint, mergeArrays } from '../helpers/hashTimePoint';
 import * as Progress from 'react-native-progress';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
 const deviceWidth = Dimensions.get("window").width;
-const host = "192.168.1.14";
+const host = "https://salon-docker-production.up.railway.app";
 
 function comparisonFunction(a,b) {
     return a.distance - b.distance;
@@ -91,7 +92,8 @@ const BookingScreen = ({route, navigation}) => {
 	const [categories, setCategories] = useState([])
 	const [stylists, setStylists] = useState([])
 	const [selectedCategory, setSelectedCategory] = useState(0)
-	const [filteredSalon, setFilteredSalon] = useState([])
+	const [filteredSalon, setFilteredSalon] = useState();
+	const [filteredServices, setFilteredServices] = useState([])
 	const [loading, setLoading] = useState(false);
 	const [selectedSalon, setSelectedSalon] = useState({});
 	const [rotationAngle, setRotationAngle] = useState(0);
@@ -152,6 +154,8 @@ const BookingScreen = ({route, navigation}) => {
 	const seeMap = (destination) => {
 		navigation.navigate('Map', {destination: destination});
 	}
+
+	console.log("Tung")
 
 	useEffect(() => {
 		setIsSearching(true);
@@ -216,12 +220,13 @@ const BookingScreen = ({route, navigation}) => {
 	const dayOfMonth = selectedDate.getDate();
 	const month = ('0' + (selectedDate.getMonth() + 1)).slice(-2);
 	const year = selectedDate.getFullYear();
+
 	useEffect(() => {
 	
 		const fetchData = async () => {
 			setIsLoading(true);
 			try {
-				const response = await axios.get(`http://${host}:8000/api/salons`);
+				const response = await axios.get(`${host}/api/salons`);
 
 				const currentLocation = await GetLocation.getCurrentPosition({
                     enableHighAccuracy: true,
@@ -237,15 +242,17 @@ const BookingScreen = ({route, navigation}) => {
 				if (selectedSalonId) {
 					setSelectedSalon(response.data.filter(salon => salon.id == selectedSalonId)[0]);
 
-					res = await axios.get(`http://${host}:8000/api/salons/${selectedSalonId}/services`);
+					res = await axios.get(`${host}/api/salons/${selectedSalonId}/services`);
 
 					setCategories(res.data.categories);
 
+					setFilteredServices(res.data.categories[0].services);
+
 					setStylists(res.data.users);
 
-					const productsArray = res.data.categories.length > 0 ? res.data.categories.map(cate => cate.products) : [];
+					const servicesArray = res.data.categories.length > 0 ? res.data.categories.map(cate => cate.services) : [];
 
-					setSelectedServices([].concat(...productsArray).filter(service => selectedServicesId.includes(service.id)));
+					setSelectedServices([].concat(...servicesArray).filter(service => selectedServicesId.includes(service.id)));
 
 					setSelectedStylist({id: null, name:null, rating: null});
 
@@ -301,7 +308,7 @@ const BookingScreen = ({route, navigation}) => {
 		} else {
 			if (selectedStylist.id && !helpSelect) {
 
-				await axios(`http://${host}:8000/api/users/${selectedStylist.id}/freeInDate`, {
+				await axios(`${host}/api/users/${selectedStylist.id}/freeInDate`, {
 						params: {
 							date: createYYYYMMDDString(date),
 						}
@@ -338,7 +345,7 @@ const BookingScreen = ({route, navigation}) => {
 					newSalonId = selectedSalon.id;
 				}
 				try {
-					await axios(`http://${host}:8000/api/salons/${newSalonId}/${createYYYYMMDDString(date)}`)
+					await axios(`${host}/api/salons/${newSalonId}/${createYYYYMMDDString(date)}`)
 						.then(res => {
 							setDisabledIndexes(hashValues.filter(value => !res.data.includes(value)))
 						});
@@ -361,27 +368,30 @@ const BookingScreen = ({route, navigation}) => {
 	}, [selectedDate.toDateString()])
 
 	const selectSalonHandler = async (value) => {
+
 		setSelectedSalon(value);
 
 		try {
-			const response = await axios.get(`http://${host}:8000/api/salons/${value.id}/services`);
+			const response = await axios.get(`${host}/api/salons/${value.id}/services`);
 
 			setCategories(response.data.categories);
+
+			setFilteredServices(response.data.categories[0].services);
 
 			setStylists(response.data.users);
 
 			nextStepHandler();
 
-			await axios(`http://${host}:8000/api/salons/${value.id}/${createYYYYMMDDString(new Date())}`)
-				.then(
-					res => {
-						setDisabledIndexes(hashValues.filter(value => !res.data.includes(value)));
-					});
+			await axios(`${host}/api/salons/${value.id}/availableInDate/${createYYYYMMDDString(new Date())}`)
+			.then(
+				res => {
+					setDisabledIndexes(hashValues.filter(value => !res.data.includes(value)));
+				});
 		}catch(e) {
 			if (e.response && e.response.data) {
-				console.log(e.response.data.error);
+				console.log("this", e.response.data);
 			} else {
-				console.log(e);
+				console.log("here", e);
 			}
 		}
 	}
@@ -427,7 +437,7 @@ const BookingScreen = ({route, navigation}) => {
 	}
 
 	const selectPrevHair = async (id) => {
-		await axios(`http://${host}:8000/api/users/${id}/prevHair`, {
+		await axios(`${host}/api/users/${id}/prevHair`, {
 			params: {
 				selectedServices: selectedServices.map(service => service.id),
 			}
@@ -459,7 +469,7 @@ const BookingScreen = ({route, navigation}) => {
 
 	const retrieveCSRFToken = async () => {
 		try {
-			const response = await axios.get(`http://${host}:8000/csrf-token`);
+			const response = await axios.get(`${host}/csrf-token`);
 			return response.data.csrfToken;
 		} catch (error) {
 			console.error('Error retrieving CSRF token:', error);
@@ -482,15 +492,19 @@ const BookingScreen = ({route, navigation}) => {
     	const csrfToken = await retrieveCSRFToken();
 
 		const currentDate = new Date();
-		console.log(selectedTimePoint);
 
     	const startDateTime = createDateTimeObject(selectedDate, selectedTimePoint)
 
     	const endDateTime = createDateTimeObject(selectedDate, hashTimePoint(addMinutesToTimeString(selectedTimePoint, totalTime)));
 
-        await axios.post(`http://${host}:8000/api/orders/booking`, {
+		const userId = await AsyncStorage.getItem('userId').then((userId) => userId).catch((error) => { 
+			console.log(error); 
+			throw error; 
+		});
+
+        await axios.post(`${host}/api/orders/booking`, {
 			salon_id: selectedSalon.id,
-			customer_id: 1,
+			customer_id: userId,
 			status: 0,
 			note: "",
 			created_at: formatDate(currentDate),
@@ -515,6 +529,7 @@ const BookingScreen = ({route, navigation}) => {
 		})
 		.catch(function (error) {
 			 if (error.response && error.response.data) {
+
 				console.log(error.response.data.error);
 			} else {
 				console.log(error);
@@ -524,7 +539,13 @@ const BookingScreen = ({route, navigation}) => {
 
 	const getServiceInputHandler = (searchInput) => {
 		setServiceSearchInput(searchInput);
-	}
+		if (searchInput) {
+			console.log("run");
+			setFilteredServices(prev => prev.filter(service => service.name.toLowerCase().includes(searchInput.toLowerCase())));
+		} else {
+			setFilteredServices(categories[0].services);
+		}
+	}		
 
 	const [listViewVisible, setListViewVisible] = useState(true)
 
@@ -549,6 +570,8 @@ const BookingScreen = ({route, navigation}) => {
 	
 	const selectCategoryHandler = (id) => {
 		setSelectedCategory(id);
+
+		setFilteredServices(categories[id].services);
 	}
 
 	const showDistrictDropdownHandler = () => {
@@ -571,12 +594,14 @@ const BookingScreen = ({route, navigation}) => {
 		setHelpSelect(true);
 
 		try {
-			await axios(`http://${host}:8000/api/salons/${selectedSalon.id}/${createYYYYMMDDString(selectedDate)}/helpSelect`, {
+			await axios(`${host}/api/salons/${selectedSalon.id}/${createYYYYMMDDString(selectedDate)}/helpSelect`, {
 				params: {
 					time: selectedTimePoint,
+
 					timeSlotNum: totalTime / 20,
 				}
 			}).then(async (res) => {
+
 					const availableBarbers = res.data;
 
 					const mostRattedBarber = findMaxId(stylists.map(stylist => {return {...stylist, name: stylist.first_name + " " + stylist.last_name, rating: stylist.pivot.rating}}).filter(stylist => availableBarbers.includes(stylist.id)), 'rating');
@@ -879,11 +904,14 @@ const BookingScreen = ({route, navigation}) => {
 									}}
 									placeholderTextColor="#999"
 									searchIcon={{ size: 20 }}
+									cancelButtonProps={{
+										color: '#fff'
+									}}
 								/>
 								{
 									selectedSalon.id ?
 									(categories.length > 0 ? <View>
-										<View style={styles.serviceTypeTagsStack}>
+										<ScrollView style={styles.serviceTypeTagsStack} horizontal>
 											{
 												categories.map((category, id) => {
 													return (
@@ -891,7 +919,7 @@ const BookingScreen = ({route, navigation}) => {
 													)
 												})
 											}
-										</View>
+										</ScrollView>
 										<View style={styles.serviceTagsStack}>
 											<View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingHorizontal: 10}}>
 												<Text style={styles.selectedNum}>Selected services: {selectedServices.length}</Text>
@@ -912,7 +940,7 @@ const BookingScreen = ({route, navigation}) => {
 												style={{flex: 1, width: viewportWidth}}
 											>
 												{
-													categories[selectedCategory].products.map(service => {
+													filteredServices.map(service => {
 														return (
 															<TouchableOpacity onPress={() => seeServiceDetailHandler(service)} key={service.id}>
 																<ServiceCard 
@@ -924,7 +952,7 @@ const BookingScreen = ({route, navigation}) => {
 																	sale={service.sale}
 																	salePercent={20} 
 																	onClick={seeServiceDetailHandler}
-																	image={service.illustration}
+																	image={service.try_on_image_url}
 																	selectService={toggleServiceSelection}
 																	selected={selectedServices.some((selectedService) => selectedService.id === service.id)}
 																	changeProcessImageState={changeProcessImageState}
@@ -1028,12 +1056,12 @@ const BookingScreen = ({route, navigation}) => {
 										<View style={styles.stylistDetail}>
 											<View style={styles.stylistName}>
 												<Text style={{fontSize: 16, color: '#3d5c98', fontWeight: 600}}>Full Name: </Text>
-												<Text>{selectedStylist.name}</Text>
+												<Text>{selectedStylist?.name}</Text>
 											</View>
 											<View style={styles.stylistRatting}>
 												<Text style={{fontSize: 16, color: '#3d5c98', fontWeight: 600}}>Rating: </Text>
 												<StarIcon color={"#f09000"} width={16} height={16}/>
-												<Text style={{color: '#d48206'}}>{selectedStylist.rating}</Text>
+												<Text style={{color: '#d48206'}}>{selectedStylist?.rating}</Text>
 											</View>
 											<View>
 												<Carousel 
@@ -1204,6 +1232,8 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		gap: 6,
 		paddingLeft: 10,
+	    maxHeight: 28,
+
 	},
 	serviceTagsStack: {
 		marginTop: 10,

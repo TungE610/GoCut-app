@@ -32,7 +32,7 @@ const ServiceDetail = ({route, navigation, ...props}) => {
 		const getImages = async () => {
 			try {
 
-				const response = await axios.get(`http://192.168.1.14:8000/api/products/${service.id}/images`);
+				const response = await axios.get(`https://salon-docker-production.up.railway.app/api/products/${service.id}/images`);
 
 				setImages(response.data.map(ele => ele.image_url));
 
@@ -64,7 +64,7 @@ const ServiceDetail = ({route, navigation, ...props}) => {
 		<View>
 			<ScrollView style={styles.container}>
 				<View></View>
-				<FastImage style={styles.serviceImage} source={{uri: service.illustration}} resizeMode="cover">
+				<FastImage style={styles.serviceImage} source={{uri: service.try_on_image_url}} resizeMode="cover">
 					<View></View>
 					<TurnBackButton onClick={turnBack}/>
 				</FastImage>

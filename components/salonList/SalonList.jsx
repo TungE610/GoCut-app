@@ -1,4 +1,4 @@
-import {View, StyleSheet, Dimensions, Animated,  TouchableOpacity, Text, ScrollView, Easing, FlatList} from 'react-native';
+import {View, StyleSheet, Dimensions, Animated,  TouchableOpacity, Text, Easing, FlatList} from 'react-native';
 import Location from '../../assets/location.svg';
 import {useRef, useEffect} from 'react';
 import FastImage from 'react-native-fast-image'
@@ -47,10 +47,6 @@ const SalonCard = (props) => {
                 />
 				<View style={{flexDirection:'row', justifyContent: 'space-between', alignItems: 'center'}}>
                 	<Text style={styles.name}>{props.name}</Text>
-					{/* <StarRatingDisplay
-						rating={props.rating}
-						starSize={22}
-					/> */}
 					<View style={{flexDirection: 'row', alignItems: 'center', gap: 4}}>
 						<StarIcon color="#f57842"/>
 						<Text style={{color: "#f57842", fontWeight: "500"}}>{props.rating}</Text>
@@ -76,7 +72,6 @@ const SalonCard = (props) => {
 const SalonList = (props) => {
 
 	const selectSalonHandler = (value) => {
-
 		props.selectSalon(value);
 	}
 

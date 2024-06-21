@@ -44,7 +44,7 @@ const storeUserId = async (value) => {
 const SplashScreen = ({ navigation }) => {
 	const [isLoading, setIsLoading] = useState(true);
 
-	const host = '192.168.1.14';
+	const host = 'https://salon-docker-production.up.railway.app';
 
 	const countryCode = "+84";
 	let confirm = null;
@@ -157,6 +157,12 @@ const SplashScreen = ({ navigation }) => {
 
 		Animated.spring(animatedButtonFade, {
 			toValue: 1,
+			duration: 2000,
+			useNativeDriver: true,
+		}).start();
+
+		Animated.spring(animatedLoginOTPShow, {
+			toValue: 0,
 			duration: 2000,
 			useNativeDriver: true,
 		}).start();
@@ -280,7 +286,7 @@ const SplashScreen = ({ navigation }) => {
 		try {
 			let res = await confirm.confirm(signupOtpRef.current.value);
 
-			res = await axios.post(`http://${host}:8000/api/signup`, {
+			res = await axios.post(`${host}/api/signup`, {
 				phone_number: res.user.phoneNumber,
 			})
 
@@ -308,7 +314,7 @@ const SplashScreen = ({ navigation }) => {
 
 			// let res = await confirm.confirm(loginOtpRef.current.value);
 
-			let res = await axios.post(`http://${host}:8000/api/login`, {
+			let res = await axios.post(`${host}/api/login`, {
 				phone_number: loginPhoneNumberRef.current.value,
 			})
 

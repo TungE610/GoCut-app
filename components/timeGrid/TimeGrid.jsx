@@ -52,9 +52,9 @@ const GridComponent = (props) => {
             showMessage({
               message: "Not enough time to do all services, please select other slots",
               type: "danger",
-                      autoHide: false,
-                      duration: 60000,
-                      icon: "danger",
+                  autoHide: false,
+                  duration: 60000,
+                  icon: "danger",
             });
         }
     }

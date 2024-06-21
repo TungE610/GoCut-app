@@ -16,6 +16,7 @@ const Map = ({route, navigation}) => {
     const [loading, setLoading] = useState(true);
 
     const { destination } = route.params;
+    console.log(destination);
 
     const backButtonClickedHandler = () => {
 		navigation.navigate('Booking', {
@@ -43,6 +44,12 @@ const Map = ({route, navigation}) => {
 
             } catch (error) {
                 console.warn(error.code, error.message);
+                navigation.navigate('Booking', {
+                    initStep: null,
+                    selectedSalonId: null,
+                    selectedServicesId: [],
+                    selectedTotalTime: 0,
+                });
             } finally {
                 setLoading(false);
             }

@@ -9,12 +9,14 @@ import WriteIcon from '../../assets/write.svg';
 import SaveIcon from '../../assets/save.svg';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { showMessage } from "react-native-flash-message";
 
-const host = "http://192.168.1.14"
+const host = "https://salon-docker-production.up.railway.app"
 
 const Profile = ({route, navigation, ...props}) => {
 
 	const [profileExpanded, setProfileExpanded] = useState(false);
+	const [couponExpanded, setCouponExpanded] = useState(false);
 	const [userName, setUserName] = useState(props.userName);
 	const [prevValue, setPrevValue] = useState("");
 	const [isEdittingUserName, setIsEdittingUserName] = useState(false);
@@ -26,6 +28,7 @@ const Profile = ({route, navigation, ...props}) => {
 	const [isEdittingEmail, setIsEdittingEmail] = useState(false);
 	const [user, setUser] = useState("");
 	const [accessToken, setAccessToken] = useState("");
+
 
 	useEffect(() => {
 
@@ -42,7 +45,7 @@ const Profile = ({route, navigation, ...props}) => {
             };
 
 			try {
-				await axios(`${host}:8000/api/customer`, headers).then(res => {
+				await axios(`${host}/api/customer`, headers).then(res => {
 					setUser(res.data);
 					setUserName(res.data.full_name);
 					setDob(res.data.dob);
@@ -77,7 +80,7 @@ const Profile = ({route, navigation, ...props}) => {
 	const updateInfomation = async (prop, newValue) => {
 
 		try {
-			await axios.put(`${host}:8000/api/customer/update`, null, {
+			await axios.put(`${host}/api/customer/update`, null, {
 				params: {
 					user_id: user.id,
 					prop: prop,
@@ -133,6 +136,26 @@ const Profile = ({route, navigation, ...props}) => {
 
 	const emailChangeHandler = (email) => {
 		setEmail(email);
+	}
+
+	const logoutHandler = async () => {
+
+		await axios(`${host}/api/logout`)
+		.then(res => {
+			showMessage({
+			message: "Successful Logout",
+			type: "success",
+			});
+
+			navigation.navigate('Splash');
+		})
+		.catch(error => {
+			console.error('Logout Error:', error);
+			showMessage({
+			message: 'Logout failed. Please try again.',
+			type: 'error',
+			});
+		});
 	}
 
 	return (
@@ -314,43 +337,44 @@ const Profile = ({route, navigation, ...props}) => {
 									</ListItem.Title>
 								</ListItem.Content>
 							}
+						noIcon={true}
+
+						></ListItem.Accordion>
+					</TouchableOpacity>
+					<TouchableOpacity onPress={() => {
+						navigation.navigate("UsageHistory");
+					}}>
+						<ListItem.Accordion
+							content={
+							<ListItem.Content>
+								<ListItem.Title style={{fontSize: 21, fontWeight: "700", color: '#3d5c98'}}>Usage History</ListItem.Title>
+							</ListItem.Content>
+							}
+							noIcon={true}
 						></ListItem.Accordion>
 					</TouchableOpacity>
 					<ListItem.Accordion
 						content={
 						<ListItem.Content>
-							<ListItem.Title style={{fontSize: 21, fontWeight: "700", color: '#3d5c98'}}>Usage History</ListItem.Title>
-							<ListItem.Subtitle></ListItem.Subtitle>
-						</ListItem.Content>
-						}
-						// isExpanded={expanded}
-						onPress={() => {
-						setExpanded(!expanded);
-						}}
-					></ListItem.Accordion>
-					<ListItem.Accordion
-						content={
-						<ListItem.Content>
 							<ListItem.Title style={{fontSize: 21, fontWeight: "700", color: '#3d5c98'}}>Coupon</ListItem.Title>
-							<ListItem.Subtitle></ListItem.Subtitle>
+							<ListItem.Subtitle>Tap to see more</ListItem.Subtitle>
 						</ListItem.Content>
 						}
 						// isExpanded={expanded}
 						onPress={() => {
-						setExpanded(!expanded);
+							setCouponExpanded(true);
 						}}
 					></ListItem.Accordion>
 					<ListItem.Accordion
 						content={
 						<ListItem.Content>
-							<ListItem.Title style={{fontSize: 21, fontWeight: "700", color: '#3d5c98'}}>Order</ListItem.Title>
-							<ListItem.Subtitle></ListItem.Subtitle>
+							<ListItem.Title style={{fontSize: 21, fontWeight: "700", color: '#3d5c98'}}>Logout</ListItem.Title>
 						</ListItem.Content>
 						}
-						// isExpanded={expanded}
 						onPress={() => {
-						setExpanded(!expanded);
+							logoutHandler();
 						}}
+						noIcon={true}
 					></ListItem.Accordion>
     			</>
 			</View>

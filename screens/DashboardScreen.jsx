@@ -13,7 +13,7 @@ import Carousel from 'react-native-snap-carousel';
 import StylistCard from '../components/stylistCard/StylistCard';
 import axios from 'axios';
 
-const host = 'http://192.168.1.14';
+const host = 'https://salon-docker-production.up.railway.app';
 
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
 
@@ -35,7 +35,7 @@ const DashboardScreen = ({route, navigation, ...props}) => {
 		const getSalons = async () => {
 			await axios({
 				method: 'get',
-				url: `${host}:8000/api/salons`,
+				url: `${host}/api/salons`,
 				})
 				.then(function (response) {
 					setRecommendedSalons(response.data.slice(0, 5));
@@ -43,7 +43,7 @@ const DashboardScreen = ({route, navigation, ...props}) => {
 
 			await axios({
 				method: 'get',
-				url: `${host}:8000/api/salons`,
+				url: `${host}/api/salons`,
 				})
 				.then(function (response) {
 					setRecommendedSalons(response.data.slice(0, 5));
@@ -54,7 +54,7 @@ const DashboardScreen = ({route, navigation, ...props}) => {
 
 			await axios({
 				method: 'get',
-				url: `${host}:8000/api/recommendedStylists`,
+				url: `${host}/api/recommendedStylists`,
 				})
 				.then(function (response) {
 					setRecommendedStylists(response.data);
@@ -90,6 +90,15 @@ const DashboardScreen = ({route, navigation, ...props}) => {
 
 	const returnHomeHandler = () => {
 		navigation.navigate("Dashboard");
+	}
+
+	const bookingHandler = () => {
+		 navigation.navigate('Booking', {
+			initStep: null,
+			selectedSalonId: null,
+			selectedServicesId: [],
+			selectedTotalTime: 0,
+		});	
 	}
 
 	const seeUserProfileHandler = () => {
@@ -154,6 +163,7 @@ const DashboardScreen = ({route, navigation, ...props}) => {
 		</ScrollView>
 		<NavigationBar 
 			current={0}
+			booking={bookingHandler}
 			returnHome={returnHomeHandler}
 			seeUserProfile={seeUserProfileHandler}
 			seeShop={seeShopHandler}

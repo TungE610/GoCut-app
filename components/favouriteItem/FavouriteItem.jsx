@@ -20,7 +20,7 @@ const FavouriteItem = (props) => {
         setIsEditing(prev => !prev);
 
         if (isEditing) {                
-                await axios.put(`http://${host}:8000/api/favourite-images/rename`, null, {
+                await axios.put(`${host}:8000/api/favourite-images/rename`, null, {
                     params: {
                         imageUrl: props.image_url,
                         newName: name,
@@ -41,7 +41,7 @@ const FavouriteItem = (props) => {
 		try {
 			props.changeProcessImageState(true);
 
-			const endPoint = 'https://b967-144-6-107-170.ngrok-free.app/uploadfile';
+			const endPoint = 'https://goose-clean-rattler.ngrok-free.app/uploadfile';
 
 			await fetch(endPoint, {
 				method: 'POST',
@@ -57,7 +57,7 @@ const FavouriteItem = (props) => {
 
 						props.changeProcessImageState(false);
 
-						const transferEndPoint = 'https://b967-144-6-107-170.ngrok-free.app/hair-transfer';
+						const transferEndPoint = 'https://goose-clean-rattler.ngrok-free.app/hair-transfer';
 
 						const transferFormData = new FormData();
 

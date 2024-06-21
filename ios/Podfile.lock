@@ -493,14 +493,14 @@ PODS:
     - React-Core
   - react-native-date-picker (4.2.1):
     - React-Core
-  - react-native-google-maps (1.15.1):
+  - react-native-google-maps (1.15.6):
     - Google-Maps-iOS-Utils (= 4.2.2)
     - GoogleMaps (= 7.4.0)
     - React-Core
   - react-native-image-picker (7.1.2):
     - RCT-Folly (= 2021.07.22.00)
     - React-Core
-  - react-native-maps (1.15.1):
+  - react-native-maps (1.15.6):
     - React-Core
   - react-native-safe-area-context (4.5.0):
     - RCT-Folly
@@ -603,10 +603,10 @@ PODS:
     - React-Core
     - SDWebImage (~> 5.11.1)
     - SDWebImageWebPCoder (~> 0.8.4)
-  - RNFBApp (19.2.2):
+  - RNFBApp (19.3.0):
     - Firebase/CoreOnly (= 10.24.0)
     - React-Core
-  - RNFBAuth (19.2.2):
+  - RNFBAuth (19.3.0):
     - Firebase/Auth (= 10.24.0)
     - React-Core
     - RNFBApp
@@ -964,9 +964,9 @@ SPEC CHECKSUMS:
   React-logger: 655ff5db8bd922acfbe76a4983ffab048916343e
   react-native-compressor: d84e28c430c8022cc44a45ec9ec26071269992c3
   react-native-date-picker: 211dead8aeaecab3904a07b967f580e6ea3dee88
-  react-native-google-maps: 7aae26cd61058ca41f54ed4abb127dbe20ad9184
+  react-native-google-maps: 7ca1d252585c9ee2bbe2a3f64e4c061801b43d64
   react-native-image-picker: 51fdb07f7ef722988c8a219e1416153760a25e4d
-  react-native-maps: 4c07b21deac3ac3579558956b63e288efb8725bb
+  react-native-maps: 7b2c2cee95271592a92ba485eea1dec66a363a6e
   react-native-safe-area-context: 39c2d8be3328df5d437ac1700f4f3a4f75716acc
   React-perflogger: 4987ad83731c23d11813c84263963b0d3028c966
   React-RCTActionSheet: 5ad952b2a9740d87a5bd77280c4bc23f6f89ea0c
@@ -987,8 +987,8 @@ SPEC CHECKSUMS:
   rn-fetch-blob: f065bb7ab7fb48dd002629f8bdcb0336602d3cba
   RNCAsyncStorage: 826b603ae9c0f88b5ac4e956801f755109fa4d5c
   RNFastImage: 5c9c9fed9c076e521b3f509fe79e790418a544e8
-  RNFBApp: 614f1621b49db54ebd258df8c45427370d8d84a2
-  RNFBAuth: fbfd567c34579b2a081b9ae5d6f0e33c2f4d1205
+  RNFBApp: dd35ba8340b89c36e42c4c137915c01d3c792143
+  RNFBAuth: 5e12865e64ffc58f83790f9bc764b0470ce07b1b
   RNFS: 4ac0f0ea233904cb798630b3c077808c06931688
   RNImageCropPicker: e7ab6fb43d2fc3e84651e786ef4a080d63b0ed3d
   RNReanimated: cc5e3aa479cb9170bcccf8204291a6950a3be128

@@ -10,7 +10,7 @@ import ImageView from "react-native-image-viewing";
 import * as Progress from 'react-native-progress';
 import { showMessage } from "react-native-flash-message";
 
-const host = "http://192.168.1.14";
+const host = "https://salon-docker-production.up.railway.app";
 
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
 
@@ -31,7 +31,7 @@ const Favourite = ({navigation}) => {
 
     const getFavourites = async () => {
         setLoading(true);
-        await axios(`${host}:8000/api/customer/favourites`).then(
+        await axios(`${host}/api/customer/favourites`).then(
             res => {
                 setFavourites(res.data)
                 setLoading(false);
@@ -82,7 +82,7 @@ const Favourite = ({navigation}) => {
 		    formData.append("file_upload", {uri: image.path, name: 'favourite.png', type: 'image/jpeg'});
 		    formData.append("id", `${userId}_${favourites.length}`);
 
-            const endPoint = 'https://b967-144-6-107-170.ngrok-free.app/embedImage';
+            const endPoint = 'https://goose-clean-rattler.ngrok-free.app/embedImage';
             setLoading(true);
 
 			await fetch(endPoint, {
@@ -94,7 +94,7 @@ const Favourite = ({navigation}) => {
 			}).then(async (response) => {const text = await response.text(); return text})
 			.then(async (image_url) => {
 
-                await axios.post(`${host}:8000/api/customer/add-favourites`, null, {
+                await axios.post(`${host}/api/customer/add-favourites`, null, {
                     params: {
                         image_url: image_url.replaceAll('"', ''),
                         customer_id: userId,
@@ -128,7 +128,7 @@ const Favourite = ({navigation}) => {
 	}
     return (
         <View style={styles.container}>
-            <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+            <View style={{ flex: 1, justifyContent: "center", alignItems: "center", width: viewportWidth }}>
 			{loading && 
                 <View style={{gap: 5, alignItems: 'center'}}>
 					<ActivityIndicator color={"#3d5c98"} />
@@ -153,14 +153,14 @@ const Favourite = ({navigation}) => {
                     visible={isPreviewingResult}
                     onRequestClose={() => setIsPreviewingResult(false)}
                 />
-                <View style={styles.screenHeader}>
-                    <View style={styles.backButton}>
-                        <ReturnHomeButton onClick={backButtonClickHandler} page="favourite" />
-                    </View>
+                <View style={styles.backButton}>
+                    <ReturnHomeButton onClick={backButtonClickHandler} page="favourite" />
+                </View>
+                {/* <View style={styles.screenHeader}> */}
                     <View style={styles.screenTitleContainer}>
                         <Text style={styles.screenTitle}>Favourite</Text>
                     </View>
-                </View>
+                {/* </View> */}
                 <ScrollView>
                     {
                         favourites.map((favourite, index) => {
@@ -193,8 +193,11 @@ const styles = StyleSheet.create({
 		width: viewportWidth,
 		flexDirection: 'column',
     },
-    screenHeader: {
-	},
+    // screenHeader: {
+	// 	width: viewportWidth,
+    //     flexDirection: 'row',
+    //     justifyContent: 'space-between'
+	// },
 	backButton: {
 		position: 'absolute',
 		width: '20%',
@@ -202,7 +205,7 @@ const styles = StyleSheet.create({
 		alignContent: 'space-around',
 		alignItems: 'center',
 		marginTop: viewportHeight/15,
-		paddingLeft: viewportWidth/20,
+		paddingLeft: viewportWidth/50,
 		zIndex: 999,
 	},
 	screenTitleContainer: {

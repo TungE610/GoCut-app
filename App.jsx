@@ -16,6 +16,7 @@ import CameraScreen from './screens/CameraScreen';
 import Gallery from './screens/gallery/Gallery';
 import Map from './screens/map/Map';
 import Salons from './screens/Salons';
+import StylistDetail from './screens/stylistDetail/StylistDetail';
 import BarberOrder from './screens/barberOrders/BarberOrders';
 
 import Favourite from './screens/favourite/Favourite';
@@ -55,6 +56,7 @@ export default function App() {
 			<Stack.Screen name="Favourite" component={Favourite} />
 			<Stack.Screen name="Salons" component={Salons} />
 			<Stack.Screen name="BarberOrder" component={BarberOrder} />
+			<Stack.Screen name="StylistDetail" component={StylistDetail} />
 
 		</Stack.Navigator>
 	</NavigationContainer>

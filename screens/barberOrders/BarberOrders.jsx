@@ -7,7 +7,7 @@ import ImageView from "react-native-image-viewing";
 import { Agenda } from 'react-native-calendars';
 import { Button } from 'react-native-elements';
 
-const host = "1https://salon-docker-production.up.railway.app";
+const host = "https://salon-docker-production.up.railway.app";
 function formatToLocalTime(dateString) {
     const date = new Date(dateString);
     return date.toLocaleTimeString('en-US', { hour12: false }); // Returns 'HH:MM:SS' in 24-hour format
@@ -45,7 +45,6 @@ function transformOrdersToCalendarItems(orders) {
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get('screen');
 
 const BarberOrder = ({ navigation }) => {
-	console.log(orders)
 	const [orders, setOrders] = useState([]);
 	const [transformedOrders, setTransformedOrders] = useState({});
 	const [previewVisible, setPreviewVisible] = useState(false);

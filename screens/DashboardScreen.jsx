@@ -13,7 +13,7 @@ import Carousel from 'react-native-snap-carousel';
 import StylistCard from '../components/stylistCard/StylistCard';
 import axios from 'axios';
 
-const host = 'https://salon-docker-production.up.railway.app';
+const host = 'http://172.16.32.27:8000';
 
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
 
@@ -85,7 +85,7 @@ const DashboardScreen = ({route, navigation, ...props}) => {
 		}	else if (index === 3) {
 			navigation.navigate('Profile');
 		}
-		
+
 	}
 
 	const returnHomeHandler = () => {
@@ -113,8 +113,12 @@ const DashboardScreen = ({route, navigation, ...props}) => {
 		navigation.navigate("Favourite");
 	}
 
-	const seeStylistDetailHandler = () => {
+	const seeStylistDetailHandler = (stylist) => {
+		navigation.navigate("StylistDetail", {stylist: stylist});
+	}
 
+	const gotoCardHandler = () => {
+		navigation.navigate('Cart');
 	}
 
 	return (
@@ -127,7 +131,7 @@ const DashboardScreen = ({route, navigation, ...props}) => {
 						<Text style={styles.name}>Hello {props.userName} !</Text>
 						<Text style={styles.slogan}>Let make your hair attractive !!</Text>
 					</View>
-						<ShopBox />
+						<ShopBox onClick={gotoCardHandler}/>
 						<NotificationBox />
 				</View>
 				<SearchInput placeholder='Search salon with name or location' onChange={() => {}}/>
@@ -150,7 +154,7 @@ const DashboardScreen = ({route, navigation, ...props}) => {
 					<Text style={styles.hairStylistText}>Hair Stylist</Text>
 					<Carousel 
 						data={recommendedStylists}
-						renderItem={item => <StylistCard key={item.id} item={item} onClick={seeStylistDetailHandler}/>}
+						renderItem={item => <StylistCard key={item.id} item={item} onClick={() => {seeStylistDetailHandler(item)}}/>}
 						sliderWidth={sliderWidth+50}
 						itemWidth={sliderItemWidth}
 						activeSlideAlignment={'start'}

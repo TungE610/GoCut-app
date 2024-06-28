@@ -155,8 +155,6 @@ const BookingScreen = ({route, navigation}) => {
 		navigation.navigate('Map', {destination: destination});
 	}
 
-	console.log("Tung")
-
 	useEffect(() => {
 		setIsSearching(true);
 

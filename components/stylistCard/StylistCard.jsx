@@ -57,7 +57,6 @@ const StylistCard = (props) => {
 			id: props.item.item.id,
 		})
 	}
-
 	return (
 		<TouchableOpacity style={styles.container} onPress={selectSalon}>
 			<FastImage 

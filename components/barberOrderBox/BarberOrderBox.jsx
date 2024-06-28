@@ -44,7 +44,7 @@ LocaleConfig.locales['en'] = {
 };
 LocaleConfig.defaultLocale = 'en';
 
-const host = "https://salon-docker-production.up.railway.app"
+const host = "http://172.16.32.27:8000"
 
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get('screen');
 
@@ -75,6 +75,7 @@ const BarberOrderBox = (props) => {
 				name: 'image.jpg',
 			});
 
+			console.log(res.assets[0]);
 			// Perform the POST request
 			await axios({
 				method: 'post',
@@ -86,7 +87,8 @@ const BarberOrderBox = (props) => {
 				},
 			})
 			.then(async (res) => {
-				await axios.post(`${host}:8000/api/orders/${orderId}/addImage`, {
+				
+				await axios.post(`${host}/api/orders/${orderId}/addImage`, {
 						image_url: res.data.url,
 
 					}).then(response => {
@@ -111,6 +113,7 @@ const BarberOrderBox = (props) => {
 			})
 			.catch((error) => {
 				// Check if error response exists
+				console.log(error);
 				if (error.response) {
 					console.error('Error uploading image:', error.response.data.msg);
 					console.error('Error details:', error.response.data.error);
@@ -132,7 +135,7 @@ const BarberOrderBox = (props) => {
 				throw error; 
 			});
 
-			await axios.put(`${host}:8000/api/orders/${orderId}/start`, { staffId: userId })
+			await axios.put(`${host}/api/orders/${orderId}/start`, { staffId: userId })
 				.then(res => {
 					setOrder(prev => { return { ...prev, status: res.data.order_status }; });
 					setLoading(false);
@@ -156,7 +159,7 @@ const BarberOrderBox = (props) => {
 				throw error; 
 			});
 
-				await axios.put(`${host}:8000/api/orders/${orderId}/end`, { staffId: userId }).then(res => {
+				await axios.put(`${host}/api/orders/${orderId}/end`, { staffId: userId }).then(res => {
 					console.log(res.data)
 					setOrder(prev => { return { ...prev, status: res.data.order_status }; });
 					setLoading(false);

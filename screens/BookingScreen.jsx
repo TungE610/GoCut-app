@@ -538,7 +538,6 @@ const BookingScreen = ({route, navigation}) => {
 	const getServiceInputHandler = (searchInput) => {
 		setServiceSearchInput(searchInput);
 		if (searchInput) {
-			console.log("run");
 			setFilteredServices(prev => prev.filter(service => service.name.toLowerCase().includes(searchInput.toLowerCase())));
 		} else {
 			setFilteredServices(categories[0].services);
@@ -658,6 +657,14 @@ const BookingScreen = ({route, navigation}) => {
 		setResult(result);	
 		setLoading(false);
 		setIsPreviewingResult(true);
+	}
+
+	const seeSalonHandler = async (salon) => {
+		navigation.navigate('SalonDetail', {salon: salon})
+	}
+
+	const seeMoreStylistHandler = (stylist) => {
+		navigation.navigate("StylistDetail", {stylist: stylist});
 	}
 
 	return (
@@ -861,7 +868,7 @@ const BookingScreen = ({route, navigation}) => {
 									<View style={{flex: 1, backgroundColor: '#eee', borderRadius: 5, marginTop: 3, width: viewportWidth}}>
 										{!loading ? (
 											filteredSalon.length > 0 ? 
-											<SalonList salonList={filteredSalon} selectSalon={selectSalonHandler} seeMap={seeMap}/> : 
+											<SalonList salonList={filteredSalon} selectSalon={selectSalonHandler} seeMap={seeMap} seeSalon={seeSalonHandler}/> : 
 											<View style={{flex: 1, gap: 15, height: viewportHeight/5, alignItems: 'center'}}>
 												<Text style={{color: '#3d5c98', fontSize: 20, fontWeight: 'bold', marginTop: 20, textAlign: 'center'}}>No salon found</Text>
 												<SadIcon width={60} height={60} />
@@ -1055,6 +1062,9 @@ const BookingScreen = ({route, navigation}) => {
 											<View style={styles.stylistName}>
 												<Text style={{fontSize: 16, color: '#3d5c98', fontWeight: 600}}>Full Name: </Text>
 												<Text>{selectedStylist?.name}</Text>
+												<TouchableOpacity style={{marginLeft: 18}} onPress={() => {seeMoreStylistHandler(selectedStylist)}}>
+													<Text style={{textDecorationLine: 'underline', color: '#3d5c98'}}>See more</Text>
+												</TouchableOpacity>
 											</View>
 											<View style={styles.stylistRatting}>
 												<Text style={{fontSize: 16, color: '#3d5c98', fontWeight: 600}}>Rating: </Text>

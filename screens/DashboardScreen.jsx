@@ -13,7 +13,7 @@ import Carousel from 'react-native-snap-carousel';
 import StylistCard from '../components/stylistCard/StylistCard';
 import axios from 'axios';
 
-const host = 'http://172.16.32.27:8000';
+const host = 'http://192.168.0.106:8000';
 
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
 
@@ -33,20 +33,18 @@ const DashboardScreen = ({route, navigation, ...props}) => {
 	useEffect(() => {
 
 		const getSalons = async () => {
-			await axios({
+			axios({
 				method: 'get',
 				url: `${host}/api/salons`,
-				})
-				.then(function (response) {
-					setRecommendedSalons(response.data.slice(0, 5));
-			});
-
-			await axios({
-				method: 'get',
-				url: `${host}/api/salons`,
-				})
-				.then(function (response) {
-					setRecommendedSalons(response.data.slice(0, 5));
+			})
+			.then(function (response) {
+				// Assuming response.data is an array of salon objects with a 'rating' field
+				const sortedSalons = response.data.sort((a, b) => b.rating - a.rating); // Sort descending by rating
+				const topRatedSalons = sortedSalons.slice(0, 5); // Get top 5 salons
+				setRecommendedSalons(topRatedSalons);
+			})
+			.catch(function (error) {
+				console.error('Error fetching salons:', error);
 			});
 		}
 

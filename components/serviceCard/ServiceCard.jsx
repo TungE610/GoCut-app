@@ -10,6 +10,14 @@ import {formatCurrency} from '../../helpers/formatCurrency';
 
 const {width: viewportWidth, height: viewportHeight} = Dimensions.get('screen');
 
+function trimServiceName(name) {
+    if (name.length > 26) {
+        return name.substring(0, 26) + "...";
+    } else {
+        return name;
+    }
+}
+
 const ServiceCard = (props) => {
 
 	const [image, setImage] = useState('');
@@ -124,7 +132,9 @@ const ServiceCard = (props) => {
 			duration: props.serviceTime,
 		})
 	}
+	const seePrevHairHandler = () => {
 
+	}
 	return (
 		<Animated.View style={{ opacity: fadeInOpacity }} >
 			<View style={styles.container}>
@@ -133,7 +143,7 @@ const ServiceCard = (props) => {
 						resizeMode="cover" />
 					<View style={styles.serviceContent}>
 						<View style={{flexDirection: 'row'}}>
-							<Text style={styles.serviceName}>{props.serviceName}</Text>
+							<Text style={styles.serviceName}>{trimServiceName(props.serviceName)}</Text>
 							{
 							props.sale > 0 ? 
 								<View style={styles.saleCard}>

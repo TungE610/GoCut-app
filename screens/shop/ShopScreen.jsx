@@ -9,7 +9,7 @@ import ProductCard from '../../components/productCard/ProductCard';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { showMessage } from "react-native-flash-message";
 
-const host = "http://172.16.32.27:8000";
+const host = "http://192.168.0.106:8000";
 
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get('screen');
 

@@ -37,6 +37,7 @@ const SalonDetail = ({route, navigation, ...props}) => {
 					salonId: salon.id,
 				}
 			}).then (res => {
+				console.log(res.data)
 				setOrderedNumber(res.data);
 			})
 		}

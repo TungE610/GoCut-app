@@ -7,7 +7,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import Checkbox from 'expo-checkbox';
 
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
-const host = "http://172.16.32.27:8000";
+const host = "http://192.168.0.106:8000";
 
 const CartScreen = ({ navigation }) => {
     const [products, setProducts] = useState([]);

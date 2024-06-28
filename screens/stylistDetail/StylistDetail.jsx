@@ -3,20 +3,20 @@ import { View, StyleSheet, Text, Dimensions, ScrollView } from 'react-native';
 import FastImage from 'react-native-fast-image';
 import StarIcon from '../../assets/star.svg';
 import ReturnHomeButton from '../../components/returnHomeButton/ReturnHomeButton';
+import TurnBackButton from '../../components/turnBackButton/TurnBackButton';
 
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get('screen');
 
 const StylistDetail = ({ route, navigation }) => {
     const { stylist } = route.params;
 
-    const backButtonClickHandler = () => {
-        navigation.navigate('Dashboard');
-    };
-
+    const turnBack = () => {
+        navigation.goBack();
+    }
     return (
         <View style={styles.container}>
             <View style={styles.backButton}>
-                <ReturnHomeButton onClick={backButtonClickHandler} page="favourite" />
+				<TurnBackButton onClick={turnBack}/>
             </View>
             <View style={styles.content}>
                 <FastImage
@@ -37,7 +37,7 @@ const StylistDetail = ({ route, navigation }) => {
                         <Text style={{ color: "#f57842" }}>{stylist.item.rating}</Text>
                     </View>
                     <View style={styles.album}>
-                        <Text style={{ fontWeight: '500' }}>Album: </Text>
+                        <Text style={{ fontWeight: '500' }}>Sample album: </Text>
                     </View>
                     <View style={styles.imageAlbum}>
                         {/* Render stylist images */}
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     backButton: {
         position: 'absolute',
         top: 40,
-        left: 20,
+        left: 10,
     },
     content: {
         backgroundColor: '#fff',
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
         gap: 5,
     },
     album: {
-        marginTop: 30,
+        marginTop: 60,
         paddingLeft: 20,
     },
     imageAlbum: {

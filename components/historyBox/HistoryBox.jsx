@@ -165,7 +165,7 @@ const HistoryBox = (props) => {
 
 	const submitRatingHandler = async () => {
 
-		await axios.put(`${host}:8000/api/orders/${props.id}/rating`, {
+		await axios.put(`${host}/api/orders/${props.id}/rating`, {
 				rating: rating
 		}).then(res => {
 			showMessage({
@@ -267,13 +267,18 @@ const HistoryBox = (props) => {
 									<Text style={[styles.seeAllServices]}>{showImages ? "Hide images" : "See images"}</Text>
 								</TouchableOpacity>
 							</View>
-							{
-								props.status === 4 &&
-								<TouchableOpacity onPress={() => {setShowRate(prev => !prev);}}>
-									<Text style={[styles.seeAllServices]}>Rate</Text>
-								</TouchableOpacity>
-							}
 						</View>
+						{
+							props.status === 4 &&
+							<Button title="Rate" size="sm" buttonStyle={{
+									backgroundColor: '#3d5c98',
+									paddingVertical: 2,
+									paddingHorizontal: 5,
+									fontSize: 15,
+								}}
+									onPress={() => {setShowRate(prev => !prev);}}
+								/>
+						}
 						{
 							props.status === 0 ? 
 								<Button title="Cancel" size="sm" buttonStyle={{

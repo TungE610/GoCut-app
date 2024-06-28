@@ -32,8 +32,8 @@ const ServiceDetail = ({route, navigation, ...props}) => {
 		const getImages = async () => {
 			try {
 
-				const response = await axios.get(`https://salon-docker-production.up.railway.app/api/products/${service.id}/images`);
-
+				const response = await axios.get(`https://salon-docker-production.up.railway.app/api/services/${service.id}/images`);
+				
 				setImages(response.data.map(ele => ele.image_url));
 
 			}catch(error) {
@@ -59,11 +59,9 @@ const ServiceDetail = ({route, navigation, ...props}) => {
 			})
 		}
 	}
-
 	return (
 		<View>
 			<ScrollView style={styles.container}>
-				<View></View>
 				<FastImage style={styles.serviceImage} source={{uri: service.try_on_image_url}} resizeMode="cover">
 					<View></View>
 					<TurnBackButton onClick={turnBack}/>
@@ -71,11 +69,6 @@ const ServiceDetail = ({route, navigation, ...props}) => {
 				<View style={styles.serviceInfo}>
 					<View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
 						<Text style={styles.serviceName}>{service.name}</Text>
-						<TouchableHighlight>
-							<Text style={styles.tryNow}>
-								Try now
-							</Text>
-						</TouchableHighlight>
 					</View>
 					<View style={{flexDirection: 'row', gap: 5, alignItems: 'center'}}>
 						<ClockIcon width={22} height={22} />

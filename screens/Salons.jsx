@@ -181,6 +181,10 @@ const Salons = ({route, navigation}) => {
 		}
 	}
 
+	const seeSalonHandler = (salon) => {
+		navigation.navigate('SalonDetail', {salon: salon})
+	}
+
     return (
         <View style={styles.container}>
             <View style={styles.backButton}>
@@ -337,7 +341,7 @@ const Salons = ({route, navigation}) => {
                 </View>
                     <View style={{flex: 1, backgroundColor: '#eee', borderRadius: 5, marginTop: 3, width: viewportWidth, alignItems: 'center', justifyContent: 'center'}}>
                         {!loading ? (
-                            <SalonList salonList={filteredSalon} selectSalon={selectSalonHandler} seeMap={seeMap}/>
+                            <SalonList salonList={filteredSalon} selectSalon={selectSalonHandler} seeMap={seeMap} seeSalon={seeSalonHandler}/>
                             )
                         : 
                         <ActivityIndicator size="large" color="#3d5c98" />

@@ -46,6 +46,7 @@ const UsedHistory = (props) => {
 
 	const [usageHistory, setUsageHistory] = useState([]);
 	const [previewVisible, setPreviewVisible] = useState(false);
+	const [filteredUsageHistory, setFilterUsageHistory] = useState([])
 	const [showingUrl, setShowingUrl] = useState('');
 
 	useEffect(() => {
@@ -58,13 +59,22 @@ const UsedHistory = (props) => {
 				}
 			}).then(res => {
 				setUsageHistory(res.data);
+				setFilterUsageHistory(res.data);
 			})
 		}
 
 		getUsageHistory();
 	}, [])
-	const historySearchHandler = () => {
+	const historySearchHandler = (value) => {
+		if(value.length > 0) {
 
+			setFilterUsageHistory(usageHistory.filter(history => {
+				const full_name = history.staff_first_name + " " + history.staff_last_name;
+				return history.salon_name.toLowerCase().includes(value.toLowerCase()) || full_name.toLowerCase().includes(value.toLowerCase());
+			}))
+		} else {
+			setFilterUsageHistory(usageHistory);
+		}
 	}
 
 	const confirmCancelOrder = async (id) => {
@@ -100,14 +110,14 @@ const UsedHistory = (props) => {
 				onRequestClose={() => setPreviewVisible(false)}
 			/>
 			<SearchInput
-				placeholder='Type salon name to find usage history' 
+				placeholder="Type salon or stylist's name to find usage history"
 				backgroundColor="#eee" 
 				cancelButtonColor="#3d5c98"
 				onChange={historySearchHandler}
 			/>
 				<ScrollView>
 					{
-						usageHistory.map((history,id) => {
+						filteredUsageHistory.map((history,id) => {
 							return (
 								<HistoryBox 
 									key={id}

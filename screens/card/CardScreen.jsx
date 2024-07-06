@@ -65,7 +65,6 @@ const CartScreen = ({ navigation }) => {
     useEffect(() => {
         setSelectAllChecked(selectedProducts.length === products.length);
     }, [selectedProducts, products]);
-
     return (
         <View style={styles.container}>
             <View style={styles.returnHomeButtonContainer}>

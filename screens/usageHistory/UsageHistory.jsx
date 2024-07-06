@@ -78,7 +78,7 @@ const UsedHistory = (props) => {
 	}
 
 	const confirmCancelOrder = async (id) => {
-		await axios.put(`${host}:8000/api/orders/${id}/cancel`).then(res => {
+		await axios.put(`${host}/api/orders/${id}/cancel`).then(res => {
 			showMessage({
 				message: "Successfully canceled the order",
 				type: "success",

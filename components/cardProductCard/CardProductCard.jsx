@@ -35,8 +35,9 @@ const CardProductCard = (props) => {
         <View>
             <Animated.View style={{ opacity: fadeInOpacity }}>
                 <View style={styles.container}>
-                    <View>
+                    <View style={{alignItems: 'center', justifyContent: 'space-between'}}>
                         <Checkbox style={styles.checkbox} value={isChecked} onValueChange={checkHandler} />
+                        <Text>{product.quantity}x</Text>
                     </View>
                     <View style={{ flexDirection: 'row', gap: 10, flex: 1 }}>
                         <FastImage style={styles.image} source={{ uri: product.image_url }} resizeMode="cover" />

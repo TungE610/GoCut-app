@@ -461,7 +461,6 @@ const BookingScreen = ({route, navigation}) => {
 	}
 
 	const selectPrevHair = async (id) => {
-		console.log(id);
 		await axios(`${host}/api/users/${id}/prevHair`, {
 			params: {
 				selectedServices: selectedServices.map(service => service.id),
@@ -580,7 +579,9 @@ const BookingScreen = ({route, navigation}) => {
 			icon: <LocationIcon color="#cc4a16"/>,
 			text: 'Near me',
 			onClick: () => {
-				setFilteredSalon(filteredSalon.filter(salon => salon.distance < 1000))
+				setFilteredSalon(salons.map(salon => {
+					return {...salon, distance: getDistance({latitude: currentPlace.latitude, longitude:currentPlace.longitude}, {latitude: salon.lat, longitude: salon.lng})}
+				}).filter(salon => salon.distance < 1000).sort(comparisonFunction));
 			}
 		},
 		{
@@ -791,9 +792,9 @@ const BookingScreen = ({route, navigation}) => {
 										}}
 										onPress={(data, details = null) => {
 										
-											const nearbySalons = salons.filter(salon => {
-												return getDistance({latitude: details.geometry.location.lat, longitude:details.geometry.location.lng}, {latitude: salon.lat, longitude: salon.lng}) < 1000;
-											}).sort(comparisonFunction)
+											const nearbySalons = salons.map(salon => { return { ...salon,
+												distance:  getDistance({latitude: details.geometry.location.lat, longitude:details.geometry.location.lng}, {latitude: salon.lat, longitude: salon.lng})
+											}}).filter(salon => salon.distance < 1000).sort(comparisonFunction)
 
 											setFilteredSalon(nearbySalons);
 
@@ -1111,12 +1112,12 @@ const BookingScreen = ({route, navigation}) => {
 											<View style={styles.stylistName}>
 												<Text style={{fontSize: 16, color: '#3d5c98', fontWeight: 600}}>Full Name: </Text>
 												<Text>{selectedStylist?.name}</Text>
-												{
+												{/* {
 													selectedStylist?.name && 
 													<TouchableOpacity style={{marginLeft: 18}} onPress={() => {seeMoreStylistHandler(selectedStylist)}}>
 														<Text style={{textDecorationLine: 'underline', color: '#3d5c98'}}>See more</Text>
 													</TouchableOpacity>
-												}
+												} */}
 											</View>
 											<View style={styles.stylistRatting}>
 												<Text style={{fontSize: 16, color: '#3d5c98', fontWeight: 600}}>Rating: </Text>
@@ -1126,8 +1127,8 @@ const BookingScreen = ({route, navigation}) => {
 											<View>
 												<Carousel 
 													data={prevStylistHair}
-													renderItem={item => 
-														<TouchableOpacity onPress={() => {setPrevHairPreviewVisible(true)}}>
+													renderItem={(item) => 
+														<TouchableOpacity onPress={() => {setPrevHairPreviewVisible(true);	setViewingPrevHairIndex(item.index)}}>
 															<FastImage source={{uri: item.item}} style={{width: 90, height: 90, borderRadius: 5}}/>
 														</TouchableOpacity>
 													}
@@ -1140,7 +1141,7 @@ const BookingScreen = ({route, navigation}) => {
 													images={prevStylistHair.map(image => {return {uri: image}})}
 													imageIndex={viewingPrevHairIndex}
 													visible={prevHairPreviewVisible}
-													onRequestClose={() => setPrevHairPreviewVisible(false)}
+													onRequestClose={() => {setPrevHairPreviewVisible(false)}}
 												/>
 											</View>
 										</View>

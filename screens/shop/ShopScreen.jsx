@@ -80,7 +80,6 @@ const ShopScreen = ({ navigation }) => {
             };
             // Send POST request to add products to cart
             const response = await axios.post(`${host}/api/cart`, requestData);
-            console.log(response.status);
 			showMessage({
 				message: "Successfully added to cart",
 				type: "success",

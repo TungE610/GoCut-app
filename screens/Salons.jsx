@@ -14,6 +14,8 @@ import HomeIcon from '../assets/home.svg';
 import OfficeIcon from '../assets/office.svg';
 import SearchTag from '../components/searchTag/SearchTag';
 import ToggleSwitch from 'toggle-switch-react-native';
+import SadIcon from '../assets/sad.svg';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
 const deviceWidth = Dimensions.get("window").width;
@@ -48,6 +50,31 @@ const Salons = ({route, navigation}) => {
     const [hasCarPark, setHasCardPark] = useState(false);
     const [prevFilteredSalon, setPrevFilteredSalon] = useState([]);
 	const { initStep, selectedSalonId, selectedServicesId, selectedTotalTime } = route.params;
+	const [user, setUser] = useState(null);
+	const getUserData = async () => {
+		const token = await AsyncStorage.getItem('bearerToken').then((token) => token).catch((error) => console.log(error));
+
+		const headers = {headers :
+			{ 
+				Authorization: `Bearer ${token}`,
+				Accept :'application/json', 
+			}
+		};
+		try {
+			await axios(`${host}/api/customer`, headers).then(res => {
+				setUser(res.data);
+			}).catch((error) => console.log(error))
+		}catch(error) {
+			if (error.response && error.response.data) {
+				console.log(error.response.data.error);
+			} else {
+				console.log(error);
+			}
+			}
+	}
+	useEffect(() => {
+		getUserData();
+	}, [])
 
   	 const hashValues = [];
 
@@ -151,18 +178,42 @@ const Salons = ({route, navigation}) => {
 		{
 			icon: <LocationIcon color="#cc4a16"/>,
 			text: 'Near me',
-			onClick: () => {
+			onClick: async () => {
+				setFilteredSalon(salons.map(salon => {
+					return {...salon, distance: getDistance({latitude: currentPlace.latitude, longitude:currentPlace.longitude}, {latitude: salon.lat, longitude: salon.lng})}
+				}).filter(salon => salon.distance < 1000).sort(comparisonFunction));
 
-				setFilteredSalon(filteredSalon.filter(salon => salon.distance < 1000))
 			}
 		},
 		{
 			icon: <HomeIcon color="#cc4a16" width={16} height={16}/>,
 			text: 'Near home',
+			onClick: () => {
+				Geocoder.from(user.address)
+					.then(json => {
+						var location = json.results[0].geometry.location;
+						setFilteredSalon(salons.map(salon => {
+							return {...salon, distance: getDistance({latitude: location.lat, longitude:location.lng}, {latitude: salon.lat, longitude: salon.lng})}
+						}).filter(salon => salon.distance < 1000).sort(comparisonFunction));
+					})
+					.catch(error => console.warn(error));
+
+			}
 		},
 		{
 			icon: <OfficeIcon color="#cc4a16" width={16} height={16}/>,
 			text: 'Near office',
+			onClick: () => {
+				Geocoder.from(user.office_address)
+					.then(json => {
+						var location = json.results[0].geometry.location;
+						setFilteredSalon(salons.map(salon => {
+							return {...salon, distance: getDistance({latitude: location.lat, longitude:location.lng}, {latitude: salon.lat, longitude: salon.lng})}
+						}).filter(salon => salon.distance < 1000).sort(comparisonFunction));
+					})
+					.catch(error => console.warn(error));
+
+			}
 		}
 	];
 	
@@ -341,7 +392,11 @@ const Salons = ({route, navigation}) => {
                 </View>
                     <View style={{flex: 1, backgroundColor: '#eee', borderRadius: 5, marginTop: 3, width: viewportWidth, alignItems: 'center', justifyContent: 'center'}}>
                         {!loading ? (
-                            <SalonList salonList={filteredSalon} selectSalon={selectSalonHandler} seeMap={seeMap} seeSalon={seeSalonHandler}/>
+							filteredSalon.length > 0 ? 
+                            <SalonList salonList={filteredSalon} selectSalon={selectSalonHandler} seeMap={seeMap} seeSalon={seeSalonHandler}/> : <View style={{flex: 1, gap: 15, height: viewportHeight/5, alignItems: 'center'}}>
+								<Text style={{color: '#3d5c98', fontSize: 20, fontWeight: 'bold', marginTop: 20, textAlign: 'center'}}>No salon found</Text>
+								<SadIcon width={60} height={60} />
+							</View>
                             )
                         : 
                         <ActivityIndicator size="large" color="#3d5c98" />

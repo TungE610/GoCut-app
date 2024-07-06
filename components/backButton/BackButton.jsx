@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
 	container: {
 		width: viewportWidth/10,
 		height: viewportWidth/10,
-		backgroundColor: '#3c5c98',
+		backgroundColor: '#0E295B',
 		borderRadius: 10,
 		opacity: 0.8,
 		justifyContent: 'center',

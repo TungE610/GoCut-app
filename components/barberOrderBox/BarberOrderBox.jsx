@@ -44,7 +44,7 @@ LocaleConfig.locales['en'] = {
 };
 LocaleConfig.defaultLocale = 'en';
 
-const host = "http://192.168.0.106:8000"
+const host = "https://salon-docker-production.up.railway.app";
 
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get('screen');
 

@@ -1,5 +1,5 @@
-import {useState, useEffect} from 'react';
-import {StyleSheet, Dimensions, View, Text, ScrollView } from 'react-native'; 
+import {useState, useEffect, useCallback} from 'react';
+import {StyleSheet, Dimensions, View, Text, ScrollView , RefreshControl} from 'react-native'; 
 import NotificationBox from '../components/notificationBox/NotificationBox';
 import ShopBox from '../components/shopBox/ShopBox';
 import AvatarBox from '../components/avatarBox/AvatarBox';
@@ -13,7 +13,7 @@ import Carousel from 'react-native-snap-carousel';
 import StylistCard from '../components/stylistCard/StylistCard';
 import axios from 'axios';
 
-const host = 'http://192.168.0.106:8000';
+const host = 'https://salon-docker-production.up.railway.app';
 
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
 
@@ -29,35 +29,43 @@ const DashboardScreen = ({route, navigation, ...props}) => {
 	const sliderItemWidth = slideWidth + sliderItemHorizontalMargin * 2;
 	const [recommendedSalons, setRecommendedSalons] = useState([]);
 	const [recommendedStylists, setRecommendedStylists] = useState([]);
+  	const [refreshing, setRefreshing] = useState(false);
+
+	const getSalons = async () => {
+		axios({
+			method: 'get',
+			url: `${host}/api/salons`,
+		})
+		.then(function (response) {
+			// Assuming response.data is an array of salon objects with a 'rating' field
+			const sortedSalons = response.data.sort((a, b) => b.rating - a.rating); // Sort descending by rating
+			const topRatedSalons = sortedSalons.slice(0, 5); // Get top 5 salons
+			setRecommendedSalons(topRatedSalons);
+		})
+		.catch(function (error) {
+			console.error('Error fetching salons:', error);
+		});
+	}
+
+	const getRecommendedStylist = async () => {
+
+		await axios({
+			method: 'get',
+			url: `${host}/api/recommendedStylists`,
+			})
+			.then(function (response) {
+				setRecommendedStylists(response.data);
+		});
+	}
+	const onRefresh = useCallback(async () => {
+		setRefreshing(true);
+		getSalons()
+		getRecommendedStylist()
+		setRefreshing(false);
+	}, []);
 
 	useEffect(() => {
 
-		const getSalons = async () => {
-			axios({
-				method: 'get',
-				url: `${host}/api/salons`,
-			})
-			.then(function (response) {
-				// Assuming response.data is an array of salon objects with a 'rating' field
-				const sortedSalons = response.data.sort((a, b) => b.rating - a.rating); // Sort descending by rating
-				const topRatedSalons = sortedSalons.slice(0, 5); // Get top 5 salons
-				setRecommendedSalons(topRatedSalons);
-			})
-			.catch(function (error) {
-				console.error('Error fetching salons:', error);
-			});
-		}
-
-		const getRecommendedStylist = async () => {
-
-			await axios({
-				method: 'get',
-				url: `${host}/api/recommendedStylists`,
-				})
-				.then(function (response) {
-					setRecommendedStylists(response.data);
-			});
-		}
 
 		getSalons();
 		getRecommendedStylist();
@@ -121,7 +129,9 @@ const DashboardScreen = ({route, navigation, ...props}) => {
 
 	return (
 	<View>
-		<ScrollView style={styles.container}>
+		<ScrollView style={styles.container} refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }>
 			<View style={styles.contentContainer}>
 				<View style={styles.header}>
 					<AvatarBox />

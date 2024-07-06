@@ -82,7 +82,7 @@ const Favourite = ({navigation}) => {
 		    formData.append("file_upload", {uri: image.path, name: 'favourite.png', type: 'image/jpeg'});
 		    formData.append("id", `${userId}_${favourites.length}`);
 
-            const endPoint = 'https://goose-clean-rattler.ngrok-free.app/embedImage';
+            const endPoint = 'https://gorilla-poetic-gull.ngrok-free.app/embedImage';
             setLoading(true);
 
 			await fetch(endPoint, {
@@ -207,6 +207,7 @@ const styles = StyleSheet.create({
 		marginTop: viewportHeight/15,
 		paddingLeft: viewportWidth/50,
 		zIndex: 999,
+        left: -130,
 	},
 	screenTitleContainer: {
 		borderBottomWidth: 0.3,

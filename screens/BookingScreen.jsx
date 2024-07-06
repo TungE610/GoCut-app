@@ -50,7 +50,7 @@ function comparisonFunction(a,b) {
     return a.distance - b.distance;
 }
 
-Geocoder.init("AIzaSyCXMER8nT28GR0VF--NbVdWROad-vDeZo4", {language : "vi"}); // use a valid API key
+Geocoder.init("AIzaSyAbGlZdGC8HtYiQXhyjxmmMww68WsLwgr0", {language : "vi"}); // use a valid API key
 
 const customStyles = {
 	stepIndicatorSize: 25,
@@ -129,6 +129,7 @@ const BookingScreen = ({route, navigation}) => {
 	const [result, setResult] = useState("")
 	const [isPreviewingResult, setIsPreviewingResult] = useState(false);
 	const { initStep, selectedSalonId, selectedServicesId, selectedTotalTime } = route.params;
+	const [user, setUser] = useState(null);
 
   	 const hashValues = [];
 
@@ -154,6 +155,31 @@ const BookingScreen = ({route, navigation}) => {
 	const seeMap = (destination) => {
 		navigation.navigate('Map', {destination: destination});
 	}
+
+	const getUserData = async () => {
+		const token = await AsyncStorage.getItem('bearerToken').then((token) => token).catch((error) => console.log(error));
+
+		const headers = {headers :
+			{ 
+				Authorization: `Bearer ${token}`,
+				Accept :'application/json', 
+			}
+		};
+		try {
+			await axios(`${host}/api/customer`, headers).then(res => {
+				setUser(res.data);
+			}).catch((error) => console.log(error))
+		}catch(error) {
+			if (error.response && error.response.data) {
+				console.log(error.response.data.error);
+			} else {
+				console.log(error);
+			}
+			}
+	}
+	useEffect(() => {
+		getUserData();
+	}, [])
 
 	useEffect(() => {
 		setIsSearching(true);
@@ -435,11 +461,13 @@ const BookingScreen = ({route, navigation}) => {
 	}
 
 	const selectPrevHair = async (id) => {
+		console.log(id);
 		await axios(`${host}/api/users/${id}/prevHair`, {
 			params: {
 				selectedServices: selectedServices.map(service => service.id),
 			}
 		}).then(function (response) {
+			console.log(response.data);
 			setPrevStylistHair(response.data);
 		})
 		.catch(function (error) {
@@ -534,11 +562,12 @@ const BookingScreen = ({route, navigation}) => {
 			}
 		});
 	}
-
 	const getServiceInputHandler = (searchInput) => {
+
 		setServiceSearchInput(searchInput);
+
 		if (searchInput) {
-			setFilteredServices(prev => prev.filter(service => service.name.toLowerCase().includes(searchInput.toLowerCase())));
+			setFilteredServices(categories[selectedCategory].services.filter(service => service.name.toLowerCase().includes(searchInput.toLowerCase())));
 		} else {
 			setFilteredServices(categories[0].services);
 		}
@@ -551,17 +580,37 @@ const BookingScreen = ({route, navigation}) => {
 			icon: <LocationIcon color="#cc4a16"/>,
 			text: 'Near me',
 			onClick: () => {
-
 				setFilteredSalon(filteredSalon.filter(salon => salon.distance < 1000))
 			}
 		},
 		{
 			icon: <HomeIcon color="#cc4a16" width={16} height={16}/>,
 			text: 'Near home',
+			onClick: () => {
+				Geocoder.from(user.address)
+					.then(json => {
+						var location = json.results[0].geometry.location;
+						setFilteredSalon(salons.map(salon => {
+							return {...salon, distance: getDistance({latitude: location.lat, longitude:location.lng}, {latitude: salon.lat, longitude: salon.lng})}
+						}).filter(salon => salon.distance < 1000).sort(comparisonFunction));
+					})
+					.catch(error => console.warn(error));
+
+			}
 		},
 		{
 			icon: <OfficeIcon color="#cc4a16" width={16} height={16}/>,
 			text: 'Near office',
+			onClick: () => {
+				Geocoder.from(user.office_address)
+					.then(json => {
+						var location = json.results[0].geometry.location;
+						setFilteredSalon(salons.map(salon => {
+							return {...salon, distance: getDistance({latitude: location.lat, longitude:location.lng}, {latitude: salon.lat, longitude: salon.lng})}
+						}).filter(salon => salon.distance < 1000).sort(comparisonFunction));
+					})
+					.catch(error => console.warn(error));
+			}
 		}
 	];
 	
@@ -756,7 +805,7 @@ const BookingScreen = ({route, navigation}) => {
 										keepResultsAfterBlur={true}
 										nearbyPlacesAPI='GooglePlacesSearch'
 										query={{
-											key: 'AIzaSyCXMER8nT28GR0VF--NbVdWROad-vDeZo4',
+											key: 'AIzaSyAbGlZdGC8HtYiQXhyjxmmMww68WsLwgr0',
 											language: 'vi',
 										}}
             							enablePoweredByContainer={false}
@@ -1062,9 +1111,12 @@ const BookingScreen = ({route, navigation}) => {
 											<View style={styles.stylistName}>
 												<Text style={{fontSize: 16, color: '#3d5c98', fontWeight: 600}}>Full Name: </Text>
 												<Text>{selectedStylist?.name}</Text>
-												<TouchableOpacity style={{marginLeft: 18}} onPress={() => {seeMoreStylistHandler(selectedStylist)}}>
-													<Text style={{textDecorationLine: 'underline', color: '#3d5c98'}}>See more</Text>
-												</TouchableOpacity>
+												{
+													selectedStylist?.name && 
+													<TouchableOpacity style={{marginLeft: 18}} onPress={() => {seeMoreStylistHandler(selectedStylist)}}>
+														<Text style={{textDecorationLine: 'underline', color: '#3d5c98'}}>See more</Text>
+													</TouchableOpacity>
+												}
 											</View>
 											<View style={styles.stylistRatting}>
 												<Text style={{fontSize: 16, color: '#3d5c98', fontWeight: 600}}>Rating: </Text>

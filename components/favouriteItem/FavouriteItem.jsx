@@ -41,7 +41,7 @@ const FavouriteItem = (props) => {
 		try {
 			props.changeProcessImageState(true);
 
-			const endPoint = 'https://goose-clean-rattler.ngrok-free.app/uploadfile';
+			const endPoint = 'https://gorilla-poetic-gull.ngrok-free.app/uploadfile';
 
 			await fetch(endPoint, {
 				method: 'POST',
@@ -57,7 +57,7 @@ const FavouriteItem = (props) => {
 
 						props.changeProcessImageState(false);
 
-						const transferEndPoint = 'https://goose-clean-rattler.ngrok-free.app/hair-transfer';
+						const transferEndPoint = 'https://gorilla-poetic-gull.ngrok-free.app/hair-transfer';
 
 						const transferFormData = new FormData();
 

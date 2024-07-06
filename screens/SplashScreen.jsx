@@ -407,7 +407,7 @@ const SplashScreen = ({ navigation }) => {
 							style={styles.phoneNumberInput}
 							placeholder="Signup Phone number"
 							placeholderTextColor="#3d5c98"
-							onChangeText={(value) => { console.log(value); signupPhoneNumberRef.current.value = value; }}
+							onChangeText={(value) => { signupPhoneNumberRef.current.value = value; }}
 							ref={signupPhoneNumberRef}
 						/>
 						<TouchableHighlight style={styles.formButton} onPress={sendSignupOTPBtnClickHandler}>

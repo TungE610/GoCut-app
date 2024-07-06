@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react';
 import {StyleSheet, Dimensions, ScrollView, View, Text} from 'react-native';
-import ReturnHomeButton from '../../components/returnHomeButton/ReturnHomeButton';
+import BackButton from "../../components/backButton/BackButton";
 import MarkButton from '../../components/markButton/MarkButton';
 import ClockIcon from '../../assets/clock.svg';
 import StarIcon from '../../assets/star.svg';
@@ -76,7 +76,7 @@ const SalonDetail = ({route, navigation, ...props}) => {
 					style={styles.salonImage}
 				>
 					<View style={styles.buttonsContainer}>
-						<ReturnHomeButton onClick={returnHomeHandler}/>
+						<BackButton onClick={() => {navigation.goBack()}}/>
 						<MarkButton />
 					</View>
 				</FastImage>

@@ -22,6 +22,7 @@ const ServiceCard = (props) => {
 
 	const [image, setImage] = useState('');
     const fadeInOpacity = useRef(new Animated.Value(0)).current;
+    const [showRec, setShowRec] = useState(true);
 
 	useEffect(() => {
         Animated.timing(fadeInOpacity, {
@@ -42,7 +43,7 @@ const ServiceCard = (props) => {
 		try {
 			props.changeProcessImageState(true);
 
-			const endPoint = 'https://goose-clean-rattler.ngrok-free.app/uploadfile';
+			const endPoint = 'https://gorilla-poetic-gull.ngrok-free.app/uploadfile';
 
 			await fetch(endPoint, {
 				method: 'POST',
@@ -57,7 +58,7 @@ const ServiceCard = (props) => {
 
 						props.changeProcessImageState(false);
 
-						const transferEndPoint = 'https://goose-clean-rattler.ngrok-free.app/hair-transfer';
+						const transferEndPoint = 'https://gorilla-poetic-gull.ngrok-free.app/hair-transfer';
 
 						const transferFormData = new FormData();
 
@@ -96,6 +97,7 @@ const ServiceCard = (props) => {
 			} else if(res.errorCode) {
 				console.log('ImagePickerError: ', res.errorMessage)
 			} else {
+				setShowRec(true);
 				setImage(res.assets[0].uri);
 
         		transferImage(res.assets[0].uri)
@@ -117,6 +119,7 @@ const ServiceCard = (props) => {
             } else if (res.errorCode) {
                 console.log('ImagePicker Error: ', res.errorMessage);
             } else {
+				setShowRec(true);
 				setImage(res.assets[0].uri);
 
         		transferImage(res.assets[0].uri)

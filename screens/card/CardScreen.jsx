@@ -7,7 +7,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import Checkbox from 'expo-checkbox';
 
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
-const host = "http://192.168.0.106:8000";
+const host = "https://salon-docker-production.up.railway.app";
 
 const CartScreen = ({ navigation }) => {
     const [products, setProducts] = useState([]);

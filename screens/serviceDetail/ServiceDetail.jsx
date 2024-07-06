@@ -1,4 +1,4 @@
-import { StyleSheet, Dimensions, View, Text, ScrollView, TouchableHighlight, TouchableOpacity } from "react-native";
+import { StyleSheet, Dimensions, View, Text, ScrollView, TouchableOpacity } from "react-native";
 import ClockIcon from '../../assets/clock.svg';
 import SaleIcon from '../../assets/sale.svg';
 import TurnBackButton from "../../components/turnBackButton/TurnBackButton";

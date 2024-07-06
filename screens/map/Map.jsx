@@ -6,8 +6,8 @@ import Geocoder from 'react-native-geocoding';
 import MapViewDirections from 'react-native-maps-directions';
 import BackButton from '../../components/backButton/BackButton';
 
-Geocoder.init("AIzaSyCXMER8nT28GR0VF--NbVdWROad-vDeZo4", {language : "vi"}); // use a valid API key
-const GOOGLE_MAPS_APIKEY = "AIzaSyCXMER8nT28GR0VF--NbVdWROad-vDeZo4";
+Geocoder.init("AIzaSyAbGlZdGC8HtYiQXhyjxmmMww68WsLwgr0", {language : "vi"}); // use a valid API key
+const GOOGLE_MAPS_APIKEY = "AIzaSyAbGlZdGC8HtYiQXhyjxmmMww68WsLwgr0";
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
 
 const Map = ({route, navigation}) => {
@@ -16,15 +16,15 @@ const Map = ({route, navigation}) => {
     const [loading, setLoading] = useState(true);
 
     const { destination } = route.params;
-    console.log(destination);
 
     const backButtonClickedHandler = () => {
-		navigation.navigate('Booking', {
-            initStep: null,
-            selectedSalonId: null,
-            selectedServicesId: [],
-            selectedTotalTime: 0,
-        });
+		// navigation.navigate('Booking', {
+        //     initStep: null,
+        //     selectedSalonId: null,
+        //     selectedServicesId: [],
+        //     selectedTotalTime: 0,
+        // });
+        navigation.goBack()
 	}
     useEffect(() => {
         const fetchLocation = async () => {

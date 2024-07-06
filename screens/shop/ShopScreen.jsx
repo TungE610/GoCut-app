@@ -9,7 +9,7 @@ import ProductCard from '../../components/productCard/ProductCard';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { showMessage } from "react-native-flash-message";
 
-const host = "http://192.168.0.106:8000";
+const host = "https://salon-docker-production.up.railway.app";
 
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get('screen');
 
@@ -80,7 +80,7 @@ const ShopScreen = ({ navigation }) => {
             };
             // Send POST request to add products to cart
             const response = await axios.post(`${host}/api/cart`, requestData);
-
+            console.log(response.status);
 			showMessage({
 				message: "Successfully added to cart",
 				type: "success",
@@ -140,10 +140,7 @@ const ShopScreen = ({ navigation }) => {
             {selectedProducts.length > 0 && 
                 <View style={styles.addProductsButton}>
                     <TouchableOpacity style={styles.addProductscontainer} onPress={addProducToCardHandler}>
-						<Text style={styles.addText}>Add 
-							<Text style={styles.selectedCount}>
-								to cart
-							</Text> 
+						<Text style={styles.addText}>Add to cart
 						</Text>
 					</TouchableOpacity>
                 </View>
@@ -195,7 +192,7 @@ const styles = StyleSheet.create({
 	addProductscontainer: {
 		height: viewportHeight/15,
 		borderRadius: 50,
-		backgroundColor: '#3d5c98',
+		backgroundColor: 'yellow',
 		alignItems: 'center',
 	},
 	addText: {
@@ -203,7 +200,7 @@ const styles = StyleSheet.create({
 		fontWeight: "700",
 		alignSelf: 'center',
 		lineHeight: viewportHeight/15,
-		color: '#fff'
+		color: '#3d5c98'
 	},
 });
 

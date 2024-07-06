@@ -188,7 +188,7 @@ const SplashScreen = ({ navigation }) => {
 
 	const sendLoginOTPBtnClickHandler = async () => {
 
-		// await requestOtp(loginPhoneNumberRef)
+		await requestOtp(loginPhoneNumberRef)
 
 		Animated.spring(animatedLoginOTPShow, {
 			toValue: 1,
@@ -311,10 +311,9 @@ const SplashScreen = ({ navigation }) => {
 
 	const login = async () => {
 		try {
+			let res = await confirm.confirm(loginOtpRef.current.value);
 
-			// let res = await confirm.confirm(loginOtpRef.current.value);
-
-			let res = await axios.post(`${host}/api/login`, {
+			res = await axios.post(`${host}/api/login`, {
 				phone_number: loginPhoneNumberRef.current.value,
 			})
 

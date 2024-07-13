@@ -139,8 +139,16 @@ const Profile = ({route, navigation, ...props}) => {
 	}
 
 	const logoutHandler = async () => {
+		
+		const token = await AsyncStorage.getItem('bearerToken').then((token) => token).catch((error) => console.log(error));
 
-		await axios(`${host}/api/logout`)
+		const headers = {headers :
+			{ 
+				Authorization: `Bearer ${token}`,
+				Accept :'application/json', 
+			}
+		};
+		await axios(`${host}/api/logout`, headers)
 		.then(res => {
 			showMessage({
 			message: "Successful Logout",

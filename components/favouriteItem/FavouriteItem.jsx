@@ -2,12 +2,13 @@ import {View, Text, StyleSheet, Dimensions, TouchableOpacity, TextInput} from 'r
 import FastImage from 'react-native-fast-image'
 import EditIcon from '../../assets/write.svg';
 import SaveIcon from '../../assets/save.svg';
+import DeleteIcon from '../../assets/delete.svg';
 import {useState} from 'react';
 import axios from 'axios';
 import * as ImagePicker from 'react-native-image-picker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const host = process.env.HOST
+const host = "https://salon-docker-production.up.railway.app";
 
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
 
@@ -20,7 +21,7 @@ const FavouriteItem = (props) => {
         setIsEditing(prev => !prev);
 
         if (isEditing) {                
-                await axios.put(`${host}:8000/api/favourite-images/rename`, null, {
+                await axios.put(`${host}/api/favourite-images/rename`, null, {
                     params: {
                         imageUrl: props.image_url,
                         newName: name,
@@ -74,6 +75,7 @@ const FavouriteItem = (props) => {
 								return text
 							})
 							.then((text) => {
+                                console.log(text.replaceAll('"', ''))
 								props.getResult(text.replaceAll('"', ''));
 							});
 						}
@@ -83,6 +85,19 @@ const FavouriteItem = (props) => {
 			return error
 		}
 	}
+    const deleteHandler = async (imageUrls) => {
+        try {
+            await axios.delete(`${host}/api/favourite-images/destroy`, {
+                data: {
+                    imageUrls: imageUrls
+                }
+            });
+            console.log(response.data);
+        } catch (error) {
+            console.error('Error deleting images:', error);
+        }
+    };
+
     const tryNowHandler = () => {
         const options = {
             saveToPhotos: false,
@@ -129,6 +144,9 @@ const FavouriteItem = (props) => {
                         <Text style={styles.operationText}>Try now</Text>
                     </TouchableOpacity>
                     <Text style={styles.operationText}>Transfer image</Text>
+                    <TouchableOpacity onPress={deleteHandler}>
+                        <DeleteIcon width={25} height={25}/>
+                    </TouchableOpacity>
                 </View>
             </View>
         </View>

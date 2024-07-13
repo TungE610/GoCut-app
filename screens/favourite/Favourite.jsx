@@ -24,7 +24,38 @@ const Favourite = ({navigation}) => {
 	const [isPreviewingResult, setIsPreviewingResult] = useState(false);
 
     const [favourites, setFavourites] = useState([]);
-
+    const styles = StyleSheet.create({
+    container: {
+		height: viewportHeight,
+		width: viewportWidth,
+		flexDirection: 'column',
+    },
+	backButton: {
+		position: 'absolute',
+		width: '20%',
+		flexDirection: 'row',
+		alignContent: 'space-around',
+		alignItems: 'center',
+		marginTop: viewportHeight/15,
+		paddingLeft: viewportWidth/50,
+		zIndex: 999,
+        left: favourites.length > 0 ? 0 : -130,
+	},
+	screenTitleContainer: {
+		borderBottomWidth: 0.3,
+		borderBottomColor: '#555',
+		paddingBottom: 15,
+	},
+	screenTitle: {
+		width: '100%',
+		fontSize: 28,
+		fontWeight: "700",
+		color: '#3D5C98',
+		letterSpacing: 1,
+		textAlign: 'center',
+		marginTop: viewportHeight/14,
+	},
+})
     const backButtonClickHandler = () => {
         navigation.navigate('Dashboard');
     }
@@ -120,7 +151,7 @@ const Favourite = ({navigation}) => {
 			setIsInferencing(true)
 		}
 	}
-
+    console.log("ress: ", result);
     const getResult = (result) => {
 		setResult(result);	
         setLoading(false);
@@ -129,7 +160,7 @@ const Favourite = ({navigation}) => {
     return (
         <View style={styles.container}>
             <View style={{ flex: 1, justifyContent: "center", alignItems: "center", width: viewportWidth }}>
-			{loading && 
+			{loading && result.length ==0 &&
                 <View style={{gap: 5, alignItems: 'center'}}>
 					<ActivityIndicator color={"#3d5c98"} />
 					<Text style={{color: "#3d5c98"}}>Processing image, it may takes a few seconds ... </Text>
@@ -187,43 +218,6 @@ const Favourite = ({navigation}) => {
     )
 }
 
-const styles = StyleSheet.create({
-    container: {
-		height: viewportHeight,
-		width: viewportWidth,
-		flexDirection: 'column',
-    },
-    // screenHeader: {
-	// 	width: viewportWidth,
-    //     flexDirection: 'row',
-    //     justifyContent: 'space-between'
-	// },
-	backButton: {
-		position: 'absolute',
-		width: '20%',
-		flexDirection: 'row',
-		alignContent: 'space-around',
-		alignItems: 'center',
-		marginTop: viewportHeight/15,
-		paddingLeft: viewportWidth/50,
-		zIndex: 999,
-        left: -130,
-	},
-	screenTitleContainer: {
-		borderBottomWidth: 0.3,
-		borderBottomColor: '#555',
-		paddingBottom: 15,
-	},
-	screenTitle: {
-		width: '100%',
-		fontSize: 28,
-		fontWeight: "700",
-		color: '#3D5C98',
-		letterSpacing: 1,
-		textAlign: 'center',
-		marginTop: viewportHeight/14,
-	},
-})
 
 export default Favourite;
 

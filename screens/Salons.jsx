@@ -25,7 +25,7 @@ function comparisonFunction(a,b) {
     return a.distance - b.distance;
 }
 
-Geocoder.init("AIzaSyAbGlZdGC8HtYiQXhyjxmmMww68WsLwgr0", {language : "vi"}); // use a valid API key
+Geocoder.init("AIzaSyC9T8t5V4PNBpLSZWuE2VfTrfsFuRM8Lhk", {language : "vi"}); // use a valid API key
 
 const wp = (percentage) => {
 	const value = percentage * viewportWidth / 100;
@@ -281,7 +281,7 @@ const Salons = ({route, navigation}) => {
                         keepResultsAfterBlur={true}
                         nearbyPlacesAPI='GooglePlacesSearch'
                         query={{
-                            key: "AIzaSyAbGlZdGC8HtYiQXhyjxmmMww68WsLwgr0",
+                            key: "AIzaSyC9T8t5V4PNBpLSZWuE2VfTrfsFuRM8Lhk",
                             language: 'vi',
                         }}
                         enablePoweredByContainer={false}

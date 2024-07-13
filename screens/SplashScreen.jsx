@@ -1,5 +1,5 @@
-import { useState, useRef, useEffect } from 'react';
-import { StyleSheet, View, Animated, Image, Dimensions, Text, TouchableHighlight, ImageBackground, TextInput, ClipP } from 'react-native';
+ import { useState, useRef, useEffect } from 'react';
+import { StyleSheet, View, Animated, Image, Dimensions, Text, TouchableHighlight, TouchableOpacity, TextInput } from 'react-native';
 import { ClipPath, Ellipse } from 'react-native-svg';
 import LottieView from 'lottie-react-native';
 import auth from '@react-native-firebase/auth';
@@ -51,20 +51,26 @@ const SplashScreen = ({ navigation }) => {
 
 	const requestOtp = async (ref) => {
 		confirm = await auth().signInWithPhoneNumber(countryCode + ref.current.value);
-	}
+	};
+
 	const signupPhoneNumberRef = useRef("")
 	const loginPhoneNumberRef = useRef("")
+	const passwordRef = useRef("")
 
+	const newPasswordRef = useRef("")
+	const confirmPasswordRef = useRef("")
+	
 	const signupOtpRef = useRef("")
 	const loginOtpRef = useRef("")
-
 
 	const animationRef = useRef();
 	const animatedImageScale = new Animated.Value(0);
 	const animatedButtonFade = new Animated.Value(1);
 	const animatedLoginFormShow = new Animated.Value(0);
+	const animatedPasswordShow = new Animated.Value(0);
 	const animatedSignupFormShow = new Animated.Value(0);
 	const animatedLoginFormTransition = new Animated.Value(0);
+	const animatedPasswordTransition = new Animated.Value(0);
 	const animatedSignupFormTransition = new Animated.Value(0);
 	const animatedLoginOTPShow = new Animated.Value(0);
 	const animatedSignupOTPShow = new Animated.Value(0);
@@ -149,6 +155,7 @@ const SplashScreen = ({ navigation }) => {
 	}
 
 	const closeButtonClickedHandler = () => {
+
 		Animated.spring(animatedImageScale, {
 			toValue: 0,
 			duration: 2000,
@@ -167,7 +174,19 @@ const SplashScreen = ({ navigation }) => {
 			useNativeDriver: true,
 		}).start();
 
+		Animated.spring(animatedPasswordShow, {
+			toValue: 0,
+			duration: 2000,
+			useNativeDriver: true,
+		}).start();
+
 		Animated.spring(animatedLoginFormShow, {
+			toValue: 0,
+			duration: 2000,
+			useNativeDriver: true,
+		}).start();
+
+		Animated.spring(animatedSignupOTPShow, {
 			toValue: 0,
 			duration: 2000,
 			useNativeDriver: true,
@@ -179,18 +198,57 @@ const SplashScreen = ({ navigation }) => {
 			useNativeDriver: true,
 		}).start();
 
+		Animated.spring(animatedPasswordTransition, {
+			toValue: 0,
+			duration: 2000,
+			useNativeDriver: true,
+		}).start();
+
 		Animated.spring(animatedSignupFormTransition, {
 			toValue: 0,
 			duration: 2000,
 			useNativeDriver: true,
 		}).start();
+
 	}
 
 	const sendLoginOTPBtnClickHandler = async () => {
 
-		await requestOtp(loginPhoneNumberRef)
+		if (!loginPhoneNumberRef.current.value) {
+			showErrorMessage("Please type your phone number first");
+		} else {
 
-		Animated.spring(animatedLoginOTPShow, {
+			await requestOtp(loginPhoneNumberRef)
+
+			Animated.spring(animatedLoginOTPShow, {
+				toValue: 1,
+				duration: 2000,
+				useNativeDriver: true,
+			}).start();
+
+			Animated.spring(animatedLoginFormShow, {
+				toValue: 0,
+				duration: 2000,
+				useNativeDriver: true,
+			}).start();
+
+			Animated.spring(animatedLoginFormTransition, {
+				toValue: viewportHeight,
+				duration: 2000,
+				useNativeDriver: true,
+			}).start();
+
+			Animated.spring(animatedLoginOTPTransition, {
+				toValue: -viewportHeight,
+				duration: 2000,
+				useNativeDriver: true,
+			}).start();
+		}
+	}
+
+	const openPasswordInputHandler = () => {
+
+		Animated.spring(animatedPasswordShow, {
 			toValue: 1,
 			duration: 2000,
 			useNativeDriver: true,
@@ -203,51 +261,114 @@ const SplashScreen = ({ navigation }) => {
 		}).start();
 
 		Animated.spring(animatedLoginFormTransition, {
-			toValue: viewportHeight,
+			toValue: 0,
 			duration: 2000,
 			useNativeDriver: true,
 		}).start();
 
-		Animated.spring(animatedLoginOTPTransition, {
+		Animated.spring(animatedPasswordTransition, {
 			toValue: -viewportHeight,
 			duration: 2000,
 			useNativeDriver: true,
 		}).start();
 	}
 
+	const loginWithPasswordHandler = async () => {
+
+		try {
+			res = await axios.post(`${host}/api/loginWithPassword`, {
+				phone_number: "+84" + loginPhoneNumberRef.current.value,
+				password: passwordRef.current.value,
+			})
+
+			if (res.data.status_code === 200) {
+
+				showMessage({
+					message: "Welcome back!!",
+					type: "success",
+					autoHide: true,
+					duration: 1500,
+				});
+
+				await storeToken(res.data.access_token);
+				await storeUserId(res.data.user_id);
+
+				closeButtonClickedHandler();
+				if (res.data.role && res.data.role  === 'barber') {
+					navigation.navigate("BarberOrder");
+				} else {
+					navigation.navigate("Dashboard");
+				}
+			} else if (res.data.status_code === 401){
+				showMessage({
+					message: "Phone number or password is incorrect",
+					type: "danger",
+					autoHide: true,
+					duration: 1500,
+				});
+			}
+
+			loginPhoneNumberRef.current.value = "";
+			passwordRef.current.value = "";
+
+
+		} catch (error) {
+			if (error.response && error.response.data) {
+				console.log(error.response.data.error);
+			} else {
+				console.log(error);
+			}
+		}
+	}
+
 	const sendSignupOTPBtnClickHandler = async () => {
 
-		await requestOtp(signupPhoneNumberRef)
+		if (!signupPhoneNumberRef.current.value) {
+			showErrorMessage("Phone number is required");
+		} else if (!newPasswordRef.current.value) {
+			showErrorMessage("Password is required");
+		} else if (!confirmPasswordRef.current.value) {
+			showErrorMessage("Please confirm your new password");
+		} else if (confirmPasswordRef.current.value != newPasswordRef.current.value) {
+			showErrorMessage("The new password and confirmation password do not match");
+		} else {
+			await requestOtp(signupPhoneNumberRef)
 
-		Animated.spring(animatedSignupOTPShow, {
-			toValue: 1,
-			duration: 2000,
-			useNativeDriver: true,
-		}).start();
+			Animated.spring(animatedSignupOTPShow, {
+				toValue: 1,
+				duration: 2000,
+				useNativeDriver: true,
+			}).start();
 
-		Animated.spring(animatedSignupFormShow, {
-			toValue: 0,
-			duration: 2000,
-			useNativeDriver: true,
-		}).start();
+			Animated.spring(animatedSignupFormShow, {
+				toValue: 0,
+				duration: 2000,
+				useNativeDriver: true,
+			}).start();
 
-		Animated.spring(animatedSignupFormTransition, {
-			toValue: viewportHeight,
-			duration: 2000,
-			useNativeDriver: true,
-		}).start();
+			Animated.spring(animatedSignupFormTransition, {
+				toValue: viewportHeight,
+				duration: 2000,
+				useNativeDriver: true,
+			}).start();
 
-		Animated.spring(animatedSignupOTPTransition, {
-			toValue: -viewportHeight,
-			duration: 2000,
-			useNativeDriver: true,
-		}).start();
+			Animated.spring(animatedSignupOTPTransition, {
+				toValue: -viewportHeight,
+				duration: 2000,
+				useNativeDriver: true,
+			}).start();
+		}
 	}
 
 	const animatedLoginShowStyle = {
 		opacity: animatedLoginFormShow,
 		transform: [{ translateY: animatedLoginFormTransition }]
 	};
+
+	const animatedPasswordShowStyle = {
+		opacity: animatedPasswordShow,
+		transform: [{ translateY: animatedPasswordTransition }]
+	}
 
 	const animatedSignupShowStyle = {
 		opacity: animatedSignupFormShow,
@@ -288,23 +409,40 @@ const SplashScreen = ({ navigation }) => {
 
 			res = await axios.post(`${host}/api/signup`, {
 				phone_number: res.user.phoneNumber,
+				new_password: newPasswordRef.current.value,
+				confirm_password: confirmPasswordRef.current.value,
 			})
 
-			signupPhoneNumberRef.current.value = "";
-			signupOtpRef.current.value = "";
-			showMessage({
-				message: "Successfully signed up !!",
-				type: "success",
-				autoHide: true,
-				duration: 2000,
-			});
-			navigation.navigate("Dashboard");
+			if (res.data.status_code == 409) {
+				showMessage({
+					message: "This phone number has been used",
+					type: "danger",
+					autoHide: true,
+					duration: 1500,
+				});
+				navigation.navigate("Dashboard");
+			}
 
+			if (res.data.status_code == 200) {
+				showMessage({
+					message: "Successfully signed up !!",
+					type: "success",
+					autoHide: true,
+					duration: 2000,
+				});
+				navigation.navigate("Dashboard");
+			}	
 		} catch (error) {
+
 			if (error.response && error.response.data) {
 				console.log(error.response.data.error);
 			} else {
-				console.log(error);
+				showMessage({
+					message: "OTP is incorrect, try again",
+					type: "danger",
+					autoHide: true,
+					duration: 1500,
+				});
 			}
 		}
 	}
@@ -313,8 +451,9 @@ const SplashScreen = ({ navigation }) => {
 		try {
 			let res = await confirm.confirm(loginOtpRef.current.value);
 
-			res = await axios.post(`${host}/api/login`, {
-				phone_number: loginPhoneNumberRef.current.value,
+			console.log(res.user.phoneNumber)
+			res = await axios.post(`${host}/api/loginWithOTP`, {
+				phone_number: res.user.phoneNumber,
 			})
 
 			if (res.data.status_code === 200) {
@@ -329,6 +468,7 @@ const SplashScreen = ({ navigation }) => {
 				await storeToken(res.data.access_token);
 				await storeUserId(res.data.user_id);
 
+				closeButtonClickedHandler();
 				if (res.data.role && res.data.role  === 'barber') {
 					navigation.navigate("BarberOrder");
 				} else {
@@ -336,18 +476,29 @@ const SplashScreen = ({ navigation }) => {
 				}
 			}
 
-			loginPhoneNumberRef.current.value = "";
-			loginOtpRef.current.value = "";
-
-
 		} catch (error) {
 			if (error.response && error.response.data) {
 				console.log(error.response.data.error);
 			} else {
-				console.log(error);
+				showMessage({
+					message: "OTP is incorrect, try again",
+					type: "danger",
+					autoHide: true,
+					duration: 1500,
+				});
 			}
 		}
 
+	}
+
+	const showErrorMessage = (message) => {
+		showMessage({
+			message: message,
+			type: "danger",
+				autoHide: false,
+				duration: 60000,
+				icon: "danger",
+		});
 	}
 
 	return (
@@ -380,27 +531,52 @@ const SplashScreen = ({ navigation }) => {
 							<Text style={styles.btnText}>Login</Text>
 						</TouchableHighlight>
 					</Animated.View>
+
 					<Animated.View style={[animatedFadeStyle]}>
 						<TouchableHighlight
 							style={styles.signUpButton}
-							onPress={() =>
-								signUpBtnPressedHandler()
+							onPress={() => {
+									signUpBtnPressedHandler();
+								}
 							}>
 							<Text style={styles.btnText}>Sign Up</Text>
 						</TouchableHighlight>
 					</Animated.View>
+
 					<Animated.View style={[styles.loginContainer, animatedLoginShowStyle]}>
 						<TextInput
+							clearButtonMode="always"
 							style={styles.phoneNumberInput}
-							placeholder="Login Phone number"
+							placeholder="Phone number"
 							placeholderTextColor="#3d5c98"
-							onChangeText={(value) => {loginPhoneNumberRef.current.value = value; }}
+							onChangeText={(value) => {
+								loginPhoneNumberRef.current.value = value; 
+							}}
 							ref={loginPhoneNumberRef}
 						/>
-						<TouchableHighlight style={styles.formButton} onPress={sendLoginOTPBtnClickHandler}>
-							<Text style={styles.formBtnText}>Send Login OTP</Text>
+						<TouchableOpacity style={styles.formButton} onPress={sendLoginOTPBtnClickHandler}>
+							<Text style={styles.formBtnText}>Login with otp</Text>
+						</TouchableOpacity>
+						<TouchableOpacity style={styles.loginWithPwdBtn} onPress={openPasswordInputHandler}>
+							<Text style={styles.formBtnText}>Login with password</Text> 
+						</TouchableOpacity>
+					</Animated.View>
+
+
+					<Animated.View style={[styles.passwordContainer, animatedPasswordShowStyle]}>
+						<TextInput
+							clearButtonMode="always"
+							style={styles.phoneNumberInput}
+							placeholder="Password"
+							placeholderTextColor="#3d5c98"
+							onChangeText={(value) => {passwordRef.current.value = value; }}
+							ref={passwordRef}
+						/>
+						<TouchableHighlight style={styles.formButton} onPress={loginWithPasswordHandler}>
+							<Text style={styles.formBtnText}>Login</Text>
 						</TouchableHighlight>
 					</Animated.View>
+
 					<Animated.View style={[styles.signupContainer, animatedSignupShowStyle]}>
 						<TextInput
 							style={styles.phoneNumberInput}
@@ -409,26 +585,54 @@ const SplashScreen = ({ navigation }) => {
 							onChangeText={(value) => { signupPhoneNumberRef.current.value = value; }}
 							ref={signupPhoneNumberRef}
 						/>
+						<TextInput
+							style={styles.newPasswordInput}
+							placeholder="New password"
+							placeholderTextColor="#3d5c98"
+							onChangeText={(value) => { newPasswordRef.current.value = value; }}
+							ref={newPasswordRef}
+						/>
+						<TextInput
+							style={styles.confirmPasswordInput}
+							placeholder="Confirm password"
+							placeholderTextColor="#3d5c98"
+							onChangeText={(value) => { confirmPasswordRef.current.value = value; }}
+							ref={confirmPasswordRef}
+						/>
 						<TouchableHighlight style={styles.formButton} onPress={sendSignupOTPBtnClickHandler}>
 							<Text style={styles.formBtnText}>Send Signup OTP</Text>
 						</TouchableHighlight>
 					</Animated.View>
+
 					<Animated.View style={[styles.otpInputContainer, animatedLoginOTPStyle]}>
-						<TextInput style={styles.otpInput} placeholder="OTP" placeholderTextColor="#3d5c98" value={loginOtpRef.current.value} onChangeText={(value) => { loginOtpRef.current.value = value; }} ref={loginOtpRef} />
+						<TextInput 
+							style={styles.otpInput} 
+							placeholder="OTP" 
+							placeholderTextColor="#3d5c98" 
+							onChangeText={(value) => { loginOtpRef.current.value = value; }} 
+							ref={loginOtpRef} 
+						/>
 						<TouchableHighlight style={styles.formButton} onPress={async () => { await login(); }}>
 							<Text style={styles.formBtnText} >
 								Login
 							</Text>
 						</TouchableHighlight>
 					</Animated.View>
+
 					<Animated.View style={[styles.otpInputContainer, animatedSignupOTPStyle]}>
-						<TextInput style={styles.otpInput} placeholder="OTP" placeholderTextColor="#3d5c98" value={signupOtpRef.current.value} onChangeText={(value) => { signupOtpRef.current.value = value; }} ref={signupOtpRef} />
+						<TextInput 
+							style={styles.otpInput} 
+							placeholder="OTP" 
+							placeholderTextColor="#3d5c98" 
+							onChangeText={(value) => { signupOtpRef.current.value = value; }} 
+							ref={signupOtpRef} />
 						<TouchableHighlight style={styles.formButton} onPress={async () => { await signup(); }}>
 							<Text style={styles.formBtnText} >
 								Signup
 							</Text>
 						</TouchableHighlight>
 					</Animated.View>
+
 				</View> : ''}
 		</View>
 	)
@@ -553,6 +757,28 @@ const styles = StyleSheet.create({
 		fontSize: 20,
 		color: '#3d5c98'
 	},
+	confirmPasswordInput: {
+		marginTop: 20,
+		height: viewportHeight / 15,
+		width: viewportWidth * 9 / 10,
+		borderWidth: 2,
+		borderColor: '#3d5c98',
+		padding: 10,
+		borderRadius: 10,
+		fontSize: 20,
+		color: '#3d5c98'
+	},
+	newPasswordInput: {
+		marginTop: 20,
+		height: viewportHeight / 15,
+		width: viewportWidth * 9 / 10,
+		borderWidth: 2,
+		borderColor: '#3d5c98',
+		padding: 10,
+		borderRadius: 10,
+		fontSize: 20,
+		color: '#3d5c98'
+	},
 	otpInputContainer: {
 		position: 'absolute',
 		bottom: -viewportHeight / 1.3,
@@ -572,7 +798,15 @@ const styles = StyleSheet.create({
 	loginContainer: {
 		position: 'absolute',
 		zIndex: 2,
-		bottom: -viewportHeight / 1.3,
+		bottom: -viewportHeight / 1.25,
+		paddingTop: 0,
+		paddingHorizontal: viewportWidth / 20,
+		backgroundColor: '#fff'
+	},
+	passwordContainer: {
+		position: 'absolute',
+		zIndex: 2,
+		bottom: -viewportHeight / 1.35,
 		paddingTop: 0,
 		paddingHorizontal: viewportWidth / 20,
 		backgroundColor: '#fff'
@@ -580,13 +814,21 @@ const styles = StyleSheet.create({
 	signupContainer: {
 		position: 'absolute',
 		zIndex: 3,
-		bottom: -viewportHeight / 1.3,
+		bottom: -viewportHeight / 1.105,
 		paddingTop: 0,
 		paddingHorizontal: viewportWidth / 20,
 		backgroundColor: '#fff'
 	},
 	formButton: {
 		marginTop: 30,
+		borderWidth: 2,
+		borderColor: '#fff',
+		borderRadius: 20,
+		padding: 10,
+		backgroundColor: '#3d5c98',
+	},
+	loginWithPwdBtn: {
+		marginTop: 3,
 		borderWidth: 2,
 		borderColor: '#fff',
 		borderRadius: 20,

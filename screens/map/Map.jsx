@@ -6,8 +6,8 @@ import Geocoder from 'react-native-geocoding';
 import MapViewDirections from 'react-native-maps-directions';
 import BackButton from '../../components/backButton/BackButton';
 
-Geocoder.init("AIzaSyAbGlZdGC8HtYiQXhyjxmmMww68WsLwgr0", {language : "vi"}); // use a valid API key
-const GOOGLE_MAPS_APIKEY = "AIzaSyAbGlZdGC8HtYiQXhyjxmmMww68WsLwgr0";
+Geocoder.init("AIzaSyC9T8t5V4PNBpLSZWuE2VfTrfsFuRM8Lhk", {language : "vi"}); // use a valid API key
+const GOOGLE_MAPS_APIKEY = "AIzaSyC9T8t5V4PNBpLSZWuE2VfTrfsFuRM8Lhk";
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
 
 const Map = ({route, navigation}) => {
